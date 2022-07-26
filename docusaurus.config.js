@@ -6,9 +6,9 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Davirain website',
-  tagline: 'Dinosaurs are cool',
-  url: 'https://davirian.xyz',
+title: 'IBC protocol zh',
+  tagline: 'Power by Octopus IBC-DEV-Team',
+  url: 'https://oct.network/',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -57,9 +57,9 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
-        title: 'Davirain Site',
+        title: 'IBC Protocol ZH',
         logo: {
-          alt: 'Davirain Logo',
+          alt: 'Logo',
           src: 'img/logo.svg',
         },
         items: [
@@ -71,7 +71,7 @@ const config = {
           },
           {to: '/blog', label: 'Blog', position: 'left'},
           {
-            href: 'https://github.com/facebook/docusaurus',
+            href: 'https://github.com/octopus-network/ibc/tree/zh-cn-2022',
             label: 'GitHub',
             position: 'right',
           },
@@ -94,11 +94,11 @@ const config = {
             items: [
               {
                 label: 'Discord',
-                href: 'https://discord.gg/E5evWnBX',
+                href: 'https://discord.com/invite/6GTJBkZA9Q',
               },
               {
                 label: 'Twitter',
-                href: 'https://twitter.com/TheLongSnow',
+                href: 'https://twitter.com/oct_network',
               },
             ],
           },
@@ -111,12 +111,12 @@ const config = {
               },
               {
                 label: 'GitHub',
-                href: 'https://github.com/DaviRain-Su',
+                href: 'https://github.com/octopus-network',
               },
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} Davirain site, Inc. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} IBC-Protocol-ZH site, Inc. Built with Docusaurus.`,
       },
       prism: {
         theme: lightCodeTheme,
