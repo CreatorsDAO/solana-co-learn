@@ -189,7 +189,7 @@ function GetInterchainAccountAddress(portId: Identifier, connectionId: Identifie
 
 #### **元数据协商**
 
-ICS-27 利用[ICS-04 通道版本协商](../../core/ics-004-channel-and-packet-semantics/README.md#versioning)在通道握手期间协商元数据和通道参数。元数据将包含编码格式以及交易类型，以便交易对手可以就跨链交易的结构和编码达成一致。在 TRY 步骤从主链发送的元数据也将包含链间帐户地址，以便可以将其中继到控制链。在通道握手结束时，控制链和主链都会存储控制链 portID 到新注册的链间账户地址的映射（[账户注册流程](#Register-account-flow)）。
+ICS-27 利用[ICS-04 通道版本协商](../../core/ics-004-channel-and-packet-semantics/README.md)在通道握手期间协商元数据和通道参数。元数据将包含编码格式以及交易类型，以便交易对手可以就跨链交易的结构和编码达成一致。在 TRY 步骤从主链发送的元数据也将包含链间帐户地址，以便可以将其中继到控制链。在通道握手结束时，控制链和主链都会存储控制链 portID 到新注册的链间账户地址的映射（[账户注册流程](#Register-account-flow)）。
 
 ICS-04 允许每个应用程序通道有特定版本协商协议。对于链间账户来说，通道版本将是一个 JSON 结构的字符串，其中包含所有相关元数据，这些元数据旨在在通道握手期间转发给交易对手（[参见下文摘要](#Metadata-negotiation-summary)）。
 

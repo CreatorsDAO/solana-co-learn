@@ -31,9 +31,9 @@ ICS 标题应包含与 ICS 相关的元数据。
 
 `题目` - ICS 题目（确保简短）
 
-`阶段` - 当前 ICS 阶段，请参见 [PROCESS.md](../../../../meta/PROCESS.md) 获取可能的阶段列表。
+`阶段` - 当前 ICS 阶段，请参见 [PROCESS.md](../../meta/PROCESS.md) 获取可能的阶段列表。
 
-有关 ICS 可接受阶段的说明，请参见 [README.md](../../../../README.md)。
+有关 ICS 可接受阶段的说明，请参见 [README.md](../../README.md)。
 
 `类别` - ICS 类别，应为以下之一：
 
