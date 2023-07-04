@@ -1,50 +1,50 @@
-# learn-solana
+# Solana Guide
 
 
 ## 前置环境准备
 
-- 1. [安装 Rust](https://www.rust-lang.org/tools/install)
-- 2. [安装 Solana](https://docs.solana.com/cli/install-solana-cli-tools)
-- 3. [安装 Node.js](https://nodejs.org/en/download/)
-- 4. [安装 Yarn](https://classic.yarnpkg.com/en/docs/install/#mac-stable)
-- 5. [配置第三方RPC服务: QuickNode](https://www.quicknode.com/)
+1. [安装 Rust](https://www.rust-lang.org/tools/install)
+2. [安装 Solana](https://docs.solana.com/cli/install-solana-cli-tools)
+3. [安装 Node.js](https://nodejs.org/en/download/)
+4. [安装 Yarn](https://classic.yarnpkg.com/en/docs/install/#mac-stable)
+5. [配置第三方RPC服务: QuickNode](https://www.quicknode.com/)
     - 这里我们选择使用 QuickNode 作为我们的 RPC 服务，因为它提供了免费的 RPC 服务，而且它的服务节点分布在全球各地，可以为我们提供更好的网络体验。
     - 注意我们使用的是DevNet网络，而不是MainNet网络，因为我们在开发过程中需要使用测试币，而不是真正的币。
-- 6. [安装 Solana 浏览器插件](https://phantom.app/)
+6. [安装 Solana 浏览器插件](https://phantom.app/)
     - Solana 浏览器插件是一个浏览器插件，它可以让我们在浏览器中连接到 Solana 网络，并且可以让我们在浏览器中查看我们的钱包地址和余额等信息。
     - 安装完成后，我们需要在浏览器中登录我们的钱包，这里我们选择使用 Sollet 钱包，因为它是一个网页钱包，我们可以直接在浏览器中使用它，而不需要下载安装任何软件。
-- 7. [文件编辑器]
+7. [文件编辑器]
     - [Vscode](https://code.visualstudio.com/)
     - [Zed](https://zed.dev/download)
 
-- 8. Solan 前端模版配置
+8. Solan 前端模版配置
 
 ## Module1
 
 ### Solana客户端开发
 
-- 1. 从Solana网络读取数据
-- 2. 将数据写入 Solana 网络
-- 3. 构建交互脚本
+1. [从Solana网络读取数据](./module1/read-data-from-the-solana-network/README.md)
+2. 将数据写入 Solana 网络
+3. 构建交互脚本
 
 
 ### 钱包和前端
 
-- 1. 连接到钱包
-- 2. 与程序交互
+1. 连接到钱包
+2. 与程序交互
 
 
 ### instructions说明
 
-- 1. 使用量具instructions说明
-- 2. instructions说明
-- 3. 构建一个电影评论应用程序
-- 4. 运行回来——反序列化
+1. 使用量具instructions说明
+2. instructions说明
+3. 构建一个电影评论应用程序
+4. 运行回来——反序列化
 
 ### 开始您自己的定制项目
 
-- 1. 构建 NFT 铸币者前端
-- 2. 部署到 Vercel
+1. 构建 NFT 铸币者前端
+2. 部署到 Vercel
 
 ## Module 2
 
