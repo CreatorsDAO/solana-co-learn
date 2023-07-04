@@ -3,9 +3,12 @@
   align-items: center;
   padding: 2rem 0;
   width: 100%;
+  background-color: #fff; /* Solana uses a white background */
+  color: #123F6D; /* This is a Solana blue color for text */
 }
 
 .featureSvg {
   height: 200px;
   width: 200px;
+  fill: #123F6D; /* Solana blue for SVG fill */
 }

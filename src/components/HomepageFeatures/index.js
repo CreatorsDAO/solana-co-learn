@@ -5,7 +5,7 @@ import styles from './styles.module.css';
 const FeatureList = [
   {
     title: 'IBC协议的中文规范',
-    Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
+    Svg: require('@site/static/img/easter-island-svgrepo-com.svg').default,
     description: (
       <>
         IBC协议的中文翻译
@@ -14,7 +14,7 @@ const FeatureList = [
   },
   {
     title: 'Solana的开发指南',
-    Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
+    Svg: require('@site/static/img/parthenon-svgrepo-com.svg').default,
     description: (
       <>
         Solana的开发指南

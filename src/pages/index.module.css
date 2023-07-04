@@ -8,6 +8,8 @@
   text-align: center;
   position: relative;
   overflow: hidden;
+  background-color: #fff; /* Solana uses a white background */
+  color: #123F6D; /* This is a Solana blue color for text */
 }
 
 @media screen and (max-width: 996px) {
@@ -20,4 +22,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: #123F6D; /* Solana blue for button background */
+  color: #fff; /* White color for button text */
+  border-radius: 4px; /* Solana buttons have rounded corners */
+  padding: 10px 20px; /* Add some padding to the buttons */
+  text-decoration: none; /* Remove underline from button text */
+  transition: background-color 0.3s ease; /* Smooth color transition for hover effect */
+}
+
+.buttons:hover {
+  background-color: #0D2B57; /* Darker Solana blue for button hover effect */
 }
