@@ -44,7 +44,7 @@
 ### 开始您自己的定制项目
 
 10. [构建 NFT 铸币者前端](./module1/build-an-nft-minter-front-end/README.md)
-11. 部署到 Vercel
+11. [部署到 Vercel](./module1/deploy-to-vercel/README.md)
 
 ## Module 2
 
