@@ -6,9 +6,9 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-title: 'IBC protocol zh',
-  tagline: 'Power by Octopus IBC-DEV-Team',
-  url: 'https://oct.network/',
+  title: 'All in One Blockchain',
+  tagline: 'Power by Davirain',
+  url: 'https://davirain.xyz',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -69,7 +69,7 @@ title: 'IBC protocol zh',
             position: 'left',
             label: 'Tutorial',
           },
-          {to: '/blog', label: 'Blog', position: 'left'},
+          { to: '/blog', label: 'Blog', position: 'left' },
           {
             href: 'https://github.com/octopus-network/ibc/tree/zh-cn-2022',
             label: 'GitHub',
