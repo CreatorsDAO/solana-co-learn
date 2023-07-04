@@ -69,9 +69,15 @@ const config = {
             position: 'left',
             label: 'Tutorial',
           },
+          {
+            type: 'doc',
+            docId: 'intro',
+            position: 'left',
+            label: 'Solana Guide',
+          },
           { to: '/blog', label: 'Blog', position: 'left' },
           {
-            href: 'https://github.com/octopus-network/ibc/tree/zh-cn-2022',
+            href: 'https://github.com/DaviRain-Su/all-in-one-blockchain.git',
             label: 'GitHub',
             position: 'right',
           },
@@ -87,6 +93,10 @@ const config = {
                 label: 'Tutorial',
                 to: '/docs/intro',
               },
+              {
+                label: 'Tutorial',
+                to: '/docs/solana/intro',
+              },
             ],
           },
           {
@@ -94,11 +104,11 @@ const config = {
             items: [
               {
                 label: 'Discord',
-                href: 'https://discord.com/invite/6GTJBkZA9Q',
+                href: '',
               },
               {
                 label: 'Twitter',
-                href: 'https://twitter.com/oct_network',
+                href: 'https://twitter.com/TheLongSnow',
               },
             ],
           },
@@ -111,12 +121,12 @@ const config = {
               },
               {
                 label: 'GitHub',
-                href: 'https://github.com/octopus-network',
+                href: 'https://github.com/DaviRain-Su',
               },
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} IBC-Protocol-ZH site, Inc. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} All in One BlockChain site, Inc.`,
       },
       prism: {
         theme: lightCodeTheme,
