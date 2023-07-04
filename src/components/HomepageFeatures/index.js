@@ -4,7 +4,7 @@ import styles from './styles.module.css';
 
 const FeatureList = [
   {
-    title: '关于IBC Protocol的中文SPEC',
+    title: 'IBC协议的中文规范',
     Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
     description: (
       <>
@@ -21,15 +21,6 @@ const FeatureList = [
       </>
     ),
   },
-  // {
-  //   title: 'Substrate-ibc的使用指南',
-  //   Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
-  //   description: (
-  //     <>
-  //       关于Substrate-ibc如何从一个substrate-node-templte模版配置使用操作指南
-  //     </>
-  //   ),
-  // }
 ];
 
 function Feature({ Svg, title, description }) {

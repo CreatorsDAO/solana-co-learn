@@ -57,10 +57,10 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
-        title: 'IBC Protocol ZH',
+        title: 'All In One BlockChain',
         logo: {
           alt: 'Logo',
-          src: 'img/logo.svg',
+          src: 'img/my_logo.svg',
         },
         items: [
           {
@@ -71,7 +71,7 @@ const config = {
           },
           {
             type: 'doc',
-            docId: 'readme',
+            docId: 'solana/guide',
             position: 'left',
             label: 'Solana Guide',
           },
@@ -95,7 +95,7 @@ const config = {
               },
               {
                 label: 'Solana Guide',
-                to: '/docs/solana/readme',
+                to: '/docs/solana/guide',
               },
             ],
           },
