@@ -38,7 +38,7 @@
 
 6. 使用量具instructions说明
 7. [instructions说明](./module1/custom-instructions/README.md)
-8. 构建一个电影评论应用程序
+8. [构建一个电影评论应用程序](./module1/build-a-movie-review-app/README.md)
 9. 运行回来——反序列化
 
 ### 开始您自己的定制项目
