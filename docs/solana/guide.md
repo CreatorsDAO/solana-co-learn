@@ -30,21 +30,21 @@
 
 ### 钱包和前端
 
-1. 连接到钱包
-2. 与程序交互
+4. [连接到钱包](./module1/connecting-to-wallet/README.md)
+5. 与程序交互
 
 
 ### instructions说明
 
-1. 使用量具instructions说明
-2. instructions说明
-3. 构建一个电影评论应用程序
-4. 运行回来——反序列化
+6. 使用量具instructions说明
+7. instructions说明
+8. 构建一个电影评论应用程序
+9. 运行回来——反序列化
 
 ### 开始您自己的定制项目
 
-1. 构建 NFT 铸币者前端
-2. 部署到 Vercel
+10. 构建 NFT 铸币者前端
+11. 部署到 Vercel
 
 ## Module 2
 
