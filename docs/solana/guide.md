@@ -24,8 +24,8 @@
 ### Solana客户端开发
 
 1. [从Solana网络读取数据](./module1/read-data-from-the-solana-network/README.md)
-2. 将数据写入 Solana 网络
-3. 构建交互脚本
+2. [将数据写入 Solana 网络](./module1/write-data-to-the-network/README.md)
+3. [构建交互脚本](./module1/build-an-interaction-script/README.md)
 
 
 ### 钱包和前端
