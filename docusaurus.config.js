@@ -93,10 +93,6 @@ const config = {
                 label: 'Tutorial',
                 to: '/docs/intro',
               },
-              {
-                label: 'Solana Guide',
-                to: '/docs/solana/guide',
-              },
             ],
           },
           {
