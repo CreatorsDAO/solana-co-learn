@@ -89,9 +89,9 @@ const { playerId, name } = borshAccountSchema.decode(buffer)
 ```
 
 这些步骤与我们对序列化所做的类似：
-- 1.创建字节数组中存储内容的模式/映射
-- 2.使用模式来解码数据
-- 3.提取我们想要的项目
+1.创建字节数组中存储内容的模式/映射
+2.使用模式来解码数据
+3.提取我们想要的项目
 
 这应该感觉很熟悉，但如果不熟悉，当我们付诸行动时就会有意义！
 
@@ -142,10 +142,10 @@ export class Movie {
 
 就像序列化一样，我们有一个模式和一个方法。该架构具有：
 
-- 1. initialized 作为一个布尔值，表示帐户是否已初始化。
-- 2. rating 作为无符号 8 位整数，表示评论者对电影的评分（满分 5 分）。
-- 3. title 作为表示所评论电影的标题的字符串。
-- 4. description 作为表示评论的书面部分的字符串.
+1. initialized 作为一个布尔值，表示帐户是否已初始化。
+2. rating 作为无符号 8 位整数，表示评论者对电影的评分（满分 5 分）。
+3. title 作为表示所评论电影的标题的字符串。
+4. description 作为表示评论的书面部分的字符串.
 
 看起来很熟悉！好东西在 deserialize 中。这里的返回类型可以是 Movie 或 null ，因为帐户可能根本没有任何数据。
 
@@ -234,9 +234,9 @@ connection.getProgramAccounts(new web3.PublicKey(MOVIE_REVIEW_PROGRAM_ID))
 ### Hints:
 
 在 StudentIntro.ts 中创建帐户缓冲区布局。账户数据包含：
-- 1. initialized 作为一个布尔值，表示帐户是否已初始化
-- 2. name 作为表示学生姓名的字符串
-- 3. message 作为表示学生分享的有关 Solana 旅程的消息的字符串
+1. initialized 作为一个布尔值，表示帐户是否已初始化
+2. name 作为表示学生姓名的字符串
+3. message 作为表示学生分享的有关 Solana 旅程的消息的字符串
 
 在 StudentIntro.ts 中创建一个静态方法，该方法将使用缓冲区布局将帐户数据缓冲区反序列化为 StudentIntro 对象。
 

@@ -250,7 +250,7 @@ npm install --save-dev ts-node && \
 
 将以下内容添加到 `.gitignore`：
 
-```
+```bash
 node_modules/
 dist/
 .env
@@ -258,7 +258,7 @@ dist/
 
 最后，将以下内容添加到 `package.json` 中的脚本对象中：
 
-```
+```json
 "start": "ts-node src/index.ts"
 ```
 
@@ -445,7 +445,7 @@ await connection.requestAirdrop(payer.publicKey, web3.LAMPORTS_PER_SOL*1)
 
 如果您希望将来更轻松地查看 Solana Explorer 中的事务，只需将 pingProgram() 中的 console.log 更改为以下内容：
 
-```
+```ts
 console.log(`You can view your transaction on the Solana Explorer at:\nhttps://explorer.solana.com/tx/${sig}?cluster=devnet`)
 ```
 

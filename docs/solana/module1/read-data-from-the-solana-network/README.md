@@ -78,7 +78,7 @@ executable 是一个布尔字段，告诉我们该帐户是否包含可执行数
 
 公钥通常称为地址。这些地址指向 Solana 网络上的帐户。如果您想运行特定程序或传输 SOL，则需要提供必要的公钥（或多个密钥）来执行此操作。
 
-公钥为 256 位，通常显示为 base-58 编码字符串，例如 7C4jsPZpht42Tw6MjXWF56Q5RQUocjBBmciEjDa8HRtp。
+公钥为 256 位，通常显示为 base-58 编码字符串，例如 `7C4jsPZpht42Tw6MjXWF56Q5RQUocjBBmciEjDa8HRtp`。
 
 ### Solana JSON RPC API
 
@@ -164,7 +164,10 @@ Web3.js 允许您使用 JavaScript 函数调用 JSON-RPC API 方法。 SDK 提�
 
 要安装 @solana/web3.js，请按照通常使用的方式设置项目：
 
-npm 安装@solana/web3.js。
+```bash
+npm install @solana/web3.js。
+```
+
 
 ### 连接到网络
 

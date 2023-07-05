@@ -129,8 +129,10 @@ const config = {
         copyright: `Copyright © ${new Date().getFullYear()} All in One BlockChain site, Inc.`,
       },
       prism: {
-        theme: lightCodeTheme,
+        theme: require('prism-react-renderer/themes/dracula'),
         darkTheme: darkCodeTheme,
+        // Additional languages can be added here.
+        additionalLanguages: ['powershell', 'rust', 'toml', 'yaml', 'c', 'cpp'],
       },
     }),
 };
