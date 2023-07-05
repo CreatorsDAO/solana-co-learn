@@ -1,4 +1,10 @@
-# 2. ✍ 将数据写入区块链
+---
+sidebar_position: 2
+sidebar_label: ✍ 将数据写入区块链
+sidebar_class_name: green
+---
+
+# ✍ 将数据写入区块链
 
 幼儿园毕业的时间到了。我们了解有关阅读的一切 - 您只需对 JSON RPC 端点进行 API 调用即可。让我们写入区块链吧！
 

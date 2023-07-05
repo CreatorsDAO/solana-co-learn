@@ -1,4 +1,10 @@
-# 11. 🌐 部署到 Vercel
+---
+sidebar_position: 11
+sidebar_label: 🌐 部署到 Vercel
+sidebar_class_name: green
+---
+
+# 🌐 部署到 Vercel
 
 这是你本周所做的一切中最重要的部分。离开本地主机。
 

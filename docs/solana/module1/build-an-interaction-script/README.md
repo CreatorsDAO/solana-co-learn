@@ -1,4 +1,10 @@
-# 3. 📝 构建交互脚本
+---
+sidebar_position: 3
+sidebar_label: 📝 构建交互脚本
+sidebar_class_name: green
+---
+
+# 📝 构建交互脚本
 
 准备好探索 Solana 网络了吗？我们将编写一个脚本来生成密钥对，使用 devnet SOL 为其提供资金，并与 Solana 网络上的现有程序进行交互。
 

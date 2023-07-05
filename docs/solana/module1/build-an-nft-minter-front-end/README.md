@@ -1,4 +1,10 @@
-# 10. 💻 构建 NFT 铸币者前端
+---
+sidebar_position: 10
+sidebar_label: 💻 构建 NFT 铸币者前端
+sidebar_class_name: green
+---
+
+# 💻 构建 NFT 铸币者前端
 
 欢迎来到运输的第一周。每周您都会有一个完整的部分专门用于将您所学到的内容构建到带有战利品盒的自定义 NFT 质押应用程序中！
 

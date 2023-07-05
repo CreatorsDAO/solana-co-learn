@@ -1,4 +1,10 @@
-# 6. 🤔 Instructions 说明
+---
+sidebar_position: 7
+sidebar_label: 🤔 Instructions 说明
+sidebar_class_name: green
+---
+
+# 🤔 Instructions 说明
 
 现在我们已经设置了钱包连接，让我们的 ping 按钮实际执行一些操作！您现在知道如何通过简单的交易读取数据并写入网络。几乎立刻，您就会发现自己希望通过交易发送数据。那么让我们看看如何向 Solana 区块链讲述您的故事。
 
