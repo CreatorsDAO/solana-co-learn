@@ -71,7 +71,7 @@ const config = {
           },
           {
             type: 'doc',
-            docId: 'solana/guide',
+            docId: 'solana/README',
             position: 'left',
             label: 'Solana Guide',
           },

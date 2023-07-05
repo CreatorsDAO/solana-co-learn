@@ -1,4 +1,4 @@
-# IBC
+# IBC Protocol
 
 ![banner](./assets/interchain-standards-image.jpg)
 
