@@ -77,7 +77,7 @@ const config = {
           },
           { to: '/blog', label: 'Blog', position: 'left' },
           {
-            href: 'https://github.com/DaviRain-Su/all-in-one-blockchain/discussions/1',
+            href: 'https://github.com/DaviRain-Su/all-in-one-blockchain/discussions',
             label: 'Discussions',
             position: 'right',
           },
