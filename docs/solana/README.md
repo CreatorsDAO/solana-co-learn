@@ -1,5 +1,4 @@
-# Solana Guide
-
+# Solana Co-learn Guide (On Working)
 
 ## 前置环境准备
 
@@ -18,6 +17,53 @@
     - [Zed](https://zed.dev/download)
 
 8. Solan 前端模版配置
+
+> summary或者小的作业, 使用github classroom打分
+
+## 前置Rust知识
+
+### 1 Rust快速入门
+
+1. Rust基础语法
+2. Rust流程控制
+3. 包管理快速介绍
+
+### 2 Rust的所有权
+
+1. 所有权介绍
+2. 借用与引用
+3. slice类型
+
+### 3. 复合类型
+
+1. 结构体与枚举
+2. Vector
+3. HashMap
+
+### 4 泛型与Trait
+
+1. 泛型
+2. Trait
+3. 生命周期
+
+### 5.闭包和迭代器
+
+1. 闭包
+2. 迭代器
+
+### 6. 错误处理、测试、宏
+
+1. 错误处理
+2. 测试
+3. 声明宏
+4. 过程宏
+
+
+## 区块链原理及Solana原理介绍
+
+- 区块链原理介绍
+- Solana原理介绍
+
 
 ## Module1
 
