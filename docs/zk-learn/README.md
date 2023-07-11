@@ -15,6 +15,10 @@
 
 - [learn-zkp](https://github.com/sec-bit/learning-zkp)
 - [Mooc Zk Learning](https://zk-learning.org/)
+- [ZKP】 Resource list](https://github.com/Antalpha-Labs/zkp-co-learn/discussions/18)
+- [awesome-zero-knowledge-proofs](https://github.com/sCrypt-Inc/awesome-zero-knowledge-proofs#plonk)
+- [moonmath-manual](https://github.com/LeastAuthority/moonmath-manual)
+
 
 - [用程序员听得懂的方式介绍零知识证明](https://mirror.xyz/0xE44081Ee2D0D4cbaCd10b44e769A14Def065eD4D/nKtuByYTvPri75xHQoA7f8vNyJ6NQPvCL_YH8KVp31Q)
 - [AA钱包与Dapp的连接：BatchCall](https://medium.com/@George_QXQ/%E5%8F%AF%E8%83%BD%E9%A2%A0%E8%A6%86aa%E7%9A%84%E6%8A%80%E6%9C%AF-batchcall-75d71c38d47f)
