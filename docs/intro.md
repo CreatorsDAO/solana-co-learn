@@ -8,6 +8,7 @@ sidebar_class_name: green
 
 - [IBC Protocl](./ibc-protocol/README.md)
 - [Solana Guide](./solana/README.md)
+- [Zk Learn](./zk-learn/README.md)
 
 
 ## Blockchains in Rust
