@@ -18,7 +18,7 @@ function HomepageHeader() {
           <Link
             className="button button--secondary button--lg"
             to="/docs/intro">
-            All in One BlockChain Tutorial - 5min ⏱️
+            All in One Solana Tutorial - 5min ⏱️
           </Link>
         </div>
       </div>

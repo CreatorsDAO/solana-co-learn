@@ -4,11 +4,11 @@ import styles from './styles.module.css';
 
 const FeatureList = [
   {
-    title: 'IBC协议的中文规范',
+    title: 'Solana CookBook Zh',
     Svg: require('@site/static/img/easter-island-svgrepo-com.svg').default,
     description: (
       <>
-        IBC协议的中文翻译
+        📖Solana CookBook 中文翻译版本
       </>
     ),
   },
@@ -17,7 +17,16 @@ const FeatureList = [
     Svg: require('@site/static/img/parthenon-svgrepo-com.svg').default,
     description: (
       <>
-        Solana的开发指南
+        🧭Solana的开发指南
+      </>
+    ),
+  },
+  {
+    title: 'Solana Co Learn',
+    Svg: require('@site/static/img/my_logo.svg').default,
+    description: (
+      <>
+        💾Solana 共学学习资料
       </>
     ),
   },

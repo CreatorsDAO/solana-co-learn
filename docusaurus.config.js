@@ -6,7 +6,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'All in One Blockchain',
+  title: 'All in One Solana',
   tagline: 'Power by Davirain',
   url: 'https://davirain.xyz',
   baseUrl: '/',
@@ -16,8 +16,8 @@ const config = {
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'All in One Blockchain', // Usually your GitHub org/user name.
-  projectName: 'all in one blockchain', // Usually your repo name.
+  organizationName: 'All in One Solana', // Usually your GitHub org/user name.
+  projectName: 'all in one Solana', // Usually your repo name.
 
   // Even if you don't use internalization, you can use this field to set useful
   // metadata like html lang. For example, if your site is Chinese, you may want
@@ -57,7 +57,7 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
-        title: 'All In One BlockChain',
+        title: 'All In One Solana',
         logo: {
           alt: 'Logo',
           src: 'img/my_logo.svg',
@@ -77,12 +77,12 @@ const config = {
           },
           { to: '/blog', label: 'Blog', position: 'left' },
           {
-            href: 'https://github.com/DaviRain-Su/all-in-one-blockchain/discussions',
+            href: 'https://github.com/DaviRain-Su/all-in-one-solana/discussions',
             label: 'Discussions',
             position: 'right',
           },
           {
-            href: 'https://github.com/DaviRain-Su/all-in-one-blockchain.git',
+            href: 'https://github.com/DaviRain-Su/all-in-one-solana.git',
             label: 'GitHub',
             position: 'right',
           },
@@ -127,7 +127,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} All in One BlockChain site, Inc.`,
+        copyright: `Copyright © ${new Date().getFullYear()} All in One Solana site, Inc.`,
       },
       prism: {
         theme: require('prism-react-renderer/themes/dracula'),
