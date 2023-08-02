@@ -124,7 +124,8 @@ async function SystemCall(connection: Web3.Connection, payer: Web3.Keypair) {
   );
 }
 
-
+// 如何使用种子创建账户
+// 你可以使用 createAccountWithSeed 方法来管理您的账户，而无需创建大量不同的密钥对。
 async function createAccountWithSeed(basePubkey: Web3.PublicKey, seed: string, programId: Web3.PublicKey) {
   let account = await Web3.PublicKey.createWithSeed(basePubkey, seed, programId);
   console.log("Create with seed account is ", account.toString());
