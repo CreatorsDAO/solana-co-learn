@@ -35,8 +35,10 @@ async function main() {
   const program = anchor.workspace.HelloWorld as Program<HelloWorld>;
 
   // Add your test here.
-  const tx = await program.methods.initialize().rpc();
-  console.log("Your transaction signature", tx);
+  const transactionSignature = await program.methods.initialize().rpc();
+  console.log(
+    `Transaction https://explorer.solana.com/tx/${transactionSignature}?cluster=custom`
+  )
 }
 
 main()

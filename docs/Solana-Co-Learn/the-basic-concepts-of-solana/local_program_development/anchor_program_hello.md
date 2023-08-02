@@ -50,7 +50,6 @@ pub mod hello_world {
 
     pub fn initialize(ctx: Context<Initialize>) -> Result<()> {
         msg!("Hello,World!");
-
         Ok(())
     }
 }
@@ -104,8 +103,10 @@ solana程序部署将输出您的程序的程序ID。您现在可以在[Solana E
 solana logs <PROGRAM_ID>
 ```
 
-在测试验证器仍在运行时，尝试使用[此处](https://github.com/Unboxed-Software/solana-hello-world-client)的客户端脚本调用您的程序。
+或者也可以通过(Solana Exporer)[https://explorer.solana.com/?cluster=custom]，查看产生的日志📔。
 
-在`index.ts`中用刚刚部署的程序ID替换掉原来的程序ID，然后运行`npm install`，接着运行npm start。这将返回一个Solana Explorer的URL。将URL复制到浏览器中，在Solana Explorer上查找该交易，并检查程序日志中是否打印了“Hello, world!”。或者，您可以在运行`solana logs`命令的终端中查看程序日志。
+在测试验证器仍在运行时，尝试使用[此处](https://github.com/DaviRain-Su/all-in-one-solana/tree/main/code/contract/hello_world/app/hello-frontend)的客户端脚本调用您的程序。
+
+这将返回一个Solana Explorer的URL(Transaction https://explorer.solana.com/tx/${transactionSignature}?cluster=custom)。将URL复制到浏览器中，在Solana Explorer上查找该交易，并检查程序日志中是否打印了“Hello, world!”。或者，您可以在运行`solana logs`命令的终端中查看程序日志。
 
 就是这样！您刚刚在本地开发环境中创建并部署了您的第一个程序。
