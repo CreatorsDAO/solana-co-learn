@@ -1,0 +1,4 @@
+[workspace]
+members = [
+    "code/account/create-system-account-rs",
+]
