@@ -14,6 +14,10 @@ async function main() {
   await airdropSolIfNeeded(signer, connection);
 
   await SystemCall(connection, signer);
+
+  let programId = Web3.Keypair.generate();
+
+  await createAccountWithSeed(signer.publicKey, "ibc", programId.publicKey);
 }
 
 main()
@@ -80,6 +84,11 @@ async function SystemCall(connection: Web3.Connection, payer: Web3.Keypair) {
   //
   // 设置存储空间：space变量定义了新创建的Solana账户所需的存储空间大小。在此例中，它被设置为80字节（10个u64字段，每个字段8字节）。
   const space = 10 * 8; // 10个u64字段，每个字段8字节
+  //
+  // 如何计算账户费用
+  // 在Solana上保持账户活跃会产生一项存储费用，称为 租金/rent。
+  // 通过存入至少两年租金的金额，你可以使账户完全免除租金收取。对于费用的计算，你需要考虑你打算在账户中存储的数据量。
+  //
   // 获取租金豁免金额：通过调用connection.getMinimumBalanceForRentExemption(space)，
   // 计算了新账户所需的租金豁免金额。如果账户持有的余额至少为此金额，该账户将被视为租金豁免，从而免除了存储费用。
   const rentExemptionAmount = await connection.getMinimumBalanceForRentExemption(space);
@@ -113,4 +122,10 @@ async function SystemCall(connection: Web3.Connection, payer: Web3.Keypair) {
   console.log(
     `Account created: https://explorer.solana.com/address/${newAccountPubkey.publicKey.toString()}`
   );
+}
+
+
+async function createAccountWithSeed(basePubkey: Web3.PublicKey, seed: string, programId: Web3.PublicKey) {
+  let account = await Web3.PublicKey.createWithSeed(basePubkey, seed, programId);
+  console.log("Create with seed account is ", account.toString());
 }
