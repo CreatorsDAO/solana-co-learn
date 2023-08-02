@@ -1,5 +1,5 @@
 ---
-sidebar_position: 7
+sidebar_position: 8
 sidebar_label: 原始Solana合约实现《hello, World》
 sidebar_class_name: green
 ---

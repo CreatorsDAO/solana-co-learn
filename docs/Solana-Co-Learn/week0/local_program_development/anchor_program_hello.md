@@ -1,5 +1,5 @@
 ---
-sidebar_position: 8
+sidebar_position: 9
 sidebar_label: Anchor 合约框架实现《hello, World》
 sidebar_class_name: green
 ---

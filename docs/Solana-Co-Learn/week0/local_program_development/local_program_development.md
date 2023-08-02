@@ -1,5 +1,5 @@
 ---
-sidebar_position: 6
+sidebar_position: 7
 sidebar_label: 本地程序开发环境配置
 sidebar_class_name: green
 ---

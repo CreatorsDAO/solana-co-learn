@@ -1,6 +1,6 @@
 ---
 sidebar_position: 2
-sidebar_label: Accounts
+sidebar_label: 账户
 sidebar_class_name: green
 ---
 
