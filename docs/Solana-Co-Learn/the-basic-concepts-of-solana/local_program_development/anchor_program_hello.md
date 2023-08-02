@@ -107,6 +107,6 @@ solana logs <PROGRAM_ID>
 
 在测试验证器仍在运行时，尝试使用[此处](https://github.com/DaviRain-Su/all-in-one-solana/tree/main/code/contract/hello_world/app/hello-frontend)的客户端脚本调用您的程序。
 
-这将返回一个Solana Explorer的URL(Transaction https://explorer.solana.com/tx/${transactionSignature}?cluster=custom)。将URL复制到浏览器中，在Solana Explorer上查找该交易，并检查程序日志中是否打印了“Hello, world!”。或者，您可以在运行`solana logs`命令的终端中查看程序日志。
+这将返回一个Solana Explorer的URL(`Transaction https://explorer.solana.com/tx/${transactionSignature}?cluster=custom`)。将URL复制到浏览器中，在Solana Explorer上查找该交易，并检查程序日志中是否打印了“Hello, world!”。或者，您可以在运行`solana logs`命令的终端中查看程序日志。
 
 就是这样！您刚刚在本地开发环境中创建并部署了您的第一个程序。
