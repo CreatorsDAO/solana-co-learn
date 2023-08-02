@@ -1,0 +1,10 @@
+---
+sidebar_position: 26
+sidebar_label: week4 Solana中级程序开发
+sidebar_class_name: green
+---
+
+# Solana中级程序开发
+
+- 程序派生地址（PDA）
+- 跨程序调用（CPI）

@@ -222,7 +222,7 @@ crate-type = ["cdylib", "lib"]
 当你准备构建你的Solana程序时，你可以使用`cargo build-sbf`命令。
 
 ```bash
-cargo build-bpf
+cargo build-sbf
 ```
 
 这个命令的输出将包含部署程序的指令，大致如下：
