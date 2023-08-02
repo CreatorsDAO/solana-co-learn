@@ -14,10 +14,6 @@ async function main() {
   await airdropSolIfNeeded(signer, connection);
 
   await SystemCall(connection, signer);
-
-  let programId = Web3.Keypair.generate();
-
-  await createAccountWithSeed(signer.publicKey, "ibc", programId.publicKey);
 }
 
 main()
@@ -96,24 +92,24 @@ async function SystemCall(connection: Web3.Connection, payer: Web3.Keypair) {
   const newAccountPubkey = Web3.Keypair.generate();
   const fromPubkey = payer;
 
-  // 置创建账户的参数：定义了一个名为createAccountParams的对象，其中包含创建新账户所需的所有参数，
-  // 例如发件人公钥、新账户公钥、豁免租金的lamports数量、存储空间大小以及关联的系统程序ID。
-  const createAccountParams = {
-    fromPubkey: fromPubkey.publicKey,
-    newAccountPubkey: newAccountPubkey.publicKey,
-    lamports: rentExemptionAmount,
-    space,
-    programId: Web3.SystemProgram.programId,
-  };
-
   // 创建和添加事务：创建一个新的事务对象，并通过add方法添加一个创建新账户的指令。
   const createAccountTransaction = new Web3.Transaction().add(
-    Web3.SystemProgram.createAccount(createAccountParams)
+    // 置创建账户的参数：定义了一个名为createAccountParams的对象，其中包含创建新账户所需的所有参数，
+    // 例如发件人公钥、新账户公钥、豁免租金的lamports数量、存储空间大小以及关联的系统程序ID。
+    //
+    // create account instruction
+    Web3.SystemProgram.createAccount({
+      fromPubkey: fromPubkey.publicKey,
+      newAccountPubkey: newAccountPubkey.publicKey,
+      lamports: rentExemptionAmount,
+      space,
+      programId: Web3.SystemProgram.programId,
+    })
   );
 
   // 发送并确认事务：使用Web3.sendAndConfirmTransaction函数发送并确认事务。
   // 该函数接受连接对象、事务对象以及包括付款者和新账户密钥对在内的签名者数组。
-  await Web3.sendAndConfirmTransaction(connection, createAccountTransaction, [
+  let tx_hash = await Web3.sendAndConfirmTransaction(connection, createAccountTransaction, [
     fromPubkey,
     newAccountPubkey,
   ]);
@@ -122,11 +118,5 @@ async function SystemCall(connection: Web3.Connection, payer: Web3.Keypair) {
   console.log(
     `Account created: https://explorer.solana.com/address/${newAccountPubkey.publicKey.toString()}`
   );
-}
-
-// 如何使用种子创建账户
-// 你可以使用 createAccountWithSeed 方法来管理您的账户，而无需创建大量不同的密钥对。
-async function createAccountWithSeed(basePubkey: Web3.PublicKey, seed: string, programId: Web3.PublicKey) {
-  let account = await Web3.PublicKey.createWithSeed(basePubkey, seed, programId);
-  console.log("Create with seed account is ", account.toString());
+  console.log(`Txhash: ${tx_hash}`);
 }
