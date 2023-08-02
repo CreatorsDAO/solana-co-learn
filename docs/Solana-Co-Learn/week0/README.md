@@ -12,7 +12,7 @@ sidebar_class_name: green
 ## Solana基本概念原理介绍
 
 - [账户：Solana的账户模型，包括如何管理密钥和签名](./accounts.md)
-- [程序：Solana上的智能合约，可以用多种语言编写。](./programs.md)
+- [程序：Solana上的智能合约，可以用多种语言编写。](./progams.md)
 - [交易：描述Solana上交易的生命周期和结构。](./transactions.md)
 - [程序派生地址（PDAs)： 了解PDAs的工作原理和用途。](./program-derived-addresses.md)
 - [跨程序调用： 解释Solana上的合约如何互相交互。](./cpi.md)
