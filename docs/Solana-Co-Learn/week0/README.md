@@ -9,7 +9,7 @@ sidebar_class_name: green
 ## 区块链基本概念介绍
 
 
-## Solana基本概念原理介绍
+## Solana核心概念原理介绍
 
 - [账户：Solana的账户模型，包括如何管理密钥和签名](./accounts.md)
 - [程序：Solana上的智能合约，可以用多种语言编写。](./progams.md)
