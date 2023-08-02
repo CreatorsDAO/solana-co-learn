@@ -16,6 +16,9 @@ sidebar_class_name: green
     - 程序派生地址（PDAs)
     - 跨程序调用
 - 本地程序开发环境配置
+    - 原始Solana合约实现《hello, World》
+    - Anchor 合约框架实现《hello, World》
+    - 使用Solang编译器编译solidity合约实现《hello, World》
 
 ## Week2: 与Solana网络的客户互动
 
