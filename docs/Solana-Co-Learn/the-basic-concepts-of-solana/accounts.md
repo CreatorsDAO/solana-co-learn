@@ -8,9 +8,7 @@ sidebar_class_name: green
 
 在Solana中，账户是用来存储状态的。账户是Solana开发中非常重要的构成要素。
 
-
 ## Summary
-
 
 - 账户是用来存放数据的
 - 每个账户都有一个独一无二的地址
