@@ -7,18 +7,17 @@ sidebar_class_name: green
 
 # 💻 构建 NFT 铸币者前端
 
-欢迎来到运输的第一周。每周您都会有一个完整的部分专门用于将您所学到的内容构建到带有战利品盒的自定义 NFT 质押应用程序中！
+欢迎来到你的第一周的SHIPPING。每周你都会有一个专门的部分，将你的学习成果应用到你的定制NFT质押应用程序中，还有战利品箱子！
 
 
-这些部分的重点是让您脱离本地主机并构建其他人可以使用的真实内容。在您之前的所有建设者都通过将他们的工作公开并进行建设而获得了巨大的成功。这是你一直在准备的时刻——让我们做这件事🤘。
-
+这些部分的整个目的是让你离开本地主机，构建一些真实的东西，供他人使用。之前的所有构建者都通过将他们的作品公之于众并在公开场合进行构建而取得了巨大的成功。这就是你一直在准备的时刻——让我们开始吧🤘。
 
 今天我们将从前端开始制作这些光滑的登陆和薄荷页面。
 
 ![](./img/upload_1.png)
 
 
-第一个屏幕上的唯一功能是连接到用户的钱包。您可以使用屏幕顶部的按钮以及中间的按钮来执行此操作。
+第一个屏幕上唯一的功能是连接到用户的钱包。您可以使用屏幕顶部的按钮或中间的按钮来完成此操作。
 
 ![](./img/upload_2.png)
 
@@ -143,9 +142,7 @@ export default Home
 
 ## 🎫 添加导航栏
 
-现在让我们构建 `NavBar` 。创建 `components` 文件夹并添加新文件 `NavBar.tsx` 。我们将其构建为带有垫片和用于连接钱包的按钮的水平堆栈：
-
-
+现在让我们来构建 `NavBar` 。创建一个 `components` 文件夹并添加一个新文件 `NavBar.tsx` 。我们将其构建为一个水平堆栈，其中包括一个间隔器和一个用于连接钱包的按钮：
 
 ```ts
 import { HStack, Spacer } from "@chakra-ui/react"
@@ -268,7 +265,7 @@ const Disconnected: FC = () => {
 export default Disconnected
 ```
 
-这将是我们的登陆页面 - 用户访问该网站时看到的第一个视图。您需要将其导入 `index.tsx` 并将其放置在渲染组件的中间（再次查找注释）：
+这将是我们的登陆页面 - 用户访问网站时首先看到的视图。您需要将其导入到 `index.tsx` 中，并将其放置在渲染组件的中间（再次查找注释）。
 
 ```ts
 // Existing imports
@@ -445,14 +442,14 @@ const Connected: FC = () => {
 export default Connected
 ```
 
-现在我们必须找到一种方法将其显示在屏幕上。回到 index.tsx ，让我们添加两个导入：
+现在我们必须找到一种方法将其显示在屏幕上。回到 `index.tsx` ，让我们添加两个导入：
 
 ```ts
 import { useWallet } from "@solana/wallet-adapter-react"
 import Connected from "../components/Connected"
 ```
 
-现在我们可以使用 `useWallet` 钩子来访问一个变量，告诉我们是否已连接。我们可以使用它来有条件地渲染 `Connected` 与 `Disconnected` 视图。
+现在我们可以使用 `useWallet` hooks来访问一个变量，告诉我们是否已连接。我们可以使用它来有条件地渲染 `Connected` 与 `Disconnected` 视图。
 
 
 ```ts
@@ -482,4 +479,4 @@ const Home: NextPage = () => {
 ```
 
 
-我们开始吧！我们已经设置了前端，并且正在全力打造 `buildoors`
+好了，我们搞定了！我们已经设置好了前端，并且正在顺利地进行buildoors的铸造。
