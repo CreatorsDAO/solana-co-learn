@@ -29,8 +29,7 @@ import {
 } from "@metaplex-foundation/js"
 import {
   DataV2,
-  createCreateMetadataAccountV2Instruction,
-  createUpdateMetadataAccountV2Instruction,
+  createCreateMetadataAccountV3Instruction,
 } from "@metaplex-foundation/mpl-token-metadata"
 import * as fs from "fs"
 ```
@@ -62,10 +61,10 @@ async function createTokenMetadata(
   description: string
 ) {
   // file to buffer
-  const buffer = fs.readFileSync("assets/pizza.png")
+  const buffer = fs.readFileSync("assets/1203.png")
 
   // buffer to metaplex file
-  const file = toMetaplexFile(buffer, "pizza.png")
+  const file = toMetaplexFile(buffer, "1203.png")
 
   // upload image and get image uri
   const imageUri = await metaplex.storage().upload(file)
@@ -83,7 +82,7 @@ async function createTokenMetadata(
   console.log("metadata uri:", uri)
 
   // get metadata account address
-  const metadataPDA = metaplex.nfts().pdas().metadata({mint})
+  const metadataPDA = metaplex.nfts().pdas().metadata({ mint })
 
   // onchain metadata format
   const tokenMetadata = {
@@ -98,7 +97,7 @@ async function createTokenMetadata(
 
   // transaction to create metadata account
   const transaction = new web3.Transaction().add(
-    createCreateMetadataAccountV2Instruction(
+    createCreateMetadataAccountV3Instruction(
       {
         metadata: metadataPDA,
         mint: mint,
@@ -107,9 +106,10 @@ async function createTokenMetadata(
         updateAuthority: user.publicKey,
       },
       {
-        createMetadataAccountArgsV2: {
+        createMetadataAccountArgsV3: {
           data: tokenMetadata,
           isMutable: true,
+          collectionDetails: null
         },
       }
     )
