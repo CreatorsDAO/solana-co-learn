@@ -28,4 +28,4 @@ sidebar_class_name: green
 ## 开始你自己的定制项目
 
 - [构建一个NFT铸造器前端](./start-your-own-custom-project/build-an-nft-minter-front-end/README.md)
-- [部署到 Vercel](./start-your-own-custom-project/deplpy-to-vercel/README.md)
+- [部署到 Vercel](./start-your-own-custom-project/deploy-to-vercel/README.md)
