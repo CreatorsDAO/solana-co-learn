@@ -6,8 +6,6 @@ sidebar_class_name: green
 
 # 其他
 
-- token2020 token如何发行
-- Compression NFT 如何发行
 - 如何在Solana中使用The Graph
 - Oracles Pyth sdk的使用
 - TipLink 如何使用
