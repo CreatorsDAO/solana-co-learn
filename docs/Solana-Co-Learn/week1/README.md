@@ -15,8 +15,8 @@ sidebar_class_name: green
 
 ## 钱包和前端
 
-- [连接到钱包](./connecting-to-wallet/README.md)
-- [与程序进行交互](./interact-with-a-program/README.md)
+- [连接到钱包](./wallets-and-frontends/connecting-to-wallet/README.md)
+- [与程序进行交互](./wallets-and-frontends/interact-with-a-program/README.md)
 
 ## 自定义指令
 
