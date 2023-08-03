@@ -20,61 +20,72 @@ sidebar_class_name: green
     - Anchor 合约框架实现《hello, World》
     - 使用Solang编译器编译solidity合约实现《hello, World》
 
-## Week1: 与Solana网络的客户互动
+## Week1: Solana Core1
 
-- 从网络中读取数据
-- 将数据写入网络
-- 与钱包互动
-- 序列化自定义指令数据
-- 反序列化自定义账户数据
-- 页面、订单和筛选自定义账户数据
+### 客户端开发
 
-## Week2: 与常见的Solana程序的客户互动
+### 钱包和前端
 
-- 使用Token程序创建令牌
-- 使用Token Swap程序进行代币交换
-- 使用Metaplex创建Solana NFTs
+### 自定义指令
 
-## Week3: Solana基础程序开发
+### 开始你自己的定制项目
 
-- 创建一个基本程序，第一部分 - 处理指令数据
-- 创建一个基本程序，第二部分 - 状态管理
-- 创建一个基本程序，第三部分 - 基本安全和验证
+## Week2: Solana Core2
 
-## Week4: Solana中级程序开发
+### SPL token
 
-- 程序派生地址（PDA）
-- 跨程序调用（CPI）
+### NFTs + 使用Metaplex进行铸造
+
+### 在用户界面中展示NFTs
+
+### 创造神奇的网络货币并出售JPEG图片
+
+## Week3: Solana Core3
+
+### Introduction to Rust
+
+### Native Solana Development
+
+### Security and validation
+
+### NFT staking
+
+## Week4: Solana Core4
+
+### Local env setup and PDAs
+
+### Cross Program Invocations
+
+### Testing
+
+### Ship a staking app
 
 
-## Week 5: Anchor Program Development
+## Week 5: Solana Core5
 
-- Anchor 开发简介
-    - intro to Solana
-    - Core Concepts
-        - High-level Overview
-        - The Accounts Struct
-        - The Program Module
-        - Errors
-        - Cross-Program Invocations
-        - Program Derived Address
-- anchor client 开发简介
-- Anchor PDAs与账户
-- Anchor CPIs与error
+### Introduction to Anchor
 
-## Week 6: Beyond the Basics
+### Programs in Anchor
+
+### Anchor on the front-end
+
+### A full-stack Anchor App
+
+## Week 6: Solana Core6
+
+### Ship Week
+
+### Randomness
+
+### Finishing touches
+
+
+## Week 7: Beyond the Basics
 
 - Solana程序中的环境变量
 - Solana Pay
 - 版本化的事务和查找表
 - Rust过程宏
-
-## Week 7: Solana program of Solidity by Solang Developement
-
-- 开始使用solang
-- Solidity 与PDAs
-- Solidity 与 CPIs
-- etc
 
 ## Weeks 8: Solana程序安全
 
@@ -92,6 +103,9 @@ sidebar_class_name: green
 
 ## Week 9: 其他
 
+- 使用Solidity 编写Solana合约
+    - Solidity 与PDAs
+    - Solidity 与 CPIs
 - token2020 token如何发行
 - Compression NFT 如何发行
 - 如何在Solana中使用The Graph
