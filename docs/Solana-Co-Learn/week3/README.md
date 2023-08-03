@@ -1,6 +1,6 @@
 ---
 sidebar_position: 22
-sidebar_label: week3 Solana基础程序开发
+sidebar_label: week3
 sidebar_class_name: green
 ---
 

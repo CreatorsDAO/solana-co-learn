@@ -1,6 +1,6 @@
 ---
 sidebar_position: 11
-sidebar_label: week1 Solana Core1
+sidebar_label: week1
 sidebar_class_name: green
 ---
 

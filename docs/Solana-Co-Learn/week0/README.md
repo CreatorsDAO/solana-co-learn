@@ -1,6 +1,6 @@
 ---
 sidebar_position: 0
-sidebar_label: week0 区块链基本概念介绍以及Solana基本概念原理介绍
+sidebar_label: week0
 sidebar_class_name: green
 ---
 

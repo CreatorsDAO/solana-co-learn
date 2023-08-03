@@ -1,6 +1,6 @@
 ---
 sidebar_position: 31
-sidebar_label: week7 Solana program of Solidity by Solang Developement
+sidebar_label: week7
 sidebar_class_name: green
 ---
 

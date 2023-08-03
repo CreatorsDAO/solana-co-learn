@@ -1,6 +1,6 @@
 ---
 sidebar_position: 18
-sidebar_label: week2 与常见的Solana程序的客户互动
+sidebar_label: week2
 sidebar_class_name: green
 ---
 

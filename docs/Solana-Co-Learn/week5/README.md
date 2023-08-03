@@ -1,6 +1,6 @@
 ---
 sidebar_position: 29
-sidebar_label: week5 Anchor Program Development
+sidebar_label: week5
 sidebar_class_name: green
 ---
 

@@ -1,6 +1,6 @@
 ---
 sidebar_position: 30
-sidebar_label: week6 Beyond the Basics
+sidebar_label: week6
 sidebar_class_name: green
 ---
 

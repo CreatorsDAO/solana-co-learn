@@ -1,6 +1,6 @@
 ---
 sidebar_position: 32
-sidebar_label: week8 Solana程序安全
+sidebar_label: week8
 sidebar_class_name: green
 ---
 

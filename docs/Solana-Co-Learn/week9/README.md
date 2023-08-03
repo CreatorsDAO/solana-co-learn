@@ -1,6 +1,6 @@
 ---
 sidebar_position: 33
-sidebar_label: week8 其他
+sidebar_label: week8
 sidebar_class_name: green
 ---
 
