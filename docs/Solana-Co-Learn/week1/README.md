@@ -6,26 +6,26 @@ sidebar_class_name: green
 
 # Solana Core1
 
-## Client side Development
+## 客户端开发
 
-- 📹Reading & writing data on Solana with Gage
-- [Reading data from the blockchain](./client-side-development/read-data-from-the-solana-network/README.md)
-- [Writing data to the blockchain](./client-side-development/write-data-to-the-blockchain/README.md)
-- [Build an interaction script](./client-side-development/build-an-interaction-script/README.md)
+- 📹使用Gage在Solana上读取和写入数据
+- [从区块链中读取数据](./client-side-development/read-data-from-the-solana-network/README.md)
+- [将数据写入区块链](./client-side-development/write-data-to-the-blockchain/README.md)
+- [构建一个交互脚本](./client-side-development/build-an-interaction-script/README.md)
 
-## Wallets and frontends
+## 钱包和前端
 
-- [Connecting to a wallet](./connecting-to-wallet/README.md)
-- [Interact with a program](./interact-with-a-program/README.md)
+- [连接到钱包](./connecting-to-wallet/README.md)
+- [与程序进行交互](./interact-with-a-program/README.md)
 
-## Custom instructions
+## 自定义指令
 
-- 📹Custom instructions with Gage
-- [Custom instructions](./custom-instruction/custom-instructions/README.md)
-- [Build a movie review app](./custom-instruction/build-a-movie-review-app/README.md)
-- [Run is back - deserialization](./custom-instruction/run-it-back-deserialization/README.md)
+- 📹使用Gage自定义指令
+- [自定义指令](./custom-instruction/custom-instructions/README.md)
+- [构建一个电影评论应用](./custom-instruction/build-a-movie-review-app/README.md)
+- [Run is back - 反序列化](./custom-instruction/run-it-back-deserialization/README.md)
 
-## Start your own custom project
+## 开始你自己的定制项目
 
-- [Build an NFT minter front-end](./start-your-own-custom-project/build-an-nft-minter-front-end/README.md)
-- [Deploy to Vercel](./start-your-own-custom-project/deplpy-to-vercel/README.md)
+- [构建一个NFT铸造器前端](./start-your-own-custom-project/build-an-nft-minter-front-end/README.md)
+- [部署到 Vercel](./start-your-own-custom-project/deplpy-to-vercel/README.md)

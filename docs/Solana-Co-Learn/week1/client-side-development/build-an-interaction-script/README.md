@@ -1,6 +1,6 @@
 ---
 sidebar_position: 15
-sidebar_label: 📝 构建交互脚本
+sidebar_label: 📝 构建一个交互脚本
 sidebar_class_name: green
 ---
 

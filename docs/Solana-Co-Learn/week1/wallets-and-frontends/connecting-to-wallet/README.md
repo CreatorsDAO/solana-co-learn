@@ -1,11 +1,11 @@
 ---
 sidebar_position: 17
-sidebar_label: 🔌 连接钱包
+sidebar_label: 🔌 连接到钱包
 sidebar_class_name: green
 ---
 
 
-# 🔌 连接钱包
+# 🔌 连接到钱包
 
 我们现在了解了很多有关通过代码与网络交互的知识。为了进行交易，我们使用私钥。这对用户不起作用，哈哈。为了让人们用真钱从我们这里购买 jpeg，我们需要与钱包合作。
 

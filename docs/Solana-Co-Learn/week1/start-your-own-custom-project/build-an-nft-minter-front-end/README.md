@@ -1,6 +1,6 @@
 ---
 sidebar_position: 24
-sidebar_label: 💻 构建 NFT 铸币者前端
+sidebar_label: 💻 构建一个NFT铸造器前端
 sidebar_class_name: green
 ---
 

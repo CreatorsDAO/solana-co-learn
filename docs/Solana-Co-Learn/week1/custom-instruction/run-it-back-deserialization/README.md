@@ -1,10 +1,10 @@
 ---
 sidebar_position: 22
-sidebar_label: 📡 运行回来 - 反序列化
+sidebar_label: 📡 Run is back - 反序列化
 sidebar_class_name: green
 ---
 
-# 📡 运行回来 - 反序列化
+# 📡 Run is back - 反序列化
 
 现在我们已经设置了钱包连接，让我们的 ping 按钮实际执行一些操作！将数据写入网络帐户只是成功的一半，另一半是读取数据。在第一部分中，我们使用 Web3.js 库中内置的函数来读取内容。这仅适用于绝对重要的数据，例如余额和交易详细信息。正如我们在上一节中看到的，所有好东西都在 PDA 中。
 

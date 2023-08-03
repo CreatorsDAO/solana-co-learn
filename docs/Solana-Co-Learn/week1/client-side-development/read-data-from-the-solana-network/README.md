@@ -1,6 +1,6 @@
 ---
 sidebar_position: 13
-sidebar_label: 从 Solana 🤓 区块链读取数据
+sidebar_label: 从Solana 🤓区块链中读取数据
 sidebar_class_name: green
 ---
 
