@@ -6,12 +6,12 @@ sidebar_class_name: green
 
 # 🎥 构建一个电影评论应用
 
-现在我们已经完成了钱包连接，让我们的 ping 按钮真正执行一些操作！为了将所有这些结合在一起，我们将构建一个链上电影评论应用程序 - 它可以让任何人提交对他们最喜欢的电影的评论，有点像烂番茄。
+现在我们已经完成了钱包连接的设置，让我们让我们的ping按钮真正有用起来吧！为了将所有内容整合在一起，我们将构建一个基于区块链的电影评论应用——它将允许任何人提交他们最喜欢的电影的评论，有点类似于烂番茄网站。
 
-在 Solana 工作区中设置起始代码：
+在你的Solana工作空间中设置起始代码
 
 ```bash
-git clone https://github.com/buildspace/solana-movie-frontend/
+git clone https://github.com/RustyCab/solana-movie-frontend.git
 cd solana-movie-frontend
 git checkout starter
 npm i
@@ -28,7 +28,8 @@ npm i
 ## 🗺 定义架构
 
 
-序列化的第一步是为我们想要序列化的数据创建模式/映射。我们需要告诉 Borsh 数据的名称以及每个项目的大小。
+序列化的第一步是为我们要序列化的数据创建一个模式/映射。我们需要告诉Borsh数据将被称为什么以及每个项目的大小。
+
 
 首先安装 `borsh` ，在终端中运行：
 
@@ -69,9 +70,9 @@ export class Movie {
 - 3. `rating` 作为无符号 8 位整数，表示您对正在评论的电影的评分（满分 5 分）。
 - 4. `description` 作为一个字符串，表示您为电影留下的评论的书面部分。
 
-模式需要匹配程序的期望 - 包括结构中项目的顺序。当程序读取你的数据时，它会按照定义的顺序反序列化，如果你的顺序不同，它创建的数据将无效。由于我们正在使用一个已经部署的程序，因此我已经为您提供了架构。通常，您会自己阅读文档或查看程序代码！
+模式需要与程序期望的匹配 - 包括结构中项目的顺序。当程序读取您的数据时，它将按照定义的顺序进行反序列化，如果您的顺序不同，它创建的数据将无效。由于我们正在使用已部署的程序，我已经给您提供了模式。通常，您会阅读文档或自己查看程序代码！
 
-## 🌭 创建序列化方法
+## 🌭 创建serialize方法
 
 现在我们知道数据是什么样子，我们需要编写将其序列化的方法。将其添加到 Movie 类中架构的正下方：
 
@@ -131,10 +132,10 @@ export class Movie {
 
 ## 🤝 用数据创建交易
 
-难题的最后一部分是获取用户的数据，用我们刚刚创建的方法将其序列化，并用它创建一个事务。
+拼图的最后一块就是获取用户的数据，使用我们刚刚创建的方法进行序列化，并用它创建一个交易。
 
 
-首先更新 Form.tsx 中的导入：
+首先更新 `Form.tsx` 中的导入：
 
 ```tsx
 import { FC } from 'react'
@@ -173,9 +174,9 @@ const handleTransactionSubmit = async (movie: Movie) => {
 }
 ```
 
-除了 PDA 之外，您应该认识到所有这些。回想一下指令的要求。它需要与之交互的程序 ID、可选数据以及将读取或写入的帐户列表。由于我们要提交数据以在网络上存储，因此将创建一个新帐户来存储它（记住海绵宝宝中的帕特​​里克 - 程序是无状态的，一切都在帐户中）。
+除了 `pda` 之外，你应该都能认识到这些。回想一下指令的要求。它需要与之交互的程序ID，可选的数据，以及它将从中读取或写入的账户列表。由于我们要将数据提交到网络上进行存储，将会创建一个新的账户来存储它（记住《海绵宝宝》中的Patrick - 程序是无状态的，一切都在账户中）。
 
-`Patrick` 指的是 PDA（程序派生地址）！这是一个用于存储我们的电影评论的帐户。你可能会开始注意到我们遇到了经典的“先有鸡还是先有蛋”的情况......
+`Patrick`在提到PDA（程序派生地址）！这是一个用来存储我们电影评论的账户。你可能会开始注意到，我们遇到了经典的“先有鸡还是先有蛋”的情况...
 
 ![](./img/upload_2.png)
 
@@ -183,7 +184,7 @@ const handleTransactionSubmit = async (movie: Movie) => {
 
 这就是 `web3.PublicKey.findProgramAddress` 方法正在做的事情。它接受两个变量：种子和生成种子的程序（电影评论程序）。在我们的例子中，种子是发件人的地址和电影的标题。通过这个应用程序，我告诉您种子要求，通常您要么阅读文档，查看程序代码，要么对其进行逆向工程。
 
-要完成 handleTransactionSubmit 功能，您所需要做的就是创建一条指令并发送它，以下是完整代码：
+要完成 `handleTransactionSubmit` 功能，您所需要做的就是创建一条指令并发送它，以下是完整代码：
 
 ```tsx
 const handleTransactionSubmit = async (movie: Movie) => {
@@ -236,29 +237,31 @@ const handleTransactionSubmit = async (movie: Movie) => {
       }
   }
 ```
-这就是一个包装！确保您的钱包位于 devnet 上并且您拥有 `devnet SO` 并前往 `localhost:3000` 。提交评论并访问控制台中记录的资源管理器链接。一直向下滚动，您会看到您的电影名称以及一堆其他内容：
+
+仔细阅读代码注释，我会解释为什么我们需要指令键数组中的每个地址。
+
+就这样了！确保你的钱包在开发网络上，并且你有开发网络的SOL，然后前往 `localhost:3000` 。提交评论并访问控制台中记录的浏览器链接。向下滚动到底，你会看到你的电影名称以及其他一些内容：
 
 ![](./img/upload_3.png)
 
 哇。您刚刚将自定义数据写入 Solana 网络。
 
-拍拍自己的背，这不是简单的事情！此时，有些人可能已经退出该计划，给他们一些动力并向他们展示您所构建的内容！如果你已经走到这一步了，我毫不怀疑你会一直走到最后:)
-
+给自己一个鼓励，这可不是简单的事情！到这个阶段，可能有些人已经退出了这个项目，给他们一些动力，展示一下你所建立的东西！如果你已经走到这一步，我毫不怀疑你会一直坚持到最后 :)
 
 ## 🚢 船舶挑战
 
-是时候给大脑多一些皱纹了🧠
-
+是时候让大脑多折几道皱纹了 🧠
 
 继续创建一个应用程序，让 Solana Core 中的构建者进行自我介绍！我们将在这个地址 `HdE95RSVsdb315jfJtaykXhXY478h53X6okDupVfY9yf` 处使用 Solana 程序。它最终看起来与电影评论应用程序类似：
 
 ![](./img/upload_4.png)
 
-起始代码
+### 起始代码
+
 您可以设置使用
 
 ```bash
-git clone https://github.com/buildspace/solana-student-intros-frontend.git
+git clone https://github.com/RustyCab/solana-student-intros-frontend
 cd solana-student-intros-frontend
 git checkout starter
 npm i
@@ -271,6 +274,6 @@ npm i
 - 2. `name` 作为字符串
 - 3. `message` 作为字符串
 
-请注意，该程序使用所连接钱包的公钥（仅此而已）派生每个学生介绍帐户。这意味着每个`PublicKey`只能初始化一个`Student Intro`账户，如果使用同一个`PublicKey`提交两次，交易将会失败。
+请注意，该程序使用连接钱包的公钥（而不是其他任何信息）来生成每个学生介绍账户。这意味着每个公钥只能初始化一个学生介绍账户，如果您使用相同的公钥提交两次，交易将失败。
 
-与往常一样，首先尝试独立执行此操作，但如果您陷入困境或只是想将您的解决方案与我们的解决方案进行比较，请查看[此存储库](https://github.com/buildspace/solana-student-intros-frontend/tree/solution-serialize-instruction-data?utm_source=buildspace.so&utm_medium=buildspace_project)中的 solution-serialize-instruction-data 分支。
+与往常一样，首先尝试独立执行此操作，但如果您陷入困境或只是想将您的解决方案与我们的解决方案进行比较，请查看[此存储库](https://github.com/RustyCab/solana-student-intros-frontend/tree/solution-serialize-instruction-data)中的 `solution-serialize-instruction-data` 分支。
