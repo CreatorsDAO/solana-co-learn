@@ -6,9 +6,9 @@ sidebar_class_name: green
 
 # 🦺 与程序进行交互
 
-现在我们已经设置了钱包连接，让我们的 ping 按钮实际执行一些操作！
+既然我们已经完成了钱包连接的设置，那么让我们让我们的ping按钮真正有所作为吧！
 
-“`PingButton.tsx`”应如下所示：
+这是 `PingButton.tsx` 应该看起来的样子：
 
 ```ts
 import { useConnection, useWallet } from '@solana/wallet-adapter-react';
@@ -56,30 +56,31 @@ export const PingButton: FC = () => {
 }
 ```
 
-其中的一大堆内容对您来说应该非常熟悉 - 我们正在做与我们在本地客户端上所做的完全相同的事情，只是使用了 React hooks！
+这一堆东西对你来说应该很熟悉 - 我们正在做的事情与我们在本地客户端上做的完全一样，只是使用了React hooks！
 
-
-是时候测试一下了。确保您的钱包位于开发网络上 - 设置 -> 开发者设置 -> 更改网络。连接您的钱包并点击 ping 按钮，您将看到以下内容：
+是时候来测试一下了。确保你的钱包在开发网络上 - 设置 -> 开发者设置 -> 更改网络。连接你的钱包并点击那个ping按钮，你将会看到以下内容：
 
 ![](./img/upload_1.png)
 
-如果您点击确认，您的控制台将打印出交易链接。就像以前一样，滚动到底部，您会看到数字上升了🚀
+如果您点击确认，您的控制台将打印出交易链接。就像之前一样，向下滚动，您会看到数字已经增加了🚀
 
-您现在可以让用户与应用程序交互！您上一节制作的价值 1 万美元的产品？现在它是价值百万美元的产品。想想现有的所有程序 - Metaplex、Serum、Solana 程序库中的任何程序 - 您现在拥有将它们连接到 UI 并让人们使用它们的技能。我的朋友，你可以创造未来。
+现在你可以让用户与应用程序互动了！你在上一节中制作的那个价值1万美元的产品？现在它已经成为了一个价值百万美元的产品。想象一下所有的程序 - Metaplex、Serum、Solana程序库中的任何程序 - 你现在有能力将它们与用户界面连接起来，让人们使用。我的朋友，你可以构建未来。
 
-## 🚢 船舶挑战 - SOL 发送者
+
+## 🚢 Ship挑战 - SOL 发送者
 
 是时候锻炼一下肌肉了。
 
-在此挑战中，使用[此起始代码](https://github.com/buildspace/solana-send-sol-frontend/tree/starter?utm_source=buildspace.so&utm_medium=buildspace_project)创建一个应用程序，让用户连接其 Phantom 钱包并将 SOL 发送到另一个帐户。确保克隆后使用 git checkout starter 切换到起始分支。
+在此挑战中，使用[此起始代码](https://github.com/RustyCab/solana-send-sol-frontend)创建一个应用程序，让用户连接其 Phantom 钱包并将 SOL 发送到另一个帐户。确保克隆后使用 `git checkout starter` 切换到起始分支。
 
 通过两个关键步骤来做到这一点：
 - 将启动应用程序包装在适当的上下文提供程序中。
 - 在表单组件中，设置交易并将其发送到用户的钱包以供批准。
+
 最后它应该看起来像这样！
 
 ![](./img/upload_2.png)
 
 不要忘记验证地址！
 
-完成后，将您的解决方案与此处的[解决方案代码](https://github.com/buildspace/solana-send-sol-frontend/tree/main?utm_source=buildspace.so&utm_medium=buildspace_project)进行比较。
+完成后，将您的解决方案与此处的[解决方案代码](https://github.com/RustyCab/solana-send-sol-frontend)进行比较。
