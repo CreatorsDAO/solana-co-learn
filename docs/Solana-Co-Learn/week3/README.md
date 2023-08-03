@@ -1,5 +1,5 @@
 ---
-sidebar_position: 22
+sidebar_position: 94
 sidebar_label: week3
 sidebar_class_name: green
 ---
