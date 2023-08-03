@@ -6,7 +6,7 @@ sidebar_class_name: green
 
 # 🏧 在Solana上铸造代币
 
-够了，我们来创造一些神奇的互联网货币吧。在我们的最终项目中，我们将创建一个代币，你将随着抵押你的社区NFT而逐渐获得它。在我们达到那个目标之前，让我们先玩一下实际构建这个铸币过程的过程。现在是发挥你的想象力，尽情享受的好时机。也许你一直想创建自己的模因币 - 现在是你的机会了 🚀
+是时候让代币与它们的创造者（你）相遇了。我们将从上一节的构建部分继续进行。如果需要，你可以从[这里](https://github.com/buildspace/solana-token-client/tree/solution-without-burn)获取起始代码（确保你在 `solution-without-burn` 分支上）。说了这么多，让我们来创造一些神奇的互联网货币吧。在我们的最终项目中，我们将创建一个代币，你将随着抵押你的社区NFT而逐渐获得它。在那之前，让我们先玩一下实际构建这个铸币过程的过程。现在是发挥你的想象力，尽情享受的好时机。也许你一直想创建自己的模因币 - 现在是你的机会了 🚀
 
 我们将从一个新的Solana客户端开始，转到您的Solana工作区并运行以下命令：
 
@@ -30,9 +30,9 @@ npm i
 
  记住这些步骤：
 
- - 1.创建一个`Token Mint`s账户
- - 2.为特定的钱包创建一个关联的令牌账户
- - 3.将薄荷代币发送到该钱包中
+ - 1. 创建一个`Token Mint`s账户
+ - 2. 为特定的钱包创建一个关联的token账户
+ - 3. 将Mint代币发送到该钱包中
 
  这是 `src/index.ts` 中的第一步，在导入之后、在 `main()` 之前放置这个
 
@@ -153,7 +153,7 @@ async function main() {
 }
 ```
 
-运行 `npm run start` - 你应该在终端中看到三个浏览器链接被记录下来。（注意：确保你已经 `@solana/spl-token@0.2.0` ，否则会显示错误。要安装，请在终端中输入 `npm uninstall @solana/spl-token` 和 `npm install @solana/spl-token@0.2.0` 。保存代币铸造账户地址，稍后会用到。打开最后一个链接并向下滚动到代币余额部分：
+运行 `npm run start` - 你应该在终端中看到三个浏览器链接被记录下来。（注意：确保你已经 `@solana/spl-token` ，否则会显示错误。要安装，请在终端中输入 `npm uninstall @solana/spl-token` 和 `npm install @solana/spl-token` 。保存代币Mint账户地址，稍后会用到。打开最后一个链接并向下滚动到代币余额部分：
 
 
 ![](./img/mint-token.png)

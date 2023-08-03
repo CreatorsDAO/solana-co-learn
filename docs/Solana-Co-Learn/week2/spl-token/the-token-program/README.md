@@ -6,7 +6,7 @@ sidebar_class_name: green
 
 # 💵 The Token Program
 
-谦卑的代币——区块链最初的承诺，也可能是你安装钱包的主要原因。从合成股票到数百种狗币，代币是区块链上资产最纯粹的表现形式。
+是时候让代币与它们的创造者（你）相遇了。我们将在之前的构建部分中继续进行。如果需要，你可以从[这里获取起始代码](https://github.com/buildspace/solana-token-client/tree/solution-without-burn)（确保你在 `solution-without-burn` 分支上）。作为区块链最初的承诺，也可能是你安装钱包的主要原因，这些谦逊的代币是对区块链上资产的最纯粹的表达，从合成股票到数百种狗币。
 
 这节课主要讲解Solana上的代币工作原理。如果你对其他区块链有所了解，可能会发现这里有一些不同之处，所以尽量不要将当前对代币的理解与之联系起来。
 
@@ -37,7 +37,7 @@ Mint账户存储有关代币本身的元数据，而不是您对代币的所有�
 - `mint authority` - 只有一个账户可以从Mint账户签名并Mint代币。当您创建Mint账户时，必须指定Mint权限，可以是您的个人钱包或其他程序。
 - `supply` - 有多少总代币存在。供应基本上是在说，“码农大神，你好！这是发行的总代币数量。”
 - `decimals` - 小数位数是我们允许令牌被分割成的小数位数 - 我们令牌的精度。这可能会变得棘手，因为实际上链上没有小数。什么？总供应量表示为整数，所以你必须进行数学计算来在小数之间进行转换。例如，如果你将小数位数设置为两位，而你的供应量是一百，那么实际上你只有一个令牌。供应中只有一个令牌，但你允许它被分割成该令牌的较小面额。
-- `Is Initialized`  - 基本上是指该账户是否准备就绪。这与账户本身有关，而不是令牌程序。
+- `Is Initialized`  - 基本上是指该账户是否准备就绪。这与账户本身有关，而不是`token program`。
 - `Freeze authority ` - 冻结权限类似于`Mint权限`，意味着一个人或程序拥有冻结（或Mint）的权限。
 
 
@@ -104,7 +104,13 @@ const tokenMint = await createMint(
 
 不用说，这些代币周围发生了很多疯狂的事情。您可以在[这里](https://www.soldev.app/course/token-program)查看每个功能在幕后发生的情况，甚至可以查看一些关于销毁代币之类的说明。:)
 
+
+## Reference
+
+- [Create Tokens With The Token Program](https://www.soldev.app/course/token-program)
+
 ---
+
 
 ---
 

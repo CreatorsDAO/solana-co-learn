@@ -6,7 +6,7 @@ sidebar_class_name: green
 
 # 🧮 令牌元数据
 
-谦卑的代币——区块链最初的承诺，也可能是你安装钱包的主要原因。从合成股票到数百种狗币，代币是区块链上资产最纯粹的表现形式。
+是时候让令牌与它们的创造者（你）相遇了。我们将从之前的构建部分继续进行。如果需要，你可以从[这里](https://github.com/buildspace/solana-token-client/tree/solution-without-burn?utm_source=buildspace.so&utm_medium=buildspace_project)获取起始代码（确保你在 `solution-without-burn` 分支上）。
 
 ![](./img/metadata.png)
 
@@ -30,7 +30,7 @@ Token元数据是一个代币的信息，比如名称、符号和标志。注意
 
 ## 🖼 代币标准
 
-离链部分遵循[Metaplex代币](https://docs.metaplex.com/programs/token-metadata/token-standard)标准，基本上是一种格式，你需要按照这种格式来实现不同类型代币的元数据。我们在元数据账户的链上部分的 Token Standard 字段中告诉网络上的所有应用程序我们的代币类型。我们的选项有：
+`off-chain`部分遵循[Metaplex代币](https://docs.metaplex.com/programs/token-metadata/token-standard)标准，基本上是一种格式，你需要按照这种格式来实现不同类型代币的元数据。我们在元数据账户的链上部分的 `Token Standard` 字段中告诉网络上的所有应用程序我们的代币类型。我们的选项有：
 
 - `NonFungible` ：一种带有主版本的非同质化代币（NFTs）。
 - `FungibleAsset` ：具有元数据和属性的令牌，有时也被称为半可替代令牌（例如游戏物品）。

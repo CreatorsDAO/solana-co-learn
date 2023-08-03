@@ -298,3 +298,10 @@ async function updateTokenMetadata(
 ![](./img/program-log.png)
 
 额外提示：[https://solana-labs.github.io/solana-program-library/token/js/modules.html](https://solana-labs.github.io/solana-program-library/token/js/modules.html) - 查看源代码，不要使用辅助函数。
+
+## Reference
+
+- [How to Create a Fungible SPL token with the New Metaplex Token Standard
+](https://www.quicknode.com/guides/solana-development/spl-tokens/how-to-create-a-fungible-spl-token-with-the-new-metaplex-token-standard)
+- [Token Program](https://spl.solana.com/token)
+- [与代币交互](https://davirain-su.github.io/solana-cookbook-zh/references/token.html)
