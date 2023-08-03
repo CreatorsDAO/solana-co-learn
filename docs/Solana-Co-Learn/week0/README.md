@@ -17,6 +17,16 @@ sidebar_class_name: green
 - [程序派生地址（PDAs)： 了解PDAs的工作原理和用途。](./program-derived-addresses.md)
 - [跨程序调用： 解释Solana上的合约如何互相交互。](./cpi.md)
 
+## 钱包和浏览器推荐
+
+- 推荐开发使用Backpack钱包，因为此钱包支持自定义RPC地址。可以在[这里](https://www.backpack.app/)下载。
+- 这里浏览器推荐使用[Solana.fm](https://solana.fm/), 这个浏览器的可视化做的比官方的浏览器要好，Solana官方的浏览器[Explorer](https://explorer.solana.com/)。下面是Solana浏览器的汇总
+    - [Solana Explorer](https://explorer.solana.com/)
+    - [Solana Fm](https://solana.fm/)
+    - [Solana Beach](https://solanabeach.io/)
+    - [Solscan](https://solscan.io/)
+    - [XRAY](https://xray.helius.xyz/)
+
 
 ## 本地程序开发
 
