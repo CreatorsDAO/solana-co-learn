@@ -21,27 +21,27 @@ Solana上的代币是通过`Solana Token Program`进行创建和管理的，它�
 
 ![](./img/account-relationships.png)
 
-- 钱包账户 - 这是你的钱包！
-- Mint账户 - 存储有关代币铸造的元数据
-- 令牌账户 - 这与钱包绑定，并存储有关该特定钱包的信息，例如它拥有多少令牌。
+- `Wallet Account` - 这是你的钱包！
+- `Mint Account` - 存储有关代币Mint的元数据
+- `Token Account` - 这与钱包绑定，并存储有关该特定钱包的信息，例如它拥有多少令牌。
 
 让我们深入了解每个账户，并看看它们内部的情况。
 
-## 🌌 Mint账户
+## 🌌 Mint Account
 
 ![](./img/mint-account.png)
 
 
 Mint账户存储有关代币本身的元数据，而不是您对代币的所有权，而是更广泛地涉及代币。它具有以下属性：
 
-- `mint authority` - 只有一个账户可以从铸币账户签名并铸造代币。当您创建铸币账户时，必须指定铸币权限，可以是您的个人钱包或其他程序。
+- `mint authority` - 只有一个账户可以从Mint账户签名并Mint代币。当您创建Mint账户时，必须指定Mint权限，可以是您的个人钱包或其他程序。
 - `supply` - 有多少总代币存在。供应基本上是在说，“码农大神，你好！这是发行的总代币数量。”
 - `decimals` - 小数位数是我们允许令牌被分割成的小数位数 - 我们令牌的精度。这可能会变得棘手，因为实际上链上没有小数。什么？总供应量表示为整数，所以你必须进行数学计算来在小数之间进行转换。例如，如果你将小数位数设置为两位，而你的供应量是一百，那么实际上你只有一个令牌。供应中只有一个令牌，但你允许它被分割成该令牌的较小面额。
 - `Is Initialized`  - 基本上是指该账户是否准备就绪。这与账户本身有关，而不是令牌程序。
-- `Freeze authority ` - 冻结权限类似于铸币权限，意味着一个人或程序拥有冻结（或铸币）的权限。
+- `Freeze authority ` - 冻结权限类似于`Mint权限`，意味着一个人或程序拥有冻结（或Mint）的权限。
 
 
-将铸币权限设置给你的钱包是相当标准的做法，你可以铸造任何你想要的东西，然后取消铸币权限，基本上意味着未来不会再发行更多的供应量。或者，如果你有某种动态发行代币的方式，常见的做法是将其放入权限中，作为一个程序来管理代币的铸造。
+将Mint权限设置给你的钱包是相当标准的做法，你可以Mint任何你想要的东西，然后取消Mint权限，基本上意味着未来不会再发行更多的供应量。或者，如果你有某种动态发行代币的方式，常见的做法是将其放入权限中，作为一个程序来管理代币的Mint。
 
 冻结权限的工作方式相同。
 
@@ -55,13 +55,13 @@ Mint账户存储有关代币本身的元数据，而不是您对代币的所有�
 
 这是数据关系和账户属性的样子。
 
-令牌账户必须与用户或钱包关联。一个简单的方法是创建一个PDA，其地址链接了铸币账户和钱包。令牌账户PDA的种子是铸币账户的地址和钱包地址（令牌程序ID默认存在）。
+Token账户必须与用户或钱包关联。一个简单的方法是创建一个PDA，其地址链接了Mint账户和钱包。令牌账户PDA的种子是铸币账户的地址和钱包地址（令牌程序ID默认存在）。
 
 有很多不同的信息包含在内，但现在只需要知道你的钱包实际上并不持有具体的代币。它与你拥有的另一个账户相关联，该账户存储了代币的数量。另外，还有一个铸币账户，存储了关于所有代币和铸币的更广泛信息。
 
 花点时间盯着这个图表，然后搜索一下那些不明白的部分（比如关联的令牌程序到底是什么鬼？）。在处理完所有的繁琐事情之后，这就很简单了！
 
-## 🤑 代币铸造过程
+## 🤑 代币Mint过程
 
 别再看图表了，让我们来看一些代码，看看这一切是如何发生的。
 
@@ -84,25 +84,27 @@ const tokenMint = await createMint(
 ```
 
 你需要这些参数：
-- connection - 与集群的JSON-RPC连接
-- payer - 付款方交易的公钥
-- mintAuthority - 被授权铸造新代币的账户
-- freezeAuthority - 一个被授权冻结代币的账户。如果您不想冻结代币，请将其设置为null！
-- decimals - 指定令牌的所需小数精度
+- `connection` - 与集群的JSON-RPC连接
+- `payer` - 付款方交易的公钥
+- `mintAuthority` - 被授权Mint新代币的账户
+- `freezeAuthority` - 一个被授权冻结代币的账户。如果您不想冻结代币，请将其设置为null！
+- `decimals` - 指定令牌的所需小数精度
 
 一旦完成这个步骤，你就可以继续下一步了：
 
-- 创建关联的代币账户
-- 将代币铸造到一个账户中
+- 创建关联的Token账户
+- 将代币Mint到一个账户中
 - 如果你想要使用转账功能进行空投到多个账户，
 
 你需要的一切都在 `@solana/spl-token` SDK中。如果你对某个具体部分感兴趣，可以在这里[查看文档](https://spl.solana.com/token)。
 
 大多数情况下，您不需要自己创建原始交易，SDK就足够了。
 
-关于这个很酷的附注——如果出于某种原因，你想要在创建铸币指令的同时创建另一个指令，你会希望自己创建这些指令，并将它们打包成一个事务，以确保所有操作都是原子性的。也许你正在构建一个超级机密的代币程序，你希望在铸币后立即锁定所有代币，而没有人能够转移它们。
+关于这个很酷的附注——如果出于某种原因，你想要在创建Mint指令的同时创建另一个指令，你会希望自己创建这些指令，并将它们打包成一个事务，以确保所有操作都是原子性的。也许你正在构建一个超级机密的代币程序，你希望在铸币后立即锁定所有代币，而没有人能够转移它们。
 
 不用说，这些代币周围发生了很多疯狂的事情。您可以在[这里](https://www.soldev.app/course/token-program)查看每个功能在幕后发生的情况，甚至可以查看一些关于销毁代币之类的说明。:)
+
+---
 
 ---
 
@@ -112,10 +114,10 @@ const tokenMint = await createMint(
 ## 简而言之
 
 - SPL代币代表Solana网络上的所有非本地代币。Solana上的可替代和不可替代代币（NFT）都是SPL代币。
-- Token计划包含了创建和与SPL-Tokens进行交互的指令
-- Token Mints 是指保存特定 Token 数据的账户，但不持有 Tokens
-- Token账户用于持有特定Token Mint的Token
-- 创建代币铸币和代币账户需要分配 SOL 作为租金。代币账户的租金在关闭账户时可以退还，然而，目前无法关闭代币铸币。
+- `Token Program`包含了创建和与SPL-Tokens进行交互的指令
+- `Token Mints` 是指保存特定 Token 数据的账户，但不持有 Tokens
+- `Token Account`用于持有特定Token Mint的Token
+- 创建代币Mint和Token账户需要分配 SOL 作为租金。代币账户的租金在关闭账户时可以退还，然而，目前无法关闭代币铸币。
 
 ## 概述
 
@@ -123,8 +125,8 @@ Token计划是Solana程序库（SPL）提供的众多计划之一。它包含了
 
 本课程将重点介绍使用Token程序创建和管理新的SPL-Token的基础知识
 
-1. 创建一个新的Token Mint
-2. 创建Token accounts
+1. 创建一个新的`Token Mint`
+2. 创建`Token accounts`
 3. Mint
 4. 将代币从一个持有人转移到另一个持有人
 5. 燃烧代币
@@ -152,17 +154,17 @@ const tokenMint = await createMint(
 );
 ```
 
-createMint函数返回新`Token Mint`的公钥。此函数需要以下参数：
+`createMint`函数返回新`Token Mint`的公钥。此函数需要以下参数：
 
-- connection - 与集群的JSON-RPC连接
-- payer - 交易的付款人的公钥
-- mintAuthority - 授权进行从`Token Mint`中实际铸造代币的账户。
-- freezeAuthority - 一个被授权冻结代币账户的账户。如果不需要冻结功能，该参数可以设置为null。
-- decimals - 指定令牌的所需小数精度
+- `connection` - 与集群的JSON-RPC连接
+- `payer` - 交易的付款人的公钥
+- `mintAuthority` - 授权进行从`Token Mint`中实际铸造代币的账户。
+- `freezeAuthority` - 一个被授权冻结代币账户的账户。如果不需要冻结功能，该参数可以设置为null。
+- `decimals` - 指定令牌的所需小数精度
 
 当使用具有访问您的秘钥权限的脚本创建新的铸币时，您可以简单地使用createMint函数。然而，如果您要构建一个允许用户创建新的代币铸币的网站，您需要在不让用户暴露秘钥给浏览器的情况下完成。在这种情况下，您需要构建并提交一笔包含正确指令的交易。
 
-在内部，createMint函数只是创建了一个包含两个指令的交易：
+在内部，`createMint`函数只是创建了一个包含两个指令的交易：
 
 1. 创建一个新账户
 2. 初始化一个新的Mint
@@ -236,13 +238,13 @@ const tokenAccount = await createAccount(
 );
 ```
 
-createAccount函数返回新令牌账户的公钥。此函数需要以下参数：
+`createAccount`函数返回新令牌账户的公钥。此函数需要以下参数：
 
-- connection - 与集群的JSON-RPC连接
-- payer - 交易的付款人的公钥
-- mint - 与新代币账户关联的代币铸币
-- owner - 新代币账户的所有者账户
-- keypair - 这是一个可选参数，用于指定新的令牌账户地址。如果没有提供`keypair`，则`createAccount`函数将默认从关联的铸币和所有者账户派生。
+- `connection` - 与集群的JSON-RPC连接
+- `payer` - 交易的付款人的公钥
+- `mint` - 与新代币账户关联的代币铸币
+- `owner` - 新代币账户的所有者账户
+- `keypair` - 这是一个可选参数，用于指定新的令牌账户地址。如果没有提供`keypair`，则`createAccount`函数将默认从关联的铸币和所有者账户派生。
 
 请注意，这个`createAccount`函数与我们在查看`createMint`函数内部时所展示的`createAccount`函数不同。之前我们在`SystemProgram`上使用`createAccount`函数来返回创建所有账户的指令。而这里的`createAccount`函数是`spl-token`库中的一个辅助函数，它会提交一个包含两个指令的交易。第一个指令用于创建账户，第二个指令用于将账户初始化为代币账户。
 
@@ -305,10 +307,10 @@ const associatedTokenAccount = await createAssociatedTokenAccount(
 
 该函数返回新关联令牌账户的公钥，并需要以下参数：
 
-- connection - 与集群的JSON-RPC连接
-- payer - 交易的付款人的公钥
-- mint - 与新代币账户关联的代币铸币
-- owner - 新代币账户的所有者账户
+- `connection` - 与集群的JSON-RPC连接
+- `payer` - 交易的付款人的公钥
+- `mint` - 与新代币账户关联的代币铸币
+- `owner` - 新代币账户的所有者账户
 
 您还可以使用`getOrCreateAssociatedTokenAccount`来获取与给定地址关联的Token账户，如果该账户不存在，则创建它。例如，如果您正在编写代码向给定用户空投代币，您很可能会使用此函数来确保与给定用户关联的Token账户在不存在时被创建。
 
@@ -358,14 +360,14 @@ const transactionSignature = await mintTo(
 );
 ```
 
-mintTo函数返回一个可以在Solana Explorer上查看的TransactionSignature。mintTo函数需要以下参数：
+`mintTo`函数返回一个可以在Solana Explorer上查看的TransactionSignature。mintTo函数需要以下参数：
 
-- connection - 与集群的JSON-RPC连接
-- payer - 交易的付款人的公钥
-- mint - 与新代币账户关联的代币铸币
-- destination - 接收新铸造代币的代币账户
-- authority - 授权用于铸造代币的账户
-- amount - 在小数点之外铸造的代币的原始数量，例如，如果Scrooge Coin的小数属性设置为2，则要获得1个完整的Scrooge Coin，您需要将此属性设置为100。
+- `connection` - 与集群的JSON-RPC连接
+- `payer` - 交易的付款人的公钥
+- `mint` - 与新代币账户关联的代币铸币
+- `destination` - 接收新铸造代币的代币账户
+- `authority` - 授权用于铸造代币的账户
+- `amount` - 在小数点之外铸造的代币的原始数量，例如，如果Scrooge Coin的小数属性设置为2，则要获得1个完整的Scrooge Coin，您需要将此属性设置为100。
 
  在代币铸造完成后，将铸币权限更新为null并不罕见。这将设定最大供应量，并确保未来无法再铸造任何代币。相反地，可以将铸币权限授予一个程序，以便代币可以根据固定间隔或可编程条件自动铸造。
 
@@ -419,14 +421,14 @@ mintTo函数返回一个可以在Solana Explorer上查看的TransactionSignature
 转账函数返回一个可以在Solana Explorer上查看的TransactionSignature。
 转账函数需要以下参数：
 
-- connection - 与集群的JSON-RPC连接
-- payer - 交易的付款人的公钥
-- source - 发送代币的代币账户
-- destination - 接收代币的代币账户
-- owner - 发送代币的代币账户的所有者
-- amount - 要转移的代币的数量
+- `connection` - 与集群的JSON-RPC连接
+- `payer` - 交易的付款人的公钥
+- `source` - 发送代币的代币账户
+- `destination` - 接收代币的代币账户
+- `owner` - 发送代币的代币账户的所有者
+- `amount` - 要转移的代币的数量
 
-在底层，转账函数只是根据从createTransferInstruction函数获取的指令创建一个交易：
+在底层，转账函数只是根据从`createTransferInstruction`函数获取的指令创建一个交易：
 
 ```ts
 import * as web3 from '@solana/web3'
@@ -456,7 +458,7 @@ async function buildTransferTransaction(
 
 燃烧代币是减少特定代币发行量的过程。燃烧代币会将其从特定代币账户和更广泛的流通中移除。
 
-使用spl-token库烧毁代币时，您需要使用burn函数。
+使用spl-token库烧毁代币时，您需要使用`burn`函数。
 
 ```ts
 const transactionSignature = await burn(
@@ -469,17 +471,17 @@ const transactionSignature = await burn(
 )
 ```
 
-burn函数返回一个可以在Solana Explorer上查看的TransactionSignature。burn函数需要以下参数：
+`burn`函数返回一个可以在Solana Explorer上查看的TransactionSignature。`burn`函数需要以下参数：
 
 
-- connection - 与集群的JSON-RPC连接
-- payer - 交易的付款人的公钥
-- account - 要燃烧的代币账户
-- mint - 与代币账户关联的代币铸币
-- owner - 代币账户的所有者
-- amount - 要燃烧的代币的数量
+- `connection` - 与集群的JSON-RPC连接
+- `payer` - 交易的付款人的公钥
+- `account` - 要燃烧的代币账户
+- `mint` - 与代币账户关联的代币铸币
+- `owner` - 代币账户的所有者
+- `amount` - 要燃烧的代币的数量
 
-在内部，burn函数通过createBurnInstruction函数获取的指令创建了一个交易：
+在内部，`burn`函数通过`createBurnInstruction`函数获取的指令创建了一个交易：
 
 ```ts
 import * as web3 from '@solana/web3'
@@ -508,7 +510,7 @@ async function buildBurnTransaction(
 
 批准委托是授权另一个账户从代币账户中转移或销毁代币的过程。使用委托时，对代币账户的控制权仍归原始所有者所有。委托账户可以在原始所有者批准委托时指定可转移或销毁的代币最大数量。请注意，一个代币账户在任何给定时间只能关联一个委托账户。
 
-使用spl-token库来批准委托人，您需要使用approve函数。
+使用spl-token库来批准委托人，您需要使用`approve`函数。
 
 
 ```ts
@@ -522,16 +524,16 @@ const transactionSignature = await approve(
   )
 ```
 
-批准功能返回一个可以在Solana Explorer上查看的TransactionSignature。批准功能需要以下参数：
+批准功能返回一个可以在Solana Explorer上查看的`TransactionSignature`。批准功能需要以下参数：
 
-- connection - 与集群的JSON-RPC连接
-- payer - 支付人的账户用于交易
-- account - 考虑将代币从令牌账户委托出去
-- delegate - 委托账户的所有者授权转移或销毁代币
-- owner - 账户的所有者令牌账户的所有者
-- amount - 委托账户可以转移或销毁的代币的最大数量
+- `connection` - 与集群的JSON-RPC连接
+- `payer` - 支付人的账户用于交易
+- `account` - 考虑将代币从令牌账户委托出去
+- `delegate` - 委托账户的所有者授权转移或销毁代币
+- `owner` - 账户的所有者令牌账户的所有者
+- `amount` - 委托账户可以转移或销毁的代币的最大数量
 
-在内部，approve函数使用从createApproveInstruction函数获取的指令创建一个交易：
+在内部，`approve`函数使用从`createApproveInstruction`函数获取的指令创建一个交易：
 
 ```ts
 import * as web3 from '@solana/web3'
@@ -560,7 +562,7 @@ async function buildApproveTransaction(
 
 之前已批准的代表令牌账户的委托可以被撤销。一旦委托被撤销，委托人将无法再从所有者的令牌账户中转移令牌。之前批准的剩余金额也无法再由委托人进行转移。
 
-使用spl-token库撤销委托，您可以使用revoke函数。
+使用spl-token库撤销委托，您可以使用`revoke`函数。
 
 ```ts
 const transactionSignature = await revoke(
@@ -571,15 +573,15 @@ const transactionSignature = await revoke(
   )
 ```
 
-撤销函数返回一个可以在Solana Explorer上查看的TransactionSignature。撤销函数需要以下参数:
+撤销函数返回一个可以在Solana Explorer上查看的`TransactionSignature`。撤销函数需要以下参数:
 
-- connection - 与集群的JSON-RPC连接
-- payer - 交易的付款人的公钥
-- account - 撤销代表权限的令牌账户
-- owner - 令牌账户的所有者
+- `connection` - 与集群的JSON-RPC连接
+- `payer` - 交易的付款人的公钥
+- `account` - 撤销代表权限的令牌账户
+- `owner` - 令牌账户的所有者
 
 
-在底层，revoke函数通过createRevokeInstruction函数获取的指令创建了一个交易：
+在底层，`revoke`函数通过`createRevokeInstruction`函数获取的指令创建了一个交易：
 
 ```ts
 import * as web3 from '@solana/web3'
