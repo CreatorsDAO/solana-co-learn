@@ -35,3 +35,8 @@ sidebar_class_name: green
     - [原始Solana 合约开发： 使用Rust编写原始合约的方法。](./local_program_development/native_program_hello.md)
     - [使用Anchor合约框架： 如何使用Anchor框架简化合约开发。](./local_program_development/anchor_program_hello.md)
     - [使用solang编译器通过solidity语法实现hello, World： 介绍如何使用Solidity语言和solang编译器开发Solana合约。](./local_program_development/solang_program_hello.md)
+
+
+## Solana钱包使用
+
+- [Backpack🎒](./wallet-usage/README.md)
