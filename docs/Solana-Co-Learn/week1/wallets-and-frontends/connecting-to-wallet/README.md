@@ -4,12 +4,11 @@ sidebar_label: 🔌 连接到钱包
 sidebar_class_name: green
 ---
 
+# 🔌 连接到钱包 (TODO by davirain)
 
-# 🔌 连接到钱包
+我们现在对通过代码与网络进行交互有了很多了解。为了进行交易，我们使用了私钥。这对用户来说行不通哈哈。为了让人们用真钱从我们这里购买JPEG图像，我们需要与钱包合作。
 
-我们现在了解了很多有关通过代码与网络交互的知识。为了进行交易，我们使用私钥。这对用户不起作用，哈哈。为了让人们用真钱从我们这里购买 jpeg，我们需要与钱包合作。
-
-“钱包”是一个奇怪的名字，因为它们的作用不仅仅是存放东西。钱包是安全存储密钥并允许用户签署交易的任何东西。它们有多种形式，最常见的是浏览器扩展，它们为您（开发人员）提供 API 来向用户建议交易。钱包使您可以安全地执行以下操作：
+“钱包”这个名字有点奇怪，因为它们不仅仅是用来存放东西的。钱包是指任何能够安全存储密钥并允许用户签署交易的东西。它们有很多形式，最常见的是浏览器扩展，它们为你（开发者）提供API，以向用户建议交易。钱包使你能够安全地进行以下操作：
 
 ![](./img/upload_1.png)
 
@@ -37,14 +36,14 @@ npm install @solana/wallet-adapter-base \
 
 ![](./img/wallets.png)
 
-感谢所有这些病态的库，我们再也不需要在 Solana 上构建钱包连接的东西了！借此机会感谢维护人员节省了您的时间和头发。
+多亏了这些牛逼的库，我们在Solana上再也不用自己构建钱包连接的东西了！趁此机会，感谢那些维护者为你节省了时间和头发。
 
-## 👜 构建钱包连接按钮
+## 👜 创建一个钱包连接按钮
 
 让我们来看看这些库吧！在您的工作区中设置一个新项目：
 
 ```bash
-git clone https://github.com/buildspace/solana-ping-frontend.git
+git clone https://github.com/RustyCab/solana-ping-frontend.git
 cd solana-ping-frontend
 git checkout starter
 npm i
@@ -56,7 +55,7 @@ npm i
 
 这是一个准系统 UI - 让我们将其连接到 `wallet-adapter-react` 库。
 
-拉起 _app.tsx 并使其看起来像这样：
+拉起 `_app.tsx` 并使其看起来像这样：
 
 ```ts
 import React, { useMemo } from "react";
@@ -105,15 +104,15 @@ const App = ({ Component, pageProps }) => {
 export default App;
 ```
 
-这是大量进口。不用担心，您只需要知道它们各自的用途即可，无需深入了解它们如何工作。这是每个部分的快速摘要。
+这是很多的导入。别担心，你只需要知道每个导入是用来做什么的，不需要深入了解它们的工作原理。下面是每个部分的简要概述。
 
 我们从 `React` 开始。 `useMemo()` 是一个钩子，仅当依赖项之一发生更改时才加载内容。在我们的例子中，只有当用户连接的网络发生变化时， `clusterApiUrl` 的值才会发生变化。
 
-我们的第一个 Solana 导入是来自 `@solana/wallet-adapter-base` 的 `wallet-adapter-network` 。这只是可用网络的可枚举对象。
+我们首先导入的Solana引用是 `wallet-adapter-network` 来自 `@solana/wallet-adapter-base` 。这只是一个可枚举的对象，用于表示可用的网络。
 
 `WalletModalProvider` 就是这样，哈哈 - 它是一个奇特的 React 组件，会提示用户选择他们的钱包。埃兹普兹。
 
-`ConnectionProvider` 采用 RPC 端点，让我们直接与 Solana 区块链上的节点对话。我们将在整个应用程序中使用它来发送交易。
+ `ConnectionProvider` 接收一个RPC端点，并让我们直接与Solana区块链上的节点进行通信。我们将在整个应用程序中使用它来发送交易。
 
 `WalletProvider` 为我们提供了一个连接各种钱包的标准接口，因此我们不必费心阅读每个钱包的文档呵呵。
 
@@ -123,13 +122,14 @@ export default App;
 
 对于 `React App` 组件内的 return 语句，我们用一些上下文提供程序包装子组件（应用程序的其余部分）。
 
-总结一下：这个文件是我们网络应用程序的 start 。我们在这里提供的任何内容都可以通过我们应用程序的其余部分访问。我们在这里提供所有钱包和网络工具，因此我们不需要在每个子组件中重新初始化它们。
+总结一下：这个文件是我们网页应用程序的核心。我们在这里提供的任何内容都可以被我们应用程序的其他部分访问到。我们将所有的钱包和网络工具都放在这里，这样我们就不需要在每个子组件中重新初始化它们。
+
 
 我从官方 `wallet-adapter Next.js` 模板复制了所有这些代码，所以不要对复制/粘贴（这次）感到难过。
 
 ## 🧞‍♂️ 使用提供商连接钱包
 
-唷，那是一堆设置！现在您可以看到与钱包交互是多么容易。我们所要做的就是在 components/AppBar.tsx 中设置一个 React hook：
+唷，那是一堆设置！现在您可以看到与钱包交互是多么容易。我们所要做的就是在 `components/AppBar.tsx` 中设置一个 React hook：
 
 ```ts
 import { FC } from 'react'
@@ -148,4 +148,4 @@ export const AppBar: FC = () => {
 }
 ```
 
-很容易，嗯？ `WalletMultiButton` 为我们提供了很多魔力并处理所有连接位。如果您现在硬刷新您的应用程序，您应该会在右上角看到一个漂亮的紫色按钮！
+挺简单的，是吧？ `WalletMultiButton` 为我们做了很多魔法，处理了所有的连接细节。如果你现在强制刷新应用程序，你应该能看到一个漂亮的紫色按钮在右上角！
