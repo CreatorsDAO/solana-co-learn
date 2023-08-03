@@ -10,25 +10,27 @@ sidebar_class_name: green
 
 - 区块链基本概念介绍
 - Solana基本概念原理介绍
-    - 账户
-    - 程序
-    - 交易
-    - 程序派生地址（PDAs)
-    - 跨程序调用
-- 本地程序开发环境配置
-    - 原始Solana合约实现《hello, World》
-    - Anchor 合约框架实现《hello, World》
-    - 使用Solang编译器编译solidity合约实现《hello, World》
+    - [账户](./week0/accounts.md)
+    - [程序](./week0/progams.md)
+    - [交易](./week0/transactions.md)
+    - [程序派生地址（PDAs)](./week0/program-derived-addresses.md)
+    - [跨程序调用](./week0/cpi.md)
+- [本地程序开发环境配置](./week0/local_program_development/local_program_development.md)
+    - [原始Solana合约实现《hello, World》](./week0/local_program_development/native_program_hello.md)
+    - [Anchor 合约框架实现《hello, World》](./week0/local_program_development/anchor_program_hello.md)
+    - [使用Solang编译器编译solidity合约实现《hello, World》](./week0/local_program_development/solang_program_hello.md)
+
+- [BackPack钱包使用](./week0/wallet-usage/README.md)
 
 ## Week1: Solana Core1
 
-### 客户端开发
+### [客户端开发](./week1/client-side-development/README.md)
 
-### 钱包和前端
+### [钱包和前端](./week1/wallets-and-frontends/README.md)
 
-### 自定义指令
+### [自定义指令](./week1/custom-instruction/README.md)
 
-### 开始你自己的定制项目
+### [开始你自己的定制项目](./week1/start-your-own-custom-project/README.md)
 
 ## Week2: Solana Core2
 
