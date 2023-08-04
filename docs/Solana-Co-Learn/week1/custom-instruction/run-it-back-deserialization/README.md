@@ -76,7 +76,7 @@ const [pda, bump] = await PublicKey.findProgramAddress(
 
 数据字段包含了一个庞大的字节数组。就像我们将可读数据转换为字节以进行指令一样，我们在这里要做的是相反的操作：将字节数组转换为我们的应用程序可以处理的数据。这时真正的魔法开始了，你会真切地感受到自己像在玻璃上冲浪一样 😎
 
-我们在这里见到了我们最好的新老朋友 Borsh 先生：
+我们在这里见到了我们最好的新老朋友 `Borsh` 先生：
 
 ```ts
 impot * as borsh from '@project-serum/borsh';

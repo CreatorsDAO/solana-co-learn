@@ -91,7 +91,7 @@ async function getBalanceUsingJSONRPC(address: string): Promise<number> {
 
 这里发生了一堆事情。我们正在进行一个POST请求，请求体中有特定的参数告诉RPC要做什么。我们需要指定RPC的版本、id、方法，本例中是getBalance，以及该方法所需的参数，本例中只有address。
 
-我们有一堆针对一个非常简单的方法的样板代码，所以我们可以使用Solana的Web3.js SDK。以下是所需的内容：
+我们有一堆针对一个非常简单的方法的样板代码，所以我们可以使用Solana的`Web3.js` SDK。以下是所需的内容：
 
 ```ts
 async function getBalanceUsingWeb3(address: PublicKey): Promise<number> {

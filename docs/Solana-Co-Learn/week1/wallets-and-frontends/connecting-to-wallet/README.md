@@ -129,7 +129,7 @@ export default App;
 
 ## 🧞‍♂️ 使用提供商连接钱包
 
-唷，那是一堆设置！现在您可以看到与钱包交互是多么容易。我们所要做的就是在 `components/AppBar.tsx` 中设置一个 React hook：
+唷，那是一堆设置！现在您可以看到与钱包交互是多么容易。我们所要做的就是在 `components/AppBar.tsx` 中设置一个 `React hook`：
 
 ```ts
 import { FC } from 'react'

@@ -16,7 +16,7 @@ cd [name]
 npm i
 ```
 
-以你的代币来命名你的客户。我要创建Pizzacoin，因为我昨天吃了一些非常好吃的披萨。现在是你发挥创意的时候了。也许你想将时间本身进行代币化？你可以创建HokageCoin，甚至是TwitterThreadCoin。无限的可能性！
+以你的代币来命名你的客户。我要创建`Pizzacoin`，因为我昨天吃了一些非常好吃的披萨。现在是你发挥创意的时候了。也许你想将时间本身进行代币化？你可以创建`HokageCoin`，甚至是`TwitterThreadCoin`。无限的可能性！
 
  `--initialize-keypair` 标志位完成了我们上次使用 `initalizeKeypair` 进行的所有魔法。运行 `npm run start` ，您将获得一对新的密钥，并获得一些SOL空投。让我们打开货币打印机，让它嗡嗡作响。
 

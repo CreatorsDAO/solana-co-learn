@@ -6,13 +6,13 @@ sidebar_class_name: green
 
 # 📝 构建一个互动脚本
 
-准备好戳一下Solana网络了吗？我们将编写一个脚本，生成一个密钥对，用devnet SOL资金进行充值，并与Solana网络上的现有程序进行交互。
+准备好戳一下Solana网络了吗？我们将编写一个脚本，生成一个密钥对，用`devnet` SOL资金进行充值，并与Solana网络上的现有程序进行交互。
 
 这个程序是一个简单的“ping”计数器：我们击中它，它记录我们对它的ping，并增加一个计数器。我们以后会介绍Rust和我们自己的程序，现在我们将使用JS/TS。
 
 ## 🚧 在本地设置 Solana 客户端
 
-让我们改变一下方式 - 我们将离开React/Next.js，在这里使用纯TypeScript构建一个本地客户端。这比搭建前端并构建大量的用户界面要快得多。你可以在一个单独的TS文件中工作，并异步运行它与网络进行交互。
+让我们改变一下方式 - 我们将离开`React/Next.js`，在这里使用纯TypeScript构建一个本地客户端。这比搭建前端并构建大量的用户界面要快得多。你可以在一个单独的TS文件中工作，并异步运行它与网络进行交互。
 
 
 在您的Solana工作区中创建一个新文件夹，并使用这个方便的命令来设置本地客户端：
@@ -24,7 +24,7 @@ npx create-solana-client solana-intro-client
 如果它询问您是否要安装 `create-solana-client` 软件包，请说“是”。
 
 
-现在只需导航到目录并在 VS Code 中启动它
+现在只需导航到目录并在 `VS Code` 中启动它
 
 ```bash
 cd solana-intro-client
@@ -83,7 +83,7 @@ async function initializeKeypair(connection: Web3.Connection): Promise<Web3.Keyp
 
 您已经熟悉这里发生的一切 - 我们调用 `Web3.Keypair.generate()` 函数并将结果写入本地 [`dotenv`](https://www.npmjs.com/package/dotenv) 文件。创建后，我们将返回密钥对，以便我们可以在脚本的其余部分中使用它。
 
-更新您的 main 函数并使用 `npm start` 运行脚本来测试它：
+更新您的 `main` 函数并使用 `npm start` 运行脚本来测试它：
 
 ```ts
 async function main() {
@@ -189,9 +189,9 @@ const PROGRAM_DATA_PUBLIC_KEY = new Web3.PublicKey("Ah9K7dQ8EHaZqcAsgBW8w37yN2eA
 ```
 
 
-`PROGRAM_ID` 是ping程序本身的地址。 `PROGRAM_DATA_PUBLIC_KEY` 是存储程序数据的帐户的地址。请记住 - 可执行代码和状态数据单独存储在 Solana 上！
+`PROGRAM_ID` 是`ping`程序本身的地址。 `PROGRAM_DATA_PUBLIC_KEY` 是存储程序数据的帐户的地址。请记住 - 可执行代码和状态数据单独存储在 Solana 上！
 
-然后添加此函数以在任何地方 ping 程序：
+然后添加此函数以在任何地方 `ping` 程序：
 
 ```ts
 async function pingProgram(connection: Web3.Connection, payer: Web3.Keypair) {

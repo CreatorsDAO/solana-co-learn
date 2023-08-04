@@ -48,7 +48,7 @@ solana balance
 
 ## 🍬 创建你的收藏品
 
-这将是建立过程中最困难的部分之一：决定你想要制作一个NFT收藏的内容。你至少需要5张图片，每张图片对应收藏中的一个NFT。我选择了一些经典的pepes，因为pepes总是能引起我的共鸣。
+这将是建立过程中最困难的部分之一：决定你想要制作一个NFT收藏的内容。你至少需要5张图片，每张图片对应收藏中的一个NFT。我选择了一些经典的`pepes`，因为`pepes`总是能引起我的共鸣。
 
 在你的Solana工作空间中创建一个新的项目文件夹，并在其中创建一个 `assets` 文件夹。你需要将每个NFT资产与一个元数据JSON文件配对，从零开始编号每一对。因此，你的文件夹结构应该类似于这样：
 
@@ -113,7 +113,7 @@ solana balance
 
 ## 🚀 发行你的NFT收藏品
 
-在终端中输入 `sugar launch` ，当它询问是否要创建新的配置文件时，按下y键。回答问题后，你的项目文件夹中将会留下一个 `config.json` 文件。
+在终端中输入 `sugar launch` ，当它询问是否要创建新的配置文件时，按下`y`键。回答问题后，你的项目文件夹中将会留下一个 `config.json` 文件。
 
 这是我的答案：
 
@@ -160,7 +160,7 @@ cd candy-machine-ui
 npm i
 ```
 
-这里发生了很多事情，我们不需要担心。将 .env.example 重命名为 .env ，并粘贴您之前复制的糖果机ID。
+这里发生了很多事情，我们不需要担心。将 `.env.example` 重命名为 `.env` ，并粘贴您之前复制的糖果机ID。
 
 ```bash
 REACT_APP_CANDY_MACHINE_ID=GNfbQEfMA1u1irEFnThTcrzDyefJsoa7sndACShaS5vC
@@ -174,7 +174,7 @@ REACT_APP_CANDY_MACHINE_ID=GNfbQEfMA1u1irEFnThTcrzDyefJsoa7sndACShaS5vC
 
 ![](./img/candy-nft.png)
 
-你会注意到，铸造的NFT不是1.png。这是因为糖果机铸造默认是随机的。
+你会注意到，铸造的NFT不是`1.png`。这是因为糖果机铸造默认是随机的。
 
 我们只是勉强触及到了Candy Machine和Sugar CLI的潜力。以后我们还会涵盖更多内容——本节的目的是为了让你拥有足够的知识广度，让你能够自己深入研究。随着我们不断完善NFT项目，我们将继续深入探索。
 

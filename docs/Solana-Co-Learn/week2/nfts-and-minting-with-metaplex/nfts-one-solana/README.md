@@ -30,7 +30,7 @@ Solana上的NFT价格便宜的一个重要原因是它们并不是特别的代�
 ![](./img/master-edition-account.png)
 
 
-Token Metadata程序为NFTs提供了另一个专门的账户，称为Master Edition账户。它不会废除Mint权限，而是将Mint权限和冻结权限都转移到Master Edition PDA。
+Token Metadata程序为NFTs提供了另一个专门的账户，称为Master Edition账户。它不会废除Mint权限，而是将Mint权限和冻结权限都转移到`Master Edition PDA`。
 
 换句话说，造币权被转移到属于Token Metadata程序的PDA上。这确保任何人在未经过Token Metadata程序的情况下无法铸造或冻结代币。
 
@@ -42,10 +42,10 @@ Token Metadata程序为NFTs提供了另一个专门的账户，称为Master Edit
 
 除了作为不可替代性证据，Master Edition账户还允许用户打印一个或多个NFT的副本。这个功能使创作者能够提供多个1/1 NFT的副本。
 
-Master Edition  账户包含一个可选的 Max Supply 属性：
+Master Edition  账户包含一个可选的 `Max Supply` 属性：
 
-- 如果设置为 0 ，则禁用打印功能
-- 如果设置为 None ，可以打印无限数量的副本。
+- 如果设置为 `0` ，则禁用打印功能
+- 如果设置为 `None` ，可以打印无限数量的副本。
 
 ## 🧰 Metaplex SDK
 

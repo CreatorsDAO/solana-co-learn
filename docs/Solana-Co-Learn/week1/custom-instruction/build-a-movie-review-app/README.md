@@ -37,7 +37,7 @@ npm i
 npm install @project-serum/borsh --force
 ```
 
-接下来前往 `Movie.ts` 导入 borsh 并在 Movie 类中添加架构（不要复制粘贴此内容）：
+接下来前往 `Movie.ts` 导入 `borsh` 并在 Movie 类中添加架构（不要复制粘贴此内容）：
 
 ```ts
 // We're importing borsh

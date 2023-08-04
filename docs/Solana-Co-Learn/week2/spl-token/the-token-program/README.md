@@ -168,7 +168,7 @@ const tokenMint = await createMint(
 - `freezeAuthority` - 一个被授权冻结代币账户的账户。如果不需要冻结功能，该参数可以设置为null。
 - `decimals` - 指定令牌的所需小数精度
 
-当使用具有访问您的秘钥权限的脚本创建新的铸币时，您可以简单地使用createMint函数。然而，如果您要构建一个允许用户创建新的代币铸币的网站，您需要在不让用户暴露秘钥给浏览器的情况下完成。在这种情况下，您需要构建并提交一笔包含正确指令的交易。
+当使用具有访问您的秘钥权限的脚本创建新的铸币时，您可以简单地使用`createMint`函数。然而，如果您要构建一个允许用户创建新的代币铸币的网站，您需要在不让用户暴露秘钥给浏览器的情况下完成。在这种情况下，您需要构建并提交一笔包含正确指令的交易。
 
 在内部，`createMint`函数只是创建了一个包含两个指令的交易：
 
@@ -254,7 +254,7 @@ const tokenAccount = await createAccount(
 
 请注意，这个`createAccount`函数与我们在查看`createMint`函数内部时所展示的`createAccount`函数不同。之前我们在`SystemProgram`上使用`createAccount`函数来返回创建所有账户的指令。而这里的`createAccount`函数是`spl-token`库中的一个辅助函数，它会提交一个包含两个指令的交易。第一个指令用于创建账户，第二个指令用于将账户初始化为代币账户。
 
-就像创建一个Token Mint一样，如果我们需要手动构建createAccount的交易，我们可以复制函数在内部所做的操作：
+就像创建一个Token Mint一样，如果我们需要手动构建`createAccount`的交易，我们可以复制函数在内部所做的操作：
 
 1. 使用`getMint`来检索与Mint相关的数据
 2. 使用`getAccountLenForMint`函数来计算代币账户所需的空间
@@ -375,7 +375,7 @@ const transactionSignature = await mintTo(
 - `authority` - 授权用于铸造代币的账户
 - `amount` - 在小数点之外铸造的代币的原始数量，例如，如果Scrooge Coin的小数属性设置为2，则要获得1个完整的Scrooge Coin，您需要将此属性设置为100。
 
- 在代币铸造完成后，将铸币权限更新为null并不罕见。这将设定最大供应量，并确保未来无法再铸造任何代币。相反地，可以将铸币权限授予一个程序，以便代币可以根据固定间隔或可编程条件自动铸造。
+ 在代币铸造完成后，将铸币权限更新为`null`并不罕见。这将设定最大供应量，并确保未来无法再铸造任何代币。相反地，可以将铸币权限授予一个程序，以便代币可以根据固定间隔或可编程条件自动铸造。
 
 
  在内部，`mintTo`函数只是使用从`createMintToInstruction`函数获取的指令创建一个交易。
@@ -408,7 +408,7 @@ const transactionSignature = await mintTo(
 
  SPL-Token转账需要发送方和接收方都拥有相应代币的账户。代币从发送方的账户转移到接收方的账户。
 
- 在获取接收者的关联代币账户时，您可以使用`getOrCreateAssociatedTokenAccount`函数来确保其代币账户在转账之前已存在。只需记住，如果账户尚不存在，该函数将创建该账户，并且交易的付款方将被扣除所需的lamports用于账户创建。
+ 在获取接收者的关联代币账户时，您可以使用`getOrCreateAssociatedTokenAccount`函数来确保其代币账户在转账之前已存在。只需记住，如果账户尚不存在，该函数将创建该账户，并且交易的付款方将被扣除所需的`lamports`用于账户创建。
 
  一旦您知道接收者的令牌账户地址，您可以使用spl-token库的转账函数进行令牌转账。
 
@@ -424,7 +424,7 @@ const transactionSignature = await mintTo(
  ```
 
 
-转账函数返回一个可以在Solana Explorer上查看的TransactionSignature。
+转账函数返回一个可以在Solana Explorer上查看的`TransactionSignature`。
 转账函数需要以下参数：
 
 - `connection` - 与集群的JSON-RPC连接
@@ -477,7 +477,7 @@ const transactionSignature = await burn(
 )
 ```
 
-`burn`函数返回一个可以在Solana Explorer上查看的TransactionSignature。`burn`函数需要以下参数：
+`burn`函数返回一个可以在Solana Explorer上查看的`TransactionSignature`。`burn`函数需要以下参数：
 
 
 - `connection` - 与集群的JSON-RPC连接
@@ -629,9 +629,9 @@ async function buildRevokeTransaction(
 import * as token from '@solana/spl-token'
 ```
 
-接下来，声明一个名为createNewMint的新函数，它带有参数connection、payer、mintAuthority、freezeAuthority和decimals。
+接下来，声明一个名为`createNewMint`的新函数，它带有参数`connection`、`payer`、`mintAuthority`、`freezeAuthority`和`decimals`。
 
-在函数Import的主体中，从`@solana/spl-token`中创建createMint函数，然后创建一个调用createMint的函数
+在函数Import的主体中，从`@solana/spl-token`中创建`createMint`函数，然后创建一个调用`createMint`的函数
 
 ```ts
 async function createNewMint(
@@ -658,9 +658,9 @@ async function createNewMint(
 }
 ```
 
-完成该功能后，从main函数的主体中调用它，将user设置为付款方，mintAuthority和freezeAuthority。
+完成该功能后，从`main`函数的主体中调用它，将`user`设置为付款方，`mintAuthority`和`freezeAuthority`。
 
-创建新的铸币后，让我们使用getMint函数获取账户数据，并将其存储在名为mintInfo的变量中。稍后我们将使用这些数据来调整铸币的小数精度。
+创建新的铸币后，让我们使用`getMint`函数获取账户数据，并将其存储在名为`mintInfo`的变量中。稍后我们将使用这些数据来调整铸币的小数精度。
 
 
 ```ts
@@ -684,11 +684,11 @@ async function main() {
 
 既然我们已经创建了铸币机构，那么让我们创建一个新的代币账户，指定用户为所有者。
 
-createAccount函数创建一个新的Token账户，并可以选择指定Token账户的地址。请注意，如果没有提供地址，createAccount函数将默认使用通过mint和owner派生的关联Token账户。
+`createAccount`函数创建一个新的Token账户，并可以选择指定Token账户的地址。请注意，如果没有提供地址，`createAccount`函数将默认使用通过`mint`和`owner`派生的关联Token账户。
 
-另外，函数createAssociatedTokenAccount也会根据代币和所有者的公钥派生出相同地址的关联代币账户。
+另外，函数`createAssociatedTokenAccount`也会根据代币和所有者的公钥派生出相同地址的关联代币账户。
 
-为了进行演示，我们将使用thegetOrCreateAssociatedTokenAccount函数来创建我们的代币账户。如果该函数已存在，则获取代币账户的地址。如果不存在，则在适当的地址上创建一个新的关联代币账户。
+为了进行演示，我们将使用`thegetOrCreateAssociatedTokenAccount`函数来创建我们的代币账户。如果该函数已存在，则获取代币账户的地址。如果不存在，则在适当的地址上创建一个新的关联代币账户。
 
 ```ts
 async function createTokenAccount(
@@ -712,7 +712,7 @@ async function createTokenAccount(
 }
 ```
 
-在主函数中添加一个调用createTokenAccount的语句，将之前创建的货币传递进去，并将用户设置为支付者和所有者。
+在主函数中添加一个调用`createTokenAccount`的语句，将之前创建的货币传递进去，并将用户设置为支付者和所有者。
 
 ```ts
 async function main() {
@@ -743,7 +743,7 @@ async function main() {
 现在我们有一个代币铸造和一个代币账户，让我们将代币铸造到代币账户中。请注意，只有铸币授权者才能将新的代币铸造到代币账户中。回想一下，我们将用户设置为我们创建的代币的铸币授权者。
 
 
-创建一个名为mintTokens的函数，该函数使用spl-token函数mintTo来铸造代币：
+创建一个名为`mintTokens`的函数，该函数使用spl-token函数`mintTo`来铸造代币：
 
 
 ```ts
@@ -770,7 +770,7 @@ async function mintTokens(
 }
 ```
 
-让我们在主函数中使用之前创建的 mint 和 tokenAccount 来调用该函数。
+让我们在主函数中使用之前创建的 `mint` 和 `tokenAccount` 来调用该函数。
 
 请注意，我们需要根据铸币的小数精度调整输入金额。我们的铸币代币具有2位小数精度。如果我们只指定100作为输入金额，那么只会铸造1个代币到我们的代币账户。
 
@@ -811,7 +811,7 @@ async function main() {
 
 现在我们已经有了一个代币铸造和一个代币账户，让我们授权一个代表来代表我们转移代币。
 
-创建一个名为approveDelegate的函数，该函数使用spl-token函数approve来铸造代币：
+创建一个名为`approveDelegate`的函数，该函数使用spl-token函数`approve`来铸造代币：
 
 ```ts
 async function approveDelegate(
@@ -838,7 +838,7 @@ async function approveDelegate(
 ```
 
 
-首先，在主函数中，让我们生成一个新的密钥对来代表委托账户。然后，让我们调用我们的新approveDelegate函数，并授权委托账户从用户代币账户中转移最多50个代币。记得根据代币的小数精度调整金额。
+首先，在主函数中，让我们生成一个新的密钥对来代表委托账户。然后，让我们调用我们的新`approveDelegate`函数，并授权委托账户从用户代币账户中转移最多50个代币。记得根据代币的小数精度调整金额。
 
 ```ts
 async function main() {
@@ -916,7 +916,7 @@ async function transferTokens(
 
 在主函数中，让我们生成一个新的密钥对作为接收者（但请记住，这只是模拟有人可以发送代币给的情况 - 在真实应用中，您需要知道接收代币的人的钱包地址）。
 
-然后，为接收者创建一个令牌账户。最后，让我们调用我们的新的transferTokens函数，将令牌从用户令牌账户转移到接收者令牌账户。我们将使用在前一步中批准的委托来代表我们执行转账。
+然后，为接收者创建一个令牌账户。最后，让我们调用我们的新的`transferTokens`函数，将令牌从用户令牌账户转移到接收者令牌账户。我们将使用在前一步中批准的委托来代表我们执行转账。
 
 ```ts
 async function main() {
@@ -980,7 +980,7 @@ async function main() {
 
 ### 7. 撤销委托
 
-现在我们已经完成了代币的转移，让我们使用spl-token库的revoke函数来撤销委托。
+现在我们已经完成了代币的转移，让我们使用spl-token库的`revoke`函数来撤销委托。
 
 ```ts
 async function revokeDelegate(
@@ -1002,7 +1002,7 @@ async function revokeDelegate(
 }
 ```
 
-撤销将会将代币账户的委托设置为null，并将委托数量重置为0。我们只需要代币账户和用户来执行这个功能。让我们调用我们的新revokeDelegate函数来从用户的代币账户中撤销委托。
+撤销将会将代币账户的委托设置为`null`，并将委托数量重置为0。我们只需要代币账户和用户来执行这个功能。让我们调用我们的新`revokeDelegate`函数来从用户的代币账户中撤销委托。
 
 ```ts
 async function main() {
@@ -1076,7 +1076,7 @@ async function main() {
 最后，让我们通过销毁一些代币来减少流通量。
 
 
-创建一个burnTokens函数，该函数使用spl-token库的burn函数将您的代币供应量减少一半。
+创建一个`burnTokens`函数，该函数使用spl-token库的`burn`函数将您的代币供应量减少一半。
 
 
 ```ts
@@ -1182,7 +1182,7 @@ async function main() {
 
 ### 9. 全部测试一下
 
-有了这些，运行npm start。您应该在控制台上看到一系列Solana Explorer链接的日志。点击它们，看看每个步骤发生了什么！您创建了一个新的代币铸造，创建了一个代币账户，铸造了100个代币，批准了一个委托人，使用委托人转移了50个代币，撤销了委托人，并烧毁了另外25个代币。您正在成为一个代币专家的道路上进展顺利。
+有了这些，运行`npm start`。您应该在控制台上看到一系列Solana Explorer链接的日志。点击它们，看看每个步骤发生了什么！您创建了一个新的代币铸造，创建了一个代币账户，铸造了100个代币，批准了一个委托人，使用委托人转移了50个代币，撤销了委托人，并烧毁了另外25个代币。您正在成为一个代币专家的道路上进展顺利。
 
 如果你需要更多时间来完成这个项目并感到舒适，可以查看完整的[解决方案代码](https://github.com/RustyCab/solana-token-client)
 
@@ -1197,7 +1197,7 @@ async function main() {
 
 1. 你可以从零开始构建这个项目，或者你可以在这里下载[起始代码](https://github.com/RustyCab/solana-token-frontend/tree/starter)。
 
-2. 在CreateMint组件中创建一个新的Token Mint。
+2. 在`CreateMint`组件中创建一个新的Token Mint。
 
 创建新的货币时，新生成的密钥对也必须对交易进行签名。当除了连接的钱包外还需要额外的签名者时，请使用以下格式：
 
@@ -1207,9 +1207,9 @@ sendTransaction(transaction, connection, {
 })
 ```
 
-3. 在CreateTokenAccount组件中创建一个新的Token账户。
+3. 在`CreateTokenAccount`组件中创建一个新的Token账户。
 
-4. 在MintToForm组件中铸造Mint代币。
+4. 在`MintToForm`组件中铸造Mint代币。
 
 如果你遇到困难，随时可以参考[解决方案代码](https://github.com/ZYJLiu/solana-token-frontend)。
 

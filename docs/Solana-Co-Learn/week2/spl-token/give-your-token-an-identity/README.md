@@ -16,7 +16,7 @@ npm install @metaplex-foundation/js fs
 npm install @metaplex-foundation/mpl-token-metadata
 ```
 
-我们将使用Metaplex SDK来添加元数据和 `fs` 库，以便我们可以读取代币的标志图片。创建一个名为 `assets` 的新文件夹，并添加您的标志。这将在测试网络上进行，所以尽情享受吧！我选择了一个比萨饼表情符号，所以我把我的文件命名为pizza.png，哈哈。
+我们将使用Metaplex SDK来添加元数据和 `fs` 库，以便我们可以读取代币的标志图片。创建一个名为 `assets` 的新文件夹，并添加您的标志。这将在测试网络上进行，所以尽情享受吧！我选择了一个比萨饼表情符号，所以我把我的文件命名为`pizza.png`，哈哈。
 
 Metaplex将为我们承担所有繁重的工作，所以请在顶部添加以下导入： `index.ts` ：
 
@@ -153,10 +153,10 @@ async function createTokenMetadata(
 
 通常我尝试做的是:
 
-- 在Discord中搜索/询问（Metaplex，Anchor等）
-- 在Stack Exchange上搜索/提问
+- 在`Discord`中搜索/询问（`Metaplex`，`Anchor`等）
+- 在`Stack Exchange`上搜索/提问
 - 浏览项目/程序存储库，如果你想弄清楚如何为一个程序设置指令，请参考测试
-- 或者，如果没有测试可以参考，可以复制/粘贴GitHub，并希望能在某个地方找到参考资料
+- 或者，如果没有测试可以参考，可以复制/粘贴`GitHub`，并希望能在某个地方找到参考资料
 
 
 希望这能给你一个关于先驱者是如何做到的想法 :)
@@ -230,46 +230,7 @@ Finished successfully
 
 ![](./img/spider-man-pizza-time.gif)
 
-令牌元数据程序最酷的部分之一是更新起来非常简单。你只需要将交易从 `createCreateMetadataAccountV2Instruction` 更改为 `createUpdateMetadataAccountV2Instruction` 即可：
-
-```ts
-async function updateTokenMetadata(
-  connection: web3.Connection,
-  metaplex: Metaplex,
-  mint: web3.PublicKey,
-  user: web3.Keypair,
-  name: string,
-  symbol: string,
-  description: string
-) {
-
-  ...
-
-  // transaction to update metadata account
-  const transaction = new web3.Transaction().add(
-    createUpdateMetadataAccountV2Instruction(
-      {
-        metadata: metadataPDA,
-        updateAuthority: user.publicKey,
-      },
-      {
-        updateMetadataAccountArgsV2: {
-          data: tokenMetadata,
-          updateAuthority: user.publicKey,
-          primarySaleHappened: true,
-          isMutable: true,
-        },
-      }
-    )
-  )
-
-  // Everything else remains the same
-  ...
-}
-```
-
 你的代币已经准备就绪！记得要传播爱心哦。也许可以给你的朋友或者Discord服务器中的其他建设者发送一些代币。在 #progress 频道分享你的地址，这样别人就可以给你空投他们的代币啦 :D
-
 
 
 ## 🚢 船舶挑战
