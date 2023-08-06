@@ -8,6 +8,6 @@ sidebar_class_name: green
 
 - 🎬 NFTs on Solana with Gage
 - [NTFs on Solana](./nfts-one-solana/README.md)
-- NFT your face
-- Candy Machine with Gage
-- Candy Machine & the Sugar CLI
+- [NFT your face](./nft-your-face/README.md)
+- 🎬 Candy Machine with Gage
+- [Candy Machine & the Sugar CLI](./candy-machine-and-the-sugar-cli/README.md)
