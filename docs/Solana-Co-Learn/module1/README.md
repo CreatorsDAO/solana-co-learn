@@ -1,10 +1,12 @@
 ---
 sidebar_position: 11
-sidebar_label: week1
+sidebar_label: Module1
 sidebar_class_name: green
 ---
 
-# Solana Core1
+# Solana Module1
+
+## 本地开发环境配置以及hello world合约
 
 ## 客户端开发
 

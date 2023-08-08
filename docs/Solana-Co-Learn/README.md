@@ -6,43 +6,36 @@ sidebar_class_name: green
 
 # Solana Co Learn
 
-## Week0: 区块链基本概念介绍以及Solana基本概念原理介绍及本地开发环境配置
+## Module1: Solana Module1
 
 - 区块链基本概念介绍
-- Solana基本概念原理介绍
-    - [账户](./week0/accounts.md)
-    - [程序](./week0/progams.md)
-    - [交易](./week0/transactions.md)
-    - [程序派生地址（PDAs)](./week0/program-derived-addresses.md)
-    - [跨程序调用](./week0/cpi.md)
-- [本地程序开发环境配置](./week0/local_program_development/local_program_development.md)
-    - [原始Solana合约实现《hello, World》](./week0/local_program_development/native_program_hello.md)
-    - [Anchor 合约框架实现《hello, World》](./week0/local_program_development/anchor_program_hello.md)
-    - [使用Solang编译器编译solidity合约实现《hello, World》](./week0/local_program_development/solang_program_hello.md)
+- [本地程序开发环境配置](./module1/local_program_development/local_program_development.md)
+    - [原始Solana合约实现《hello, World》](./module1/local_program_development/native_program_hello.md)
+    - [Anchor 合约框架实现《hello, World》](./module1/local_program_development/anchor_program_hello.md)
+    - [使用Solang编译器编译solidity合约实现《hello, World》](./module1/local_program_development/solang_program_hello.md)
 
-- [BackPack钱包使用](./week0/wallet-usage/README.md)
+- [BackPack钱包使用](./module1/wallet-usage/README.md)
 
-## Week1: Solana Core1
 
-### [客户端开发](./week1/client-side-development/README.md)
+### [客户端开发](./module1/client-side-development/README.md)
 
-### [钱包和前端](./week1/wallets-and-frontends/README.md)
+### [钱包和前端](./module1/wallets-and-frontends/README.md)
 
-### [自定义指令](./week1/custom-instruction/README.md)
+### [自定义指令](./module1/custom-instruction/README.md)
 
-### [开始你自己的定制项目](./week1/start-your-own-custom-project/README.md)
+### [开始你自己的定制项目](./module1/start-your-own-custom-project/README.md)
 
-## Week2: Solana Core2
+## Module2: Solana Module2
 
-### SPL token
+### [SPL token](./module2/spl-token/README.md)
 
-### NFTs + 使用Metaplex进行铸造
+### [NFTs + 使用Metaplex进行铸造](./module2/nfts-and-minting-with-metaplex/README.md)
 
-### 在用户界面中展示NFTs
+### [在用户界面中展示NFTs](./module2/displayings-nfts-in-a-ui/README.md)
 
-### 创造神奇的网络货币并出售JPEG图片
+### [创造神奇的网络货币并出售JPEG图片](./module2/make-magic-internet-money-and-sell-jepgs/README.md)
 
-## Week3: Solana Core3
+## Module3: Solana Module3
 
 ### Introduction to Rust
 
@@ -52,7 +45,7 @@ sidebar_class_name: green
 
 ### NFT staking
 
-## Week4: Solana Core4
+## Module4: Solana Module4
 
 ### Local env setup and PDAs
 
@@ -63,7 +56,7 @@ sidebar_class_name: green
 ### Ship a staking app
 
 
-## Week 5: Solana Core5
+## Module5: Solana Module5
 
 ### Introduction to Anchor
 
@@ -73,7 +66,7 @@ sidebar_class_name: green
 
 ### A full-stack Anchor App
 
-## Week 6: Solana Core6
+## Module6: Solana Module6
 
 ### Ship Week
 
@@ -81,15 +74,16 @@ sidebar_class_name: green
 
 ### Finishing touches
 
+## Modules: Solana Modules
 
-## Week 7: Beyond the Basics
+### Beyond the Basics
 
 - Solana程序中的环境变量
 - Solana Pay
 - 版本化的事务和查找表
 - Rust过程宏
 
-## Weeks 8: Solana程序安全
+### Solana程序安全
 
 - 如何处理程序安全模块
 - 签名人授权
@@ -103,7 +97,7 @@ sidebar_class_name: green
 - 关闭账户和恢复攻击
 - PDA sharing
 
-## Week 9: 其他
+### 其他
 
 - 使用Solidity 编写Solana合约
     - Solidity 与PDAs

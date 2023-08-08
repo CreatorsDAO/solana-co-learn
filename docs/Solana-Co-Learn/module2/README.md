@@ -1,10 +1,10 @@
 ---
 sidebar_position: 26
-sidebar_label: week2
+sidebar_label: Module2
 sidebar_class_name: green
 ---
 
-# Solana Core2
+# Solana Module2
 
 ## SPL代币
 

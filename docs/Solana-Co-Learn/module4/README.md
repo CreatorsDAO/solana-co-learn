@@ -1,10 +1,10 @@
 ---
 sidebar_position: 95
-sidebar_label: week4
+sidebar_label: Module4
 sidebar_class_name: green
 ---
 
-# Solana中级程序开发
+# Solana Module4
 
 ## 核心概念进阶
 

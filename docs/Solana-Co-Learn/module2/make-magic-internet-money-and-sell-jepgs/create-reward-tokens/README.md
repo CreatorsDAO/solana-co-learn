@@ -1,5 +1,5 @@
 ---
-sidebar_position: 40
+sidebar_position: 41
 sidebar_label: 🎨 创建奖励代币
 sidebar_class_name: green
 ---

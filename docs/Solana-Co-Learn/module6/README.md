@@ -1,6 +1,6 @@
 ---
 sidebar_position: 97
-sidebar_label: week6
+sidebar_label: Module6
 sidebar_class_name: green
 ---
 
