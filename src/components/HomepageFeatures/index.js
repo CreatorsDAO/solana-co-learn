@@ -12,15 +12,15 @@ const FeatureList = [
       </>
     ),
   },
-  {
-    title: 'Solana的开发指南',
-    Svg: require('@site/static/img/parthenon-svgrepo-com.svg').default,
-    description: (
-      <>
-        🧭Solana的开发指南
-      </>
-    ),
-  },
+  // {
+  //   title: 'Solana的开发指南',
+  //   Svg: require('@site/static/img/parthenon-svgrepo-com.svg').default,
+  //   description: (
+  //     <>
+  //       🧭Solana的开发指南
+  //     </>
+  //   ),
+  // },
   {
     title: 'Solana Co Learn',
     Svg: require('@site/static/img/my_logo.svg').default,

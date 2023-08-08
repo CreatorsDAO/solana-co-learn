@@ -71,9 +71,9 @@ const config = {
           },
           {
             type: 'doc',
-            docId: 'solana/README',
+            docId: 'Solana-Co-Learn/README',
             position: 'left',
-            label: 'Solana Guide',
+            label: 'Solana Co Learn',
           },
           { to: '/blog', label: 'Blog', position: 'left' },
           {
