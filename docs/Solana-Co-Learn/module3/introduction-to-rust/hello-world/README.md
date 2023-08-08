@@ -45,9 +45,9 @@ use solana_program::account_info::AccountInfo;
 ```
 
 
-- 1. 基础箱子是 `solana_program`
-- 2. `solana_program` 包含一个名为 `account_info` 的模块
-- 3. `account_info` 包含一个名为 `AccountInfo` 的结构体
+- 基础箱子是 `solana_program`
+- `solana_program` 包含一个名为 `account_info` 的模块
+- `account_info` 包含一个名为 `AccountInfo` 的结构体
 
 在Rust文件的顶部经常会看到一系列的 `use` 命令，就像 `import` 或 `require` 语句一样。
 
@@ -101,7 +101,7 @@ entrypoint!(process_instruction);
 
 ## 🔨 Rust中的函数
 
-function与Typescript非常相似 - 只需要参数、类型和返回类型。将此添加到 `entrypoint!` 宏下面：
+`function`与Typescript中的function非常相似 - 只需要参数、类型和返回类型。将此添加到 `entrypoint!` 宏下面：
 
 ```rust
 pub fn process_instruction(
@@ -117,9 +117,9 @@ pub fn process_instruction(
 
 我们的 `process_instruction` 函数需要以下参数：
 
-- 1. `program_id` ：程序账户的公钥。用于验证程序是否由正确的账户调用。类型为 `&Pubkey` 。
-- 2. `accounts` ：指令所涉及的账户。必须为类型 `&[AccountInfo]` 。
-- 3. `instruction_data` ：我们交易中的8位指令数据。必须为 `&[u8]` 类型。
+- `program_id` ：程序账户的公钥。用于验证程序是否由正确的账户调用。类型为 `&Pubkey` 。
+- `accounts` ：指令所涉及的账户。必须为类型 `&[AccountInfo]` 。
+- `instruction_data` ：我们交易中的8位指令数据。必须为 `&[u8]` 类型。
 
 `[]` 的意思是 `AccountInfo` 和 `u8` 是“切片”类型 - 它们类似于长度未知的数组。我们不称它们为数组，因为它们更低级 - 在Rust中，切片是指向一块内存块的指针 🤯
 

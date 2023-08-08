@@ -34,12 +34,12 @@ Rust就是这样的。它是一种非常有主见的语言，迫使你以不同�
 
 我们将从我们构建 Hello World 程序所需的最基本概念开始
 
-- 1. 模块系统
-- 2. Solana程序入口
-- 3. function
-- 4. [reference和借用（有点儿）](https://doc.rust-lang.org/book/ch04-00-understanding-ownership.html)
+- 模块系统
+- Solana程序入口
+- function
+-  [reference和借用（有点儿）](https://doc.rust-lang.org/book/ch04-00-understanding-ownership.html)
 
-## 🛹 索拉纳操场
+## 🛹 Solana Playground
 
 我们将在[Solana Playground](https://beta.solpg.io/)上开始我们的程序开发之旅。这是一个基于浏览器的集成开发环境，它将处理所有的设置要求，让我们专注于Rust。
 
