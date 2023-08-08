@@ -55,7 +55,6 @@ sidebar_class_name: green
 
 ### Ship a staking app
 
-
 ## Module5: Solana Module5
 
 ### Introduction to Anchor
