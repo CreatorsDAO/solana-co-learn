@@ -9,6 +9,7 @@ sidebar_class_name: green
 - [Solana Co Learn](./Solana-Co-Learn/README.md)
 - [Solana Cook book Zh](https://davirain-su.github.io/solana-cookbook-zh/)
 
+- [Solana On CoinGecko](https://www.coingecko.com/en/coins/solana)
 
 ## awesome solana development
 
@@ -28,6 +29,16 @@ sidebar_class_name: green
 ### 不错的Solana文章
 - [Squads blog](https://squads.so/blog)
 - [Solana Dev](https://www.soldev.app/)
+
+
+## Solana explore
+
+- [https://solscan.io/](https://solscan.io/)
+- [https://explorer.solana.com/](https://explorer.solana.com/)
+- [https://solanabeach.io/](https://solanabeach.io/)
+- [https://solana.fm/](https://solana.fm/)
+- [https://www.oklink.com/cn/sol](https://www.oklink.com/cn/sol)
+- [https://xray.helius.xyz/](https://xray.helius.xyz/)
 
 
 ### 希望后面要做的事情
