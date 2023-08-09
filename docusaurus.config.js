@@ -7,7 +7,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'All in One Solana',
-  tagline: 'Power by Davirain',
+  tagline: 'Power by 706 & Rustycab',
   url: 'https://www.all-in-one-blockchain.xyz/',
   baseUrl: '/all-in-one-solana/',
   onBrokenLinks: 'throw',
