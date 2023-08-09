@@ -8,16 +8,16 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 const config = {
   title: 'All in One Solana',
   tagline: 'Power by Davirain',
-  url: 'https://davirain.xyz',
-  baseUrl: '/',
+  url: 'https://www.all-in-one-blockchain.xyz/',
+  baseUrl: '/all-in-one-solana/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'All in One Solana', // Usually your GitHub org/user name.
-  projectName: 'all in one Solana', // Usually your repo name.
+  organizationName: 'DaviRain-Su', // Usually your GitHub org/user name.
+  projectName: 'all-in-one-solana', // Usually your repo name.
 
   // Even if you don't use internalization, you can use this field to set useful
   // metadata like html lang. For example, if your site is Chinese, you may want
