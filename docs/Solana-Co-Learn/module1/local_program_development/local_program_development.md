@@ -1,6 +1,6 @@
 ---
 sidebar_position: 7
-sidebar_label: 开发环境配置
+sidebar_label: 本地开发环境配置
 sidebar_class_name: green
 ---
 
@@ -8,11 +8,12 @@ sidebar_class_name: green
 
 ## 概述
 
-到目前为止，在这门课程中，我们一直使用[Solana Playground](https://beta.solpg.io/) 来开发和部署Solana程序。
+本地开发的基本流程如下
 
-这是一个很好的工具，但有某些限制，比如不支持某些特定的crate。 而这些crate 对于你想构建的的项目正好需要。
-
-这个时候，你就需要配置一个本地开发环境。
+1. 安装 [Rust](https://www.rust-lang.org/tools/install) 和 [Solana CLI](https://docs.solana.com/cli/install-solana-cli-tools)
+2. 使用Solana CLI，您可以使用**solana-test-validator**命令运行本地测试验证器，初始化账户等基本操作
+3. 使用 `cargo build-sbf` 和 `solana program deploy` 命令在本地构建和部署程序
+4. 使用 `solana logs` 命令查看程序日志
 
 ## 本地环境配置
 
@@ -168,8 +169,6 @@ solana airdrop 2
 到目前为止，我们已经介绍了一些CLI命令，这些命令应该能帮助您快速解决那些问题。
 
 ## 在您的本地环境中开发Solana程序
-
-尽管Solana Playground非常有帮助，但自己的本地开发环境的灵活性是无法比拟的。随着您构建更复杂的程序，您可能会将它们与一个或多个正在本地环境中开发的客户端集成在一起。在本地编写、构建和部署程序时，程序与客户端之间的测试通常更简单。
 
 ### 创建一个新项目
 
