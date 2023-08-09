@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkmy_website=self.webpackChunkmy_website||[]).push([[2535],{5641:e=>{e.exports=JSON.parse('{"title":"Recent posts","items":[{"title":"All in One Blockchain First Blog","permalink":"/all-in-one-solana/blog/first-blog-post"}]}')}}]);

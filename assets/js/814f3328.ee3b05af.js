@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkmy_website=self.webpackChunkmy_website||[]).push([[2535],{5641:e=>{e.exports=JSON.parse('{"title":"Recent posts","items":[{"title":"Solana\u5171\u5b66\u6559\u7a0b","permalink":"/all-in-one-solana/blog/first-blog-post"}]}')}}]);
