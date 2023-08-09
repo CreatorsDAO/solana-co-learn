@@ -78,9 +78,9 @@ msg!("Approving delegation");
     )?;
 ```
 
-现在我们可以开始实际冻结代币的过程了。我们并不是真正改变代币的所有权，只是将其冻结，以便在质押期间无法对代币进行任何操作。在此之前，我们需要为程序权限派生PDA。简而言之，我们在程序上使用PDA，将其委派为代币铸造的权限机构，以便能够冻结账户。
+现在我们可以开始实际冻结代币的过程了。我们并不是真正改变代币的所有权，只是将其冻结，以便在质押期间无法对代币进行任何操作。在此之前，我们需要为程序权限派生PDA。简而言之，我们在程序上使用`PDA`，将其委派为代币铸造的权限机构，以便能够冻结账户。
 
-别忘了检查一下，确保PDA已经被提取出来了。
+别忘了检查一下，确保`PDA`已经被提取出来了。
 
 ```rust
 let (delegated_auth_pda, delegate_bump) =
@@ -92,7 +92,7 @@ if delegated_auth_pda != *program_authority.key {
 }
 ```
 
-回到冷冻本身，与委托批准不同，这个使用 invoke_signed 作为从我们的程序签署。
+回到冷冻本身，与委托批准不同，这个使用 `invoke_signed` 作为从我们的程序签署。
 
 ```rust
 msg!("freezing NFT token account");
@@ -115,11 +115,11 @@ msg!("freezing NFT token account");
     )?;
 ```
 
-这是我们程序的PDA，现在具有冻结令牌的权限。🧊
+这是我们程序的`PDA`，现在具有冻结令牌的权限。🧊
 
-就这样，我们跳到typescript文件（//ts/src/utils/instruction.rs）并添加更多的账户（看吧，我告诉你，添加更多的账户和添加更多的账户和...）到 createStakingInstruction 函数中，让它正常工作。
+就这样，我们跳到typescript文件（`//ts/src/utils/instruction.rs`）并添加更多的账户（看吧，我告诉你，添加更多的账户和添加更多的账户和...）到 `createStakingInstruction` 函数中，让它正常工作。
 
-你想要匹配我们在（//src/processor.rs）文件中的 process_stake 函数中的账户，让我们确保添加：
+你想要匹配我们在（`//src/processor.rs`）文件中的 `process_stake` 函数中的账户，让我们确保添加：
 
 ```ts
 nftMint: PublicKey,
@@ -128,7 +128,7 @@ tokenProgram: PublicKey,
 metadataProgram: PublicKey,
 ```
 
-接下来，我们按照正确的顺序将所有这些添加到下面的账户中，在 TransactionInstruction 中。顺序很重要。
+接下来，我们按照正确的顺序将所有这些添加到下面的账户中，在 `TransactionInstruction` 中。顺序很重要。
 
 
 ...但首先，拉进权威账户：
@@ -174,7 +174,7 @@ const [delegateAuthority] = PublicKey.findProgramAddressSync(
 
 ## 测试我们的质押功能
 
-接下来，跳转到索引文件（//ts/src/index.rs），在 stakeInstruction 被创建的地方，在 testStaking 函数中添加相同的匹配账户。
+接下来，跳转到索引文件（`//ts/src/index.rs`），在 `stakeInstruction` 被创建的地方，在 `testStaking` 函数中添加相同的匹配账户。
 
 这里是四个附加项：
 
@@ -193,9 +193,9 @@ import { PROGRAM_ID as METADATA_PROGRAM_ID } from "@metaplex-foundation/mpl-toke
 是时候测试我们的进展了：
 
 - 1. 使用 `cargo build-sbf` 重新构建您的程序，然后使用 `solana program deploy {path}` 进行更新
-- 2. 确保你在 ts 目录下，并执行 npm run start 。
+- 2. 确保你在 `ts` 目录下，并执行 `npm run start` 。
 
-假设没有错误，让我们回到 processor.rs 文件中，并向我们的 process_redeem 函数添加类似的数据。
+假设没有错误，让我们回到 `processor.rs` 文件中，并向我们的 `process_redeem` 函数添加类似的数据。
 
 ## 委派和冻结 -- 兑换
 
@@ -208,7 +208,7 @@ let user_stake_ata = next_account_info(account_info_iter)?;
 let token_program = next_account_info(account_info_iter)?;
 ```
 
-回到对一些新账户的验证。让我们推导出我们的 stake_auth_pda ，然后对带有自定义错误的PDA进行验证。
+回到对一些新账户的验证。让我们推导出我们的 `stake_auth_pda` ，然后对带有自定义错误的PDA进行验证。
 
 ```rust
 let (stake_auth_pda, auth_bump) = Pubkey::find_program_address(&[b"mint"], program_id);
@@ -219,7 +219,7 @@ if *stake_authority.key != stake_auth_pda {
 }
 ```
 
-向下滚动一点，等我们弄清楚 redeem_amount 之后，我们将调用一个 invoke_signed 来调用令牌程序，以铸造代币。我们需要指令的各种密钥，然后是所需的账户，最后是授权的种子。不要忘记使用 ? 传播错误，否则红色波浪线将不会离开你。
+向下滚动一点，等我们弄清楚 `redeem_amount` 之后，我们将调用一个 `invoke_signed` 来调用令牌程序，以铸造代币。我们需要指令的各种密钥，然后是所需的账户，最后是授权的种子。不要忘记使用 ? 传播错误，否则红色波浪线将不会离开你。
 
 ```rust
 invoke_signed(
@@ -243,7 +243,7 @@ invoke_signed(
 
 这应该处理这个文件中的铸币，但我们必须在客户端上添加新的账户。
 
-我们回到之前的 instruction.ts 文件，向下滚动到 createRedeemInstruction ，添加以下账户。
+我们回到之前的 `instruction.ts` 文件，向下滚动到 `createRedeemInstruction` ，添加以下账户。
 
 ```ts
 mint: PublicKey,
@@ -253,7 +253,7 @@ tokenProgram: PublicKey,
 
 现在记住，一些账户是派生的，在这种情况下，它是权威账户，所以我们不需要手动添加它。
 
-然后跳到 TransactionInstruction 本身，首先我们推导出 mintAuth 。
+然后跳到 `TransactionInstruction` 本身，首先我们推导出 `mintAuth` 。
 
 ```ts
 const [mintAuth] = PublicKey.findProgramAddressSync(
@@ -262,7 +262,7 @@ const [mintAuth] = PublicKey.findProgramAddressSync(
   )
 ```
 
-接下来进入 return new TransactionInstruction 以添加相关账户，以及它们是否可写入和/或可签署。以下是我们需要添加的4个账户 - 记住，顺序很重要。
+接下来进入 `return new TransactionInstruction` 以添加相关账户，以及它们是否可写入和/或可签署。以下是我们需要添加的4个账户 - 记住，顺序很重要。
 
 ```ts
 {
@@ -287,7 +287,7 @@ const [mintAuth] = PublicKey.findProgramAddressSync(
 },
 ```
 
-这应该是我们兑换所需的一切。我们最后需要回到同一个 index.ts 文件，并确保我们正确调用它，但这有点复杂，所以首先让我们回到 processor.rs 并完成 process_unstake 函数。
+这应该是我们兑换所需的一切。我们最后需要回到同一个 `index.ts` 文件，并确保我们正确调用它，但这有点复杂，所以首先让我们回到 `processor.rs` 并完成 `process_unstake` 函数。
 
 ## 委托和冻结——解除质押
 
@@ -308,7 +308,7 @@ let metadata_program = next_account_info(account_info_iter)?;
 
 ```
 
-我们可以向下滚动并添加一些验证，我们只是从 process_stake 和 process_redeem 函数中复制/粘贴：
+我们可以向下滚动并添加一些验证，我们只是从 `process_stake` 和 `process_redeem` 函数中复制/粘贴：
 
 ```rust
 let (delegated_auth_pda, delegate_bump) =
@@ -327,7 +327,7 @@ if *stake_authority.key != stake_auth_pda {
 
 好的，所以这是相当新的，我们要“解冻”NFT代币账户。如果你还记得，我们之前冻结了它，现在我们要解冻它。
 
-这段代码与上面的冻结代码完全相反，我们只需要更改辅助函数并使用 thaw_delegated_account 。
+这段代码与上面的冻结代码完全相反，我们只需要更改辅助函数并使用 `thaw_delegated_account` 。
 
 ```rust
 msg!("thawing NFT token account");
@@ -350,7 +350,7 @@ invoke_signed(
 )?;
 ```
 
-接下来，我们需要撤销委托权限。这与批准委托类似，但并非完全相同。我们可以移除 program_authority 字段，因为它不是必需的，并且从批准助手函数中移除 amount 。
+接下来，我们需要撤销委托权限。这与批准委托类似，但并非完全相同。我们可以移除 `program_authority` 字段，因为它不是必需的，并且从批准助手函数中移除 `amount` 。
 
 ```rust
 msg!("Revoke delegation");
@@ -369,7 +369,7 @@ invoke(
 )?;
 ```
 
-最后，我们将从赎回函数中复制 invoke_signed ，粘贴到 redeem_amount 下面。
+最后，我们将从赎回函数中复制 `invoke_signed` ，粘贴到 `redeem_amount` 下面。
 
 ```rust
 invoke_signed(
@@ -391,9 +391,9 @@ invoke_signed(
     )?;
 ```
 
-哦，还有一件事，我们实际上没有设置 redeem_amount ，之前只是用了 unix_time 。所以，改成 100 * unit_time ，我们以后可以调整。确保在上述两个函数中都进行更改。
+哦，还有一件事，我们实际上没有设置 `redeem_amount` ，之前只是用了 `unix_time` 。所以，改成 `100 * unit_time` ，我们以后可以调整。确保在上述两个函数中都进行更改。
 
-这里应该就是了，回到客户端的文件上，添加所有的账户。向下滚动到 createUnstakeInstruction ，将以下内容作为参数添加进去。
+这里应该就是了，回到客户端的文件上，添加所有的账户。向下滚动到 `createUnstakeInstruction` ，将以下内容作为参数添加进去。
 
 ```
 nftMint: PublicKey,
@@ -406,7 +406,7 @@ metadataProgram: PublicKey,
 
 再次，有一些是自动派生的，所以我们不需要手动添加。
 
-接下来我们推导出 delegateAuthority 和 mintAuth ，这与上面的代码完全相同。
+接下来我们推导出 `delegateAuthority` 和 `mintAuth` ，这与上面的代码完全相同。
 
 ```ts
 const [delegateAuthority] = PublicKey.findProgramAddressSync(
@@ -482,16 +482,16 @@ const [mintAuth] = PublicKey.findProgramAddressSync(
 
 ## 测试我们的功能
 
-好的，好的，我知道你能感受到，我们快要接近了...让我们最终回到 index.ts 文件中，调用并测试所有的函数。对于 testRedeem 函数，我们需要代币的铸币地址和用户的代币账户，以及 createUnstakeInstruction 。
+好的，好的，我知道你能感受到，我们快要接近了...让我们最终回到 `index.ts` 文件中，调用并测试所有的函数。对于 `testRedeem` 函数，我们需要代币的铸币地址和用户的代币账户，以及 `createUnstakeInstruction` 。
 
-首先，我们将以下内容添加到 testRedeem 函数的参数中。
+首先，我们将以下内容添加到 `testRedeem` 函数的参数中。
 
 ```ts
 stakeMint: web3.PublicKey,
 userStakeATA: web3.PublicKey
 ```
 
-然后我们将它们添加到下方的 createRedeemInstruction 中。
+然后我们将它们添加到下方的 `createRedeemInstruction` 中。
 
 ```
 stakeMint,
@@ -500,9 +500,9 @@ TOKEN_PROGRAM_ID,
 PROGRAM_ID
 ```
 
-对 testUnstaking 函数进行与上述相同的添加。
+对 `testUnstaking` 函数进行与上述相同的添加。
 
-然后对于 createUnstakingInstruction ，添加以下内容。
+然后对于 `createUnstakingInstruction` ，添加以下内容。
 
 ```
 nft.mintAddress,
@@ -513,9 +513,9 @@ TOKEN_PROGRAM_ID,
 METADATA_PROGRAM_ID,
 ```
 
-现在向下滚动到 main() 函数的调用位置，你会注意到 testRedeem 和 testUnstaking 都是红色的，因为它们需要传入更多的信息。
+现在向下滚动到 `main()` 函数的调用位置，你会注意到 `testRedeem` 和 `testUnstaking` 都是红色的，因为它们需要传入更多的信息。
 
-首先，我们需要声明 stakeMint ，目前我们将硬编码，以及 userStakeATA ，它调用一个函数，如果ATA还不存在，就会创建它。
+首先，我们需要声明 `stakeMint` ，目前我们将硬编码，以及 `userStakeATA` ，它调用一个函数，如果ATA还不存在，就会创建它。
 
 ```ts
 const stakeMint = new web3.PublicKey(
@@ -540,22 +540,22 @@ await testRedeem(connection, user, nft, stakeMint, userStakeATA.address)
  ## 前端编辑以测试功能
 
 
- 我们暂时要切换到前端Buildoors项目中的 index.ts 文件（//tokens/bld/index.ts）。在这里，我们使用 createBldToken 函数创建BLD令牌。
+ 我们暂时要切换到前端Buildoors项目中的 `index.ts` 文件（`//tokens/bld/index.ts`）。在这里，我们使用 `createBldToken` 函数创建`BLD`令牌。
 
- 在该函数内部，我们称 token.CreateMint 第三个参数为铸币授权，它控制着铸币过程。起初，这是一个 payer.publicKey 用于初始调用。很快，我们将会更改铸币授权。
+ 在该函数内部，我们称 `token.CreateMint` 第三个参数为铸币授权，它控制着铸币过程。起初，这是一个 `payer.publicKey` 用于初始调用。很快，我们将会更改铸币授权。
 
  首先，我们向createBldToken函数添加一个参数。
 
  `programId: web3.PublicKey`
 
- 然后向下滚动到主函数中的调用位置，并为 await createBldToken 调用添加第三个参数。
+ 然后向下滚动到主函数中的调用位置，并为 `await createBldToken` 调用添加第三个参数。
 
  `new web3.PublicKey("USE YOUR PROGRAM ID")`
 
 
  如果您找不到您的程序ID，您可以重新部署，控制台将显示您所需的程序ID。
 
- 向上滚动，超过 const tokenMint ，收回 mintAuth 。您可以在锚定NFT质押计划中找到以下内容的授权。
+ 向上滚动，超过 `const tokenMint` ，收回 `mintAuth` 。您可以在锚定NFT质押计划中找到以下内容的授权。
 
  ```ts
  const [mintAuth] = await web3.PublicKey.findProgramAddress(
@@ -564,7 +564,7 @@ await testRedeem(connection, user, nft, stakeMint, userStakeATA.address)
    )
    ```
 
-滚动回到下面，在 transactionSignature 创建后，我们将设置新的铸币权限。（这是我们上面提到的更改）
+滚动回到下面，在 `transactionSignature` 创建后，我们将设置新的铸币权限。（这是我们上面提到的更改）
 
 ```ts
 await token.setAuthority(
@@ -577,7 +577,7 @@ await token.setAuthority(
   )
 ```
 
-现在，我们可以使用新的身份验证重新创建BLD令牌，并将其添加到上面的 stakeMint 中。
+现在，我们可以使用新的身份验证重新创建`BLD`令牌，并将其添加到上面的 `stakeMint` 中。
 
 ```ts
 const stakeMint = new web3.PublicKey(
@@ -587,7 +587,7 @@ const stakeMint = new web3.PublicKey(
 
 ## 最后，把它全部测试一下
 
-所以，切换到主目录并运行 npm run create-bld-token 。确保你已经设置为devnet。
+所以，切换到主目录并运行 `npm run create-bld-token` 。确保你已经设置为`devnet`。
 
 检查你的构建脚本，应该是：
 
@@ -603,6 +603,6 @@ const stakeMint = new web3.PublicKey(
   )
 ```
 
-现在应该已经设置好并正常工作了，请返回到ts目录，并使用npm run start进行全面测试。如果一切正常，您的控制台应该确认初始化、质押、赎回和解质押。
+现在应该已经设置好并正常工作了，请返回到ts目录，并使用`npm run start`进行全面测试。如果一切正常，您的控制台应该确认初始化、质押、赎回和解质押。
 
 这真的是很多东西。深呼吸，你正在努力奋斗。这非常具有挑战性，回头再看一遍，复习一下，再做一遍，不管需要多少努力——如果你能掌握这些内容，你就将成为一名优秀的Solana开发者。
