@@ -34,7 +34,7 @@ pub mod movie_review {
 
 ## 🎥 MovieAccountState
 
-我们首先要做的是定义国家账户。
+我们首先要做的是定义State账户。
 
 ```rust
 use anchor_lang::prelude::*;
@@ -58,16 +58,16 @@ pub struct MovieAccountState {
 
 每个电影评论账户将存储：
 
-- reviewer - 用户创建评论
-- rating - 电影评分
-- title - 电影标题
-- description - 评论的内容
+- `reviewer` - 用户创建评论
+- `rating` - 电影评分
+- `title` - 电影标题
+- `description` - 评论的内容
 
 到目前为止非常简单明了！
 
 ## 🎬 添加电影评论
 
-感谢 Anchor，可以跳过所有验证和安全性，直接添加 add_move_review 功能：
+感谢 Anchor，可以跳过所有验证和安全性，直接添加 `add_move_review` 功能：
 
 ```rust
 #[program]
@@ -99,7 +99,7 @@ pub mod movie_review{
 
 这一切应该都很熟悉——这是我们构建的本地电影评论程序的简洁版本。
 
-让我们为此添加 Context ：
+让我们为此添加 `Context` ：
 
 ```rust
 #[program]
@@ -136,7 +136,7 @@ pub struct AddMovieReview<'info> {
 - initializer.key() - 创建电影评论的 initializer 的公钥
 
 
-我们也正在根据 space 账户类型的结构，将资金分配到新账户中。
+我们也正在根据 `space` 账户类型的结构，将资金分配到新账户中。
 
 ## 🎞 更新电影评论
 
@@ -172,7 +172,7 @@ pub mod movie_review {
 ...
 ```
 
-数据参数与 add_movie_review 相同。这里改变的主要是我们传入的 Context 。让我们来定义它：
+数据参数与 `add_movie_review` 相同。这里改变的主要是我们传入的 `Context` 。让我们来定义它：
 
 ```rust
 #[program]
@@ -202,15 +202,15 @@ pub struct UpdateMovieReview<'info> {
 ...
 ```
 
-我们使用 seeds 和 bump 约束来验证 movie_review 账户。由于占用的空间可能会发生变化，我们使用 realloc 约束让Anchor根据更新的描述长度来处理账户空间和租金的重新分配。
+我们使用 `seeds` 和 `bump` 约束来验证 `movie_review` 账户。由于占用的空间可能会发生变化，我们使用 `realloc` 约束让Anchor根据更新的描述长度来处理账户空间和租金的重新分配。
 
-realloc::payer 约束规定了所需的额外lamports将来自或发送到初始化账户。
+`realloc::payer` 约束规定了所需的额外`lamports`将来自或发送到初始化账户。
 
-realloc::zero 约束被设置为 true ，因为 movie_review 账户可能会多次更新，无论是缩小还是扩大分配给该账户的空间。
+`realloc::zero` 约束被设置为 `true` ，因为 `movie_review` 账户可能会多次更新，无论是缩小还是扩大分配给该账户的空间。
 
 ## ❌ 电影评论关闭
 
-这里的最后一部分是实现 close 指令来关闭一个已存在的 movie_review 账户。我们只需要一个 Context 类型的 Close ，不需要任何数据！
+这里的最后一部分是实现 `close` 指令来关闭一个已存在的 `movie_review` 账户。我们只需要一个 `Context` 类型的 `Close` ，不需要任何数据！
 
 ```rust
 #[program]
@@ -248,9 +248,9 @@ pub struct Close<'info> {
 
 ...
 ```
-我们使用 close 约束来指定我们正在关闭 movie_review 账户，并且租金应退还到 reviewer 账户。
+我们使用 `close` 约束来指定我们正在关闭 `movie_review` 账户，并且租金应退还到 `reviewer` 账户。
 
-has_one 约束用于限制关闭账户 - reviewer 账户必须与电影评论账户上的 reviewer 匹配。
+`has_one` 约束用于限制关闭账户 - `reviewer` 账户必须与电影评论账户上的 `reviewer` 匹配。
 
 我们都完成了！试一下，它会像旧的本地电影评论程序一样运行。如果出现问题，你可以与[这里](https://beta.solpg.io/631b39c677ea7f12846aee8c?utm_source=buildspace.so&utm_medium=buildspace_project)的解决方案代码进行比较 :)
 
@@ -258,10 +258,10 @@ has_one 约束用于限制关闭账户 - reviewer 账户必须与电影评论账
 
 现在轮到你独立构建一些东西了。由于我们从非常简单的程序开始，你的程序将几乎与我们刚刚创建的程序完全相同。尽量达到能够独立编写代码而不参考之前的代码的程度，所以请尽量不要在这里复制粘贴。
 
-- 编写一个新程序，初始化一个 counter 账户，并使用传入指令数据参数设置 count 字段
-- 执行 initialize ， increment 和 decrement 指令
+- 编写一个新程序，初始化一个 `counter` 账户，并使用传入指令数据参数设置 `count` 字段
+- 执行 `initialize` ， `increment` 和 `decrement` 指令
 - 按照我们在演示中所做的，为每个指令编写测试
-- 使用 anchor deploy 来部署你的程序。如果你愿意，可以像之前一样编写一个脚本来发送交易到你新部署的程序，然后使用Solana Explorer查看程序日志。
+- 使用 `anchor deploy` 来部署你的程序。如果你愿意，可以像之前一样编写一个脚本来发送交易到你新部署的程序，然后使用Solana Explorer查看程序日志。
 
 像往常一样，对这些挑战充满创意，超越基本指示，如果你愿意的话，尽情享受吧！
 

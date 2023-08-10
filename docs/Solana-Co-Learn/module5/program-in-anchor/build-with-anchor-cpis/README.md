@@ -21,7 +21,7 @@ sidebar_class_name: green
 - 起始代码：[https://beta.solpg.io/63184c17bb7e0b5f4ca6dfa5](https://beta.solpg.io/63184c17bb7e0b5f4ca6dfa5?utm_source=buildspace.so&utm_medium=buildspace_project)
 - 我们将在之前的PDA演示基础上进行扩展
 
-我们要做的第一件事是定义 create_reward_mint 指令：
+我们要做的第一件事是定义 `create_reward_mint` 指令：
 
 ```rust
 pub fn create_reward_mint(
@@ -72,9 +72,9 @@ pub fn create_reward_mint(
     }
 ```
 
-这个很长但非常简单！我们正在为Token元数据程序创建一个CPI到 create_metadata_account_v2 指令。
+这个很长但非常简单！我们正在为`Token`元数据程序创建一个CPI到 `create_metadata_account_v2` 指令。
 
-接下来，我们看到了 CreateTokenReward 上下文类型。
+接下来，我们看到了 `CreateTokenReward` 上下文类型。
 
 关于 /// [CHECK](https://book.anchor-lang.com/anchor_in_depth/the_accounts_struct.html#safety-checks?utm_source=buildspace.so&utm_medium=buildspace_project): 的详细信息在这里：安全检查。
 
@@ -119,11 +119,11 @@ pub enum ErrorCode {
 }
 ```
 
-## 更新 add_movie_review
+## 更新 `add_movie_review`
 
-- 添加 ErrorCode 检查
+- 添加 `ErrorCode` 检查
 - 设置评论计数器账户
-- CPI给 mintTo 指令，将代币铸造给审核者
+- `CPI`给 `mintTo` 指令，将代币铸造给审核者
 
 ```rust
 ub fn add_movie_review(
@@ -173,11 +173,11 @@ ub fn add_movie_review(
     }
 ```
 
-## 更新 AddMovieReview 上下文
+## 更新 `AddMovieReview` 上下文
 
-- 初始化 movie_review
-- 初始化 movie_comment_counter
-- 使用 init_if_needed 来初始化令牌账户
+- 初始化 `movie_review`
+- 初始化 `movie_comment_counter`
+- 使用 `init_if_needed` 来初始化令牌账户
 
 ```rust
 #[derive(Accounts)]
@@ -220,9 +220,9 @@ pub struct AddMovieReview<'info> {
 }
 ```
 
-## 将 ErrorCode 添加到 update_movie_review 中
+## 将 `ErrorCode` 添加到 `update_movie_review` 中
 
-- 添加 ErrorCode 检查到 update_movie_review 指令
+- 添加 `ErrorCode` 检查到 `update_movie_review` 指令
 
 ```rust
 pub fn update_movie_review(
@@ -249,52 +249,52 @@ pub fn update_movie_review(
     }
     ```
 
-    ### 添加** add_comment
+### 添加 `add_comment`
 
-    - Create add_comment instruction
-    - 设置 movie_comment 数据
-    - CPI给 mintTo 指令，将代币铸造给审核者
+- Create `add_comment instruction`
+- 设置 `movie_comment` 数据
+- CPI给 `mintTo` 指令，将代币铸造给审核者
 
-    ```rust
-    pub fn add_comment(ctx: Context<AddComment>, comment: String) -> Result<()> {
-            msg!("Comment Account Created");
-            msg!("Comment: {}", comment);
+```rust
+pub fn add_comment(ctx: Context<AddComment>, comment: String) -> Result<()> {
+        msg!("Comment Account Created");
+        msg!("Comment: {}", comment);
 
-            let movie_comment = &mut ctx.accounts.movie_comment;
-            let movie_comment_counter = &mut ctx.accounts.movie_comment_counter;
+        let movie_comment = &mut ctx.accounts.movie_comment;
+        let movie_comment_counter = &mut ctx.accounts.movie_comment_counter;
 
-            movie_comment.review = ctx.accounts.movie_review.key();
-            movie_comment.commenter = ctx.accounts.initializer.key();
-            movie_comment.comment = comment;
-            movie_comment.count = movie_comment_counter.counter;
+        movie_comment.review = ctx.accounts.movie_review.key();
+        movie_comment.commenter = ctx.accounts.initializer.key();
+        movie_comment.comment = comment;
+        movie_comment.count = movie_comment_counter.counter;
 
-            movie_comment_counter.counter += 1;
+        movie_comment_counter.counter += 1;
 
-            let seeds = &["mint".as_bytes(), &[*ctx.bumps.get("reward_mint").unwrap()]];
+        let seeds = &["mint".as_bytes(), &[*ctx.bumps.get("reward_mint").unwrap()]];
 
-            let signer = [&seeds[..]];
+        let signer = [&seeds[..]];
 
-            let cpi_ctx = CpiContext::new_with_signer(
-                ctx.accounts.token_program.to_account_info(),
-                token::MintTo {
-                    mint: ctx.accounts.reward_mint.to_account_info(),
-                    to: ctx.accounts.token_account.to_account_info(),
-                    authority: ctx.accounts.reward_mint.to_account_info(),
-                },
-                &signer,
-            );
+        let cpi_ctx = CpiContext::new_with_signer(
+            ctx.accounts.token_program.to_account_info(),
+            token::MintTo {
+                mint: ctx.accounts.reward_mint.to_account_info(),
+                to: ctx.accounts.token_account.to_account_info(),
+                authority: ctx.accounts.reward_mint.to_account_info(),
+            },
+            &signer,
+        );
 
-            token::mint_to(cpi_ctx, 5000000)?;
-            msg!("Minted Tokens");
+        token::mint_to(cpi_ctx, 5000000)?;
+        msg!("Minted Tokens");
 
-            Ok(())
-        }
-        ```
+        Ok(())
+    }
+```
 
-### 添加 AddComment 上下文
+### 添加 `AddComment` 上下文
 
-- 初始化 movie_comment
-- 使用 init_if_needed 来初始化令牌账户
+- 初始化 `movie_comment`
+- 使用 `init_if_needed` 来初始化令牌账户
 
 ```rust
 #[derive(Accounts)]
@@ -338,12 +338,11 @@ pub struct AddComment<'info> {
 
 ## 构建，部署，测试
 
-Solution: [ttps://beta.solpg.io/6319c7bf77ea7f12846aee87](
-Solution: [)
+Solution: [https://beta.solpg.io/6319c7bf77ea7f12846aee87](https://beta.solpg.io/6319c7bf77ea7f12846aee87)
 
-如果您使用自己的编辑器，您必须在 mpl-token-metadata 的 Cargo.toml 中添加 features = ["no-entrypoint"] 。
+如果您使用自己的编辑器，您必须在 `mpl-token-metadata` 的 `Cargo.toml` 中添加 `features = ["no-entrypoint"]` 。
 
-否则，将会出现以下错误： the #[global_allocator] in this crate conflicts with global allocator in: mpl_token_metadata 。
+否则，将会出现以下错误： the `#[global_allocator] in this crate conflicts with global allocator in: mpl_token_metadata` 。
 
 
 - 构建和部署

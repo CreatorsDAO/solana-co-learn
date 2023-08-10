@@ -7,15 +7,15 @@ sidebar_class_name: green
 
 # 🔀 Anchor的CPIs
 
-现在我们可以通过添加CPI来提升等级。
+现在我们可以通过添加`CPI`来提升等级。
 
-回想一下，CPI是使用 invoke 和 invoke_signed 制作的。
+回想一下，`CPI`是使用 `invoke` 和 `invoke_signed` 制作的。
 
-Anchor还提供了一种制作CPI的格式。使用这种格式需要访问所调用程序的CPI模块。常见的程序有一个你可以使用的包，例如 anchor_spl 用于令牌程序。否则，你将需要使用所调用程序的源代码或已发布的IDL来生成CPI模块。
+Anchor还提供了一种制作`CPI`的格式。使用这种格式需要访问所调用程序的`CPI`模块。常见的程序有一个你可以使用的包，例如 `anchor_spl` 用于令牌程序。否则，你将需要使用所调用程序的源代码或已发布的`IDL`来生成`CPI`模块。
 
-如果没有可用的CPI模块，您仍然可以直接在指令中使用 invoke 和 invoke_signed 。就像锚定指令需要 Context 类型一样，锚定CPI使用 CpiContext 。
+如果没有可用的CPI模块，您仍然可以直接在指令中使用 `invoke` 和 `invoke_signed` 。就像锚定指令需要 `Context` 类型一样，锚定CPI使用 `CpiContext` 。
 
-CpiContext提供了指令所需的所有账户和种子。当没有PDA签名者时，使用CpiContext::new。
+`CpiContext`提供了指令所需的所有账户和种子。当没有PDA签名者时，使用`CpiContext::new`。
 
 ```rust
 CpiContext::new(cpi_program, cpi_accounts)
@@ -27,10 +27,10 @@ CpiContext::new(cpi_program, cpi_accounts)
 CpiContext::new_with_signer(cpi_program, cpi_accounts, seeds)
 ```
 
-- accounts - 账户列表
-- remaining_accounts - 如果有的话
-- program - 程序正在调用CPI
-- signer_seeds - 如果需要使用PDA签署CPI
+- `accounts` - 账户列表
+- `remaining_accounts` - 如果有的话
+- `program` - 程序正在调用`CPI`
+- `signer_seeds` - 如果需要使用`PDA`签署`CPI`
 
 ```rust
 pub struct CpiContext<'a, 'b, 'c, 'info, T>
@@ -44,7 +44,7 @@ where
 }
 ```
 
-当不需要 signer_seeds 时使用 CpiContext::new （不使用PDA签名）。
+当不需要 `signer_seeds` 时使用 `CpiContext::new` （不使用PDA签名）。
 
 ```rust
 pub fn new(
@@ -60,7 +60,7 @@ pub fn new(
     }
 ```
 
-CpiContext::new_with_signer 用于种子在PDA上签名。
+`CpiContext::new_with_signer` 用于种子在`PDA`上签名。
 
 ```rust
 pub fn new_with_signer(
@@ -77,11 +77,11 @@ pub fn new_with_signer(
     }
 ```
 
-anchor_spl 包含一个 token 模块，用于简化创建CPI到令牌程序的过程。
+`anchor_spl` 包含一个 `token` 模块，用于简化创建`CPI`到令牌程序的过程。
 
-Structs 这是每个相应的令牌程序指令所需的账户列表。Functions 这是每个相应指令的CPI。
+`Structs` 这是每个相应的令牌程序指令所需的账户列表。`Functions` 这是每个相应指令的CPI。
 
-例如，这里MintTo是所需的账户：
+例如，这里`MintTo`是所需的账户：
 
 ```rust
 #[derive(Accounts)]
@@ -94,7 +94,7 @@ pub struct MintTo<'info> {
 
 让我们也来看看`mint_to`引擎的内部。
 
-它使用 CpiContext 来构建一个CPI到 mint_to 指令。它使用 invoke_signed 来制作CPI。
+它使用 `CpiContext` 来构建一个`CPI`到 `mint_to` 指令。它使用 `invoke_signed` 来制作CPI。
 
 ```rust
 pub fn mint_to<'a, 'b, 'c, 'info>(
@@ -124,7 +124,7 @@ pub fn mint_to<'a, 'b, 'c, 'info>(
 
 例如：
 
-- mint_to CPI
+- `mint_to CPI`
 
 ```rust
 let auth_bump = *ctx.bumps.get("mint_authority").unwrap();
@@ -174,7 +174,7 @@ token::mint_to(
 - anchor框架从其自身代码内部返回的内部错误
 - 用户（你！）可以返回的自定义错误
 
-AnchorErrors提供了各种信息，例如：
+`AnchorErrors`提供了各种信息，例如：
 
 - 错误名称和编号
 - 代码中抛出锚的位置
@@ -186,9 +186,9 @@ Anchor有许多不同的内部错误代码。这些代码不是为用户使用�
 
 自定义错误代码编号从自定义错误偏移量开始。
 
-您可以使用 error_code 属性为您的程序添加独特的错误。只需将其添加到一个您选择的枚举中即可。然后，您可以将枚举的变体用作程序中的错误。
+您可以使用 `error_code` 属性为您的程序添加独特的错误。只需将其添加到一个您选择的枚举中即可。然后，您可以将枚举的变体用作程序中的错误。
 
-此外，您可以使用 msg 为各个变体添加消息。如果发生错误，客户端将显示此错误消息。要实际抛出错误，请使用 err! 或 error! 宏。这些宏会将文件和行信息添加到错误中，然后由anchor记录。
+此外，您可以使用 msg 为各个变体添加消息。如果发生错误，客户端将显示此错误消息。要实际抛出错误，请使用 `err!` 或 `error!` 宏。这些宏会将文件和行信息添加到错误中，然后由`anchor`记录。
 
 ```rust
 #[program]
@@ -210,7 +210,7 @@ pub enum MyError {
 }
 ```
 
-您可以使用 require 宏来简化编写错误。上面的代码可以简化为这样（请注意 >= 翻转为 < ）。
+您可以使用 `require` 宏来简化编写错误。上面的代码可以简化为这样（请注意 `>=` 翻转为 `<` ）。
 
 ```rust
 #[program]
@@ -230,14 +230,14 @@ pub enum MyError {
 }
 ```
 
-### constraint 约束
+### `constraint` 约束
 
 如果账户不存在，则初始化一个账户。如果账户已存在，则仍需检查其他限制条件。
 
-如果您使用自己的编辑器，您必须在 anchor-lang 的 Cargo.toml 中添加 features = ["init-if-needed"] 。
+如果您使用自己的编辑器，您必须在 `anchor-lang` 的 `Cargo.toml` 中添加 `features = ["init-if-needed"]` 。
 
 
-e.g. anchor-lang = {version = "0.26.0", features = ["init-if-needed"]} .
+e.g. `anchor-lang = {version = "0.26.0", features = ["init-if-needed"]}` .
 
 例如，一个关联的令牌账户：
 
@@ -269,7 +269,7 @@ pub struct Initialize<'info> {
 }
 ```
 
-这是 init_if_needed 生成的代码（来自 anchor expand 命令的代码片段）：
+这是 `init_if_needed` 生成的代码（来自 `anchor expand` 命令的代码片段）：
 
 ```rust
 let token_account: anchor_lang::accounts::account::Account<TokenAccount> = {

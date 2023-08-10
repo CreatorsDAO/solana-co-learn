@@ -44,7 +44,7 @@ anchor init <new-workspace-name>
 
 你现在可以基本上忽略这些。打开 `programs/workspace-name/src/lib.rs` 。这看起来与我们的本地程序略有不同。Anchor将为我们定义入口点，并且我们将使用Rust属性告诉Anchor我们的所有内容，以便它可以自动化我们的大部分工作。
 
-当我们使用 #[program] 时，实际上是声明了一个Rust宏，Anchor将使用它为我们生成所有必要的本地Solana样板代码。
+当我们使用 `#[program]` 时，实际上是声明了一个Rust宏，Anchor将使用它为我们生成所有必要的本地Solana样板代码。
 
 Anchor CLI的美妙之处在于它还集成了TypeScript测试。只需编写测试并使用Anchor命令即可！
 
