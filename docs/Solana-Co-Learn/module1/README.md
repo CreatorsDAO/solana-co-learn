@@ -8,6 +8,11 @@ sidebar_class_name: green
 
 ## 本地开发环境配置以及hello world合约
 
+- [本地开发环境配置](./local_program_development/local_program_development.md)
+- [Native Hello World合约](./local_program_development/native_program_hello.md)
+- [Anchor Hello World合约](./local_program_development/anchor_program_hello.md)
+- [Solidity Hello World合约](./local_program_development/solang_program_hello.md)
+
 ## 客户端开发
 
 - 📹使用Gage在Solana上读取和写入数据
