@@ -108,7 +108,7 @@ export class AnchorProvider implements Provider {
 
 > Note that the `Wallet` object provided by the `useWallet` hook from `@solana/wallet-adapter-react` is not compatible with the `Wallet` object that the Anchor `Provider` expects.
 
-请注意，由 Wallet 钩子提供的对象与Anchor Provider 期望的 Wallet 对象不兼容。
+请注意，由 Wallet 钩子提供的对象与`Anchor Provider` 期望的 Wallet 对象不兼容。
 
 那么，让我们来比较一下来自`useAnchorWallet`的`AnchorWallet`和来自`useWallet`的`WalletContextState`。
 

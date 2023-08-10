@@ -247,13 +247,13 @@ pub fn update_movie_review(
 
         Ok(())
     }
-    ```
+```
 
 ### 添加 `add_comment`
 
-- Create `add_comment instruction`
+- `Create add_comment instruction`
 - 设置 `movie_comment` 数据
-- CPI给 `mintTo` 指令，将代币铸造给审核者
+- `CPI`给 `mintTo` 指令，将代币铸造给审核者
 
 ```rust
 pub fn add_comment(ctx: Context<AddComment>, comment: String) -> Result<()> {

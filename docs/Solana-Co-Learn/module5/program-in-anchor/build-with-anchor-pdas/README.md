@@ -130,10 +130,10 @@ pub struct AddMovieReview<'info> {
 
 再次，我们正在以与本地相同的方式进行操作，但借助Anchor的魔力。
 
-我们正在使用两个 seeds 初始化一个新的 movie_review 账户
+我们正在使用两个 seeds 初始化一个新的 `movie_review` 账户
 
-- title - 指令数据中的电影标题
-- initializer.key() - 创建电影评论的 initializer 的公钥
+- `title` - 指令数据中的电影标题
+- `initializer.key()` - 创建电影评论的 `initializer` 的公钥
 
 
 我们也正在根据 `space` 账户类型的结构，将资金分配到新账户中。

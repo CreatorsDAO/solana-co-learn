@@ -16,9 +16,9 @@ sidebar_class_name: green
 
 让我们来完成这个任务并检查已发货的产品。我们将完善我们一直在努力开发的质押计划，但不是添加新功能，而是将其全部替换为Anchor。
 
-让我们通过运行 anchor init anchor-nft-staking 来创建一个新项目，或者选择一个你自己的名字。进入 Anchor.toml 文件，并将种子设置为 true ，集群设置为 devnet 。
+让我们通过运行 `anchor init anchor-nft-staking` 来创建一个新项目，或者选择一个你自己的名字。进入 `Anchor.toml` 文件，并将种子设置为 `true` ，集群设置为 `devnet` 。
 
-然后跳转到 /programs/anchor-nft-staking/Cargo.toml ，添加以下依赖项。
+然后跳转到 `/programs/anchor-nft-staking/Cargo.toml` ，添加以下依赖项。
 
 ```toml
 anchor-lang = { version="0.25.0", features = ["init-if-needed"] }
@@ -26,7 +26,7 @@ anchor-spl = "0.25.0"
 mpl-token-metadata = { version="1.4.1", features=["no-entrypoint"] }
 ```
 
-好的，打开 lib.rs 文件，让我们构建基本的脚手架。
+好的，打开 `lib.rs` 文件，让我们构建基本的脚手架。
 
 让我们添加以下导入，随着我们的进行，每个导入的必要性将变得清晰明了。
 
@@ -43,15 +43,15 @@ use mpl_token_metadata::{
 };
 ```
 
-让我们将默认函数的名称更改为 stake ，并将其相关上下文更改为类型 Stake 。
+让我们将默认函数的名称更改为 `stake` ，并将其相关上下文更改为类型 `Stake` 。
 
-然后添加一个名为 redeem 的函数，其上下文类型为 Redeem 。
+然后添加一个名为 `redeem` 的函数，其上下文类型为 `Redeem` 。
 
-最后，对于 unstake ，使用 Unstake 的上下文类型进行相同操作。
+最后，对于 `unstake` ，使用 `Unstake` 的上下文类型进行相同操作。
 
-这些是我们要构建的项目，我们首先要处理的是Stake的结构。
+这些是我们要构建的项目，我们首先要处理的是`Stake`的结构。
 
-我们需要一个PDA来存储UserStakeInfo，并且需要一个StakeState枚举来表示PDA的其中一个字段。
+我们需要一个`PDA`来存储`UserStakeInfo`，并且需要一个`StakeState`枚举来表示`PDA`的其中一个字段。
 
 ```rust
 #[account]
@@ -71,9 +71,9 @@ pub enum StakeState {
 }
 ```
 
-我们还可以为StakeState添加一个默认值，将其设置为未抵押。
+我们还可以为`StakeState`添加一个默认值，将其设置为未抵押。
 
-我们将使用元数据程序。由于这是相对较新的，锚定程序中没有相应的类型。为了像我们的其他程序（例如系统程序、令牌程序等）一样使用它，我们将为其创建一个结构体，并添加一个名为 id 的实现，返回一个 Pubkey ，它是 MetadataTokenId 。
+我们将使用元数据程序。由于这是相对较新的，锚定程序中没有相应的类型。为了像我们的其他程序（例如系统程序、令牌程序等）一样使用它，我们将为其创建一个结构体，并添加一个名为 `id` 的实现，返回一个 `Pubkey` ，它是 `MetadataTokenId` 。
 
 
 ```rust
@@ -89,9 +89,9 @@ impl anchor_lang::Id for Metadata {
 
 好的，我们现在可以开始处理质押部分了。下面是结构体需要的总共九个账户。需要注意的几个事项。
 
-你会注意到 nft_edition 是一个 Unchecked 账户，这是因为系统中还没有为这种类型的账户创建。所有未核对的账户都需要有一个备注，以便系统知道你将添加手动安全检查，你会在下面看到 CHECK: Manual validation 。
+你会注意到 `nft_edition` 是一个 `Unchecked` 账户，这是因为系统中还没有为这种类型的账户创建。所有未核对的账户都需要有一个备注，以便系统知道你将添加手动安全检查，你会在下面看到 `CHECK: Manual validation` 。
 
-作为提醒，每个账户上的属性是安全检查，以确保账户是正确类型并能执行特定功能。由于用户需要支付，并且 NFT 代币账户将进行更改，两者都具有 mut 属性。一些账户还需要种子，如下所示。
+作为提醒，每个账户上的属性是安全检查，以确保账户是正确类型并能执行特定功能。由于用户需要支付，并且 NFT 代币账户将进行更改，两者都具有 `mut` 属性。一些账户还需要种子，如下所示。
 
 所有其他没有任何属性的账户在Anchor中都有自己必需的安全检查，所以我们不需要添加任何属性。
 
@@ -127,9 +127,9 @@ pub struct Stake<'info> {
 }
 ```
 
-在我们继续之前，让我们运行 anchor build，这样我们的第一个构建就可以开始了。记住，这是我们的第一个构建，它将生成我们的程序ID。
+在我们继续之前，让我们运行 `anchor build`，这样我们的第一个构建就可以开始了。记住，这是我们的第一个构建，它将生成我们的程序ID。
 
-在运行的同时，在 tests 目录中创建一个名为 utils 的新文件夹。在其中创建一个名为 setupNft.ts 的文件。将下面的代码粘贴进去。
+在运行的同时，在 `tests` 目录中创建一个名为 `utils` 的新文件夹。在其中创建一个名为 `setupNft.ts` 的文件。将下面的代码粘贴进去。
 
 ```ts
 import {
@@ -194,9 +194,9 @@ export const setupNft = async (program, payer) => {
 
 ```
 
-下一次运行 npm install @metaplex-foundation/js 。
+下一次运行 `npm install @metaplex-foundation/js` 。
 
-然后跳转到 anchor-nft-staking.ts 目录中。这是Anchor创建的默认文件。
+然后跳转到 `anchor-nft-staking.ts` 目录中。这是Anchor创建的默认文件。
 
 将提供者的默认行更改为两部分，这样我们以后需要时就可以访问提供者。
 
@@ -211,9 +211,9 @@ anchor.setProvider(provider)
 const wallet = anchor.workspace.AnchorNftStaking.provider.wallet
 ```
 
-检查您的构建情况，如果已完成，请运行 anchor deploy ，如果失败，您可能需要向自己空投一些SOL。
+检查您的构建情况，如果已完成，请运行 `anchor deploy` ，如果失败，您可能需要向自己空投一些SOL。
 
-构建完成后，运行 anchor keys list 并获取程序ID，然后放入 lib.rs 和 Anchor.toml 文件中。如果构建需要一段时间，您可能需要回到这一步。
+构建完成后，运行 `anchor keys list` 并获取程序`ID`，然后放入 `lib.rs` 和 `Anchor.toml` 文件中。如果构建需要一段时间，您可能需要回到这一步。
 
 回到测试文件。
 
@@ -228,7 +228,7 @@ let mint: anchor.web3.PublicKey
 let tokenAddress: anchor.web3.PublicKey
 ```
 
-现在让我们添加一个 before 函数，在测试运行之前调用。你会注意到";"语法，它将解构返回值并设置所有这些值。
+现在让我们添加一个 `before` 函数，在测试运行之前调用。你会注意到"`;`"语法，它将解构返回值并设置所有这些值。
 
 ```ts
 before(async () => {
@@ -237,7 +237,7 @@ before(async () => {
   })
 ```
 
-跳转到默认测试，将其更改为 it("Stakes",  。首先，我们只是确保函数被调用。我们还没有构建出实际的股权函数，所以这里没有进行任何逻辑测试。
+跳转到默认测试，将其更改为 `it("Stakes"`,  。首先，我们只是确保函数被调用。我们还没有构建出实际的股权函数，所以这里没有进行任何逻辑测试。
 
 ```ts
 it("Stakes", async () => {
@@ -255,17 +255,17 @@ it("Stakes", async () => {
   })
 ```
 
-现在，运行 anchor test 。假设它通过了，这意味着我们通过了在Stake结构中创建的账户的验证。
+现在，运行 `anchor test` 。假设它通过了，这意味着我们通过了在`Stake`结构中创建的账户的验证。
 
 回到我们的逻辑，以下是抵押工作所需的逐步操作。我们需要获取时钟的访问权限，确保抵押状态已经初始化，并确保它尚未被抵押。
 
-在stake函数中，让我们首先获取时钟。
+在`stake`函数中，让我们首先获取时钟。
 
 ```rust
 let clock = Clock::get().unwrap();
 ```
 
-接下来，我们创建一个CPI来委托该程序作为冻结或解冻我们的NFT的权限。首先，我们设置CPI，然后确定我们要使用的账户，最后设置权限。
+接下来，我们创建一个`CPI`来委托该程序作为冻结或解冻我们的NFT的权限。首先，我们设置`CPI`，然后确定我们要使用的账户，最后设置权限。
 
 ```rust
 msg!("Approving delegate");
@@ -281,7 +281,7 @@ let cpi_approve_ctx = CpiContext::new(cpi_approve_program,cpi_approve_accounts);
 token::approve(cpi_approve_ctx, 1)?;
 ```
 
-接下来我们开始冻结代币。首先我们设置权限提升，然后调用invoke_signed函数，并传入所有必要的账户和账户信息数组，最后是种子和提升值。
+接下来我们开始冻结代币。首先我们设置权限提升，然后调用`invoke_signed`函数，并传入所有必要的账户和账户信息数组，最后是种子和提升值。
 
 ```rust
 msg!("Freezing token account");

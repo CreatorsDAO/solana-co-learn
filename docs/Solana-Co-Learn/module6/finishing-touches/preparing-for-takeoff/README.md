@@ -1,5 +1,5 @@
 ---
-sidebar_position: 106
+sidebar_position: 107
 sidebar_label:  🚀 准备起飞
 sidebar_class_name: green
 ---
@@ -8,7 +8,7 @@ sidebar_class_name: green
 
 好的，让我们开始吧。在深入逻辑`/components/Lootbox.tsx`之前，让我们先快速浏览一下布局。
 
-我们将一切都集中在一起，只需进行三个检查：是否有可用的战利品箱、是否有押注账户，以及总收益是否大于战利品箱。如果是，它会呈现一个带有各种选项的盒子；否则，它会提示继续押注。我们很快会看一下 handleRedeemLoot 或 handleOpenLootbox 。
+我们将一切都集中在一起，只需进行三个检查：是否有可用的战利品箱、是否有押注账户，以及总收益是否大于战利品箱。如果是，它会呈现一个带有各种选项的盒子；否则，它会提示继续押注。我们很快会看一下 `handleRedeemLoot` 或 `handleOpenLootbox` 。
 
 ```tsx
 return (
@@ -39,7 +39,7 @@ return (
   )
 ```
 
-在这个函数中，首先我们有大量的设置和状态。有一个useEffect来确保我们有一个公钥、一个战利品箱程序和一个质押程序，如果这些都存在，它调用 handleStateRefresh 。
+在这个函数中，首先我们有大量的设置和状态。有一个`useEffect`来确保我们有一个公钥、一个战利品箱程序和一个质押程序，如果这些都存在，它调用 `handleStateRefresh` 。
 
 ```tsx
 export const Lootbox = ({
@@ -79,7 +79,7 @@ const handleStateRefresh = async (
   }
 ```
 
- checkUserAccount 将获取用户状态PDA，如果存在，则调用 setUserAccountExist 并将其设置为true。
+ `checkUserAccount` 将获取用户状态`PDA`，如果存在，则调用 `setUserAccountExist` 并将其设置为`true`。
 
  ```tsx
  // check if UserState account exists
@@ -105,7 +105,7 @@ const handleStateRefresh = async (
 
 ```
 
-fetchLootboxPointer 基本上是获取战利品盒指针，设置可用的战利品盒和可兑换的货币。
+`fetchLootboxPointer` 基本上是获取战利品盒指针，设置可用的战利品盒和可兑换的货币。
 
 ```tsx
 const fetchLootboxPointer = async (
@@ -132,9 +132,7 @@ const fetchLootboxPointer = async (
   }
 ```
 
-回到两个主要的逻辑部分，一个是 handleOpenLootbox 。它首先检查我们是否拥有传递给函数所需的所有必要项目，然后调用 openLootbox 。
-
-
+回到两个主要的逻辑部分，一个是 `handleOpenLootbox` 。它首先检查我们是否拥有传递给函数所需的所有必要项目，然后调用 `openLootbox`。
 
 ```tsx
 const handleOpenLootbox: MouseEventHandler<HTMLButtonElement> = useCallback(
@@ -169,7 +167,7 @@ const handleOpenLootbox: MouseEventHandler<HTMLButtonElement> = useCallback(
   )
 ```
 
-openLootbox 从检查用户账户是否存在开始，如果不存在，则调用指令文件中的 createInitSwitchboardInstructions ，该文件会返回给我们指令和vrfKeypair。如果该账户不存在，我们尚未初始化交换机
+`openLootbox` 从检查用户账户是否存在开始，如果不存在，则调用指令文件中的 `createInitSwitchboardInstructions` ，该文件会返回给我们`指令`和`vrfKeypair`。如果该账户不存在，我们尚未初始化交换机
 
 ```tsx
 const openLootbox = async (
@@ -190,9 +188,7 @@ const openLootbox = async (
 
 ```
 
-然后我们创建一个新的交易，添加指令并调用我们创建的 sendAndConfirmTransaction 。它以一个对象作为vrfKeypair的签名者。
-
-
+然后我们创建一个新的交易，添加指令并调用我们创建的 `sendAndConfirmTransaction` 。它以一个对象作为`vrfKeypair`的签名者。
 
 ```tsx
 const transaction = new Transaction()
@@ -203,11 +199,12 @@ const transaction = new Transaction()
     }
 ```
 
+让我们跳出逻辑，看看 `sendAndConfirmTransaction` 。首先，我们设定我们正在加载 `setIsConfirmingTransaction(true)` 。
+
+然后我们调用发送交易，但我们传递了选项，这是可选的，因为我们并不总是需要它。这是我们如何发送`vrfKeypair`的签名者，但我们并不总是这样做。
 
 
-让我们跳出逻辑，看看 sendAndConfirmTransaction 。首先，我们设定我们正在加载 setIsConfirmingTransaction(true) 。
-
-一旦确认，我们使用 await Promise.all 在我们调用 handleStateRefresh 和 fetchUpstreamState 的地方。后者作为一个属性传入，基本上是在stake组件上的fetch状态函数。
+一旦确认，我们使用 `await Promise.all` 在我们调用 `handleStateRefresh` 和 `fetchUpstreamState` 的地方。后者作为一个属性传入，基本上是在`stake`组件上的`fetch`状态函数。
 
 ```tsx
 const sendAndConfirmTransaction = async (
@@ -248,7 +245,7 @@ const sendAndConfirmTransaction = async (
   }
 ```
 
-现在回到 handleOpenLootbox 的else语句，这是处理账户存在的逻辑。所以我们设置了打开战利品箱指令并发送它们。然后调用 sendAndConfirmTransaction 。一旦确认，该函数将把is confirming设置为false，然后我们再次将其设置为true。
+现在回到 `handleOpenLootbox` 的`else`语句，这是处理账户存在的逻辑。所以我们设置了打开战利品箱指令并发送它们。然后调用 `sendAndConfirmTransaction` 。一旦确认，该函数将把`is confirming`设置为`false`，然后我们再次将其设置为`true`。
 
 ```tsx
 ...
@@ -269,7 +266,7 @@ const sendAndConfirmTransaction = async (
         await sendAndConfirmTransaction(connection, walletAdapter, transaction)
         setIsConfirmingTransaction(true)
 ```
-最后，这是等待看到薄荷被存入战利品箱指针的逻辑，这样我们就可以兑换它。（这段代码只能偶尔工作，不要依赖它，如果可以的话请修复它）。
+最后，这是等待看到`mint`被存入战利品箱指针的逻辑，这样我们就可以兑换它。（这段代码只能偶尔工作，不要依赖它，如果可以的话请修复它）。
 
 ```tsx
     const [lootboxPointerPda] = PublicKey.findProgramAddressSync(
@@ -301,9 +298,7 @@ const sendAndConfirmTransaction = async (
     }
 ```
 
-快速跳转到 /pages/stake.tsx 。我们做一个小修改，如果有 nftData 和 nftTokenAccount ，则显示战利品箱，并传入赌注账户、NFT代币账户，并调用fetchstate，将铸币地址作为上游属性传递。
-
-
+快速跳转到 `/pages/stake.tsx` 。我们做一个小修改，如果有 `nftData` 和 `nftTokenAccount` ，则显示战利品箱，并传入赌注账户、NFT代币账户，并调用`fetchstate`，将`mint address`作为上游属性传递。
 
 ```ts
 <HStack>
@@ -319,7 +314,7 @@ const sendAndConfirmTransaction = async (
 </HStack>
 ```
 
-现在希望回顾一下 handleRedeemLoot ，这个过程更加简单明了。我们首先获取相关的令牌。然后使用我们的 retrieveItemFromLootbox 函数创建一个新的交易，然后发送并确认该交易。
+现在希望回顾一下 `handleRedeemLoot` ，这个过程更加简单明了。我们首先获取相关的令牌。然后使用我们的 `retrieveItemFromLootbox` 函数创建一个新的交易，然后发送并确认该交易。
 
 ```tsx
 onst handleRedeemLoot: MouseEventHandler<HTMLButtonElement> = useCallback(
@@ -354,9 +349,9 @@ onst handleRedeemLoot: MouseEventHandler<HTMLButtonElement> = useCallback(
   )
 ```
 
-那是很多的内容，我们跳来跳去的，所以如果你需要参考整个文件的代码，请看[这里](https://github.com/jamesrp13/buildspace-buildoors/blob/solution-lootboxes/components/Lootbox.tsx?utm_source=buildspace.so&utm_medium=buildspace_project)。
+那是很多的内容，我们跳来跳去的，所以如果你需要参考整个文件的代码，请看[这里](https://github.com/jamesrp13/buildspace-buildoors/blob/solution-lootboxes/components/Lootbox.tsx)。
 
-唉，让我们来看看 GearItem 组件。这个组件相对简单一些，也要短得多。
+唉，让我们来看看 `GearItem` 组件。这个组件相对简单一些，也要短得多。
 
 ```ts
 import { Center, Image, VStack, Text } from "@chakra-ui/react"
@@ -416,23 +411,19 @@ export const GearItem = ({
 
 布局与上一个相当相似，但现在我们展示一张图片，以齿轮代币上的元数据作为来源。在其下方，我们展示您拥有的每个齿轮代币的数量。
 
+关于逻辑，我们传入该项作为代表代币铸币的`base58`编码字符串，以及您拥有的数量。
 
+在`useEffect`中，我们创建了一个`metaplex`对象。我们将 `item` 的字符串转换为公钥。然后调用`metaplex`来通过`mint`查找物品。我们得到了`nft`，调用`nft`的`uri`上的`fetch`方法，这样我们就可以获取到链下的元数据。我们将该响应转换为`json`s，并将其设置为元数据，这样我们就可以在返回调用中显示一个图像属性。
 
-关于逻辑，我们传入该项作为代表代币铸币的base58编码字符串，以及您拥有的数量。
-
-在useEffect中，我们创建了一个metaplex对象。我们将 item 的字符串转换为公钥。然后调用metaplex来通过mint查找物品。我们得到了nft，调用nft的uri上的fetch方法，这样我们就可以获取到链下的元数据。我们将该响应转换为json，并将其设置为元数据，这样我们就可以在返回调用中显示一个图像属性。
-
-回到 stake.tsx 文件。首先，我们为齿轮平衡添加一行状态。
+回到 `stake.tsx` 文件。首先，我们为齿轮平衡添加一行状态。
 
 ```tsx
 const [gearBalances, setGearBalances] = useState<any>({})
 ```
 
-我们在fetchState内部调用它。
+我们在`fetchState`内部调用它。
 
-在获取状态中，我们将余额设置为空对象。然后循环遍历不同的齿轮选项，并获取与该铸币相关联的当前用户的ATA。这给了我们一个地址，我们用它来获取账户，并将特定齿轮铸币的余额设置为我们拥有的数字。在循环结束后，我们调用 setGearBalances(balances) 。
-
-
+在获取状态中，我们将余额设置为空对象。然后循环遍历不同的齿轮选项，并获取与该铸币相关联的当前用户的`ATA`。这给了我们一个地址，我们用它来获取账户，并将特定齿轮铸币的余额设置为我们拥有的数字。在循环结束后，我们调用 `setGearBalances(balances)` 。
 
 所以在用户界面中，我们检查齿轮平衡的长度是否大于零，然后显示所有的齿轮相关内容，或者根本不显示。
 
@@ -478,7 +469,7 @@ const [gearBalances, setGearBalances] = useState<any>({})
 </HStack>
 ```
 
-这就是检查和显示装备的全部内容。这是存储库中的代码，供您参考。
+这就是检查和显示装备的全部内容。这是[存储库](https://github.com/jamesrp13/buildspace-buildoors/blob/solution-lootboxes/components/GearItem.tsx)中的代码，供您参考。
 
 接下来发生的事情取决于你。你可以决定要修复哪些错误，哪些你可以接受。将所有内容从本地主机移出并进行发布，这样你就可以分享一个公共链接。
 

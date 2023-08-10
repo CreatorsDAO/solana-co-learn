@@ -12,6 +12,6 @@ sidebar_class_name: green
 
 自己动手建造一些东西，参加黑客马拉松，抓住机会。你可以做任何事情。
 
-- [superteam](https://earn.superteam.fun/)
+- [Superteam](https://earn.superteam.fun/)
 - [Solana Grant](https://solana.org/)
 - [Lamport Dao](https://twitter.com/lamportDAO)
