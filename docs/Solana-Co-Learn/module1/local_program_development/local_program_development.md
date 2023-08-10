@@ -1,43 +1,30 @@
 ---
 sidebar_position: 7
-sidebar_label: 本地程序开发环境配置
+sidebar_label: 本地开发环境配置
 sidebar_class_name: green
 ---
 
 # Local Program Development
 
-## 简而言之
-
-- 要在本地开始使用Solana，首先需要安装**Rust**和**Solana CLI**
-- 使用Solana CLI，您可以使用**solana-test-validator**命令运行本地测试验证器
-- 一旦您安装了Rust和Solana CLI，您就可以使用`cargo build-sbf`和`solana program deploy`命令在本地构建和部署您的程序
-- 您可以使用`solana logs`命令查看程序日志
-
 ## 概述
 
-到目前为止，在这门课程中，我们一直使用Solana Playground来开发和部署Solana程序。
+本地开发的基本流程如下
 
-虽然这是一个很好的工具，但对于某些复杂的项目，您可能更喜欢设置一个本地开发环境。
+1. 安装 [Rust](https://www.rust-lang.org/tools/install) 和 [Solana CLI](https://docs.solana.com/cli/install-solana-cli-tools)
+2. 使用Solana CLI，您可以使用**solana-test-validator**命令运行本地测试验证器，初始化账户等基本操作
+3. 使用 `cargo build-sbf` 和 `solana program deploy` 命令在本地构建和部署程序
+4. 使用 `solana logs` 命令查看程序日志
 
-这可能是为了使用Solana Playground不支持的crate，利用您创建的自定义脚本或工具，或者仅仅是出于个人偏好。
+## 本地环境配置
 
-
-话虽如此，这节课与其他课程有些不同。与其涵盖大量关于如何编写程序或与Solana网络交互的内容，这节课主要侧重于设置本地开发环境这个不那么引人注目的任务。
-
-为了从您的计算机上构建、测试和部署Solana程序，您需要安装Rust编译器和Solana命令行界面（CLI）。我们将首先指导您完成这些安装过程，然后介绍如何使用您刚刚安装的工具。
-
-
-以下安装说明包含了安装Rust和Solana CLI的步骤，截至撰写本文时的最新版本。由于您阅读时可能已有更新，如果遇到问题，请参考官方安装页面：
-
-- [安装Rust](https://www.rust-lang.org/tools/install)
-- [安装Solana工具套件](https://docs.solana.com/cli/install-solana-cli-tools)
+Solana 程序使用Rust 编写，调试运行。建议使用Unix 系列系统: Mac , Linux 等。
+如果很不幸你使用的是Windows,建议使用 WSL 下载Ubuntu ,并在其中完成运行。
 
 ### 在Windows上设置（带有Linux）
 
 #### 下载Windows子系统Linux（WSL）
 
 如果你使用的是Windows电脑，建议使用Windows子系统Linux（WSL）来构建你的Solana程序。
-
 
 打开**管理员**权限的PowerShell或Windows命令提示符，检查Windows版本
 
@@ -91,14 +78,13 @@ sh -c "$(curl -sSfL https://release.solana.com/v1.16.6/install)"
 
 您可以在[这里](https://docs.solana.com/cli/install-solana-cli-tools)了解更多关于下载Solana CLI的信息。
 
-
-### Solana CLI基础
+## Solana CLI基础
 
 Solana CLI是一个命令行界面工具，提供了一系列命令，用于与Solana集群进行交互。
 
 在本课程中，我们将介绍一些最常见的命令，但您始终可以通过运行`solana --help`来查看所有可能的Solana CLI命令列表。
 
-#### Solana CLI 配置
+### Solana CLI 配置
 
 Solana CLI存储了一些配置设置，这些设置会影响某些命令的行为。您可以使用以下命令查看当前的配置：
 
@@ -135,20 +121,20 @@ solana config set --url mainnet-beta
 solana config set --keypair ~/<FILE_PATH>
 ```
 
-#### 测试验证器
+### 测试验证器
 
 你会发现在测试和调试时运行本地验证器比部署到开发网络更有帮助。
 
 您可以使用`solana-test-validator`命令运行本地测试验证器。该命令会创建一个持续运行的进程，需要单独的命令行窗口。
 
-#### Stream program logs
+### Stream program logs
 
 通常在打开一个新的控制台并在测试验证器旁边运行`solana logs`命令会很有帮助。这将创建另一个持续进行的进程，用于流式传输与您配置的集群相关的日志。
 
 如果您的CLI配置指向本地主机，则日志将始终与您创建的测试验证器相关联，但您也可以从其他集群（如Devnet和Mainnet Beta）流式传输日志。当从其他集群流式传输日志时，您需要在命令中包含一个程序ID，以限制您所看到的日志仅针对您的特定程序。
 
 
-#### 密钥对
+### 密钥相关
 
 您可以使用`solana-keygen new --outfile`命令生成一个新的密钥对，并指定文件路径以存储该密钥对。
 
@@ -182,11 +168,9 @@ solana airdrop 2
 
 到目前为止，我们已经介绍了一些CLI命令，这些命令应该能帮助您快速解决那些问题。
 
-### 在您的本地环境中开发Solana程序
+## 在您的本地环境中开发Solana程序
 
-尽管Solana Playground非常有帮助，但自己的本地开发环境的灵活性是无法比拟的。随着您构建更复杂的程序，您可能会将它们与一个或多个正在本地环境中开发的客户端集成在一起。在本地编写、构建和部署程序时，程序与客户端之间的测试通常更简单。
-
-#### 创建一个新项目
+### 创建一个新项目
 
 要创建一个新的Rust包来编写Solana程序，您可以使用`cargo new --lib`命令，并指定您想要创建的新目录的名称。
 
@@ -217,7 +201,7 @@ crate-type = ["cdylib", "lib"]
 在那个时候，你可以开始在src文件夹中编写你的程序。
 
 
-#### 构建和部署
+### 构建和部署
 
 当你准备构建你的Solana程序时，你可以使用`cargo build-sbf`命令。
 
@@ -263,3 +247,8 @@ console.log(
 ```bash
 solana logs | grep "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA invoke" -A 5
 ```
+
+## 官方参考文档
+
+- [安装Rust](https://www.rust-lang.org/tools/install)
+- [安装Solana工具套件](https://docs.solana.com/cli/install-solana-cli-tools)
