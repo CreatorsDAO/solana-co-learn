@@ -35,8 +35,3 @@ sidebar_class_name: green
 - 创建奖励代币
 - 制作糖果机
 - 创建铸币界面
-
-
-## 使用token2022程序创建token
-
-## 使用压缩nft程序创建压缩nft
