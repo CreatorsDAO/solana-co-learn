@@ -43,7 +43,7 @@ npm install @solana/wallet-adapter-base \
 让我们来看看这些库吧！在您的工作区中设置一个新项目：
 
 ```bash
-git clone https://github.com/RustyCab/solana-ping-frontend.git
+git clone https://github.com/CreatorsDAO/solana-ping-frontend
 cd solana-ping-frontend
 git checkout starter
 npm i

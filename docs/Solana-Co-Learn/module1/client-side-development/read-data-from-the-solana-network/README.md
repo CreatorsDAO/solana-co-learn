@@ -19,7 +19,7 @@ Solana 上有三种类型的账户
 - 程序帐户 - 这些存储可执行程序（又称智能合约）
 - 原生账户 - 这些用于核心区块链功能，例如权益、投票
 
-本地账户（native account）是区块链运行所需的，我们稍后会详细介绍。现在，我们只需要处理数据和程序账户。
+本地账户（`native account`）是区块链运行所需的，我们稍后会详细介绍。现在，我们只需要处理数据和程序账户。
 
 在数据账户中，您还有两种进一步的类型
 
@@ -32,17 +32,17 @@ Solana 上有三种类型的账户
 
 | FIELD | 描述 |
 | --- | --- |
-| lamports |  该账户拥有的lamports数量 |
-| owner |  这个账户的所有者程序 |
-| executable | 这个账户成是否可以处理指令 |
-| data	|  这个账户存储的数据的字节码 |
-| rent_epoch | 下一个需要付租金的epoch（代） |
+| `lamports` |  该账户拥有的lamports数量 |
+| `owner` |  这个账户的所有者程序 |
+| `executable` | 这个账户成是否可以处理指令 |
+| `data`	|  这个账户存储的数据的字节码 |
+| `rent_epoch` | 下一个需要付租金的epoch（代） |
 
 我们现在只关注我们需要了解的事情，所以如果有些东西不太明白，就继续前进吧 - 我们会边进行下去边填补空白。
 
 `Lamport`是Solana的最小单位。如果你熟悉以太坊生态系统，这有点像Gwei。一个`Lamport`等于0.000000001 SOL，所以这个字段告诉我们账户拥有多少SOL。
 
-每个账户都有一个公钥 - 它就像账户的地址。你知道你的钱包有一个地址，用来接收那些辣辣的NFT吗？同样的道理！Solana地址只是base58编码的字符串。
+每个账户都有一个公钥 - 它就像账户的地址。你知道你的钱包有一个地址，用来接收那些辣辣的NFT吗？同样的道理！Solana地址只是`base58`编码的字符串。
 
 
 `executable` 是一个布尔字段，告诉我们该帐户是否包含可执行数据。数据是存储在帐户中的内容，租金我们稍后会支付！
@@ -89,9 +89,9 @@ async function getBalanceUsingJSONRPC(address: string): Promise<number> {
 }
 ```
 
-这里发生了一堆事情。我们正在进行一个POST请求，请求体中有特定的参数告诉RPC要做什么。我们需要指定RPC的版本、id、方法，本例中是getBalance，以及该方法所需的参数，本例中只有address。
+这里发生了一堆事情。我们正在进行一个POST请求，请求体中有特定的参数告诉RPC要做什么。我们需要指定RPC的版本、id、方法，本例中是`getBalance`，以及该方法所需的参数，本例中只有`address`。
 
-我们有一堆针对一个非常简单的方法的样板代码，所以我们可以使用Solana的`Web3.js` SDK。以下是所需的内容：
+我们有一堆针对一个非常简单的方法的样板代码，所以我们可以使用Solana的`Web3.js SDK`。以下是所需的内容：
 
 ```ts
 async function getBalanceUsingWeb3(address: PublicKey): Promise<number> {
@@ -111,7 +111,7 @@ async function getBalanceUsingWeb3(address: PublicKey): Promise<number> {
 在你的工作区域创建一个文件夹。我将我的放在桌面上。[克隆起始库](https://github.com/RustyCab/solana-intro-frontend.git)并进行设置：
 
 ```bash
-git clone https://github.com/RustyCab/solana-intro-frontend.git
+git clone https://github.com/CreatorsDAO/solana-intro-frontend
 cd solana-intro-frontend
 git checkout starter
 npm i
@@ -166,7 +166,7 @@ const addressSubmittedHandler = (address: string) => {
 
 - 我们正在使用 `key.toBase58` 设置地址。这是Solana地址的字符串编码。
 - 我们正在连接到 `devnet` 网络。有三个网络 - 主网、测试网和开发网。我们将在开发网上进行所有操作。
-- 我们正在将余额从Lamports转换为SOL - 余额以Lamports返回，而不是SOL。
+- 我们正在将余额从`Lamports`转换为SOL - 余额以`Lamports`返回，而不是SOL。
 
 
 我们完成了！如果你在这里粘贴一个地址，你就会看到余额。确保你的账户上有开发网络的 SOL！如果没有，你可以使用我的账户来测试你的应用 - `B1aLAAe4vW8nSQCetXnYqJfRxzTjnbooczwkUJAr7yMS` 。

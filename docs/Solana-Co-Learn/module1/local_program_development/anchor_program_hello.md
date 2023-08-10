@@ -1,12 +1,12 @@
 ---
 sidebar_position: 9
-sidebar_label: Anchor 合约框架实现《hello, World》
+sidebar_label: Anchor 合约框架实现 <hello, World>
 sidebar_class_name: green
 ---
 
-# Anchor 合约框架实现《hello, World》
+# Anchor 合约框架实现 <hello, World>
 
-让我们通过构建和部署“Hello World！”程序来进行练习。
+让我们通过构建和部署 `Hello World!` 程序来进行练习。
 
 我们将在本地完成所有操作，包括部署到本地测试验证器。在开始之前，请确保您已经安装了Rust和Solana CLI。如果您还没有安装，请参考概述中的说明进行设置。
 
@@ -14,9 +14,9 @@ sidebar_class_name: green
 
 这里是anchor的[安装官方指南](https://www.anchor-lang.com/docs/installation).
 
-需要你按照步骤安装好anchor。
+需要你按照步骤安装好 Anchor。
 
-安装完成后我们可以通过执行下面的命令,检测anchor是否安装完成✅。
+安装完成后我们可以通过执行下面的命令,检测 Anchor 是否安装完成✅。
 
 ```bash
 anchor --version
@@ -37,7 +37,7 @@ anchor init hello_world
 
 #### 2. 编写你的程序
 
-接下来，使用下面的“Hello World！”程序更新hello_world/program/src/lib.rs。当程序被调用时，该程序会简单地将“Hello, world！”打印到程序日志中。
+接下来，使用下面的`Hello World!`程序更新`hello_world/program/src/lib.rs`。当程序被调用时，该程序会简单地将`Hello, world!`打印到程序日志中。
 
 ```rust
 use anchor_lang::prelude::*;
@@ -72,7 +72,7 @@ solana config set --url localhost
 solana config get
 ```
 
-最后，运行本地测试验证器。在一个单独的终端窗口中运行`solana-test-validator`命令。只有当我们的RPC URL设置为localhost时才需要这样做。
+最后，运行本地测试验证器。在一个单独的终端窗口中运行`solana-test-validator`命令。只有当我们的`RPC URL`设置为`localhost`时才需要这样做。
 
 ```bash
 solana-test-validator
@@ -103,10 +103,10 @@ solana程序部署将输出您的程序的程序ID。您现在可以在[Solana E
 solana logs <PROGRAM_ID>
 ```
 
-或者也可以通过(Solana Exporer)[https://explorer.solana.com/?cluster=custom]，查看产生的日志📔。
+或者也可以通过[Solana Exporer](https://explorer.solana.com/?cluster=custom)，查看产生的日志📔。
 
 在测试验证器仍在运行时，尝试使用[此处](https://github.com/DaviRain-Su/all-in-one-solana/tree/main/code/contract/hello_world/app/hello-frontend)的客户端脚本调用您的程序。
 
-这将返回一个Solana Explorer的URL(`Transaction https://explorer.solana.com/tx/${transactionSignature}?cluster=custom`)。将URL复制到浏览器中，在Solana Explorer上查找该交易，并检查程序日志中是否打印了“Hello, world!”。或者，您可以在运行`solana logs`命令的终端中查看程序日志。
+这将返回一个Solana Explorer的URL(`Transaction https://explorer.solana.com/tx/${transactionSignature}?cluster=custom`)。将URL复制到浏览器中，在Solana Explorer上查找该交易，并检查程序日志中是否打印了`Hello, world!`。或者，您可以在运行`solana logs`命令的终端中查看程序日志。
 
 就是这样！您刚刚在本地开发环境中创建并部署了您的第一个程序。
