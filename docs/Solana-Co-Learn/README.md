@@ -17,61 +17,60 @@ sidebar_class_name: green
 - [BackPack钱包使用](./module1/wallet-usage/README.md)
 
 
-### [客户端开发](./module1/client-side-development/README.md)
+- [客户端开发](./module1/client-side-development/README.md)
 
-### [钱包和前端](./module1/wallets-and-frontends/README.md)
+- [钱包和前端](./module1/wallets-and-frontends/README.md)
 
-### [自定义指令](./module1/custom-instruction/README.md)
+- [自定义指令](./module1/custom-instruction/README.md)
 
-### [开始你自己的定制项目](./module1/start-your-own-custom-project/README.md)
+- [开始你自己的定制项目](./module1/start-your-own-custom-project/README.md)
 
 ## Module2: Solana Module2
 
-### [SPL token](./module2/spl-token/README.md)
+- [SPL token](./module2/spl-token/README.md)
 
-### [NFTs + 使用Metaplex进行铸造](./module2/nfts-and-minting-with-metaplex/README.md)
+- [NFTs + 使用Metaplex进行铸造](./module2/nfts-and-minting-with-metaplex/README.md)
 
-### [在用户界面中展示NFTs](./module2/displayings-nfts-in-a-ui/README.md)
-
-### [创造神奇的网络货币并出售JPEG图片](./module2/make-magic-internet-money-and-sell-jepgs/README.md)
+- [在用户界面中展示NFTs](./module2/displayings-nfts-in-a-ui/README.md)
+-  [创造神奇的网络货币并出售JPEG图片](./module2/make-magic-internet-money-and-sell-jepgs/README.md)
 
 ## Module3: Solana Module3
 
-### Introduction to Rust
+- [Introduction to Rust](./module3/introduction-to-rust/README.md)
 
-### Native Solana Development
+- [Native Solana Development](./module3/native-solana-development/README.md)
 
-### Security and validation
+- [Security and validation](./module3/security-and-validation/README.md)
 
-### NFT staking
+- [NFT staking](./module3/nft-staking/README.md)
 
 ## Module4: Solana Module4
 
-### Local env setup and PDAs
+- [Local env setup and PDAs](./module4/local-env-setup-and-pdas/README.md)
 
-### Cross Program Invocations
+- [Cross Program Invocations](./module4/cross-program-invocations/README.md)
 
-### Testing
+- [Testing](./module4/testing/README.md)
 
-### Ship a staking app
+- [Ship a staking app](./module4/ship-a-staking-app/README.md)
 
 ## Module5: Solana Module5
 
-### Introduction to Anchor
+- [Introduction to Anchor](./module5/introduction-to-anchor/README.md)
 
-### Programs in Anchor
+- [Programs in Anchor](./module5/program-in-anchor/README.md)
 
-### Anchor on the front-end
+- [Anchor on the front-end](./module5/anchor-on-the-front-end/README.md)
 
-### A full-stack Anchor App
+- [A full-stack Anchor App](./module5/a-full-stack-anchor-app/README.md)
 
 ## Module6: Solana Module6
 
-### Ship Week
+- [Ship Week](./module6/ship-week/README.md)
 
-### Randomness
+- [Randomness](./module6/randomness/README.md)
 
-### Finishing touches
+- [Finishing touches](./module6/finishing-touches/README.md)
 
 ## Modules: Solana Modules
 
