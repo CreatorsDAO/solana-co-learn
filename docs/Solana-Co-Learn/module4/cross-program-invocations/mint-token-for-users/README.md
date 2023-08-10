@@ -1,10 +1,10 @@
 ---
 sidebar_position: 71
-sidebar_label: 🥇 为用户铸造薄荷代币
+sidebar_label: 🥇 为用户Mint代币
 sidebar_class_name: green
 ---
 
-# 🥇 为用户铸造薄荷代币
+# 🥇 为用户Mint代币
 
 我们的电影评论节目还不错，但它并不是非常符合Web3的特点。目前我们所做的只是将Solana用作数据库。让我们通过给用户使用我们的应用程序来增加一些趣味吧！每当他们评论一部电影或留下评论时，我们将为某人铸造代币。可以将其想象成StackOverflow，但使用代币而不是点赞。
 

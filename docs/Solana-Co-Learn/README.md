@@ -27,7 +27,7 @@ sidebar_class_name: green
 
 ## Module2: Solana Module2
 
-- [SPL token](./module2/spl-token/README.md)
+- [SPL代币](./module2/spl-token/README.md)
 
 - [NFTs + 使用Metaplex进行铸造](./module2/nfts-and-minting-with-metaplex/README.md)
 
@@ -36,33 +36,34 @@ sidebar_class_name: green
 
 ## Module3: Solana Module3
 
-- [Introduction to Rust](./module3/introduction-to-rust/README.md)
+- [Rust简介](./module3/introduction-to-rust/README.md)
 
-- [Native Solana Development](./module3/native-solana-development/README.md)
+- [原生SOLANA开发](./module3/native-solana-development/README.md)
 
-- [Security and validation](./module3/security-and-validation/README.md)
+- [安全和验证](./module3/security-and-validation/README.md)
 
-- [NFT staking](./module3/nft-staking/README.md)
+- [NFT质押](./module3/nft-staking/README.md)
 
 ## Module4: Solana Module4
 
-- [Local env setup and PDAs](./module4/local-env-setup-and-pdas/README.md)
+- [本地环境设置和PDA
+](./module4/local-env-setup-and-pdas/README.md)
 
-- [Cross Program Invocations](./module4/cross-program-invocations/README.md)
+- [跨程序调用](./module4/cross-program-invocations/README.md)
 
-- [Testing](./module4/testing/README.md)
+- [测试](./module4/testing/README.md)
 
-- [Ship a staking app](./module4/ship-a-staking-app/README.md)
+- [发行一个质押应用程序](./module4/ship-a-staking-app/README.md)
 
 ## Module5: Solana Module5
 
-- [Introduction to Anchor](./module5/introduction-to-anchor/README.md)
+- [关于ANCHOR的介绍](./module5/introduction-to-anchor/README.md)
 
 - [Programs in Anchor](./module5/program-in-anchor/README.md)
 
 - [Anchor on the front-end](./module5/anchor-on-the-front-end/README.md)
 
-- [A full-stack Anchor App](./module5/a-full-stack-anchor-app/README.md)
+- [一个全栈的Anchor应用程序](./module5/a-full-stack-anchor-app/README.md)
 
 ## Module6: Solana Module6
 

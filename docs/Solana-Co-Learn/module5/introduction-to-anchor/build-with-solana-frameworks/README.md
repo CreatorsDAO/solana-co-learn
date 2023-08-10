@@ -1,10 +1,10 @@
 ---
-sidebar_position: 81
-sidebar_label: 🧱 使用Solana框架进行建设
+sidebar_position: 83
+sidebar_label: 🧱 使用Solana Anchor框架进行建设
 sidebar_class_name: green
 ---
 
-# 🧱 使用Solana框架进行建设
+# 🧱 使用Solana Anchor框架进行建设
 
 我们从零开始。我们与Solana互动的第一个程序是Ping程序。让我们使用Anchor从头开始构建它。你可以在playground上做这个，但我会在本地设置，因为测试更容易。我们从零开始。我们与Solana互动的第一个程序是Ping程序。让我们使用Anchor从头开始构建它。你可以在playground上做这个，但我会在本地设置，因为测试更容易。
 

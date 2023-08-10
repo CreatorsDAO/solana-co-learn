@@ -7,5 +7,5 @@ sidebar_class_name: green
 
 # Anchor on the front-end
 
-- Anchoring into TypeScript
-- 打造一个更好的电影评论程序
+- [🐹 Anchor到Typescript](./anchor-into-typescript/README.md)
+- [🎥 打造一个更好的电影评论程序](./build-a-better-movie-review-program/README.md)

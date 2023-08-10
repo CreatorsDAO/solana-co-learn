@@ -6,6 +6,6 @@ sidebar_class_name: green
 
 # 测试
 
-- 测试用量规
-- 测试Solana程序
-- 使用Rust编写测试
+- 🎬测试with gage
+- [🧪 测试 Solana 程序](./testing-solana-programs/README.md)
+- [😳 使用Rust编写测试](./writing-tests-in-rust/README.md)

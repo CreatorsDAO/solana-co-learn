@@ -1,10 +1,10 @@
 ---
 sidebar_position: 103
-sidebar_label: 🔀 使用交换板随机分配战利品
+sidebar_label: 🔀使用Switchboard进行随机化战利品
 sidebar_class_name: green
 ---
 
-# 🔀 使用交换板随机分配战利品
+# 🔀使用Switchboard进行随机化战利品
 
 现在我们将介绍简单战利品箱实现的解决方案。我们将创建一个新程序，用于创建战利品箱，并从中获取物品。
 

@@ -6,7 +6,7 @@ sidebar_class_name: green
 
 # 关于ANCHOR的介绍
 
-- Anchor with Gage
-- Anchor 设置
-- Anchor 框架
-- 使用Solana Anchor框架进行建设
+-  🎬 Anchor with Gage
+- [🛳 设置 Anchor](./setting-up-anchor/README.md)
+- [🐟 Anchor 框架](./the-anchor-framework/README.md)
+- [🧱 使用Solana Anchor框架进行建设](./build-with-solana-frameworks/README.md)

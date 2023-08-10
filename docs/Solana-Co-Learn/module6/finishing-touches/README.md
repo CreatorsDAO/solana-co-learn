@@ -6,7 +6,7 @@ sidebar_class_name: green
 
 # Finishing touches
 
-- The final pieces 最终的作品
-- Preparing for takeoff
-- the last ship
-- Onward
+- [🚶‍ 最后的作品](./the-final-pieces/README.md)
+- [🚀 准备起飞](./preparing-for-takeoff/README.md)
+- [🏁 最后一艘船](./the-last-ship/README.md)
+- [🌈 前进](./onwards/README.md)

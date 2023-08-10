@@ -1,4 +1,3 @@
-
 ---
 sidebar_position: 86
 sidebar_label: 使用Anchor CPIs构建

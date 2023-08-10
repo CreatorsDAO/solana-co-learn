@@ -1,10 +1,10 @@
 ---
 sidebar_position: 88
-sidebar_label:  🐹 锚定到Typescript
+sidebar_label:  🐹 Anchor到Typescript
 sidebar_class_name: green
 ---
 
-# 🐹 锚定到Typescript
+# 🐹 Anchor到Typescript
 
 要使用前端与程序进行交互，我们需要创建一个 Anchor `Program` 对象。
 
