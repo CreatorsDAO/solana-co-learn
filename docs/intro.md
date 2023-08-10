@@ -25,6 +25,8 @@ sidebar_class_name: green
 - [alchemy Solana docs](https://docs.alchemy.com/reference/solana-api-quickstart)
 - [Alchemy Doc](https://docs.alchemy.com/)
 - [Figment Learn](https://learn.figment.io/protocols/solana)
+- [Solana 中文bootcamp](https://www.solanazh.com/)
+- [Solana WorkShop](https://github.com/solana-workshops)
 
 ### 不错的Solana文章
 - [Squads blog](https://squads.so/blog)
