@@ -27,6 +27,7 @@ sidebar_class_name: green
 - [Figment Learn](https://learn.figment.io/protocols/solana)
 - [Solana 中文bootcamp](https://www.solanazh.com/)
 - [Solana WorkShop](https://github.com/solana-workshops)
+- [Solana Bootcamp](https://github.com/solana-developers/pirate-bootcamp)
 
 ### 不错的Solana文章
 - [Squads blog](https://squads.so/blog)
