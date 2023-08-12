@@ -30,12 +30,12 @@ sidebar_class_name: green
 
 我们有四个部分：
 
-- `declare_id!` - 程序的链上地址（这取代了我们的入口点）
+- `declare_id!` - 程序的链上地址（这取代了`entrypoint`）
 - `#[program]` - 程序的指令逻辑
-- `#[derive(Accounts)]` 列出、验证和反序列化传入指令的账户
-- `#[account]` 为程序定义自定义账户类型
+- `#[derive(Accounts)]` -  `list`、验证和反序列化传入指令的账户
+- `#[account]` -  为程序定义自定义账户类型
 
-### 🗿 declare_id!
+### 🗿 `declare_id!`
 
 让我们先把 `declare_id!` 宏搞定，因为它非常简单：
 
@@ -43,7 +43,7 @@ sidebar_class_name: green
 
 这用于指定程序的链上地址（即 `programId` ）。当第一次构建`Anchor`程序时，会生成一个新的密钥对（可以使用 `anchor keys list` 获取）。该密钥对将作为部署程序的默认密钥对（除非另有指定）。该密钥对的公钥被用作 `programId` 并在 `declare_id!` 宏中指定。
 
-### 👑 #[program]
+### 👑 `#[program]`
 
 ![](./img/program.png)
 
@@ -53,7 +53,7 @@ sidebar_class_name: green
 
 在我们继续深入了解这些宏的其他部分之前，我们需要看一下指令逻辑中的这个新的 `Context` 是什么。我们将深入了解三个层次 - `native`  层、`Rust`层和`Anchor`层，所以请跟上我！
 
-### 📝 上下文
+### 📝 `Context`
 
 回想一下我们在本地处理指令时需要做的事情。在我们的 `process_instruction` 函数中，我们传入 `program_id` 、 `accounts` 和 `instruction_data` 。除了指令数据之外，你可以将其他所有内容都归为指令的“`Context`”。由于我们的程序是无状态的，它们需要知道指令的上下文。这意味着在`Anchor`中，我们只需要两样东西来处理指令——`Context`和数据。
 
@@ -126,10 +126,9 @@ pub accounts: &'b mut T,
 
 ### 🔎 Account type in Anchor
 
-你可能还记得上周我们写本地程序时使用的 `AccountInfo` 类型。每当我们需要处理账户时，我们都会使用这个类型 - 处理指令、创建交易、进行`CPI`。这个类型代表了我们可能拥有的各种账户 - `PDA`、用户账户，甚至系统程序。回想起来，我们使用同一类型来表示如此多样化的参数有点奇怪。
+你可能还记得上周我们写`native`程序时使用的 `AccountInfo` 类型。每当我们需要处理账户时，我们都会使用这个类型 - 处理指令、创建交易、进行`CPI`。这个类型代表了我们可能拥有的各种账户 - `PDA`、用户账户，甚至系统程序。回想起来，我们使用同一类型来表示如此多样化的参数有点奇怪。
 
 `Anchor`将原生类型包装起来，为我们提供了一系列具有不同类型验证的新类型 - 我们将不再需要在指令中检查是否拥有一个账户，因为我们可以声明它为特定类型，这将为我们进行验证！
-
 
 让我们来看一下常见的类型，首先是 `Account`：
 
