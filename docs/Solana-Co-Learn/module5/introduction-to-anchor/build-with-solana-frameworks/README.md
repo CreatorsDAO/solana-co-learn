@@ -6,7 +6,7 @@ sidebar_class_name: green
 
 # 🧱 使用Solana Anchor框架进行建设
 
-我们从零开始。我们与Solana互动的第一个程序是Ping程序。让我们使用Anchor从头开始构建它。你可以在playground上做这个，但我会在本地设置，因为测试更容易。我们从零开始。我们与Solana互动的第一个程序是Ping程序。让我们使用Anchor从头开始构建它。你可以在playground上做这个，但我会在本地设置，因为测试更容易。
+我们从零开始。我们与Solana互动的第一个程序是Ping程序。让我们使用`Anchor`从头开始构建它。你可以在playground上做这个，但我会在本地设置，因为测试更容易。我们从零开始。我们与Solana互动的第一个程序是Ping程序。让我们使用`Anchor`从头开始构建它。你可以在playground上做这个，但我会在本地设置，因为测试更容易。
 
 我们想要做的是一个相当简单的程序：
 
@@ -15,7 +15,7 @@ sidebar_class_name: green
 
 这意味着我们需要两个指令，一个用于初始化该账户及其数据结构，另一个用于增加计数。
 
-Anchor使用一些 Rust 魔法来处理所有这些问题 ✨，它被设计用于处理许多常见的安全问题，因此您可以构建更安全的程序！添加 `initialize` 指令
+`Anchor`使用一些 Rust 魔法来处理所有这些问题 ✨，它被设计用于处理许多常见的安全问题，因此您可以构建更安全的程序！添加 `initialize` 指令
 
 - 在 `#[program]` 内实施 `initialize` 指令
 - `initialize` 需要一个类型为 `Initialize` 的 `Context` ，并且不需要额外的指令数据
@@ -31,7 +31,7 @@ pub fn initialize(ctx: Context<Initialize>) -> Result<()> {
 }
 ```
 
-**实施 Context 类型 Initialize **
+## 实施 `Context` 类型 `Initialize`
 
 - 使用 `#[derive(Accounts)]` 宏来实现 `Initialize Context` 类型
 - 该`initialize`指令需要：
@@ -52,7 +52,7 @@ pub struct Initialize<'info> {
 }
 ```
 
-**Implement Counter**
+## Implement Counter
 
 使用`#[account]`属性来定义一个新的计数器账户类型
 
@@ -63,7 +63,7 @@ pub struct Counter {
 }
 ```
 
-**添加 increment 指令**
+## 添加 `increment` 指令
 
 - 在 `#[program]` 内，实施一个 `increment` 指令，以增加现有 `counter` 账户上的 `count`
 - 需要一个类型为 `Context` 的 `Update` 的 `increment` ，并且不需要额外的指令数据
@@ -80,7 +80,7 @@ pub fn increment(ctx: Context<Update>) -> Result<()> {
 }
 ```
 
-**实施 Context 类型 Update**
+## 实施 `Context` 类型 `Update`
 
 - 使用 `#[derive(Accounts)]` 宏来实现 `Update Context` 类型
 - 该`increment`指令需要：
@@ -98,7 +98,7 @@ pub struct Update<'info> {
 }
 ```
 
-**构建，部署，测试**
+## 构建，部署，测试*
 
 解决方案：[https://beta.solpg.io/631b39c677ea7f12846aee8c](https://beta.solpg.io/631b39c677ea7f12846aee8c)
 
