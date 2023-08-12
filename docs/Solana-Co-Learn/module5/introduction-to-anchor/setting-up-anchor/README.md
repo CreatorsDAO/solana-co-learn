@@ -6,7 +6,7 @@ sidebar_class_name: green
 
 # 🛳 设置 Anchor
 
-我们从零开始。我们与Solana互动的第一个程序是`Ping`程序。让我们使用`Anchor`从头开始构建它。你可以在playground上做这个，但我会在本地设置它，因为测试更容易。你好，朋友。欢迎。你已经来到了应许之地。
+你好，朋友。欢迎你。你已经来到了应许之地。
 
 你已经像先驱者一样原生地构建了Solana程序。虽然你可以继续原生地构建，但使用一个框架会让事情变得更加简单和快速。
 
@@ -19,7 +19,6 @@ sidebar_class_name: green
 ## 🗂 Anchor 应用程序结构
 
 以下是具体步骤。
-
 
 我希望你已经安装了Rust和Solana CLI（除非你跳过了某些部分哈哈）。你还需要[安装`Yarn`](https://yarnpkg.com/getting-started/install)。
 
@@ -47,7 +46,7 @@ anchor init <new-workspace-name>
 - `migrations/deploy.js`: 部署脚本以迁移到不同版本的程序。
 - `.anchor` 文件夹：其中包含最新的程序日志和用于测试的本地账本
 
-你现在可以基本上忽略这些。打开 `programs/workspace-name/src/lib.rs` 。这看起来与我们的本地程序略有不同。`Anchor`将为我们定义入口点，并且我们将使用Rust属性告诉`Anchor`我们的所有内容，以便它可以自动化我们的大部分工作。
+你现在可以基本上忽略这些。打开 `programs/workspace-name/src/lib.rs` 。这看起来与我们的`native`程序略有不同。`Anchor`将为我们定义入口点，并且我们将使用Rust属性告诉`Anchor`我们的所有内容，以便它可以自动化我们的大部分工作。
 
 当我们使用 `#[program]` 时，实际上是声明了一个Rust宏，`Anchor`将使用它为我们生成所有必要的本地Solana样板代码。
 
@@ -64,12 +63,12 @@ anchor build
 顺便说一下，这是关于目标文件夹的一些需要了解的信息 -
 
 - `target/deploy` ：用于部署程序的生成密钥对
-- `target/idl` ：程序的`.json IDL`
-- `target/types` ：`Typescript IDL` - 我们需要的所有类型
+- `target/idl` ：程序的`IDL`文件，`.json`格式
+- `target/types` ：`Typescript` 的 `IDL` - 我们需要的所有类型
 
 什么是`IDL`？[`IDL`（接口描述语言）](https://en.wikipedia.org/wiki/Interface_description_language)文件是一个JSON文件，用于描述程序的接口 - 它告诉你有哪些函数可用以及它们接受的参数。可以将其视为程序的`API`文档。
 
-我们使用`IDL`程序来确定如何与客户端进行通信（可用的函数、参数等），并使用TypeScript `IDL`来定义类型。这些非常重要，因为要使您的程序开源，您需要发布经过验证的构建版本和`IDL`到Anchor Programs Registry。
+我们使用`IDL`程序来确定如何与客户端进行通信（可用的函数、参数等），并使用TypeScript `IDL`来定义类型。这些非常重要，因为要使您的程序开源，您需要发布经过验证的构建版本和`IDL`到`Anchor Programs Registry`。
 
 现在我们想要部署。但是我们还不能立即开始！我们需要做两件事情 - 获取程序地址并设置网络。
 

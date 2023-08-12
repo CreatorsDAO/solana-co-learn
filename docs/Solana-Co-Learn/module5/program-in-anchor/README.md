@@ -1,10 +1,10 @@
 ---
 sidebar_position: 82
-sidebar_label: PROGRAMS IN ANCHOR
+sidebar_label: Program in Anchor
 sidebar_class_name: green
 ---
 
-# PROGRAMS IN ANCHOR
+# Program in Anchor
 
 - [🛣 Anchor中的PDA](./pdas-in-anchor/README.md)
 - [使用Anchor PDA构建](./build-with-anchor-pdas/README.md)

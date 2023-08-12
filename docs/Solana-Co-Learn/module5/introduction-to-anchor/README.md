@@ -1,10 +1,10 @@
 ---
 sidebar_position: 80
-sidebar_label: 关于ANCHOR的介绍
+sidebar_label: 关于 Anchor 的介绍
 sidebar_class_name: green
 ---
 
-# 关于ANCHOR的介绍
+# 关于 Anchor 的介绍
 
 -  🎬 Anchor with Gage
 - [🛳 设置 Anchor](./setting-up-anchor/README.md)
