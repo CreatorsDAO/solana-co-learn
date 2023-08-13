@@ -1,10 +1,10 @@
 ---
 sidebar_position: 63
-sidebar_label: 🛠️ 构建一个NFT质押计划
+sidebar_label: 🛠️ 构建一个NFT质押程序
 sidebar_class_name: green
 ---
 
-# 🛠️ 构建一个NFT质押计划
+# 🛠️ 构建一个NFT质押程序
 
 
 今天，我们将编写我们的质押程序，并编写所有必要的质押功能，而不进行任何代币转账。我将与您一起逐步讲解整个过程，解释每个步骤，以便您了解正在发生的事情。让我们首先进入[Solana Playground](https://beta.solpg.io/?utm_source=buildspace.so&utm_medium=buildspace_project)，在 `create a new project` 上点击，并创建一个名为 `src` 的新文件夹，其中包含一个名为 `lib.rs` 的文件。

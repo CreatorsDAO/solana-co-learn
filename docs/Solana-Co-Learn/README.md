@@ -46,8 +46,7 @@ sidebar_class_name: green
 
 ## Module4: Solana Module4
 
-- [本地环境设置和PDA
-](./module4/local-env-setup-and-pdas/README.md)
+- [PDA介绍](./module4/pdas/README.md)
 
 - [跨程序调用](./module4/cross-program-invocations/README.md)
 

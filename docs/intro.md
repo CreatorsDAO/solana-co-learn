@@ -28,6 +28,7 @@ sidebar_class_name: green
 - [Solana 中文bootcamp](https://www.solanazh.com/)
 - [Solana WorkShop](https://github.com/solana-workshops)
 - [Solana Bootcamp](https://github.com/solana-developers/pirate-bootcamp)
+- [Anchor docs](https://book.anchor-lang.com/introduction/introduction.html)
 
 ### 不错的Solana文章
 - [Squads blog](https://squads.so/blog)

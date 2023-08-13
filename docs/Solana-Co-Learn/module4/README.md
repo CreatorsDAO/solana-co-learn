@@ -6,12 +6,11 @@ sidebar_class_name: green
 
 # Solana Module4
 
-## 本地环境设置和PDA
+## PDA
 
--  [👀 本地设置](./local-env-setup-and-pdas/setting-up-locally/README.md)
 - 🎬 带有Gage的PDA
-- [🧐 PDA 深入探究](./local-env-setup-and-pdas/pda-deep-dive/README.md)
-- [💬 在链上构建评论功能](./local-env-setup-and-pdas/build-on-chain-comments/README.md)
+- [🧐 PDA 深入探究](./pdas/pda-deep-dive/README.md)
+- [💬 在链上构建评论功能](./pdas/build-on-chain-comments/README.md)
 
 ## 跨程序调用
 
