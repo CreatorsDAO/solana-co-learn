@@ -106,7 +106,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 }
 ```
 
-跳转到组件文件夹中的 StakeOptionsDisplay.ts 。
+跳转到组件文件夹中的` StakeOptionsDisplay.ts` 。
 
 让我们导入Anchor。
 

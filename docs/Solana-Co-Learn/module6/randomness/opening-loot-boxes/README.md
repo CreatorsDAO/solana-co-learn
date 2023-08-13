@@ -268,7 +268,7 @@ let available_gear: Vec<Pubkey> = Self::AVAILABLE_GEAR
            .collect();
 ```
 
-value 变量是我们将结果缓冲区转换为无符号8位整数的地方，这是switchboard推荐的实现方式，使用 bytemuck crate。最后，我们使用取模运算符和可用的最大薄荷数量来随机选择一个。
+`value` 变量是我们将结果缓冲区转换为无符号8位整数的地方，这是switchboard推荐的实现方式，使用 `bytemuck crate`。最后，我们使用取模运算符和可用的最大薄荷数量来随机选择一个。
 
 ```rust
 // maximum value to convert randomness buffer
@@ -278,7 +278,7 @@ let i = (value[0] as usize) % max_result;
 msg!("The chosen mint index is {} out of {}", i, max_result);
 ```
 
-我们最终将第i个索引处的值分配给mint，然后将其分配给lootbox指针mint，并将redeemable的值更改为true。这样可以在客户端上观察到它，一旦为true，用户就可以铸造他们的装备。
+我们最终将第`i`个索引处的值分配给`mint`，然后将其分配给lootbox指针`mint`，并将`redeemable`的值更改为`true`。这样可以在客户端上观察到它，一旦为`true`，用户就可以铸造他们的装备。
 
 ```rust
 let mint = available_gear[i];
@@ -303,7 +303,7 @@ let mint = available_gear[i];
 
 ## 客户端交互/测试
 
-最后，我们将要讨论与交换机相关的测试。我们已经回顾了setupSwitchboard函数以准备测试。我们的前三个测试仍然是用于质押、赎回和解质押。下一个测试是init_user，非常简单明了，我们只需要传入交换机状态的增加和权限的增加，以及四个账户。
+最后，我们将要讨论与交换机相关的测试。我们已经回顾了`setupSwitchboard`函数以准备测试。我们的前三个测试仍然是用于质押、赎回和解质押。下一个测试是`init_user`，非常简单明了，我们只需要传入交换机状态的增加和权限的增加，以及四个账户。
 
 ```rust
 it("init user", async () => {
@@ -322,7 +322,7 @@ it("init user", async () => {
   })
 ```
 
-接下来是选择性随机测试，这个比较棘手。前半部分与其他测试类似。首先，我们创建一个虚假的铸币机来铸造这些物品。然后获取或创建一个ATA，并将其铸造到其中。还有我们的质押账户，用于实际质押我们的NFT。
+接下来是选择性随机测试，这个比较棘手。前半部分与其他测试类似。首先，我们创建一个虚假的铸币机来铸造这些物品。然后获取或创建一个`ATA`，并将其铸造到其中。还有我们的质押账户，用于实际质押我们的NFT。
 
 ```ts
 it("Chooses a mint pseudorandomly", async () => {
@@ -356,7 +356,7 @@ it("Chooses a mint pseudorandomly", async () => {
     )
 ```
 
-我们从vrf账户加载数据，从交换机队列中获取我们的权限和数据缓冲区。然后我们调用open lootbox函数，它需要所有适当的账户...有相当多。大部分来自setupSwitchboard函数，还有一些来自我们刚刚获取的交换机队列。
+我们从`vrf`账户加载数据，从交换机队列中获取我们的权限和数据缓冲区。然后我们调用`open lootbox`函数，它需要所有适当的账户...有相当多。大部分来自`setupSwitchboard`函数，还有一些来自我们刚刚获取的交换机队列。
 
 ```ts
 const vrfState = await vrfAccount.loadData()
@@ -384,7 +384,7 @@ const vrfState = await vrfAccount.loadData()
       .rpc()
 ```
 
-然后我们有这个awaitCallback函数，在其中我们传入lootbox程序、指针PDA，并选择一个20秒的时间，在这段时间内，我们将等待看看lootbox指针是否更新为新的mint。
+然后我们有这个`awaitCallback`函数，在其中我们传入`lootbox`程序、指针`PDA`，并选择一个20秒的时间，在这段时间内，我们将等待看看lootbox指针是否更新为新的`mint`。
 
 ```ts
 await awaitCallback(
@@ -442,9 +442,7 @@ async function awaitCallback(
 }
 ```
 
-最后，测试选定齿轮的铸造。它获取战利品箱指针，从中获取铸币，并获取我们需要的ATA以使其工作。然后我们检查是否之前已经有了相同的齿轮，以防我们运行多次。然后我们调用从战利品箱中检索物品，并再次确认新的齿轮数量是之前的数量加一。
-
-
+最后，测试选定齿轮的铸造。它获取战利品箱指针，从中获取铸币，并获取我们需要的`ATA`以使其工作。然后我们检查是否之前已经有了相同的齿轮，以防我们运行多次。然后我们调用从战利品箱中检索物品，并再次确认新的齿轮数量是之前的数量加一。
 
 ```ts
 it("Mints the selected gear", async () => {
