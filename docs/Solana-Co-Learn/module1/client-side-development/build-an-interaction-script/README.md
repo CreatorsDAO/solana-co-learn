@@ -112,7 +112,7 @@ Finished successfully
 
 保持测试帐户独立非常重要，这就是为什么这个脚本特别酷的原因 - 它消除了创建和管理测试钱包的麻烦。
 
-现在，如果我们也能自动获取 devnet SOL 就好了。哦等等，我们可以！
+现在，如果我们也能自动获取` devnet SOL` 就好了。哦等等，我们可以！
 
 快来看看这个超酷的空投功能-
 
@@ -254,7 +254,7 @@ async function pingProgram(connection: Web3.Connection, payer: Web3.Keypair) {
 
 既然我们已经一起学习了如何将交易发送到网络，现在轮到你独立尝试了。
 
-按照上一步骤的类似流程，从头开始创建一个脚本，使您能够在Devnet上将SOL从一个账户转移到另一个账户。确保打印出交易签名，以便您可以在Solana Explorer上查看。
+按照上一步骤的类似流程，从头开始创建一个脚本，使您能够在`Devnet`上将SOL从一个账户转移到另一个账户。确保打印出交易签名，以便您可以在Solana Explorer上查看。
 
 想想到目前为止你学到了什么 -
 

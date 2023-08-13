@@ -113,7 +113,7 @@ EVM智能合约和Solana程序之间的一个重要区别在于它们如何存�
 
 起始测试文件可以在 `./tests` 目录中找到。该文件提供了一个与客户端交互的示例。
 
-`Anchor`设置了 `provider` 和 `program` ，以帮助我们从客户端连接到合约。这是通过使用IDL文件来完成的，该文件描述了程序的公共接口，类似于EVM智能合约中使用的ABI文件。如果您运行 `anchor build` ，则会生成`IDL`文件，并且可以在 `./target/idl` 找到。
+`Anchor`设置了 `provider` 和 `program` ，以帮助我们从客户端连接到合约。这是通过使用`IDL`文件来完成的，该文件描述了程序的公共接口，类似于EVM智能合约中使用的ABI文件。如果您运行 `anchor build` ，则会生成`IDL`文件，并且可以在 `./target/idl` 找到。
 
 ```ts
 import * as anchor from "@coral-xyz/anchor"
@@ -250,7 +250,7 @@ Program log: Hello, World!
 
 ## 下一步
 
-有兴趣深入了解吗？请查看 [solana-developers/program-examples 存储库](https://github.com/solana-developers/program-examples)。您将在 basics 和 tokens 部分找到适用于常见Solana用例的Solang实现。
+有兴趣深入了解吗？请查看 [solana-developers/program-examples 存储库](https://github.com/solana-developers/program-examples)。您将在 `basics` 和 `tokens` 部分找到适用于常见Solana用例的Solang实现。
 
 如果你有问题，请随时在[Solana Stack exchange](https://solana.stackexchange.com/)上发布。如果你有关于Solang维护者的问题，可以直接在[Hyperledger Foundation](https://discord.com/invite/hyperledger)的discord上联系他们。
 
