@@ -1,10 +1,10 @@
 ---
 sidebar_position: 65
-sidebar_label: PDA
+sidebar_label: PDAs
 sidebar_class_name: green
 ---
 
-# 本地环境设置和PDA
+# PDAs
 
 - 🎬 带有Gage的PDA
 - [🧐 PDA 深入探究](./pda-deep-dive/README.md)

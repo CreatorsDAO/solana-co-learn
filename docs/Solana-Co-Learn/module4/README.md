@@ -12,7 +12,7 @@ sidebar_class_name: green
 - [🧐 PDA 深入探究](./pdas/pda-deep-dive/README.md)
 - [💬 在链上构建评论功能](./pdas/build-on-chain-comments/README.md)
 
-## 跨程序调用
+## CPIs(跨程序调用)
 
 -  🎬 CPIs with Gage
 - [⚔ 跨项目的Boss战](./cross-program-invocations/the-cross-program-boss-fight/README.md)
