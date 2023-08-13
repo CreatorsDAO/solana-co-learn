@@ -6,7 +6,7 @@ sidebar_class_name: green
 
 # 使用Anchor CPIs构建
 
-回到未来。我们将以CPIs结束我们的电影评论节目，来个圆满收官。
+回到未来。我们将以`CPIs`结束我们的电影评论节目，来个圆满收官。
 
 这一次，让我们：
 
@@ -18,7 +18,7 @@ sidebar_class_name: green
 **初始代码**
 
 - 起始代码：[https://beta.solpg.io/63184c17bb7e0b5f4ca6dfa5](https://beta.solpg.io/63184c17bb7e0b5f4ca6dfa5?utm_source=buildspace.so&utm_medium=buildspace_project)
-- 我们将在之前的PDA演示基础上进行扩展
+- 我们将在之前的`PDA`演示基础上进行扩展
 
 我们要做的第一件事是定义 `create_reward_mint` 指令：
 
@@ -71,7 +71,7 @@ pub fn create_reward_mint(
     }
 ```
 
-这个很长但非常简单！我们正在为`Token`元数据程序创建一个CPI到 `create_metadata_account_v2` 指令。
+这个很长但非常简单！我们正在为`Token`元数据程序创建一个`CPI`到 `create_metadata_account_v2` 指令。
 
 接下来，我们看到了 `CreateTokenReward` 上下文类型。
 
@@ -108,7 +108,7 @@ pub struct CreateTokenReward<'info> {
 ## 创建 ErrorCode
 
 - 检查评级的错误代码
-- （Anchor处理了我们在原生版本中的其他检查）
+- （`Anchor`处理了我们在原生版本中的其他检查）
 
 ```rust
 #[error_code]

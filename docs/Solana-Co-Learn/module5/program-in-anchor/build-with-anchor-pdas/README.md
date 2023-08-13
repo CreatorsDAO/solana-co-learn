@@ -6,12 +6,12 @@ sidebar_class_name: green
 
 # 使用Anchor PDA构建
 
-在我们继续讨论CPI之前，让我们向世界展示一下这些PDA的功能。🎸
+在我们继续讨论`CPI`之前，让我们向世界展示一下这些`PDA`的功能。🎸
 
-我们将使用Anchor框架创建一个电影评论程序。
+我们将使用`Anchor`框架创建一个电影评论程序。
 
 该程序将允许用户：
-- 使用PDA初始化一个新的电影评论账户，以存储评论
+- 使用`PDA`初始化一个新的电影评论账户，以存储评论
 - 更新现有的电影评论账户的内容
 - 关闭现有的电影评论账户
 
@@ -33,7 +33,7 @@ pub mod movie_review {
 
 ## 🎥 MovieAccountState
 
-我们首先要做的是定义State账户。
+我们首先要做的是定义`State`账户。
 
 ```rust
 use anchor_lang::prelude::*;
@@ -66,7 +66,7 @@ pub struct MovieAccountState {
 
 ## 🎬 添加电影评论
 
-感谢 Anchor，可以跳过所有验证和安全性，直接添加 `add_move_review` 功能：
+感谢 `Anchor`，可以跳过所有验证和安全性，直接添加 `add_move_review` 功能：
 
 ```rust
 #[program]
@@ -127,9 +127,9 @@ pub struct AddMovieReview<'info> {
 ...
 ```
 
-再次，我们正在以与本地相同的方式进行操作，但借助Anchor的魔力。
+再次，我们正在以与本地相同的方式进行操作，但借助`Anchor`的魔力。
 
-我们正在使用两个 seeds 初始化一个新的 `movie_review` 账户
+我们正在使用两个 `seeds` 初始化一个新的 `movie_review` 账户
 
 - `title` - 指令数据中的电影标题
 - `initializer.key()` - 创建电影评论的 `initializer` 的公钥
@@ -201,7 +201,7 @@ pub struct UpdateMovieReview<'info> {
 ...
 ```
 
-我们使用 `seeds` 和 `bump` 约束来验证 `movie_review` 账户。由于占用的空间可能会发生变化，我们使用 `realloc` 约束让Anchor根据更新的描述长度来处理账户空间和租金的重新分配。
+我们使用 `seeds` 和 `bump` 约束来验证 `movie_review` 账户。由于占用的空间可能会发生变化，我们使用 `realloc` 约束让`Anchor`根据更新的描述长度来处理账户空间和租金的重新分配。
 
 `realloc::payer` 约束规定了所需的额外`lamports`将来自或发送到初始化账户。
 
@@ -253,7 +253,7 @@ pub struct Close<'info> {
 
 我们都完成了！试一下，它会像旧的本地电影评论程序一样运行。如果出现问题，你可以与[这里](https://beta.solpg.io/631b39c677ea7f12846aee8c?utm_source=buildspace.so&utm_medium=buildspace_project)的解决方案代码进行比较 :)
 
-## 🚢 船舶挑战
+## 🚢 Ship 挑战 (这个和build with solana Framework的内容重复了)
 
 现在轮到你独立构建一些东西了。由于我们从非常简单的程序开始，你的程序将几乎与我们刚刚创建的程序完全相同。尽量达到能够独立编写代码而不参考之前的代码的程度，所以请尽量不要在这里复制粘贴。
 

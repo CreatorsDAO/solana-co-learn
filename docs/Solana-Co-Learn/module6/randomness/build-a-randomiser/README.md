@@ -27,7 +27,7 @@ import * as sbv2 from "@switchboard-xyz/switchboard-v2"
 
 对于实际功能，你会注意到我们传入的三个项目是提供者、战利品箱计划和付款人。
 
-我们要做的第一件事是加载devnet队列，这为我们提供了一个在devnet上进行测试的环境。ID是switchboard的程序ID，而100,000,000是switchboard代币，我们需要访问它们的内容。
+我们要做的第一件事是加载devnet队列，这为我们提供了一个在devnet上进行测试的环境。`ID`是switchboard的程序ID，而100,000,000是`switchboard`代币，我们需要访问它们的内容。
 
 ```ts
 export const setupSwitchboard = async (provider, lootboxProgram, payer) => {
@@ -58,9 +58,9 @@ console.log(
 );
 ```
 
-上述的const状态是关键组件，它加载了我们需要的交换机队列数据，我们将在函数的其余部分中使用它。
+上述的`const`状态是关键组件，它加载了我们需要的交换机队列数据，我们将在函数的其余部分中使用它。
 
-然后我们创建我们的验证随机函数（VRF）账户。这对于我们使用的交换机板的部分非常特殊。正如您所看到的，它会生成一个新的密钥对。
+然后我们创建我们的验证随机函数（`VRF`）账户。这对于我们使用的交换机板的部分非常特殊。正如您所看到的，它会生成一个新的密钥对。
 
 
 
@@ -70,7 +70,7 @@ console.log(
 const vrfKeypair = anchor.web3.Keypair.generate()
 ```
 
-作为创建VRF账户的一部分，我们需要访问一些PDA设备。
+作为创建`VRF`账户的一部分，我们需要访问一些`PDA`设备。
 
 
 
@@ -88,11 +88,11 @@ lootboxProgram.programId
 )
 ```
 
-你会看到我们正在使用vrf和payer的公钥作为种子。在生产环境中，这些将需要是静态的，只有payer的公钥。这段代码确保我们每次运行测试时都有不同的vrf密钥对和用户状态，这样我们在测试过程中不会遇到尝试重新创建已经创建过的账户的问题。
+你会看到我们正在使用`vrf`和`payer`的公钥作为种子。在生产环境中，这些将需要是静态的，只有`payer`的公钥。这段代码确保我们每次运行测试时都有不同的`vrf`密钥对和用户状态，这样我们在测试过程中不会遇到尝试重新创建已经创建过的账户的问题。
 
-现在我们可以使用sbv2库创建VRF账户，传入交换机程序、我们想要给VRF账户的密钥对、用户状态PDA作为授权、交换机队列和回调函数。
+现在我们可以使用`sbv2`库创建`VRF`账户，传入交换机程序、我们想要给`VRF`账户的密钥对、用户状态`PDA`作为授权、交换机队列和回调函数。
 
-所以，当我们想要一个新的随机数时，我们将通过与交换机程序进行CPI来获取一个随机数，并且它必须知道我们程序中的一条指令来进行CPI返回，以给我们随机数。与所有指令一样，它有一个程序ID，一个账户列表和指令数据。至于账户，第一个是用来为我们写入数据的地方，然后是vrf账户，我们将在其中写入已选择的mint的lootbox指针PDA，最后是付款人。
+所以，当我们想要一个新的随机数时，我们将通过与交换机程序进行`CPI`来获取一个随机数，并且它必须知道我们程序中的一条指令来进行`CPI`返回，以给我们随机数。与所有指令一样，它有一个程序ID，一个账户列表和指令数据。至于账户，第一个是用来为我们写入数据的地方，然后是vrf账户，我们将在其中写入已选择的`mint`的`lootbox`指针`PDA`，最后是付款人。
 
 ```ts
 // create new vrf acount
@@ -151,7 +151,7 @@ lootboxProgram.programId
   }
 ```
 
-由于我们稍后需要切换板账户的提升，我们将其提取出来，以及switchboardStateBump，这是切换板的程序账户。
+由于我们稍后需要切换板账户的提升，我们将其提取出来，以及`switchboardStateBump`，这是切换板的程序账户。
 
 ```ts
 // GET PERMISSION BUMP AND SWITCHBOARD STATE BUMP
@@ -180,7 +180,7 @@ return {
   }
 ```
 
-我们最终在我们的测试环境设置中调用整个函数，所以我们的before现在看起来是这样的。
+我们最终在我们的测试环境设置中调用整个函数，所以我们的`before`现在看起来是这样的。
 
 ```ts
 before(async () => {
@@ -202,25 +202,25 @@ before(async () => {
 
 这是关于客户端交换机所需的基本知识。
 
-## init_user指令的详细步骤 👶
+## `init_user`指令的详细步骤 👶
 
-首先，对于我们的战利品箱计划，我们之前把所有东西都放在 lib.rs 里，但是它变得越来越庞大且难以控制，所以现在我们对其进行了拆分，请[查看](https://github.com/Unboxed-Software/anchor-nft-staking-program/tree/solution-randomize-loot/programs/lootbox-program?utm_source=buildspace.so&utm_medium=buildspace_project)文件结构。
+首先，对于我们的战利品箱计划，我们之前把所有东西都放在 `lib.rs` 里，但是它变得越来越庞大且难以控制，所以现在我们对其进行了拆分，请[查看](https://github.com/Unboxed-Software/anchor-nft-staking-program/tree/solution-randomize-loot/programs/lootbox-program?utm_source=buildspace.so&utm_medium=buildspace_project)文件结构。
 
-现在的lib文件主要只是一堆use语句、declare id宏和我们的四个指令，它们只是调用其他文件而已。
+现在的`lib`文件主要只是一堆`use`语句、`declare_id!`宏和我们的四个指令，它们只是调用其他文件而已。
 
-Init_user将创建用户状态账户，我们将在我们的程序和交换机之间共享该账户，它就像一个联络账户。
+`Init_user`将创建用户状态账户，我们将在我们的程序和交换机之间共享该账户，它就像一个联络账户。
 
-打开战利品箱与以前一样，它将启动生成随机货币的过程，但不会完成该过程，而是生成一个CPI来呼叫交换机以请求一个随机数。
+打开战利品箱与以前一样，它将启动生成随机货币的过程，但不会完成该过程，而是生成一个`CPI`来呼叫交换机以请求一个随机数。
 
 消耗随机性是由交换机调用的，以返回指令中的号码，以便我们可以使用它，并在设置薄荷时完成该过程。
 
 从战利品箱中获取物品基本上没有改变。
 
-让我们开始吧，首先是init_user。
+让我们开始吧，首先是`init_user`。
 
-在顶部，您会找到初始用户上下文，在底部是一个实现，其中有一个名为process instruction的函数，在该函数中执行了之前在lib文件中的逻辑。
+在顶部，您会找到初始用户上下文，在底部是一个实现，其中有一个名为`process instruction`的函数，在该函数中执行了之前在lib文件中的逻辑。
 
-在InitUser上下文中有四个账户。状态是我们的用户状态对象，其中包含vrf和payer密钥种子，这是用于测试的版本。对于生产代码，您只需要payer种子。我们这样做是为了节省时间，而不是使用环境变量。然后有vrf账户，switchboard不会自动加载它，因此需要使用.load()调用来加载。可能有其他使用switchboard的方法，但我们目前使用的是最简单/最快的路径来启动和运行，随时可以探索和改进它。最后，我们有payer和system程序来创建一个新账户。
+在InitUser上下文中有四个账户。状态是我们的用户状态对象，其中包含`vrf`和`payer`密钥种子，这是用于测试的版本。对于生产代码，您只需要payer种子。我们这样做是为了节省时间，而不是使用环境变量。然后有vrf账户，switchboard不会自动加载它，因此需要使用.load()调用来加载。可能有其他使用switchboard的方法，但我们目前使用的是最简单/最快的路径来启动和运行，随时可以探索和改进它。最后，我们有`payer`和`system`程序来创建一个新账户。
 
 ```ts
 use crate::*;
@@ -254,7 +254,7 @@ pub struct InitUser<'info> {
 }
 ```
 
-对于逻辑部分，我们正在获取一个名为state的账户，因为我们设置了bump、switchboard state bump、vrf permission bump、vrf账户以及与之关联的用户。你会注意到有一个结构体，它只包含我们之前提到的这两个bump。
+对于逻辑部分，我们正在获取一个名为`state`的账户，因为我们设置了`bump`、`switchboard state bump`、`vrf permission bump`、`vrf`账户以及与之关联的用户。你会注意到有一个结构体，它只包含我们之前提到的这两个`bump`。
 
 ```rust
 #[derive(Clone, AnchorSerialize, AnchorDeserialize)]
@@ -282,7 +282,7 @@ impl InitUser<'_> {
 
 这里的新东西是结果缓冲区。这是我们提取随机性的地方，他们将其作为一个32字节的随机数据数组发送给我们，我们可以将其转化为我们需要的任何随机性。
 
-请注意，这里添加了两个属性， [account(zero_copy)] 是需要加载的部分，我只是按照交换机示例中的建议使用了它。
+请注意，这里添加了两个属性， `#[account(zero_copy)]` 是需要加载的部分，我只是按照交换机示例中的建议使用了它。
 
 ```rust
 #[repr(packed)]

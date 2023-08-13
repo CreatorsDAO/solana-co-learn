@@ -1,10 +1,10 @@
 ---
 sidebar_position: 8
-sidebar_label: 原始Solana合约实现 <hello, World>
+sidebar_label: Native Solana合约实现 - hello, World
 sidebar_class_name: green
 ---
 
-# 原始Solana合约实现 <hello, World>
+# Native Solana合约实现 - hello, World 
 
 让我们通过构建和部署 `Hello World!` 程序来进行练习。
 

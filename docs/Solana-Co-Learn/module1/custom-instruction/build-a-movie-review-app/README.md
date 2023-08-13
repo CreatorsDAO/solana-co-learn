@@ -23,7 +23,7 @@ npm i
 
 这是一个普通的 Next.js 应用程序，安装了一些模板组件和一些 Solana 依赖项，以帮助您节省时间。那里有一些模拟评论，请查看各个组件以感受该应用程序。
 
-您会注意到我们已将钱包上下文提供程序从 `_app.tsx` 移至其自己的组件。它的工作原理是一样的，只是将其与更大的应用程序分开，性能更高。应用程序现在所做的就是将您的评论记录到控制台中，我们将在 `Form.tsx` 中设置 `handleTransactionSubmit` 函数。我们走吧呜呜呜呜
+您会注意到我们已将钱包上下文提供程序从 `_app.tsx` 移至其自己的组件。它的工作原理是一样的，只是将其与更大的应用程序分开，性能更高。应用程序现在所做的就是将您的评论记录到控制台中，我们将在 `Form.tsx` 中设置 `handleTransactionSubmit` 函数。我们走吧呜呜呜呜。
 
 ## 🗺 定义架构
 
@@ -37,7 +37,7 @@ npm i
 npm install @project-serum/borsh --force
 ```
 
-接下来前往 `Movie.ts` 导入 `borsh` 并在 Movie 类中添加架构（不要复制粘贴此内容）：
+接下来前往 `Movie.ts` 导入 `borsh` 并在 `Movie` 类中添加架构（不要复制粘贴此内容）：
 
 ```ts
 // We're importing borsh
@@ -74,7 +74,7 @@ export class Movie {
 
 ## 🌭 创建serialize方法
 
-现在我们知道数据是什么样子，我们需要编写将其序列化的方法。将其添加到 Movie 类中架构的正下方：
+现在我们知道数据是什么样子，我们需要编写将其序列化的方法。将其添加到 `Movie `类中架构的正下方：
 
 ```ts
 serialize(): Buffer {

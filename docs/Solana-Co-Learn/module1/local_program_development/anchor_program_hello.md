@@ -1,10 +1,10 @@
 ---
 sidebar_position: 9
-sidebar_label: Anchor 合约框架实现 <hello, World>
+sidebar_label: Anchor 合约框架实现 - hello, World
 sidebar_class_name: green
 ---
 
-# Anchor 合约框架实现 <hello, World>
+# Anchor 合约框架实现 - hello, World
 
 让我们通过构建和部署 `Hello World!` 程序来进行练习。
 

@@ -10,17 +10,17 @@ sidebar_class_name: green
 
 回想一下，`CPI`是使用 `invoke` 和 `invoke_signed` 制作的。
 
-Anchor还提供了一种制作`CPI`的格式。使用这种格式需要访问所调用程序的`CPI`模块。常见的程序有一个你可以使用的包，例如 `anchor_spl` 用于令牌程序。否则，你将需要使用所调用程序的源代码或已发布的`IDL`来生成`CPI`模块。
+`Anchor`还提供了一种制作`CPI`的格式。使用这种格式需要访问所调用程序的`CPI`模块。常见的程序有一个你可以使用的包，例如 `anchor_spl` 用于令牌程序。否则，你将需要使用所调用程序的源代码或已发布的`IDL`来生成`CPI`模块。
 
-如果没有可用的CPI模块，您仍然可以直接在指令中使用 `invoke` 和 `invoke_signed` 。就像锚定指令需要 `Context` 类型一样，锚定CPI使用 `CpiContext` 。
+如果没有可用的`CPI`模块，您仍然可以直接在指令中使用 `invoke` 和 `invoke_signed` 。就像锚定指令需要 `Context` 类型一样，`Anchor`  `CPI`使用 `CpiContext` 。
 
-`CpiContext`提供了指令所需的所有账户和种子。当没有PDA签名者时，使用`CpiContext::new`。
+`CpiContext`提供了指令所需的所有账户和种子。当没有`PDA`签名者时，使用`CpiContext::new`。
 
 ```rust
 CpiContext::new(cpi_program, cpi_accounts)
 ```
 
-当需要一个PDA作为签名者时，使用 CpiContext::new_with_signer 。
+当需要一个`PDA`作为签名者时，使用 `CpiContext::new_with_signer` 。
 
 ```rust
 CpiContext::new_with_signer(cpi_program, cpi_accounts, seeds)
@@ -43,7 +43,7 @@ where
 }
 ```
 
-当不需要 `signer_seeds` 时使用 `CpiContext::new` （不使用PDA签名）。
+当不需要 `signer_seeds` 时使用 `CpiContext::new` （不使用`PDA`签名）。
 
 ```rust
 pub fn new(
@@ -78,7 +78,7 @@ pub fn new_with_signer(
 
 `anchor_spl` 包含一个 `token` 模块，用于简化创建`CPI`到令牌程序的过程。
 
-`Structs` 这是每个相应的令牌程序指令所需的账户列表。`Functions` 这是每个相应指令的CPI。
+`Structs` 这是每个相应的令牌程序指令所需的账户列表。`Functions` 这是每个相应指令的`CPI`。
 
 例如，这里`MintTo`是所需的账户：
 
@@ -93,7 +93,7 @@ pub struct MintTo<'info> {
 
 让我们也来看看`mint_to`引擎的内部。
 
-它使用 `CpiContext` 来构建一个`CPI`到 `mint_to` 指令。它使用 `invoke_signed` 来制作CPI。
+它使用 `CpiContext` 来构建一个`CPI`到 `mint_to` 指令。它使用 `invoke_signed` 来制作`CPI`。
 
 ```rust
 pub fn mint_to<'a, 'b, 'c, 'info>(
@@ -170,7 +170,7 @@ token::mint_to(
 
 错误可以分为以下几种类型：
 
-- anchor框架从其自身代码内部返回的内部错误
+- `Anchor`框架从其自身代码内部返回的内部错误
 - 用户（你！）可以返回的自定义错误
 
 `AnchorErrors`提供了各种信息，例如：
@@ -181,7 +181,7 @@ token::mint_to(
 
 最终，所有的程序都会返回相同的错误：[ProgramError](https://docs.rs/solana-program/latest/solana_program/program_error/enum.ProgramError.html?utm_source=buildspace.so&utm_medium=buildspace_project)。
 
-Anchor有许多不同的内部错误代码。这些代码不是为用户使用的，但研究参考资料以了解代码和其原因之间的映射是很有用的。
+`Anchor`有许多不同的内部错误代码。这些代码不是为用户使用的，但研究参考资料以了解代码和其原因之间的映射是很有用的。
 
 自定义错误代码编号从自定义错误偏移量开始。
 

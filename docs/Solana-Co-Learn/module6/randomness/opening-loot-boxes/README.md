@@ -8,18 +8,18 @@ sidebar_class_name: green
 
 我们要进入开放的战利品箱指南，第一件你会注意到的事情是，它需要很多账号，总共19个！
 
-直到stake_state，这些都是我们之前拥有的所有信息。
+直到`stake_state`，这些都是我们之前拥有的所有信息。
 
-与总机相关的内容我们正在添加的有：我们的用户状态，这是我们在初始化用户中刚刚初始化的。然后还有一堆总机账户，包括vrf账户、oracle队列账户、队列权限账户（这只是该权限的PDA）、数据缓冲区账户、权限账户、托管账户、程序状态账户和总机程序账户本身。
+与总机相关的内容我们正在添加的有：我们的用户状态，这是我们在初始化用户中刚刚初始化的。然后还有一堆总机账户，包括`vrf`账户、`oracle`队列账户、队列权限账户（这只是该权限的`PDA`）、数据缓冲区账户、权限账户、托管账户、程序状态账户和总机程序账户本身。
 
-你会注意到我们还没有讨论过一些类型，它们来自于 switchboard-v2 crate。以下是你需要添加到 Cargo.toml 中的两个依赖项，以使所有这些类型正常工作。
+你会注意到我们还没有讨论过一些类型，它们来自于 `switchboard-v2 crate`。以下是你需要添加到 `Cargo.toml` 中的两个依赖项，以使所有这些类型正常工作。
 
 ```toml
 switchboard-v2 = { version = "^0.1.14", features = ["devnet"] }
 bytemuck = "1.7.2"
 ```
 
-最后两个账户是付款人钱包，它是与您的swithboard代币关联的代币账户，用于支付随机性和最近的区块哈希。
+最后两个账户是付款人钱包，它是与您的`swithboard`代币关联的代币账户，用于支付随机性和最近的区块哈希。
 
 ```ts
 use crate::*;
@@ -135,9 +135,9 @@ let vrf_permission_bump = state.vrf_permission_bump;
 drop(state);
 ```
 
-接下来，我们从账户列表中获取交换机程序本身。然后，我们构建VRF请求的随机性，这基本上是我们用于CPI的上下文，在我们几行后调用`vrf_request_randomness`时发生。
+接下来，我们从账户列表中获取交换机程序本身。然后，我们构建`VRF`请求的随机性，这基本上是我们用于`CPI`的上下文，在我们几行后调用`vrf_request_randomness`时发生。
 
-再次，你会注意到一些需要注释掉的代码，用于区分生产环境和测试环境。我们只在测试目的下使用vrf账户。
+再次，你会注意到一些需要注释掉的代码，用于区分生产环境和测试环境。我们只在测试目的下使用`vrf`账户。
 
 ```rust
 let switchboard_program = ctx.accounts.switchboard_program.to_account_info();
@@ -189,7 +189,7 @@ ctx.accounts.lootbox_pointer.available_lootbox = box_number * 2;
 Ok(())
 ```
 
-让我们回到战利品盒指针结构体，这里有一个 redeemable 属性。这个属性允许我们的客户端观察战利品盒指针账户，一旦它从false变为true，我们就知道随机性已经恢复，可以开始铸造。这个变化发生在消耗随机性函数中。
+让我们回到战利品盒指针结构体，这里有一个 `redeemable` 属性。这个属性允许我们的客户端观察战利品盒指针账户，一旦它从`false`变为`true`，我们就知道随机性已经恢复，可以开始铸造。这个变化发生在消耗随机性函数中。
 
 ```rust
 #[account]
@@ -202,7 +202,7 @@ pub struct LootboxPointer {
 }
 ```
 
-让我们跳转到那个函数并进行回顾。这是由交换机调用的函数，它是我们在 callback 文件中提供的内容。回调中的四个账户与ConsumeRandomness中的账户匹配，其中loobox指针和状态都是可变的。
+让我们跳转到那个函数并进行回顾。这是由交换机调用的函数，它是我们在 `callback` 文件中提供的内容。回调中的四个账户与`ConsumeRandomness`中的账户匹配，其中`loobox`指针和状态都是可变的。
 
 ```rust
 use crate::state::*;
@@ -237,7 +237,7 @@ pub struct ConsumeRandomness<'info> {
 }
 ```
 
-关于实际的实施，在过程指令功能中，我们首先加载vrf和状态账户。然后我们从vrf账户获取结果缓冲区，并检查确保其不为空。
+关于实际的实施，在过程指令功能中，我们首先加载vrf和状态账户。然后我们从`vrf`账户获取结果缓冲区，并检查确保其不为空。
 
 
 
@@ -382,7 +382,7 @@ const vrfState = await vrfAccount.loadData()
         recentBlockhashes: anchor.web3.SYSVAR_RECENT_BLOCKHASHES_PUBKEY,
       })
       .rpc()
-  ```
+```
 
 然后我们有这个awaitCallback函数，在其中我们传入lootbox程序、指针PDA，并选择一个20秒的时间，在这段时间内，我们将等待看看lootbox指针是否更新为新的mint。
 

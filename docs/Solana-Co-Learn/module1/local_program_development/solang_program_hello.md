@@ -1,10 +1,10 @@
 ---
 sidebar_position: 10
-sidebar_label: 使用Solang编译器编译solidity合约实现 <hello, World>
+sidebar_label: Solang solidity合约实现 - hello, World
 sidebar_class_name: green
 ---
 
-# 使用`Solang`编译器编译solidity合约实现 <hello, World>
+# Solang solidity合约实现 - hello, World
 
 欢迎来到Solana入门指南！`Solang`是一个Solidity编译器，它允许您使用Solidity编程语言编写Solana程序，其他区块链中称为“智能合约”。
 
