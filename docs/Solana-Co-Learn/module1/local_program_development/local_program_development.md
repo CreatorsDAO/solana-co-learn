@@ -17,7 +17,7 @@ sidebar_class_name: green
 
 ## 本地环境配置
 
-Solana 程序使用Rust 编写，调试运行。建议使用Unix 系列系统: Mac , Linux 等。
+Solana Program 使用Rust 编写，调试运行。建议使用Unix 系列系统: Mac , Linux 等。
 如果很不幸你使用的是Windows,建议使用 WSL 下载Ubuntu ,并在其中完成运行。
 
 ### 在Windows上设置（带有Linux）
