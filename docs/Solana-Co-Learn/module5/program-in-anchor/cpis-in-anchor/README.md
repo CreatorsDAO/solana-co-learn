@@ -12,7 +12,7 @@ sidebar_class_name: green
 
 `Anchor`还提供了一种制作`CPI`的格式。使用这种格式需要访问所调用程序的`CPI`模块。常见的程序有一个你可以使用的包，例如 `anchor_spl` 用于令牌程序。否则，你将需要使用所调用程序的源代码或已发布的`IDL`来生成`CPI`模块。
 
-如果没有可用的`CPI`模块，您仍然可以直接在指令中使用 `invoke` 和 `invoke_signed` 。就像锚定指令需要 `Context` 类型一样，`Anchor`  `CPI`使用 `CpiContext` 。
+如果没有可用的`CPI`模块，您仍然可以直接在指令中使用 `invoke` 和 `invoke_signed` 。就像`Anchor`指令需要 `Context` 类型一样，`Anchor CPI`使用 `CpiContext` 。
 
 `CpiContext`提供了指令所需的所有账户和种子。当没有`PDA`签名者时，使用`CpiContext::new`。
 
@@ -78,7 +78,7 @@ pub fn new_with_signer(
 
 `anchor_spl` 包含一个 `token` 模块，用于简化创建`CPI`到令牌程序的过程。
 
-`Structs` 这是每个相应的令牌程序指令所需的账户列表。`Functions` 这是每个相应指令的`CPI`。
+(`Structs` are the list of accounts each respective token program instruction requires. `Functions` are the CPI to each respective instruction.) `Structs` 是每个相应的令牌程序指令所需的账户列表。`Functions` 是每个相应指令的`CPI`。
 
 例如，这里`MintTo`是所需的账户：
 
@@ -166,7 +166,7 @@ token::mint_to(
 )?;
 ```
 
-## ❌ 锚点错误
+## ❌ Anchor 错误
 
 错误可以分为以下几种类型：
 
