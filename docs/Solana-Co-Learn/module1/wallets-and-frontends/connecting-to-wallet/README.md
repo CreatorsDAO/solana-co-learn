@@ -6,7 +6,7 @@ sidebar_class_name: green
 
 # 🔌 连接到钱包
 
-我们现在已经知道如何使用代码与网络进行交互有了。交互过程中直接使用私钥来初始化账户。很明显，这在正常的dapp中行不通。
+我们现在已经知道如何使用代码与网络进行交互了。交互过程中直接使用私钥来初始化账户。很明显，这在正常的dapp中行不通。
 (永远不要把你的私钥暴露给任何人，任何dapp)。
 
 接下来我们介绍，如何通过sdk 和 wallet 进行交互。
@@ -33,7 +33,7 @@ npm install @solana/wallet-adapter-base \
     @solana/wallet-adapter-react-ui
 ```
 
-- `wallet-adapter-react-ui` 为我们处理整个 UI - 连接
+- `wallet-adapter-react-ui` wallet-adapter-react-ui 为我们处理整个 UI  连接、选择钱包、断开连接，一切都已排序！
 - 选择 @solana/wallet-adapter-phantom 钱包。
 
 ## 👜 创建一个钱包连接按钮
@@ -54,7 +54,7 @@ npm run dev
 
 这是一个准系统 UI - 让我们将其连接到 `wallet-adapter-react` 库。
 
-### 2. 修改 `_app.tsx` 并使其看起来像这样：
+### 2. 修改 `_app.tsx` 并使其看起来像这样
 
 ```ts
 import React, { useMemo } from "react";
@@ -105,10 +105,9 @@ export default App;
 
 ### 框架介绍
 
-
-1. 这是一个`React` 应用框架，`useMemo` 根据网络连接状态，确认 rpc 网关的交互URL
+1. 这是一个`React` 应用框架，`useMemo` 根据网络连接状态，确认和solana网络交互的rpc endpoint
 2. 使用 `@solana/wallet-adapter-base`  的  `wallet-adapter-network`  展示可用的网络。
-3. WalletModalProvider 会提示用户选择钱包。
+3. `WalletModalProvider` 会提示用户选择钱包。
 4. `ConnectionProvider` 接收一个RPC端点，并让我们直接与Solana区块链上的节点进行通信。我们将在整个应用程序中使用它来发送交易。
 5. `WalletProvider` 为我们提供了一个连接各种钱包的标准接口
 6. `wallet-adapter-wallets` 提供钱包适配器。我们将使用从中导入的内容来创建我们将提供给 `WalletProvider` 的钱包列表。我刚刚选择了 Phantom 和 Glow。
