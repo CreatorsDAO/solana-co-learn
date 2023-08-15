@@ -1,10 +1,10 @@
 ---
 sidebar_position: 9
-sidebar_label: Anchor 合约框架实现 <hello, World>
+sidebar_label: Anchor 合约框架实现 - hello, World
 sidebar_class_name: green
 ---
 
-# Anchor 合约框架实现 <hello, World>
+# Anchor 合约框架实现 - hello, World
 
 让我们通过构建和部署 `Hello World!` 程序来进行练习。
 
@@ -12,11 +12,11 @@ sidebar_class_name: green
 
 ## Anchor 安装
 
-这里是anchor的[安装官方指南](https://www.anchor-lang.com/docs/installation).
+这里是`Anchor`的[安装官方指南](https://www.anchor-lang.com/docs/installation).
 
-需要你按照步骤安装好 Anchor。
+需要你按照步骤安装好 `Anchor`。
 
-安装完成后我们可以通过执行下面的命令,检测 Anchor 是否安装完成✅。
+安装完成后我们可以通过执行下面的命令,检测 `Anchor` 是否安装完成✅。
 
 ```bash
 anchor --version
@@ -92,7 +92,7 @@ anchor build
 anchor deploy
 ```
 
-solana程序部署将输出您的程序的程序ID。您现在可以在[Solana Explorer](https://explorer.solana.com/?cluster=custom)上查找已部署的程序（对于本地主机，请选择“自定义RPC URL”作为集群）。
+Solana程序部署将输出您的程序的程序`ID`。您现在可以在[Solana Explorer](https://explorer.solana.com/?cluster=custom)上查找已部署的程序（对于localhost，请选择“自定义`RPC URL`”作为集群）。
 
 
 #### 5. 查看程序日志
@@ -107,6 +107,6 @@ solana logs <PROGRAM_ID>
 
 在测试验证器仍在运行时，尝试使用[此处](https://github.com/DaviRain-Su/all-in-one-solana/tree/main/code/contract/hello_world/app/hello-frontend)的客户端脚本调用您的程序。
 
-这将返回一个Solana Explorer的URL(`Transaction https://explorer.solana.com/tx/${transactionSignature}?cluster=custom`)。将URL复制到浏览器中，在Solana Explorer上查找该交易，并检查程序日志中是否打印了`Hello, world!`。或者，您可以在运行`solana logs`命令的终端中查看程序日志。
+这将返回一个[Solana Explorer](https://explorer.solana.com)的URL(`Transaction https://explorer.solana.com/tx/${transactionSignature}?cluster=custom`)。将URL复制到浏览器中，在Solana Explorer上查找该交易，并检查程序日志中是否打印了`Hello, world!`。或者，您可以在运行`solana logs`命令的终端中查看程序日志。
 
 就是这样！您刚刚在本地开发环境中创建并部署了您的第一个程序。

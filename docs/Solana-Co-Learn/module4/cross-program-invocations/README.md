@@ -1,10 +1,10 @@
 ---
 sidebar_position: 69
-sidebar_label:  跨程序调用
+sidebar_label: CPIs(跨程序调用)
 sidebar_class_name: green
 ---
 
-# 跨程序调用
+# CPIs(跨程序调用)
 
 -  🎬 CPIs with Gage
 - [⚔ 跨项目的Boss战](./the-cross-program-boss-fight/README.md)

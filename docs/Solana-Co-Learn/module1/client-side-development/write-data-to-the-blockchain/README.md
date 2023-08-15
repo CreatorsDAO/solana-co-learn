@@ -183,4 +183,4 @@ async function callProgram(
 需要注意的主要事项是，在交易的签名者数组中，第一个签名者始终负责支付交易费用。如果你没有足够的SOL会怎么样？交易将被取消！
 
 
-当你在devnet或本地主机上时，你可以使用CLI中的 solana airdrop 来获取devnet SOL。你还可以使用[SPL代币水龙头](https://spl-token-faucet.com/)来获取SPL代币（我们稍后会了解这些是什么:P）。
+当你在`devnet`或`LocalHost`上时，你可以使用CLI中的 Solana airdrop 来获取`devnet SOL`。你还可以使用[SPL代币水龙头](https://spl-token-faucet.com/)来获取`SPL`代币（我们稍后会了解这些是什么:P）。

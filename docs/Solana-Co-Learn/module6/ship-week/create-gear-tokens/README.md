@@ -8,13 +8,13 @@ sidebar_class_name: green
 
 让我们来看一种可能的齿轮代币解决方案。
 
-我们正在讲解的解决方案代码位于[Buildoors前端代码库](https://github.com/jamesrp13/buildspace-buildoors/tree/solution-simple-gear?utm_source=buildspace.so&utm_medium=buildspace_project)的 solution-simple-gear 分支上。如果您还没有尝试自己构建，请尽量避免从解决方案代码中复制粘贴。
+我们正在讲解的解决方案代码位于[Buildoors前端代码库](https://github.com/jamesrp13/buildspace-buildoors/tree/solution-simple-gear?utm_source=buildspace.so&utm_medium=buildspace_project)的` solution-simple-gear` 分支上。如果您还没有尝试自己构建，请尽量避免从解决方案代码中复制粘贴。
 
-我们将查看两个不同的代码库。如果你还记得，我们在客户端项目中创建了BLD代币和NFT。恰好我们在那里完成了这项工作，如果我们愿意，我们可以将其转移到程序项目中。
+我们将查看两个不同的代码库。如果你还记得，我们在客户端项目中创建了`BLD`代币和NFT。恰好我们在那里完成了这项工作，如果我们愿意，我们可以将其转移到程序项目中。
 
-您可以在 /tokens/gear/assets 文件夹中找到齿轮的图像。我们选择将其制作为可替代资产，或者带有关联元数据和0位小数的SPL代币，而不是NFT，这样它们就不仅限于一个单位。
+您可以在 `/tokens/gear/assets` 文件夹中找到齿轮的图像。我们选择将其制作为可替代资产，或者带有关联元数据和0位小数的SPL代币，而不是NFT，这样它们就不仅限于一个单位。
 
-/tokens/gear/index.ts 内的脚本负责生成与这些资产相关的货币，并将其存储在同一文件夹中的 cache.json 文件中。
+`/tokens/gear/index.ts `内的脚本负责生成与这些资产相关的货币，并将其存储在同一文件夹中的 `cache.json` 文件中。
 
 在脚本内部，向下滚动你会看到我们的主要函数。
 
@@ -40,11 +40,9 @@ async function main() {
 let collection: any = {}
 ```
 
-然后我们创建我们的metaplex对象，接着是一个循环，该循环为每个铸币执行脚本的功能。
+然后我们创建我们的`metaplex`对象，接着是一个循环，该循环为每个铸币执行脚本的功能。
 
 它从一个空的薄荷数组开始，这样我们就可以为每个资产添加多个薄荷。
-
-
 
 ```ts
 let mints: Array<string> = []
@@ -58,13 +56,13 @@ const file = toMetaplexFile(imageBuffer, `${assets[i]}.png`)
 const imageUri = await metaplex.storage().upload(file)
 ```
 
-在那之后，只要你想要不同的经验等级，我们就循环执行相应的次数，对于这个装备来说。我们的示例只执行一次，因为我们的经验等级从10开始并结束。如果你想要每个等级的五个装备，只需将上限增加到50， xp <= 50 。
+在那之后，只要你想要不同的经验等级，我们就循环执行相应的次数，对于这个装备来说。我们的示例只执行一次，因为我们的经验等级从10开始并结束。如果你想要每个等级的五个装备，只需将上限增加到`50`， `xp <= 50 `。
 
 ```ts
 for (let xp = 10; xp <= 10; xp += 10)...
 ```
 
-一旦进入循环，我们获取将在后续分配的Mint Auth，这是我们想要进行铸币的程序中的PDA - 用于战利品箱程序的PDA。
+一旦进入循环，我们获取将在后续分配的`Mint Auth`，这是我们想要进行铸币的程序中的`PDA` - 用于战利品箱程序的`PDA`。
 
 ```ts
 const [mintAuth] = await web3.PublicKey.findProgramAddress(
@@ -111,7 +109,7 @@ const { uri } = await metaplex
     .run()
 ```
 
-然后我们获取该薄荷的元数据PDA。
+然后我们获取该薄荷的元数据`PDA`。
 
 ```ts
 const metadataPda = await findMetadataPda(tokenMint)
@@ -131,7 +129,7 @@ const tokenMetadata = {
   } as DataV2
 ```
 
-按照之前的做法，继续创建我们的V2指令。
+按照之前的做法，继续创建我们的`V2`指令。
 
 ```ts
 const instruction = createCreateMetadataAccountV2Instruction(
@@ -166,7 +164,7 @@ const transactionSignature = await web3.sendAndConfirmTransaction(
 )
 ```
 
-现在我们将权限更改为mintAuth，它是在战利品箱程序上的PDA。
+现在我们将权限更改为`mintAuth`，它是在战利品箱程序上的`PDA`。
 
 ```ts
 await token.setAuthority(
@@ -180,7 +178,7 @@ await token.setAuthority(
 }
 ```
 
-最后，在那个内循环之外，我们将薄荷糖放入数组中，所以第一个是“Bow”（作为我们的例子）。
+最后，在那个内循环之外，我们将薄荷糖放入数组中，所以第一个是“`Bow`”（作为我们的例子）。
 
 ```ts
 collection[assets[i]] = mints

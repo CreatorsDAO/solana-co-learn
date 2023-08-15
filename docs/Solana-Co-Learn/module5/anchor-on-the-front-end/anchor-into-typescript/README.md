@@ -6,9 +6,9 @@ sidebar_class_name: green
 
 # 🐹 Anchor到Typescript
 
-要使用前端与程序进行交互，我们需要创建一个 Anchor `Program` 对象。
+要使用前端与程序进行交互，我们需要创建一个 `Anchor` `Program` 对象。
 
- `Program` 对象提供了一个自定义的API，通过结合程序 `IDL` 和 `Provider` 来与特定程序进行交互。
+ `Program` 对象提供了一个自定义的`API`，通过结合程序 `IDL` 和 `Provider` 来与特定程序进行交互。
 
  创建 `Program` 对象，我们需要以下内容：
 
@@ -60,11 +60,11 @@ sidebar_class_name: green
      }
    ]
  }
-```
+ ```
 
 ## Provider 供应商
 
-在使用 `IDL` 创建`Program`对象之前，我们首先需要创建一个Anchor `Provider` 对象。
+在使用 `IDL` 创建`Program`对象之前，我们首先需要创建一个`Anchor` `Provider` 对象。
 
 `Provider` 对象代表了两个事物的组合：
 

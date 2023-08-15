@@ -46,8 +46,7 @@ sidebar_class_name: green
 
 ## Module4: Solana Module4
 
-- [本地环境设置和PDA
-](./module4/local-env-setup-and-pdas/README.md)
+- [PDA介绍](./module4/pdas/README.md)
 
 - [跨程序调用](./module4/cross-program-invocations/README.md)
 
@@ -72,40 +71,3 @@ sidebar_class_name: green
 - [Randomness](./module6/randomness/README.md)
 
 - [Finishing touches](./module6/finishing-touches/README.md)
-
-## Modules: Solana Modules
-
-### Beyond the Basics
-
-- Solana程序中的环境变量
-- Solana Pay
-- 版本化的事务和查找表
-- Rust过程宏
-
-### Solana程序安全
-
-- 如何处理程序安全模块
-- 签名人授权
-- Owner check
-- 账户数据匹配
-- 重新初始化攻击
-- 重复的可变账户
-- Type cosplay
-- Arbitrary CPIs
-- 碰撞种子规范化
-- 关闭账户和恢复攻击
-- PDA sharing
-
-### 其他
-
-- 使用Solidity 编写Solana合约
-    - Solidity 与PDAs
-    - Solidity 与 CPIs
-- token2020 token如何发行
-- Compression NFT 如何发行
-- 如何在Solana中使用The Graph
-- Oracles Pyth sdk的使用
-- TipLink 如何使用
-- 如何在quicknode申请RPC endpoint
-- 如何在helius申请RPC endpoint
-- etc ...

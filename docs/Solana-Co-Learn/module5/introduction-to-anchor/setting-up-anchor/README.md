@@ -14,15 +14,17 @@ sidebar_class_name: green
 
 通过将各种样板代码捆绑成宏，它能够实现这一点，让你专注于程序的业务逻辑。此外，`Anchor`还设计了处理许多常见安全检查的功能，同时允许你轻松定义额外的检查，以帮助你构建更安全的程序。
 
-简而言之 - `Anchor`可以通过减少按键次数来让你快速前进！
+> 简而言之 - `Anchor`可以通过减少按键次数来让你快速前进！
 
 ## 🗂 Anchor 应用程序结构
 
 以下是具体步骤。
 
-我希望你已经安装了Rust和Solana CLI（除非你跳过了某些部分哈哈）。你还需要[安装`Yarn`](https://yarnpkg.com/getting-started/install)。
+我希望你已经安装了`Rust`和`Solana CLI`（除非你跳过了某些部分哈哈）。你还需要[安装`Yarn`](https://yarnpkg.com/getting-started/install)。
 
 完成后，只需转到官方的[`Anchor`文档](https://www.anchor-lang.com/docs/installation)并进行设置。如果一切顺利，当您运行 `anchor --version` 时，您应该会看到一个版本被打印出来。
+
+下面是我执行之后的数据的`Anchor`的具体版本信息：
 
 ```bash
 anchor --version
@@ -46,7 +48,7 @@ anchor init <new-workspace-name>
 - `migrations/deploy.js`: 部署脚本以迁移到不同版本的程序。
 - `.anchor` 文件夹：其中包含最新的程序日志和用于测试的本地账本
 
-你现在可以基本上忽略这些。打开 `programs/workspace-name/src/lib.rs` 。这看起来与我们的`native`程序略有不同。`Anchor`将为我们定义入口点，并且我们将使用Rust属性告诉`Anchor`我们的所有内容，以便它可以自动化我们的大部分工作。
+你现在可以基本上忽略这些。打开 `programs/<workspace-name>/src/lib.rs` 。这看起来与我们的`native`程序略有不同。`Anchor`将为我们定义入口点，并且我们将使用Rust属性告诉`Anchor`我们的所有内容，以便它可以自动化我们的大部分工作。
 
 当我们使用 `#[program]` 时，实际上是声明了一个Rust宏，`Anchor`将使用它为我们生成所有必要的本地Solana样板代码。
 
@@ -60,13 +62,15 @@ anchor build
 
 这将花费几秒钟，在工作区中构建针对Solana的`BPF`运行时的程序，并在 `target/idl` 目录中生成“`IDLs`”。您还应该在终端中运行 `cargo build-sbf` 时看到类似的输出，其中包含一个部署命令。
 
-顺便说一下，这是关于目标文件夹的一些需要了解的信息 -
+顺便说一下，这是关于目标文件夹的一些需要了解的信息 ：
 
 - `target/deploy` ：用于部署程序的生成密钥对
 - `target/idl` ：程序的`IDL`文件，`.json`格式
 - `target/types` ：`Typescript` 的 `IDL` - 我们需要的所有类型
 
-什么是`IDL`？[`IDL`（接口描述语言）](https://en.wikipedia.org/wiki/Interface_description_language)文件是一个JSON文件，用于描述程序的接口 - 它告诉你有哪些函数可用以及它们接受的参数。可以将其视为程序的`API`文档。
+> 什么是`IDL`
+>
+> ？[`IDL`（接口描述语言）](https://en.wikipedia.org/wiki/Interface_description_language)文件是一个JSON文件，用于描述程序的接口 - 它告诉你有哪些函数可用以及它们接受的参数。可以将其视为程序的`API`文档。
 
 我们使用`IDL`程序来确定如何与客户端进行通信（可用的函数、参数等），并使用TypeScript `IDL`来定义类型。这些非常重要，因为要使您的程序开源，您需要发布经过验证的构建版本和`IDL`到`Anchor Programs Registry`。
 

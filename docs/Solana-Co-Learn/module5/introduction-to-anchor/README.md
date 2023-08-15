@@ -9,4 +9,4 @@ sidebar_class_name: green
 -  🎬 Anchor with Gage
 - [🛳 设置 Anchor](./setting-up-anchor/README.md)
 - [🐟 Anchor 框架](./the-anchor-framework/README.md)
-- [🧱 使用Solana Anchor框架进行建设](./build-with-solana-frameworks/README.md)
+- [🧱 使用 Anchor 框架进行开发](./build-with-solana-frameworks/README.md)

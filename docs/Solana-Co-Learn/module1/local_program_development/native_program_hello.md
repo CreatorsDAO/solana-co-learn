@@ -1,10 +1,10 @@
 ---
 sidebar_position: 8
-sidebar_label: 原始Solana合约实现 <hello, World>
+sidebar_label: Native Solana合约实现 - hello, World
 sidebar_class_name: green
 ---
 
-# 原始Solana合约实现 <hello, World>
+# Native Solana合约实现 - hello, World 
 
 让我们通过构建和部署 `Hello World!` 程序来进行练习。
 
@@ -93,7 +93,7 @@ cargo build-sbf
 solana program deploy <PATH>
 ```
 
-solana程序部署将输出您的程序的程序ID。您现在可以在[Solana Explorer](https://explorer.solana.com/?cluster=custom)上查找已部署的程序（对于本地主机，请选择“自定义RPC URL”作为集群）。
+Solana程序部署将输出您的程序的程序`ID`。您现在可以在[Solana Explorer](https://explorer.solana.com/?cluster=custom)上查找已部署的程序（对于`Localhost`，请选择“自定义`RPC URL`”作为集群）。
 
 
 ## 5. 查看程序日志

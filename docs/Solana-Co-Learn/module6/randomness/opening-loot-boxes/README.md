@@ -8,18 +8,18 @@ sidebar_class_name: green
 
 我们要进入开放的战利品箱指南，第一件你会注意到的事情是，它需要很多账号，总共19个！
 
-直到stake_state，这些都是我们之前拥有的所有信息。
+直到`stake_state`，这些都是我们之前拥有的所有信息。
 
-与总机相关的内容我们正在添加的有：我们的用户状态，这是我们在初始化用户中刚刚初始化的。然后还有一堆总机账户，包括vrf账户、oracle队列账户、队列权限账户（这只是该权限的PDA）、数据缓冲区账户、权限账户、托管账户、程序状态账户和总机程序账户本身。
+与总机相关的内容我们正在添加的有：我们的用户状态，这是我们在初始化用户中刚刚初始化的。然后还有一堆总机账户，包括`vrf`账户、`oracle`队列账户、队列权限账户（这只是该权限的`PDA`）、数据缓冲区账户、权限账户、托管账户、程序状态账户和总机程序账户本身。
 
-你会注意到我们还没有讨论过一些类型，它们来自于 switchboard-v2 crate。以下是你需要添加到 Cargo.toml 中的两个依赖项，以使所有这些类型正常工作。
+你会注意到我们还没有讨论过一些类型，它们来自于 `switchboard-v2 crate`。以下是你需要添加到 `Cargo.toml` 中的两个依赖项，以使所有这些类型正常工作。
 
 ```toml
 switchboard-v2 = { version = "^0.1.14", features = ["devnet"] }
 bytemuck = "1.7.2"
 ```
 
-最后两个账户是付款人钱包，它是与您的swithboard代币关联的代币账户，用于支付随机性和最近的区块哈希。
+最后两个账户是付款人钱包，它是与您的`swithboard`代币关联的代币账户，用于支付随机性和最近的区块哈希。
 
 ```ts
 use crate::*;
@@ -135,9 +135,9 @@ let vrf_permission_bump = state.vrf_permission_bump;
 drop(state);
 ```
 
-接下来，我们从账户列表中获取交换机程序本身。然后，我们构建VRF请求的随机性，这基本上是我们用于CPI的上下文，在我们几行后调用`vrf_request_randomness`时发生。
+接下来，我们从账户列表中获取交换机程序本身。然后，我们构建`VRF`请求的随机性，这基本上是我们用于`CPI`的上下文，在我们几行后调用`vrf_request_randomness`时发生。
 
-再次，你会注意到一些需要注释掉的代码，用于区分生产环境和测试环境。我们只在测试目的下使用vrf账户。
+再次，你会注意到一些需要注释掉的代码，用于区分生产环境和测试环境。我们只在测试目的下使用`vrf`账户。
 
 ```rust
 let switchboard_program = ctx.accounts.switchboard_program.to_account_info();
@@ -189,7 +189,7 @@ ctx.accounts.lootbox_pointer.available_lootbox = box_number * 2;
 Ok(())
 ```
 
-让我们回到战利品盒指针结构体，这里有一个 redeemable 属性。这个属性允许我们的客户端观察战利品盒指针账户，一旦它从false变为true，我们就知道随机性已经恢复，可以开始铸造。这个变化发生在消耗随机性函数中。
+让我们回到战利品盒指针结构体，这里有一个 `redeemable` 属性。这个属性允许我们的客户端观察战利品盒指针账户，一旦它从`false`变为`true`，我们就知道随机性已经恢复，可以开始铸造。这个变化发生在消耗随机性函数中。
 
 ```rust
 #[account]
@@ -202,7 +202,7 @@ pub struct LootboxPointer {
 }
 ```
 
-让我们跳转到那个函数并进行回顾。这是由交换机调用的函数，它是我们在 callback 文件中提供的内容。回调中的四个账户与ConsumeRandomness中的账户匹配，其中loobox指针和状态都是可变的。
+让我们跳转到那个函数并进行回顾。这是由交换机调用的函数，它是我们在 `callback` 文件中提供的内容。回调中的四个账户与`ConsumeRandomness`中的账户匹配，其中`loobox`指针和状态都是可变的。
 
 ```rust
 use crate::state::*;
@@ -237,7 +237,7 @@ pub struct ConsumeRandomness<'info> {
 }
 ```
 
-关于实际的实施，在过程指令功能中，我们首先加载vrf和状态账户。然后我们从vrf账户获取结果缓冲区，并检查确保其不为空。
+关于实际的实施，在过程指令功能中，我们首先加载vrf和状态账户。然后我们从`vrf`账户获取结果缓冲区，并检查确保其不为空。
 
 
 
@@ -268,7 +268,7 @@ let available_gear: Vec<Pubkey> = Self::AVAILABLE_GEAR
            .collect();
 ```
 
-value 变量是我们将结果缓冲区转换为无符号8位整数的地方，这是switchboard推荐的实现方式，使用 bytemuck crate。最后，我们使用取模运算符和可用的最大薄荷数量来随机选择一个。
+`value` 变量是我们将结果缓冲区转换为无符号8位整数的地方，这是switchboard推荐的实现方式，使用 `bytemuck crate`。最后，我们使用取模运算符和可用的最大薄荷数量来随机选择一个。
 
 ```rust
 // maximum value to convert randomness buffer
@@ -278,7 +278,7 @@ let i = (value[0] as usize) % max_result;
 msg!("The chosen mint index is {} out of {}", i, max_result);
 ```
 
-我们最终将第i个索引处的值分配给mint，然后将其分配给lootbox指针mint，并将redeemable的值更改为true。这样可以在客户端上观察到它，一旦为true，用户就可以铸造他们的装备。
+我们最终将第`i`个索引处的值分配给`mint`，然后将其分配给lootbox指针`mint`，并将`redeemable`的值更改为`true`。这样可以在客户端上观察到它，一旦为`true`，用户就可以铸造他们的装备。
 
 ```rust
 let mint = available_gear[i];
@@ -303,7 +303,7 @@ let mint = available_gear[i];
 
 ## 客户端交互/测试
 
-最后，我们将要讨论与交换机相关的测试。我们已经回顾了setupSwitchboard函数以准备测试。我们的前三个测试仍然是用于质押、赎回和解质押。下一个测试是init_user，非常简单明了，我们只需要传入交换机状态的增加和权限的增加，以及四个账户。
+最后，我们将要讨论与交换机相关的测试。我们已经回顾了`setupSwitchboard`函数以准备测试。我们的前三个测试仍然是用于质押、赎回和解质押。下一个测试是`init_user`，非常简单明了，我们只需要传入交换机状态的增加和权限的增加，以及四个账户。
 
 ```rust
 it("init user", async () => {
@@ -322,7 +322,7 @@ it("init user", async () => {
   })
 ```
 
-接下来是选择性随机测试，这个比较棘手。前半部分与其他测试类似。首先，我们创建一个虚假的铸币机来铸造这些物品。然后获取或创建一个ATA，并将其铸造到其中。还有我们的质押账户，用于实际质押我们的NFT。
+接下来是选择性随机测试，这个比较棘手。前半部分与其他测试类似。首先，我们创建一个虚假的铸币机来铸造这些物品。然后获取或创建一个`ATA`，并将其铸造到其中。还有我们的质押账户，用于实际质押我们的NFT。
 
 ```ts
 it("Chooses a mint pseudorandomly", async () => {
@@ -356,7 +356,7 @@ it("Chooses a mint pseudorandomly", async () => {
     )
 ```
 
-我们从vrf账户加载数据，从交换机队列中获取我们的权限和数据缓冲区。然后我们调用open lootbox函数，它需要所有适当的账户...有相当多。大部分来自setupSwitchboard函数，还有一些来自我们刚刚获取的交换机队列。
+我们从`vrf`账户加载数据，从交换机队列中获取我们的权限和数据缓冲区。然后我们调用`open lootbox`函数，它需要所有适当的账户...有相当多。大部分来自`setupSwitchboard`函数，还有一些来自我们刚刚获取的交换机队列。
 
 ```ts
 const vrfState = await vrfAccount.loadData()
@@ -382,9 +382,9 @@ const vrfState = await vrfAccount.loadData()
         recentBlockhashes: anchor.web3.SYSVAR_RECENT_BLOCKHASHES_PUBKEY,
       })
       .rpc()
-  ```
+```
 
-然后我们有这个awaitCallback函数，在其中我们传入lootbox程序、指针PDA，并选择一个20秒的时间，在这段时间内，我们将等待看看lootbox指针是否更新为新的mint。
+然后我们有这个`awaitCallback`函数，在其中我们传入`lootbox`程序、指针`PDA`，并选择一个20秒的时间，在这段时间内，我们将等待看看lootbox指针是否更新为新的`mint`。
 
 ```ts
 await awaitCallback(
@@ -442,9 +442,7 @@ async function awaitCallback(
 }
 ```
 
-最后，测试选定齿轮的铸造。它获取战利品箱指针，从中获取铸币，并获取我们需要的ATA以使其工作。然后我们检查是否之前已经有了相同的齿轮，以防我们运行多次。然后我们调用从战利品箱中检索物品，并再次确认新的齿轮数量是之前的数量加一。
-
-
+最后，测试选定齿轮的铸造。它获取战利品箱指针，从中获取铸币，并获取我们需要的`ATA`以使其工作。然后我们检查是否之前已经有了相同的齿轮，以防我们运行多次。然后我们调用从战利品箱中检索物品，并再次确认新的齿轮数量是之前的数量加一。
 
 ```ts
 it("Mints the selected gear", async () => {
