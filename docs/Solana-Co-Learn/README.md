@@ -8,7 +8,7 @@ sidebar_class_name: green
 
 ## Module1: Solana Module1
 
-- 区块链基本概念介绍
+- [区块链基本概念介绍](./module1/block-chain-basic/README.md)
 - [本地程序开发环境配置](./module1/local_program_development/local_program_development.md)
     - [原始Solana合约实现《hello, World》](./module1/local_program_development/native_program_hello.md)
     - [Anchor 合约框架实现《hello, World》](./module1/local_program_development/anchor_program_hello.md)
