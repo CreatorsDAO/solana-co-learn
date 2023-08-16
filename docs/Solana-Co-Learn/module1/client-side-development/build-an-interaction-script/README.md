@@ -4,52 +4,53 @@ sidebar_label: 📝 构建一个交互脚本
 sidebar_class_name: green
 ---
 
+
 # 📝 构建一个互动脚本
 
-准备好和Solana网络交互了吗？
+你准备好与Solana网络交互了吗？
 
-我们将编写一个脚本，生成一个密钥对，用`devnet` SOL资金进行充值，并与Solana网络上的现有程序进行交互。
+我们将编写一个脚本，生成一个密钥对，使用`devnet` SOL进行充值，并与Solana网络上的现有程序进行交互。
 
-这个程序是一个简单的“`ping`”计数器：我们点击它，它记录我们对它的`ping`，并增加一个计数器。我们以后会介绍Rust和我们自己的程序，现在我们将使用JS/TS。
+这个程序是一个简单的“`ping`”计数器：每次我们触发它，它就会记录我们的`ping`行为，并增加一个计数器。稍后我们会深入了解Rust和自己的程序开发，但现在我们先使用JS/TS来实现。
 
 ## 🚧 在本地设置 Solana 客户端
 
-让我们改变一下方式 - 我们将离开`React/Next.js`，在这里使用纯TypeScript构建一个本地客户端。这比搭建前端并构建大量的用户界面要快得多。你可以在一个单独的TS文件中工作，并异步运行它与网络进行交互。
+现在让我们换一种方式来操作 - 我们将不再使用`React/Next.js`，而是采用纯TypeScript来构建一个本地客户端。这样的方法比搭建前端并构建复杂用户界面要快得多。你可以在单独的TS文件中进行开发，并通过异步方式让它与网络进行交互。
 
-在您的Solana工作区中创建一个新文件夹，并使用这个方便的命令来设置本地客户端：
+首先，在你的Solana工作区中创建一个新文件夹，然后使用以下便捷命令来设置本地客户端：
 
 ```bash
 npx create-solana-client solana-intro-client
 ```
 
-如果它询问您是否要安装 `create-solana-client` 软件包，请说“是”。
+如果系统询问你是否要安装`create-solana-client`软件包，请选择“是”。
 
-
-现在只需导航到目录并在 `VS Code` 中启动它
+接下来，只需导航到新创建的目录，并使用`VS Code`打开它：
 
 ```bash
 cd solana-intro-client
 code .
 ```
 
-## ⚙ 设置客户端脚本
+现在你可以开始你的Solana客户端开发之旅了！
 
-`create-solana-client` 的美妙之处在于我们可以立即开始编写客户端代码！跳转到 `index.ts` 并导入我们的依赖项并添加此 `initializeKeypair` 函数：
+## ⚙ 客户端脚本的设置
+
+使用 `create-solana-client` 的好处在于，我们可以立即开始编写客户端代码！打开 `index.ts`，导入必要的依赖项，并添加这个 `initializeKeypair` 函数：
 
 ```ts
-// We're adding these
 import * as Web3 from '@solana/web3.js';
 import * as fs from 'fs';
 import dotenv from 'dotenv';
 dotenv.config();
 
 async function main() {
-  
+
 }
 
 main()
   .then(() => {
-    console.log('Finished successfully');
+    console.log('执行成功完成');
     process.exit(0);
   })
   .catch((error) => {
@@ -58,17 +59,18 @@ main()
   });
 ```
 
-如果您在终端中运行 `npm start` ，您将看到脚本已运行！只需一个命令即可设置 Solana 客户端。
+在终端中运行 `npm start` 后，你将看到脚本已经开始运行！只需一条命令，Solana 客户端就已设置完毕。
 
-让我们添加一个 `initializeKeypair` 函数，如果我们没有密钥对，它将自动为我们创建一个密钥对。在导入之后添加以下内容：
+现在让我们添加一个 `initializeKeypair` 函数。如果我们没有密钥对，它将自动为我们创建一个。在导入之后添加以下代码：
 
 ```ts
 async function initializeKeypair(connection: Web3.Connection): Promise<Web3.Keypair> {
+  // 如果没有私钥，生成新密钥对
   if (!process.env.PRIVATE_KEY) {
-    console.log('Generating new keypair... 🗝️');
+    console.log('正在生成新密钥对... 🗝️');
     const signer = Web3.Keypair.generate();
 
-    console.log('Creating .env file');
+    console.log('正在创建 .env 文件');
     fs.writeFileSync('.env', `PRIVATE_KEY=[${signer.secretKey.toString()}]`);
 
     return signer;
@@ -81,55 +83,55 @@ async function initializeKeypair(connection: Web3.Connection): Promise<Web3.Keyp
 }
 ```
 
-这是一个非常智能的函数 - 它会检查您的 `.env` 文件中是否有私钥，如果没有，它就会创建一个！
+这个函数非常聪明 - 如果你的 `.env` 文件中没有私钥，它就会创建一个新的！
 
-您已经熟悉这里发生的一切 - 我们调用 `Web3.Keypair.generate()` 函数并将结果写入本地 [`dotenv`](https://www.npmjs.com/package/dotenv) 文件。创建后，我们将返回密钥对，以便我们可以在脚本的其余部分中使用它。
+你已经非常熟悉这里的操作了 - 我们调用 `Web3.Keypair.generate()` 函数并将结果写入本地的 [`dotenv`](https://www.npmjs.com/package/dotenv) 文件。创建后，我们返回密钥对，以便我们可以在脚本的其他部分中使用它。
 
-更新您的 `main` 函数并使用 `npm start` 运行脚本来测试它：
+你可以更新 `main` 函数并使用 `npm start` 运行脚本进行测试：
 
 ```ts
 async function main() {
   const connection = new Web3.Connection(Web3.clusterApiUrl('devnet'));
   const signer = await initializeKeypair(connection);
 
-  console.log("Public key:", signer.publicKey.toBase58());
+  console.log("公钥:", signer.publicKey.toBase58());
 }
 ```
 
-您应该在终端中看到类似这样的内容:
+你应该会在终端中看到类似的输出：
 
 ```bash
 > solana-course-client@1.0.0 start
 > ts-node src/index.ts
 
-Generating new keypair... 🗝️
-Creating .env file
-Public key: jTAsqBrjsYp4uEJNmED5R66gHPnFW4wvQrbmFG3c4QS
-Finished successfully
+正在生成新密钥对... 🗝️
+正在创建 .env 文件
+公钥: jTAsqBrjsYp4uEJNmED5R66gHPnFW4wvQrbmFG3c4QS
+执行成功完成
 ```
 
-好的！如果您检查 `.env` 文件，您将看到一个字节格式的私钥！该密钥与文件一样保密。如果您将此文件推送到公共 GitHub 存储库，任何人都可以访问其中的资金，因此请确保您不要将其用于真正的货币用途，哈哈。
+很好！如果你检查 `.env` 文件，你会发现一串字节格式的私钥！请注意保密此文件。如果你将此文件推送到公共的 GitHub 存储库，任何人都可以访问其中的资金，因此请确保不要用它处理真实的货币，哈哈。
 
-再次运行 `npm start` 将使用它而不是创建一个新的。
+再次运行 `npm start` 会使用现有的私钥而不会创建新的。
 
-保持测试帐户独立非常重要，这就是为什么这个脚本特别酷的原因 - 它消除了创建和管理测试钱包的麻烦。
+保持测试账户的独立非常重要，这也是这个脚本特别酷的原因 - 它消除了创建和管理测试钱包的麻烦。
 
-现在，如果我们也能自动获取` devnet SOL` 就好了。哦等等，我们可以！
+现在，如果我们还能自动获取 `devnet SOL` 就更好了。哦等等，我们确实可以！
 
-快来看看这个超酷的空投功能-
+看看这个超酷的空投功能-
 
 ```ts
 async function airdropSolIfNeeded(
   signer: Web3.Keypair,
   connection: Web3.Connection
 ) {
+  // 检查余额
   const balance = await connection.getBalance(signer.publicKey);
-  console.log('Current balance is', balance / Web3.LAMPORTS_PER_SOL, 'SOL');
+  console.log('当前余额为', balance / Web3.LAMPORTS_PER_SOL, 'SOL');
 
-  // 1 SOL should be enough for almost anything you wanna do
+  // 如果余额少于 1 SOL，执行空投
   if (balance / Web3.LAMPORTS_PER_SOL < 1) {
-    // You can only get up to 2 SOL per request
-    console.log('Airdropping 1 SOL');
+    console.log('正在空投 1 SOL');
     const airdropSignature = await connection.requestAirdrop(
       signer.publicKey,
       Web3.LAMPORTS_PER_SOL
@@ -144,56 +146,56 @@ async function airdropSolIfNeeded(
     });
 
     const newBalance = await connection.getBalance(signer.publicKey);
-    console.log('New balance is', newBalance / Web3.LAMPORTS_PER_SOL, 'SOL');
+    console.log('新余额为', newBalance / Web3.LAMPORTS_PER_SOL, 'SOL');
   }
 }
 ```
 
-这可能看起来有点压力山大，但实际上你对这里发生的一切都了如指掌！我们正在利用我们的老朋友 `getBalance` 来检查我们是否破产，如果是的话，我们就会使用 `requestAidrop` 函数让钱滚滚而来。
+这可能看得让人有些头大，但其实你对于这里正在发生的事情应该相当了解！我们正在借助我们熟悉的`getBalance`来查看我们的余额是否不足，如果不足，我们就会用`requestAidrop`函数来获取一些资金。
 
-区块哈希和区块高度是区块标识符，用于向网络传达我们是最新的并且不会发送过时的交易。
+区块哈希和区块高度是识别区块的标识符，用以确保我们是最新的，也不会发送陈旧的交易。
 
-不过，不要尝试循环运行它 - 水龙头有一个冷却时间，如果你继续向它发送垃圾邮件，请求将会失败，哈哈。
+不过，别试图反复运行它，因为水龙头有冷却时间，如果你不停地向它请求，请求将会失败，哈哈。
 
-确保在创建/获取密钥对后更新 `initializeKeypair` 函数以调用空投。
+在创建或获取密钥对之后，请确保更新`initializeKeypair`函数，以便调用空投。
 
 ```ts
-// When generating a keypair
- await airdropSolIfNeeded(signer, connection);
+// 当生成密钥对时
+await airdropSolIfNeeded(signer, connection);
 
- // When creating it from the secret key
- await airdropSolIfNeeded(keypairFromSecret, connection);
+// 当从密钥解析时
+await airdropSolIfNeeded(keypairFromSecret, connection);
 ```
 
-
-现在，如果您 `npm run start` ，您将看到空投：
+现在，当你运行`npm run start`时，你将看到空投的情况：
 
 ```bash
-Current balance is 0 SOL
-Airdropping 1 SOL
-New balance is 1 SOL
-Public key: 7Fw3bXskk5eonycvET6BSufxAsuNudvuxF7MMnS8KMqX
+当前余额为 0 SOL
+正在空投 1 SOL
+新的余额为 1 SOL
+公共密钥: 7Fw3bXskk5eonycvET6BSufxAsuNudvuxF7MMnS8KMqX
 ```
 
-我们准备好了 rrrrrrrrrrrrumble 🥊
+我们已经准备好大展身手了，让我们一展拳脚吧 🥊！
+
+当然，下面是我针对你所提供的内容所做的润色版本：
 
 ## 🖱 调用链上程序
 
-是时候让我们的客户发挥作用了。我们将向Solana网络上的现有程序写入数据。人们认为Solana的开发只是关于用Rust编写程序。不对！大部分区块链开发是与现有程序进行交互。
+现在是时候让我们的客户端显示实力了。我们将在Solana网络上的现有程序中写入数据。有人可能会以为Solana的开发只和用Rust编写程序有关，其实不然！大部分区块链开发实际上与现有程序进行交互。
 
-你可以构建数百个只与已有程序进行交互的应用。这就是乐趣开始的地方！我们会保持简单 - 我们的客户端会发送一个计数器程序，该程序会递增一个计数器。你将告诉网络上的每个人你是一个开发者。
+你可以构建数百个只与现有程序交互的应用，这就是真正有趣的地方！我们会让事情保持简单——我们的客户端会发送一个计数器程序，并递增计数器。这样你就能在网络上公告你是一名开发者了。
 
-我们需要告诉客户它将与哪些程序进行交互。从顶部开始，将这些地址添加在导入语句的下方：
+首先，我们需要告诉客户端它将与哪些程序交互。在导入语句下方的开头部分，添加这些地址：
 
 ```ts
 const PROGRAM_ID = new Web3.PublicKey("ChT1B39WKLS8qUrkLvFDXMhEJ4F1XZzwUNHUt4AU9aVa")
 const PROGRAM_DATA_PUBLIC_KEY = new Web3.PublicKey("Ah9K7dQ8EHaZqcAsgBW8w37yN2eAy3koFmUn4x3CJtod")
 ```
 
+`PROGRAM_ID` 是“ping”程序本身的地址。`PROGRAM_DATA_PUBLIC_KEY` 是存储程序数据的账户地址。记得，可执行代码和状态数据在Solana上是分开存储的！
 
-`PROGRAM_ID` 是`ping`程序本身的地址。 `PROGRAM_DATA_PUBLIC_KEY` 是存储程序数据的帐户的地址。请记住 - 可执行代码和状态数据单独存储在 Solana 上！
-
-然后添加此函数以在任何地方 `ping` 程序：
+然后，添加下列函数以在任何地方调用“ping”程序：
 
 ```ts
 async function pingProgram(connection: Web3.Connection, payer: Web3.Keypair) {
@@ -225,48 +227,49 @@ async function pingProgram(connection: Web3.Connection, payer: Web3.Keypair) {
 }
 ```
 
-这并不像看起来那么复杂！你已经知道了这一部分
+这个过程并不像看起来那么复杂！你已经熟悉这部分了：
 
-- 我们进行一笔交易
-- 我们制作一份指令
+- 我们创建一个交易
+- 我们制定一项指令
 - 我们将指令添加到交易中
 - 我们将交易发送到网络！
 
-查看上面的代码注释 - 我回顾一下指令的三个部分。
+回顾一下上面的代码注释，了解指令的三个主要部分。
 
-这里的重点是 `keys` 值 - 它是一个包含每个账户元数据的数组，这个指令将从中读取或写入。在我们的情况下，我告诉你这个指令将处理哪些账户。
+其中关键的部分是`keys`值——它是一个数组，包含指令将读取或写入的每个账户的元数据。在我们的例子中，我告诉你该指令将处理哪些账户。
 
-你需要知道这将是什么 - 你可以通过阅读程序本身或其文档来了解。如果你不知道这一点，就无法与程序进行交互，因为指令将无效。你将发送一个会触及数据账户的交易，但你不会告诉运行时是哪个账户，所以它将被丢弃。
+你必须知道这个是什么——可以通过阅读程序本身或其文档来了解。如果你不了解这一点，就无法与程序互动，因为指令会无效。
 
-可以将其想象为尝试开车前往没有 GPS 的地址。您知道自己想去哪里，但不知道到达那里的路线。
+可以将这个过程想象成试图开车去一个没有GPS地址的地方。你知道你想去哪里，但不知道如何到达那里。
 
-由于此写入不需要数据帐户的签名，因此我们将  `isSigner` 设置为 `false`。 `isWritable` 为 `true`，因为该帐户正在被写入！
+由于此操作不需要数据账户的签名，我们将`isSigner`设置为`false`。`isWritable`设置为`true`，因为该账户将被写入。
 
-通过告诉网络我们需要与哪些帐户交互以及我们是否正在向它们写入数据，Solana 运行时就知道可以并行运行哪些事务。这就是 Solana 如此之快的部分原因！
+通过告知网络我们需要与哪些账户交互，以及我们是否正在向它们写入数据，Solana运行时就会知道哪些交易可以并行运行。这部分就是Solana速度如此之快的原因之一！
 
-将此函数调用 `await pingProgram(connection, signer)` 添加到 `main()` 并使用 `npm start` 运行脚本。访问记录的资源管理器链接，您将在页面底部看到您编写的数据（您可以忽略其他所有内容）-
+在`main()`中加入此函数的调用`await pingProgram(connection, signer)`，并用`npm start`运行脚本。访问所记录的资源管理器链接，你将在页面底部看到你写入的数据（其他所有内容可以忽略）。
 
 ![](./img/ping-solana.png)
 
-您刚刚将数据写入区块链。那有多容易？
+你刚刚将数据写入了区块链。感觉简单吗？
 
-这可能看起来很简单，但您确实已经取得了成功。当推特上的每个人都在大喊猴子图片时，你正在建造GGGGGGGGGGGGGGGGGG。您在本节中学到的内容 - 从 Solana 网络读取和写入数据，足以制作价值 1 万美元的产品。想象一下在这个项目结束时你能做什么 🤘
+虽然看起来很简单，但你确实已经成功了。当推特上的人们都在热衷于猴子图片时，你正在构建真正有价值的东西。你在本节学到的内容——从Solana网络读取和写入数据——足以制作价值1万美元的产品。想象一下，当你完成这个项目时，你还能做些什么🤘！
 
-## 🚢 Ship 挑战 - 一种SOL转账脚本
 
-既然我们已经一起学习了如何将交易发送到网络，现在轮到你独立尝试了。
+## 🚢 Ship 挑战 - SOL转账脚本
 
-按照上一步骤的类似流程，从头开始创建一个脚本，使您能够在`Devnet`上将SOL从一个账户转移到另一个账户。确保打印出交易签名，以便您可以在Solana Explorer上查看。
+既然我们一同学习了如何将交易发送到网络，现在是时候让你独立尝试了。
 
-想想到目前为止你学到了什么 -
+参照前一步骤的流程，从头开始创建一个脚本，让你能够在`Devnet`上从一个账户转移SOL到另一个账户。请确保打印交易签名，以便你可以在Solana Explorer上查看它。
 
-- 将数据写入网络是通过事务进行的
+回顾一下到目前为止你学到的东西：
+
+- 将数据写入网络是通过事务实现的
 - 交易需要指令
-- 指令告诉网络它们触及哪些程序以及它们的功能
-- 通过系统程序进行SOL的转移（嗯，我想知道它叫什么。🤔 转移？）
+- 指令向网络指示涉及哪些程序及其功能
+- SOL的转移是通过系统程序完成的（嗯，我在想这个过程叫什么名字。🤔 转移吗？）
 
-您在这里所需要做的就是找出确切的函数名称是什么以及指令应该是什么样子。我会从谷歌开始：P
+你在这里需要做的就是找出准确的函数名称，以及指令应该是怎样的。你可以从Google开始查找：P
 
-附：如果您确定已经弄清楚了，但转账仍然失败，则可能是您转账太少 - 尝试至少转账 0.1 SOL。
+附注：如果你确定自己已经了解了这些内容，但转账仍然失败，那么问题可能是转账金额太少——尝试至少转账0.1 SOL。
 
-像往常一样，在引用解决方案代码之前尝试自己执行此操作。当您确实需要参考解决方案时，[请查看此处](https://github.com/RustyCab/solana-send-sol-client)。 👀
+就像以往一样，在查看解决方案代码之前，尽量自己完成这个任务。当你真正需要参考解决方案时，[请点击这里查看](https://github.com/RustyCab/solana-send-sol-client)。👀
