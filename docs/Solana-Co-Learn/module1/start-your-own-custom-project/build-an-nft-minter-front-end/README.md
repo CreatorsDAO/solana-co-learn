@@ -40,14 +40,13 @@ npm i @solana/wallet-adapter-base @solana/wallet-adapter-react @solana/wallet-ad
 
 现在，一切准备就绪，让我们开始构建吧！🚀
 
-## ✨ 设置 Chakra UI
+## ✨ 配置 Chakra UI
 
-第一个任务是设置 Chakra UI，这样我们就不必手动编写大量 CSS。我们将在 `pages/_app.tsx` 中执行此操作：
+首个任务是配置 Chakra UI，这样我们就能避免手动编写大量的 CSS。我们将在 `pages/_app.tsx` 文件中执行此操作：
 
 ```ts
 import type { AppProps } from "next/app"
 import { ChakraProvider } from "@chakra-ui/react"
-
 import { extendTheme } from "@chakra-ui/react"
 
 const colors = {
@@ -69,11 +68,11 @@ function MyApp({ Component, pageProps }: AppProps) {
 export default MyApp
 ```
 
-我要为我的一些定制颜色，请确保您按照自己的喜好来调味！
+这里我添加了一些自定义的颜色，你也可以根据自己的喜好进行调整！
 
 ## 🌶 添加一些样式
 
-打开 `styles/Home.module.css` 并使其看起来像这样：
+接下来，打开 `styles/Home.module.css` 文件并将其修改如下：
 
 ```css
 .container {
@@ -84,9 +83,9 @@ export default MyApp
 }
 ```
 
-如果样式文件夹中有 `globals.css` 文件，请将其删除。我们不会需要它！
+如果样式文件夹中有 `globals.css` 文件，请将其删除。我们不会用到它！
 
-接下来我们有 `index.tsx` ，我们将更新导入以使用 Chakra UI 并渲染（单个 `<div className={styles.container}` 除外）。然后将导入更新为：
+然后，我们将处理 `index.tsx` 文件。我们将更新导入语句，以使用 Chakra UI，并修改渲染代码（只需保留一个 `<div className={styles.container}`）。然后将导入更新为：
 
 ```ts
 import { Box, Center, Spacer, Stack } from "@chakra-ui/react"
@@ -111,12 +110,12 @@ const Home: NextPage = () => {
         backgroundPosition="center"
       >
         <Stack w="full" h="calc(100vh)" justify="center">
-					{ /* NavBar */ }
+          { /* 导航栏 */ }
 
           <Spacer />
           <Center>
-						{ /* If connected, the second view, otherwise the first */ }
-                </Center>
+            { /* 如果已连接，则显示第二个视图，否则显示第一个视图 */ }
+          </Center>
           <Spacer />
 
           <Center>
@@ -126,7 +125,7 @@ const Home: NextPage = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                built with @_buildspace
+                与 @_buildspace 一同打造
               </a>
             </Box>
           </Center>
@@ -139,9 +138,11 @@ const Home: NextPage = () => {
 export default Home
 ```
 
+这段代码设置了应用程序的主页面，并使用了Chakra UI的一些组件来简化布局和样式。现在，你的前端页面应该已经具备了基本的结构和风格，接下来你可以继续添加更多的功能和内容！🎨
+
 ## 🎫 添加导航栏
 
-现在让我们来构建 `NavBar` 。创建一个 `components` 文件夹并添加一个新文件 `NavBar.tsx` 。我们将其构建为一个水平堆栈，其中包括一个间隔器和一个用于连接钱包的按钮：
+现在让我们构建导航栏（`NavBar`）。请创建一个 `components` 文件夹，并在其中添加一个新文件 `NavBar.tsx`。我们将其构建为一个水平堆栈，其中包括一个空间间隔器和一个用于连接钱包的按钮：
 
 ```ts
 import { HStack, Spacer } from "@chakra-ui/react"
@@ -167,22 +168,12 @@ const NavBar: FC = () => {
 export default NavBar
 ```
 
-我们有 `import dynamic from "next/dynamic"` 从 `@solana/wallet-adapter-react-ui` 动态导入 `WalletMultiButton` 并将其分配给 `WalletMultiButtonDynamic` ，如下所示：
+这里我们使用 `import dynamic from "next/dynamic"` 从 `@solana/wallet-adapter-react-ui` 动态导入 `WalletMultiButton`，并将其分配给 `WalletMultiButtonDynamic`。这是必需的，因为 NextJS 是服务器端渲染的，在客户端加载之前无法访问依赖于浏览器 API（例如 window）的外部依赖项或组件。因此，通过 `{ ssr: false }`，我们禁用了导入的服务器渲染。关于动态导入的更多信息，你可以在[这里](https://nextjs.org/docs/advanced-features/dynamic-import?utm_source=buildspace.so&utm_medium=buildspace_project)阅读。
+
+现在返回到 `index.tsx` 文件，导入 `NavBar` 并将其放在堆栈的顶部（我已留下评论说明它应该放在哪里）：
 
 ```ts
-const WalletMultiButtonDynamic = dynamic(
-	async () =>
-		(await import("@solana/wallet-adapter-react-ui")).WalletMultiButton,
-	{ ssr: false }
-);
-```
-
-这是因为 NextJS 是服务器端渲染，在加载到客户端之前无法访问依赖于浏览器 API（如 window ）的外部依赖项或组件。这意味着 NextJS 无法与只能在浏览器上使用的钱包进行交互。 `{ ssr: false }` 禁用导入的服务器渲染。如果您的模块不使用动态导入，您很可能会遇到 `Hydration failed because the initial UI does not match what was rendered on the server `。您可以在[这里](https://nextjs.org/docs/advanced-features/dynamic-import?utm_source=buildspace.so&utm_medium=buildspace_project)阅读有关动态导入的更多信息！
-
-返回到 `index.tsx` ，导入 `NavBar` 并将其放在堆栈顶部（我留下了关于它应该在哪里的评论）：
-
-```ts
-// Existing imports
+// 现有的导入
 import NavBar from "../components/NavBar"
 
 const Home: NextPage = () => {
@@ -190,6 +181,7 @@ const Home: NextPage = () => {
   return (
     <div className={styles.container}>
       <Head>
+      // ... 其他代码 ...
 
       <Box
         w="full"
@@ -201,14 +193,14 @@ const Home: NextPage = () => {
          { /* NavBar */ }
           <NavBar />
 
-// Rest of the file remains the same
+// 其余的文件保持不变
 ```
 
-此时，除了“`Connect Wallet`”之外，您在 `localhost:3000` 上仍然没有任何内容。让我们解决这个问题。
+至此，除了“连接钱包（`Connect Wallet`）”按钮外，在 `localhost:3000` 上还没有任何内容。但我们已经迈出了实现更多功能的重要一步。让我们继续前进！🚀
 
-## 🏠 创建登陆页面
+## 🏠 创建登录页面
 
-在 `components` 文件夹中创建 `Disconnected.tsx` 文件并添加以下内容：
+在 `components` 文件夹中创建一个名为 `Disconnected.tsx` 的文件，并添加以下内容：
 
 ```ts
 import { FC, MouseEventHandler, useCallback } from "react"
@@ -243,7 +235,7 @@ const Disconnected: FC = () => {
           noOfLines={2}
           textAlign="center"
         >
-          Mint your buildoor. Earn $BLD. Level up.
+          打造你的 buildoor。赚取 $BLD。升级。
         </Heading>
         <Button
           bgColor="accent"
@@ -252,7 +244,7 @@ const Disconnected: FC = () => {
           onClick={handleClick}
         >
           <HStack>
-            <Text>become a buildoor</Text>
+            <Text>成为 buildoor</Text>
             <ArrowForwardIcon />
           </HStack>
         </Button>
@@ -264,10 +256,10 @@ const Disconnected: FC = () => {
 export default Disconnected
 ```
 
-这将是我们的登陆页面 - 用户访问网站时首先看到的视图。您需要将其导入到 `index.tsx` 中，并将其放置在渲染组件的中间（再次查找注释）。
+这将是我们的登录页面 - 用户首次访问网站时会看到的视图。您需要将其导入到 `index.tsx` 中，并将其放置在渲染组件的中间位置（您可以再次查找相应的注释来找到正确的位置）。
 
 ```ts
-// Existing imports
+// 现有的导入
 import Disconnected from '../components/Disconnected'
 
 const Home: NextPage = () => {
@@ -275,6 +267,7 @@ const Home: NextPage = () => {
   return (
     <div className={styles.container}>
       <Head>
+      // ... 其他代码 ...
 
       <Box
         w="full"
@@ -292,25 +285,29 @@ const Home: NextPage = () => {
           </Center>
           <Spacer />
 
-// Rest of the file remains the same
+// 其余的文件保持不变
 ```
 
-现在，如果您查看 `localhost:3000` ，您应该会看到带有“成为 buildoor”按钮的登录页面。如果你点击它，什么也不会发生。我们不喜欢什么都没有发生，让我们解决这个问题！
+现在，如果您访问 `localhost:3000`，您应该会看到一个带有“成为 buildoor”按钮的登录页面。如果您点击它，目前什么也不会发生。这显然不是我们想要的，所以接下来我们要处理这个问题！让我们继续！
 
 ## 🔌 连接到用户的钱包
 
-我们这里需要很多钩子。让我们把它们带进来：
+这一部分中，我们将连接到用户的钱包，确保你的应用可以与用户的钱包互动。
+
+首先，我们需要安装一些必要的依赖包：
 
 ```bash
 npm i @solana/wallet-adapter-base @solana/wallet-adapter-react @solana/wallet-adapter-react-ui @solana/wallet-adapter-wallets @solana/web3.js
 ```
 
-如果您正在为特定的钱包进行构建，那么您可以在此处进行更改，我只是坚持使用默认值：D
+这些库将帮助我们与用户的Solana钱包连接。
 
-在 `components` 中创建一个 `WalletContextProvider.tsx` ，这样我们就可以将所有这些样板文件放入其中：
+如果您要为特定钱包构建，您可以在这里自定义设置。这里我们只是使用默认配置。
+
+在 `components` 文件夹中，创建一个名为 `WalletContextProvider.tsx` 的文件，我们将在其中放置所有这些配置：
 
 ```ts
-import { FC, ReactNode } from "react"
+import { FC, ReactNode, useMemo } from "react"
 import {
   ConnectionProvider,
   WalletProvider,
@@ -318,7 +315,6 @@ import {
 import { WalletModalProvider } from "@solana/wallet-adapter-react-ui"
 import { clusterApiUrl } from "@solana/web3.js"
 import { PhantomWalletAdapter } from "@solana/wallet-adapter-wallets"
-import { useMemo } from "react"
 require("@solana/wallet-adapter-react-ui/styles.css")
 
 const WalletContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
@@ -337,7 +333,7 @@ const WalletContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
 export default WalletContextProvider
 ```
 
-我们需要将其导入 `_app.tsx` ：
+然后，我们需要将这个组件导入到 `_app.tsx` 文件中：
 
 ```ts
 import WalletContextProvider from '../components/WalletContextProvider'
@@ -349,40 +345,40 @@ import WalletContextProvider from '../components/WalletContextProvider'
 </ChakraProvider>
 ```
 
-现在我们还希望“成为建造者”按钮也能与您联系。在 `Disconnected.tsx` 中，添加这些导入
+我们现在想让“成为建造者”按钮也能连接到钱包。在 `Disconnected.tsx` 文件中，添加以下导入：
 
 ```ts
 import { useWalletModal } from "@solana/wallet-adapter-react-ui"
 import { useWallet } from "@solana/wallet-adapter-react"
 ```
 
-然后在渲染之前将 `Disconnected` 的主体更新为以下内容：
+然后在渲染之前，更新 `Disconnected` 组件的主体如下：
 
 ```ts
 const modalState = useWalletModal()
-  const { wallet, connect } = useWallet()
+const { wallet, connect } = useWallet()
 
-  const handleClick: MouseEventHandler<HTMLButtonElement> = useCallback(
-    (event) => {
-      if (event.defaultPrevented) {
-        return
-      }
+const handleClick: MouseEventHandler<HTMLButtonElement> = useCallback(
+  (event) => {
+    if (event.defaultPrevented) {
+      return
+    }
 
-      if (!wallet) {
-        modalState.setVisible(true)
-      } else {
-        connect().catch(() => {})
-      }
-    },
-    [wallet, connect, modalState]
-  )
+    if (!wallet) {
+      modalState.setVisible(true)
+    } else {
+      connect().catch(() => {})
+    }
+  },
+  [wallet, connect, modalState]
+)
 ```
 
-瞧，您应该能够连接了！
+现在一切准备就绪，您应该可以连接到用户的钱包了！这一步骤使您的应用程序能够与Solana区块链进行交互，从而为用户提供更丰富的体验。
 
 ## 🎇 创建连接视图
 
-现在我们可以连接了，我们需要更新视图以显示连接时的样子。让我们在 `components` 目录中创建一个 `Connected.tsx` 文件
+现在我们已经可以连接钱包了，下一步就是更新视图来展示连接状态下的用户界面。首先，在`components`文件夹中创建一个名为`Connected.tsx`的文件，它将定义连接成功后的页面。
 
 ```ts
 import { FC } from "react"
@@ -409,13 +405,13 @@ const Connected: FC = () => {
             noOfLines={1}
             textAlign="center"
           >
-            Welcome Buildoor.
+            欢迎，Buildoor。
           </Heading>
 
           <Text color="bodyText" fontSize="xl" textAlign="center">
-            Each buildoor is randomly generated and can be staked to receive
-            <Text as="b"> $BLD</Text> Use your <Text as="b"> $BLD</Text> to
-            upgrade your buildoor and receive perks within the community!
+            每个buildoor都是随机生成的，可以抵押接收
+            <Text as="b"> $BLD</Text>。使用您的 <Text as="b"> $BLD</Text>
+            升级您的buildoor，并在社区内获得特权！
           </Text>
         </VStack>
       </Container>
@@ -430,7 +426,7 @@ const Connected: FC = () => {
 
       <Button bgColor="accent" color="white" maxW="380px">
         <HStack>
-          <Text>mint buildoor</Text>
+          <Text>铸造buildoor</Text>
           <ArrowForwardIcon />
         </HStack>
       </Button>
@@ -441,15 +437,14 @@ const Connected: FC = () => {
 export default Connected
 ```
 
-现在我们必须找到一种方法将其显示在屏幕上。回到 `index.tsx` ，让我们添加两个导入：
+接下来，我们需要将该视图嵌入到主页面。回到`index.tsx`文件，添加以下导入：
 
 ```ts
 import { useWallet } from "@solana/wallet-adapter-react"
 import Connected from "../components/Connected"
 ```
 
-现在我们可以使用 `useWallet` hooks来访问一个变量，告诉我们是否已连接。我们可以使用它来有条件地渲染 `Connected` 与 `Disconnected` 视图。
-
+然后，我们可以使用`useWallet` hooks来访问一个告诉我们是否已连接的变量。我们可以用它来有条件地渲染`Connected`和`Disconnected`视图。
 
 ```ts
 const Home: NextPage = () => {
@@ -459,7 +454,7 @@ const Home: NextPage = () => {
     <div className={styles.container}>
       <Head>
         <title>Buildoors</title>
-        <meta name="The NFT Collection for Buildoors" />
+        <meta name="Buildoors的NFT收藏" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
@@ -477,5 +472,4 @@ const Home: NextPage = () => {
           <Spacer />
 ```
 
-
-好了，我们搞定了！我们已经设置好了前端，并且正在顺利地进行buildoors的铸造。
+完成了！现在我们已经配置好了前端，并且在用户铸造buildoors时流程顺畅。这个界面不仅直观，还提供了丰富的用户体验。
