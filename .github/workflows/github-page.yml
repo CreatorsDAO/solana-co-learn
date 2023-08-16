@@ -1,5 +1,11 @@
 name: Github deploy pages
-on: [push]
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
 permissions:
   contents: write
 jobs:
