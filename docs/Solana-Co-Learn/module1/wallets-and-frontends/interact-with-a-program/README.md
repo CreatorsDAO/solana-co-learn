@@ -6,9 +6,9 @@ sidebar_class_name: green
 
 # 🦺 与程序进行交互
 
-既然我们已经完成了钱包连接的设置，那么让我们让我们的`ping`按钮真正有所作为吧！
+在成功设置了钱包连接后，我们可以让`ping`按钮真正执行操作了。以下是如何实现的详细说明。
 
-这是 `PingButton.tsx` 应该看起来的样子：
+这是`PingButton.tsx`的代码示例，你可以根据下面的解释理解每个部分的功能：
 
 ```ts
 import { useConnection, useWallet } from '@solana/wallet-adapter-react';
@@ -25,7 +25,7 @@ export const PingButton: FC = () => {
 
 	const onClick = () => {
 		if (!connection || !publicKey) {
-			alert("Please connect your wallet first lol")
+			alert("请先连接你的钱包！")
 			return
 		}
 
@@ -44,7 +44,7 @@ export const PingButton: FC = () => {
 
 		transaction.add(instruction)
 		sendTransaction(transaction, connection).then(sig => {
-			console.log(`Explorer URL: https://explorer.solana.com/tx/${sig}?cluster=devnet`)
+			console.log(`浏览器URL: https://explorer.solana.com/tx/${sig}?cluster=devnet`)
 		})
 	}
 
@@ -56,35 +56,32 @@ export const PingButton: FC = () => {
 }
 ```
 
-这一堆东西对你来说应该很熟悉。
+你应该对这一块代码比较熟悉，它与我们在本地客户端上做的事情完全一样，但是使用了`React hooks`。
 
-我们正在做的事情与我们在本地客户端上做的完全一样，只是使用了`React hooks`！
+接下来就是测试时间了。
 
-是时候来测试一下了。
-
-确保你的钱包在开发网络上 - 设置 -> 开发者设置 -> 更改网络。连接你的钱包并点击那个`ping`按钮，你将会看到以下内容：
+确保你的钱包连接到开发网络 - 设置 -> 开发者设置 -> 更改网络。连接你的钱包并点击那个`ping`按钮，你将会看到交互反馈。
 
 ![](./img/upload_1.png)
 
-如果您点击确认，您的控制台将打印出交易链接。就像之前一样，向下滚动，您会看到数字已经增加了🚀
+点击确认后，控制台将打印出交易链接。向下滚动，你会发现数字已经增加了🚀。
 
-现在你可以让用户与应用程序互动了！你在上一节中制作的那个价值1万美元的产品？现在它已经成为了一个价值百万美元的产品。想象一下所有的程序 - Metaplex、Serum、Solana程序库中的任何程序 ，你现在有能力将它们与用户界面连接起来，让人们使用。
-
+现在你可以让用户与应用程序互动了！你之前所创建价值1万美元的产品？现在它已经升级成了一个价值百万美元的产品。想象一下所有的程序，比如Metaplex、Serum、Solana程序库中的任何程序，你现在可以将它们与用户界面连接起来，让人们使用。
 
 ## 🚢 Ship 挑战 - SOL 发送者
 
-是时候锻炼一下肌肉了。
+是时候挑战自己了。
 
-在此挑战中，使用[此起始代码](https://github.com/RustyCab/solana-send-sol-frontend)创建一个应用程序，让用户连接其 Phantom 钱包并将 SOL 发送到另一个帐户。确保克隆后使用 `git checkout starter` 切换到起始分支。
+在此挑战中，你将使用[此起始代码](https://github.com/RustyCab/solana-send-sol-frontend)创建一个应用程序，允许用户连接其Phantom钱包并将SOL发送到另一个账户。确保克隆后使用`git checkout starter`切换到起始分支。
 
-通过两个关键步骤来做到这一点：
-- 将启动应用程序包装在适当的上下文提供程序中。
+你需要通过以下两个关键步骤来完成这个挑战：
+- 使用适当的上下文提供程序包装启动应用程序。
 - 在表单组件中，设置交易并将其发送到用户的钱包以供批准。
 
-最后它应该看起来像这样！
+完成后，应用程序应该看起来像这样：
 
 ![](./img/upload_2.png)
 
-不要忘记验证地址！
+别忘了验证地址！
 
-完成后，将您的解决方案与此处的[解决方案代码](https://github.com/RustyCab/solana-send-sol-frontend)进行比较。
+完成后，你可以将你的解决方案与[解决方案代码](https://github.com/RustyCab/solana-send-sol-frontend)进行比较。
