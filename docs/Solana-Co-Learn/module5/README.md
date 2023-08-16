@@ -6,14 +6,13 @@ sidebar_class_name: green
 
 # Module5: Solana Module5
 
-## 关于ANCHOR的介绍
+## 关于 Anchor 的介绍
 
--  🎬 Anchor with Gage
 - [🛳 设置 Anchor](./introduction-to-anchor/setting-up-anchor/README.md)
 - [🐟 Anchor 框架](./introduction-to-anchor/the-anchor-framework/README.md)
 - [🧱 使用Solana Anchor框架进行建设](./introduction-to-anchor/build-with-solana-frameworks/README.md)
 
-## PROGRAMS IN ANCHOR
+## Program in Anchor
 
 - [🛣 Anchor中的PDA](./program-in-anchor/pdas-in-anchor/README.md)
 - [使用Anchor PDA构建](./program-in-anchor/build-with-anchor-pdas/README.md)

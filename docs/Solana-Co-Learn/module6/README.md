@@ -8,7 +8,6 @@ sidebar_class_name: green
 
 ## Ship Week
 
-- 🎬 Gage的战利品箱
 - [🚢 船舶周介绍](./ship-week/intro-to-ship-week/README.md)
 - [💰 构建一个战利品箱程序](./ship-week/build-a-loot-box-program/README.md)
 - [⚙ 创建齿轮代币](./ship-week/create-gear-tokens/README.md)

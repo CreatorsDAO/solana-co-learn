@@ -8,7 +8,6 @@ sidebar_class_name: green
 
 ## SPL代币
 
-- 📹带有Gage的令牌
 - [💵 The Token Program](./spl-token/the-token-program/README.md)
 - [🏧 在Solana上铸造代币](./spl-token/mint-token-on-solana/README.md)
 - Metaplex 与 Gage
@@ -17,7 +16,6 @@ sidebar_class_name: green
 
 ## NFTS + METAPLEX铸造
 
-- 📹Solana上的NFT与Gage
 - [🎨 NFTs on Solana](./nfts-and-minting-with-metaplex/nfts-one-solana/README.md)
 - [🤨 NFT你的脸](./nfts-and-minting-with-metaplex/nft-your-face/README.md)
 - 糖果机带Gage
@@ -25,7 +23,6 @@ sidebar_class_name: green
 
 ## 在用户界面中展示NFTS
 
-- 📹使用Gage制作用户界面
 - [展示NFTs 💃](./displayings-nfts-in-a-ui/displaying-nfts/README.md)
 - [📱 在钱包中展示NFTs](./displayings-nfts-in-a-ui/displaying-nfts-from-a-wallet/README.md)
 - [🖼 从糖果机展示NFTs](./displayings-nfts-in-a-ui/displaying-nfts-from-a-candy-machine/README.md)

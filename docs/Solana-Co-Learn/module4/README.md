@@ -8,20 +8,17 @@ sidebar_class_name: green
 
 ## PDA
 
-- 🎬 带有Gage的PDA
 - [🧐 PDA 深入探究](./pdas/pda-deep-dive/README.md)
 - [💬 在链上构建评论功能](./pdas/build-on-chain-comments/README.md)
 
 ## CPIs(跨程序调用)
 
--  🎬 CPIs with Gage
 - [⚔ 跨项目的Boss战](./cross-program-invocations/the-cross-program-boss-fight/README.md)
 - [🥇 为用户Mint代币](./cross-program-invocations/mint-token-for-users/README.md)
 - [💸 使用CPI构建支付系统](./cross-program-invocations/build-a-payment-system-with-cpis/README.md)
 
 ##  测试
 
-- 🎬测试with gage
 - [🧪 测试 Solana 程序](./testing/testing-solana-programs/README.md)
 - [😳 使用Rust编写测试](./testing/writing-tests-in-rust/README.md)
 

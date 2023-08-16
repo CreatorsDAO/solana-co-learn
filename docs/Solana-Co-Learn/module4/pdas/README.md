@@ -6,6 +6,5 @@ sidebar_class_name: green
 
 # PDAs
 
-- 🎬 带有Gage的PDA
 - [🧐 PDA 深入探究](./pda-deep-dive/README.md)
 - [💬 在链上构建评论功能](./build-on-chain-comments/README.md)
