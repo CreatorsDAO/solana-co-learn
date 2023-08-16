@@ -1,10 +1,10 @@
 ---
 sidebar_position: 9
-sidebar_label: Anchor 合约框架实现 - hello, World
+sidebar_label: Anchor 合约框架实现 - hello, World 🌍 With PDA
 sidebar_class_name: green
 ---
 
-# Anchor 合约框架实现 - hello, World
+# Anchor 合约框架实现 - hello, World 🌍 With PDA
 
 让我们通过构建和部署 `Hello World!` 程序来进行练习。
 
@@ -37,25 +37,141 @@ anchor init hello_world
 
 #### 2. 编写你的程序
 
-接下来，使用下面的`Hello World!`程序更新`hello_world/program/src/lib.rs`。当程序被调用时，该程序会简单地将`Hello, world!`打印到程序日志中。
+接下来，使用下面的`Hello World!`程序更新`hello_world/program/src/lib.rs`。当程序被调用时，该程序会将传入的数据保存到数据存储账户中去也就是下面的`HelloWorld`账户。
 
 ```rust
 use anchor_lang::prelude::*;
 
-declare_id!("Eo7uunKkgdRe8JtgmDimLkUEuT1oYbua4zWRCysWpv45");
+declare_id!("22sSSi7GtQgwXFcjJmGNNKSCLEsiJxyYLFfP3CMWeMLj");
 
 #[program]
 pub mod hello_world {
     use super::*;
 
-    pub fn initialize(ctx: Context<Initialize>) -> Result<()> {
-        msg!("Hello,World!");
+    pub fn initialize(ctx: Context<Initialize>, data: String) -> Result<()> {
+
+        msg!("{}", data);
+
+        *ctx.accounts.hello_world = HelloWorld {
+            authority: *ctx.accounts.authority.key,
+            data,
+        };
+
+        Ok(())
+    }
+
+    pub fn update(ctx: Context<UpdateHelloWorld>, data: String) -> Result<()> {
+        ctx.accounts.hello_world.data = data;
+        msg!("{}", ctx.accounts.hello_world.data);
         Ok(())
     }
 }
 
 #[derive(Accounts)]
-pub struct Initialize {}
+pub struct Initialize<'info> {
+    #[account(
+        init,
+        payer = authority,
+        space = 8 + HelloWorld::INIT_SPACE,
+        seeds = [b"hello-world"],
+        bump
+    )]
+    pub hello_world: Account<'info, HelloWorld>,
+    #[account(mut)]
+    pub authority: Signer<'info>,
+    pub system_program: Program<'info, System>,
+}
+
+#[derive(Accounts)]
+pub struct UpdateHelloWorld<'info> {
+    #[account(
+            mut,
+            seeds = [b"hello-world"],
+            bump
+    )]
+    pub hello_world: Account<'info, HelloWorld>,
+    #[account(mut)]
+    pub authority: Signer<'info>,
+}
+
+#[account]
+#[derive(InitSpace)]
+pub struct HelloWorld {
+    pub authority: Pubkey,
+    #[max_len(100)]
+    pub data: String,
+}
+
+#[error_code]
+pub enum ErrorCode {
+    #[msg("You are not authorized to perform this action.")]
+    Unauthorized,
+    #[msg("Cannot get the bump.")]
+    CannotGetBump,
+}
+```
+
+下面这是一个本地的测试脚本文件，用来调用上面的合约程序。
+
+
+```ts
+import * as anchor from "@coral-xyz/anchor";
+import { Program } from "@coral-xyz/anchor";
+import { HelloWorld } from "../target/types/hello_world";
+
+describe("hello-world", () => {
+  let provider = anchor.AnchorProvider.env();
+  // Configure the client to use the local cluster.
+  anchor.setProvider(provider);
+
+  const program = anchor.workspace.HelloWorld as Program<HelloWorld>;
+
+  const authority = provider.wallet.publicKey;
+
+  let [helloWorld] = anchor.web3.PublicKey.findProgramAddressSync(
+    [Buffer.from("hello-world")],
+    program.programId
+  );
+
+  it("Is initialized!", async () => {
+    // Add your test here.
+    const tx = await program.methods.initialize("Hello World!").accounts({
+      helloWorld,
+      authority,
+      systemProgram: anchor.web3.SystemProgram.programId,
+    }).rpc();
+
+    console.log("tx signature: ", tx);
+
+    // Fetch the state struct from the network.
+    const accountState = await program.account.helloWorld.fetch(helloWorld);
+    console.log("account state: ", accountState);
+
+  });
+
+  it("get hello world!", async () => {
+
+    // Add your test here.
+    const tx = await program.methods.update("Davirain").accounts({
+      helloWorld,
+    }).rpc();
+
+    console.log("tx signature: ", tx);
+
+
+    // Fetch the state struct from the network.
+    const accountState = await program.account.helloWorld.fetch(helloWorld);
+    console.log("account state: ", accountState);
+  });
+
+
+  it("read account name", async () => {
+
+    // Fetch the state struct from the network.
+    const accountState = await program.account.helloWorld.fetch(helloWorld);
+    console.log("account state: ", accountState);
+  });
+});
 ```
 
 #### 3. 运行本地测试验证器
@@ -105,7 +221,7 @@ solana logs <PROGRAM_ID>
 
 或者也可以通过[Solana Exporer](https://explorer.solana.com/?cluster=custom)，查看产生的日志📔。
 
-在测试验证器仍在运行时，尝试使用[此处](https://github.com/DaviRain-Su/all-in-one-solana/tree/main/code/contract/hello_world/app/hello-frontend)的客户端脚本调用您的程序。
+在测试验证器仍在运行时，尝试使用[此处](https://github.com/CreatorsDAO/hello-world-with-pda/tree/main/app)的客户端脚本调用您的程序。
 
 这将返回一个[Solana Explorer](https://explorer.solana.com)的URL(`Transaction https://explorer.solana.com/tx/${transactionSignature}?cluster=custom`)。将URL复制到浏览器中，在Solana Explorer上查找该交易，并检查程序日志中是否打印了`Hello, world!`。或者，您可以在运行`solana logs`命令的终端中查看程序日志。
 
