@@ -6,24 +6,24 @@ sidebar_class_name: green
 
 # 🤨 NFT你的脸
 
-有什么比将你的脸做成NFT更好的选择呢？你可以将自己永恒地成为一个早期的建设者，并告诉你的妈妈你已经登上了区块链。
+有什么比将你的脸做成NFT更有趣的选择呢？你可以将自己永远铭记为早期的开拓者，并骄傲地告诉你的妈妈你已经成为了区块链的一部分。
 
-我们将从一个客户开始
+我们将从创建一个客户端开始：
 
 ```bash
 npx create-solana-client [name] --initialize-keypair
 cd [name]
 ```
 
-请请大招：
+紧接着，请执行以下命令：
 
 ```bash
 npm install @metaplex-foundation/js fs
 ```
 
-将两个图像添加到 `src` 文件夹中。我们将使用其中一个作为初始图像，第二个作为更新后的图像。
+在 `src` 文件夹中添加两个图像文件。我们将使用其中一个作为初始图像，第二个作为更新后的图像。
 
-这是我们在 `src/index.ts` 中需要的导入项，没有什么新的东西：
+接下来是我们在 `src/index.ts` 中所需的导入项，这些都不是什么新鲜事：
 
 ```ts
 import { Connection, clusterApiUrl, PublicKey } from "@solana/web3.js"
@@ -37,7 +37,7 @@ import {
 import * as fs from "fs"
 ```
 
-如果我们声明常量，那么在创建和更新NFT之间更改变量会更容易
+如果我们声明一些常量，那么在创建和更新NFT之间更改变量将会变得更容易：
 
 ```ts
 const tokenName = "Token Name"
@@ -51,8 +51,7 @@ async function main() {
 }
 ```
 
-我们不会创建一个辅助函数，而是可以将所有内容放在 `main()` 中。我们将首先创建一个 Metaplex 实例：
-
+我们不需要创建任何辅助函数，而是可以将所有内容放在 `main()` 函数中。首先，我们将创建一个 Metaplex 实例：
 
 ```ts
 async function main() {
@@ -70,35 +69,35 @@ async function main() {
 }
 ```
 
-上传图片，我们需要：
+上传图片的步骤包括：
 
 - 读取图像文件
-- 转换为Metaplex文件
+- 将其转换为Metaplex文件
 - 上传图片
 
 ```ts
 async function main() {
 	...
 
-  // file to buffer
+  // 将文件读取为缓冲区
   const buffer = fs.readFileSync("src/" + imageFile)
 
-  // buffer to metaplex file
+  // 将缓冲区转换为Metaplex文件
   const file = toMetaplexFile(buffer, imageFile)
 
-  // upload image and get image uri
+  // 上传图像并获取图像URI
   const imageUri = await metaplex.storage().upload(file)
-  console.log("image uri:", imageUri)
+  console.log("图像URI:", imageUri)
 }
 ```
 
-最后，我们可以使用我们得到的图像URI上传元数据
+最后，我们可以使用我们得到的图像URI上传元数据：
 
 ```ts
 async function main() {
 	...
 
-  // upload metadata and get metadata uri (off chain metadata)
+  // 上传元数据并获取元数据URI（链下元数据）
   const { uri } = await metaplex
     .nfts()
     .uploadMetadata({
@@ -107,14 +106,14 @@ async function main() {
       image: imageUri,
     })
 
-  console.log("metadata uri:", uri)
+  console.log("元数据URI:", uri)
 }
 ```
 
-在这里，一个专门的铸币NFT功能是一个好主意，将其放在主要功能之外
+在这里，创建一个专门的铸造NFT功能是个不错的主意，将其放在主函数之外：
 
 ```ts
-// create NFT
+// 创建NFT
 async function createNft(
   metaplex: Metaplex,
   uri: string
@@ -129,14 +128,14 @@ async function createNft(
     })
 
   console.log(
-    `Token Mint: https://explorer.solana.com/address/${nft.address.toString()}?cluster=devnet`
+    `代币Mint地址：https://explorer.solana.com/address/${nft.address.toString()}?cluster=devnet`
   )
 
   return nft
 }
 ```
 
-现在你只需要在你的函数末尾调用它即可：
+现在你只需在主函数的末尾调用它即可：
 
 ```ts
 async function main() {
@@ -146,19 +145,19 @@ async function main() {
 }
 ```
 
-我们准备好铸造我们的NFT了！在终端中运行脚本 `npm run start` ，并点击Solana Explorer的URL，你应该会看到类似这样的内容：
+我们已经准备好铸造我们的NFT了！在终端中运行脚本 `npm run start` ，然后点击Solana Explorer的URL，你应该会看到类似这样的内容：
 
 ![](./img/cloud-nft.png)
 
-我们刚在Solana上制作了一个NFT🎉🎉🎉。这就像热一热现成的饭菜一样简单。
+我们刚刚在Solana上制造了一个NFT🎉🎉🎉。这简直就像把现成的饭菜再热一热那么简单。
 
 ## 🤯 更新你的NFT
 
-总结一下，让我们快速看一下如何更新刚刚铸造的NFT。
+总结一下，我们来快速看一下如何更新刚刚铸造的NFT。
 
-在你的脚本顶部，将 imageFile 常量更新为你的NFT最终图像的名称。
+首先，在你的脚本顶部，将 imageFile 常量更新为你的NFT的最终图像的名称。
 
-唯一改变的是我们称之为Metaplex的方法。将其添加到main之外的任何位置。
+唯一改变的是我们将称之为Metaplex的方法。你可以将下面的代码添加到 main 函数之外的任何位置：
 
 ```ts
 async function updateNft(
@@ -166,10 +165,10 @@ async function updateNft(
   uri: string,
   mintAddress: PublicKey
 ) {
-  // get "NftWithToken" type from mint address
+  // 通过薄荷地址获取 "NftWithToken" 类型
   const nft = await metaplex.nfts().findByMint({ mintAddress })
 
-  // omit any fields to keep unchanged
+  // 省略任何保持不变的字段
   await metaplex
     .nfts()
     .update({
@@ -181,27 +180,31 @@ async function updateNft(
     })
 
   console.log(
-    `Token Mint: https://explorer.solana.com/address/${nft.address.toString()}?cluster=devnet`
+    `代币Mint地址：https://explorer.solana.com/address/${nft.address.toString()}?cluster=devnet`
   )
 }
 ```
 
-现在在主函数中，你可以注释掉 `createNFT` 的调用，并使用 `updateNFT` 辅助函数：
+现在，在主函数中，你可以注释掉 `createNFT` 的调用，并使用新的 `updateNFT` 辅助函数：
 
 ```ts
 async function main() {
 
   ...
 
+  // 你可以暂时注释掉 createNft 的调用
   // await createNft(metaplex, uri)
 
-  // You can get this from the Solana Explorer URL
+  // 你可以从Solana Explorer的URL中获取薄荷地址
   const mintAddress = new PublicKey("EPd324PkQx53Cx2g2B9ZfxVmu6m6gyneMaoWTy2hk2bW")
   await updateNft(metaplex, uri, mintAddress)
 }
 ```
 
-您可以从在铸造NFT时记录的URL中获取薄荷地址。它出现在多个位置 - URL本身、"地址"属性和元数据选项卡中。
+你可以从在铸造NFT时记录的URL中获取薄荷地址。它出现在多个位置 - URL本身、"地址"属性和元数据选项卡中。
 
+如此一来，你就可以轻松地更新你的NFT的图像和其他相关信息了。
 
 ![](./img/river-nft.png)
+
+这一系列操作既简单又直观，现在你已经掌握了在Solana上创建和更新NFT的完整流程！
