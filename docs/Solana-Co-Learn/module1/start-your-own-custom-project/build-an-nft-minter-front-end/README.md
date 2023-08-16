@@ -5,27 +5,25 @@ sidebar_class_name: green
 ---
 
 
-# 💻 构建 NFT 铸币者前端
+# 💻 构建 NFT 铸造者前端
 
-欢迎来到你的第一周的SHIPPING。每周你都会有一个专门的部分，将你的学习成果应用到你的定制NFT质押应用程序中，还有战利品箱子！
+欢迎来到第一周的SHIPPING环节。每周，你都会有一个特定的部分，用来将你所学的内容应用到自定义的NFT质押应用程序上，并且还有战利品箱子等你拿！
 
+这些部分的核心目的是鼓励你走出本地开发环境，构建真实的、可以供他人使用的项目。许多成功的构建者都是通过在公众面前展示和开发他们的作品而获得成功的。这是你一直在准备的时刻——让我们开始吧🤘。
 
-这些部分的整个目的是让你离开本地主机，构建一些真实的东西，供他人使用。之前的所有构建者都通过将他们的作品公之于众并在公开场合进行构建而取得了巨大的成功。这就是你一直在准备的时刻——让我们开始吧🤘。
-
-今天我们将从前端开始制作这些光滑的登陆和薄荷页面。
+今天，我们要开始从前端制作那些炫酷的登录和铸造页面。
 
 ![](./img/upload_1.png)
 
-
-第一个屏幕上唯一的功能是连接到用户的钱包。您可以使用屏幕顶部的按钮或中间的按钮来完成此操作。
+在第一个屏幕上，唯一的功能是连接到用户的钱包。你可以通过屏幕顶部的按钮或中间的按钮来实现。
 
 ![](./img/upload_2.png)
 
-第二个屏幕功能将在下一个核心项目中实现，因此无需为“mint buildoor”按钮实现任何内容。
+第二个屏幕的功能将在下一个核心项目中实现，所以不必为“mint buildoor”按钮实现任何功能。
 
-## 🕸 设置项目
+## 🕸 项目设置
 
-我们从头开始，这次没有模板！设置一个新的 Next.js 应用程序并向其中添加 Chakra UI：
+我们将从零开始，没有模板！设置一个新的 Next.js 应用程序，并向其中添加 Chakra UI：
 
 ```bash
 npx create-next-app --typescript
@@ -34,12 +32,13 @@ npm i @chakra-ui/react @emotion/react@^11 @emotion/styled@^11 framer-motion@^6 @
 npm i @solana/wallet-adapter-base @solana/wallet-adapter-react @solana/wallet-adapter-react-ui @solana/wallet-adapter-wallets @solana/web3.js
 ```
 
+注意：在整个项目中，我们将使用Typescript！当然，如果你更喜欢，完全可以使用普通的Javascript :)。
 
-注意：在整个项目中，我们将使用 Typescript！如果您愿意，我们非常欢迎您使用普通的 Javascript :)。
+如果系统要求安装 `create-next-app`，请确认安装。你可以为你的应用程序取任何你想要的名字，比如我就给我的应用程序命名为“构建器”，哈哈。
 
-如果要求安装 `create-next-app` ，请说“是”。您可以为您的应用程序命名任何您想要的名称，我将我的应用程序命名为构建器，哈哈。
+下一步，你可能想添加一些视觉素材。你可以在[这里](https://cdn.disco.co/media%2FAssets_a68f5cab-20c9-45c7-b25c-43bc9dcd9e7d.zip)找到资源包，也可以自己创建。包里有五个“头像”文件和一个背景的svg文件。请将它们放入项目的公共文件夹中。
 
-接下来您想要添加一些资产。您可以在[这里](https://cdn.disco.co/media%2FAssets_a68f5cab-20c9-45c7-b25c-43bc9dcd9e7d.zip?utm_source=buildspace.so&utm_medium=buildspace_project)购买，也可以自己制作。您将看到五个“头像”文件和一个背景 svg。将它们放入公共文件夹中。
+现在，一切准备就绪，让我们开始构建吧！🚀
 
 ## ✨ 设置 Chakra UI
 
