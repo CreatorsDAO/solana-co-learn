@@ -1,10 +1,8 @@
 ---
 sidebar_position: 28
-sidebar_label: 💵 The token Program
+sidebar_label: 💵 代币程序
 sidebar_class_name: green
 ---
-
-当然，以下是润色后的中文内容，使其读起来更加通顺：
 
 # 💵 代币程序
 
