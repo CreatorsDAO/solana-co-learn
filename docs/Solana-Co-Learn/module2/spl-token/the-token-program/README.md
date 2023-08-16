@@ -6,7 +6,7 @@ sidebar_class_name: green
 
 # 💵 代币程序
 
-现在是代币与它们的创造者（也就是你）相见的时候了。我们将继续在之前的构建部分中展开。如有需要，你可以从[这个链接](https://github.com/buildspace/solana-token-client/tree/solution-without-burn)获取起始代码（确保你在`solution-without-burn`分支上）。作为区块链最基本的承诺，这些谦逊的代币也许是你安装钱包的主要原因，它们是区块链上资产最纯粹的表现形式，从合成股票到数百种狗币。
+现在是代币与它们的创造者（也就是你）相见的时候了。我们将继续在之前的构建部分中展开。如有需要，你可以从[这个链接](https://github.com/buildspace/solana-token-client/tree/solution-without-burn)获取起始代码（确保你在`solution-without-burn`分支上）。作为区块链最基本的承诺，这些代币也许是你安装钱包的主要原因，它们是区块链上资产最纯粹的表现形式，从合成股票到数百种狗币。
 
 本课将主要讲解在Solana上代币是如何工作的。如果你对其他区块链有所了解，可能会发现这里存在一些差异，所以尽量不要与你当前对代币的理解联系起来。
 
