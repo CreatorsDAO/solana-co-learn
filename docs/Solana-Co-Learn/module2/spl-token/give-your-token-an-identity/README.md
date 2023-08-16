@@ -1,6 +1,6 @@
 ---
 sidebar_position: 32
-sidebar_label: 🧬 给你的代币赋予一个身份
+sidebar_label: 🧬 为你的代币赋予身份
 sidebar_class_name: green
 ---
 

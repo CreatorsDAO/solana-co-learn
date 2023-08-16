@@ -10,15 +10,13 @@ sidebar_class_name: green
 
 - [💵 The Token Program](./spl-token/the-token-program/README.md)
 - [🏧 在Solana上铸造代币](./spl-token/mint-token-on-solana/README.md)
-- Metaplex 与 Gage
 - [🧮 令牌元数据](./spl-token/token-metadata/README.md)
-- [🧬 给你的代币赋予一个身份](./spl-token/give-your-token-an-identity/README.md)
+- [ 🧬 为你的代币赋予身份](./spl-token/give-your-token-an-identity/README.md)
 
 ## NFTS + METAPLEX铸造
 
-- [🎨 NFTs on Solana](./nfts-and-minting-with-metaplex/nfts-one-solana/README.md)
+- [🎨 Solana上的NFT](./nfts-and-minting-with-metaplex/nfts-one-solana/README.md)
 - [🤨 NFT你的脸](./nfts-and-minting-with-metaplex/nft-your-face/README.md)
-- 糖果机带Gage
 - [🍭 糖果机和Sugar CLI](./nfts-and-minting-with-metaplex/candy-machine-and-the-sugar-cli/README.md)
 
 ## 在用户界面中展示NFTS

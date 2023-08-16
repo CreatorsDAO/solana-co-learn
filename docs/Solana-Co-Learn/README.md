@@ -56,7 +56,7 @@ sidebar_class_name: green
 
 ## Module5: Solana Module5
 
-- [关于ANCHOR的介绍](./module5/introduction-to-anchor/README.md)
+- [关于Anchor的介绍](./module5/introduction-to-anchor/README.md)
 
 - [Programs in Anchor](./module5/program-in-anchor/README.md)
 
