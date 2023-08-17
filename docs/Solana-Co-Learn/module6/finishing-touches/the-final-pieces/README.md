@@ -13,7 +13,7 @@ sidebar_class_name: green
 
 现在，评估一下你目前所拥有的，并考虑一下为了让你的项目准备好进行交付，你可以做的最少工作量。如果这意味着暂时跳过`Switchboard`的事情，那就这样吧。
 
-现在是时候将您的用户界面与您的战利品箱和装备指示连接起来，然后进行任何最后的润饰工作，然后将这个东西发货！
+现在是时候将你的用户界面与你的战利品箱和装备指示连接起来，然后进行任何最后的润饰工作，然后将这个东西发货！
 
 在我们的情况下，这意味着：
 
@@ -28,7 +28,7 @@ sidebar_class_name: green
 
 ## 解决方案代码
 
-我们的解决方案位于[Buildoors代码库](https://github.com/CreatorsDAO/buildspace-buildoors/tree/solution-lootboxes)的 `solution-lootboxes` 分支上。在那里有一些提交使其与您上次看到的不同，所以如果您想查看所有更改，请确保从上周的[分支查看差异](https://github.com/CreatorsDAO/buildspace-buildoors/compare/solution-core-5...solution-lootboxes)。
+我们的解决方案位于[Buildoors代码库](https://github.com/CreatorsDAO/buildspace-buildoors/tree/solution-lootboxes)的 `solution-lootboxes` 分支上。在那里有一些提交使其与你上次看到的不同，所以如果你想查看所有更改，请确保从上周的[分支查看差异](https://github.com/CreatorsDAO/buildspace-buildoors/compare/solution-core-5...solution-lootboxes)。
 
 有一些指南，但你可以先自己开始。祝你好运！
 
@@ -42,7 +42,7 @@ sidebar_class_name: green
 
 在这个部分，我们将专注于使战利品箱和装备功能正常工作。最终的代码可能需要一些润色，并且还有一些小的错误需要解决，你可以在发货之前随意处理。
 
-几点注意事项，请确保每次更改程序时都复制并粘贴新的`IDL`。仔细检查您的React hooks和依赖项。尽可能将所有内容分解为小块。
+几点注意事项，请确保每次更改程序时都复制并粘贴新的`IDL`。仔细检查你的React hooks和依赖项。尽可能将所有内容分解为小块。
 
 我们现在要深入研究一些代码的变动。让我们开始`/components/WorkspaceProvider.tsx`吧。
 
@@ -432,7 +432,7 @@ async function createAllOpenLootboxInstructions(
   )
 ```
 
-接下来我们获得与`BLD`相关的 `stakeTokenAccount` ，因此您可以使用`BLD`代币来换取开启战利品箱。然后是质押账户，以确保您通过质押获得足够的`BLD`来开启战利品箱。
+接下来我们获得与`BLD`相关的 `stakeTokenAccount` ，因此你可以使用`BLD`代币来换取开启战利品箱。然后是质押账户，以确保你通过质押获得足够的`BLD`来开启战利品箱。
 
 ```tsx
 // user BLD token account, used to pay BLD tokens to call the request randomness instruction on Lootbox program

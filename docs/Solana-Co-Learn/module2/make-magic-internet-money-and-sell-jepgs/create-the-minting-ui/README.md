@@ -8,7 +8,7 @@ sidebar_class_name: green
 
 现在我们已经成功创建了代币和非同质化代币（NFT）。让我们继续创建我们的铸币用户界面，这样我们就可以直观地与智能合约进行交互，并允许其他人在我们的浏览器上铸造我们的NFT！这不是很酷吗？如果你注意到，你的网站目前有一个 `minting` 按钮，但它还没有任何功能。让我们从创建一个函数开始，并添加一些逻辑，以允许我们铸造我们的NFT。如果你没有起始代码，你可以在这里[克隆](https://github.com/buildspace/buildspace-buildoors/tree/solution-core-2-candy-machine)它。
 
-现在，让我们开始将以下代码行添加到您的 `newMint.tsx` 中。注意：不要盲目复制粘贴代码。我只包含了必要的部分，您应该弄清楚这些代码应该放在哪里。提示：应该放在您的 `Container` 元素下方。
+现在，让我们开始将以下代码行添加到你的 `newMint.tsx` 中。注意：不要盲目复制粘贴代码。我只包含了必要的部分，你应该弄清楚这些代码应该放在哪里。提示：应该放在你的 `Container` 元素下方。
 
 ```ts
 // REST OF YOUR CODE
@@ -70,7 +70,7 @@ const handleClick: MouseEventHandler<HTMLButtonElement> = useCallback(
 
 现在你应该能够点击 `stake my buildoor` 按钮，然后会提示你从你的幽灵钱包中批准交易。然而，你可能会注意到一旦你成功批准了交易，页面会刷新并导致你的钱包被登出。不要担心，在下一节中我们会解决这个问题。
 
-请前往 `newMint.tsx` 。我们将创建一个界面来解决这个问题。将此代码添加到您的 `Home` 函数之上。
+请前往 `newMint.tsx` 。我们将创建一个界面来解决这个问题。将此代码添加到你的 `Home` 函数之上。
 
 ```ts
 import { PublicKey } from "@solana/web3.js";
@@ -169,4 +169,4 @@ const phantom = useMemo(() => new PhantomWalletAdapter(), []);
 </WalletProvider>
 ```
 
-我们需要使用 `useMemo` 的原因是为了防止钱包适配器被多次构建。您可以在[这里](https://reactjs.org/docs/hooks-reference.html#usememo?utm_source=buildspace.so&utm_medium=buildspace_project)了解更多关于useMemo的信息。
+我们需要使用 `useMemo` 的原因是为了防止钱包适配器被多次构建。你可以在[这里](https://reactjs.org/docs/hooks-reference.html#usememo?utm_source=buildspace.so&utm_medium=buildspace_project)了解更多关于useMemo的信息。

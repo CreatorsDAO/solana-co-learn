@@ -8,11 +8,11 @@ sidebar_class_name: green
 
 让我们来看一种可能的齿轮代币解决方案。
 
-我们正在讲解的解决方案代码位于[Buildoors前端代码库](https://github.com/jamesrp13/buildspace-buildoors/tree/solution-simple-gear?utm_source=buildspace.so&utm_medium=buildspace_project)的` solution-simple-gear` 分支上。如果您还没有尝试自己构建，请尽量避免从解决方案代码中复制粘贴。
+我们正在讲解的解决方案代码位于[Buildoors前端代码库](https://github.com/jamesrp13/buildspace-buildoors/tree/solution-simple-gear?utm_source=buildspace.so&utm_medium=buildspace_project)的` solution-simple-gear` 分支上。如果你还没有尝试自己构建，请尽量避免从解决方案代码中复制粘贴。
 
 我们将查看两个不同的代码库。如果你还记得，我们在客户端项目中创建了`BLD`代币和NFT。恰好我们在那里完成了这项工作，如果我们愿意，我们可以将其转移到程序项目中。
 
-您可以在 `/tokens/gear/assets` 文件夹中找到齿轮的图像。我们选择将其制作为可替代资产，或者带有关联元数据和0位小数的SPL代币，而不是NFT，这样它们就不仅限于一个单位。
+你可以在 `/tokens/gear/assets` 文件夹中找到齿轮的图像。我们选择将其制作为可替代资产，或者带有关联元数据和0位小数的SPL代币，而不是NFT，这样它们就不仅限于一个单位。
 
 `/tokens/gear/index.ts `内的脚本负责生成与这些资产相关的货币，并将其存储在同一文件夹中的 `cache.json` 文件中。
 
@@ -149,7 +149,7 @@ const instruction = createCreateMetadataAccountV2Instruction(
   )
 ```
 
-您会注意到我们的付款人是我们的薄荷权威，我们很快会进行更改。
+你会注意到我们的付款人是我们的薄荷权威，我们很快会进行更改。
 
 我们随后创建一个交易，添加指令并发送。
 

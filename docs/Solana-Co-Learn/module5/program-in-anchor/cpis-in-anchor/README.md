@@ -12,7 +12,7 @@ sidebar_class_name: green
 
 `Anchor`还提供了一种制作`CPI`的格式。使用这种格式需要访问所调用程序的`CPI`模块。常见的程序有一个你可以使用的包，例如 `anchor_spl` 用于令牌程序。否则，你将需要使用所调用程序的源代码或已发布的`IDL`来生成`CPI`模块。
 
-如果没有可用的`CPI`模块，您仍然可以直接在指令中使用 `invoke` 和 `invoke_signed` 。就像`Anchor`指令需要 `Context` 类型一样，`Anchor CPI`使用 `CpiContext` 。
+如果没有可用的`CPI`模块，你仍然可以直接在指令中使用 `invoke` 和 `invoke_signed` 。就像`Anchor`指令需要 `Context` 类型一样，`Anchor CPI`使用 `CpiContext` 。
 
 `CpiContext`提供了指令所需的所有账户和种子。当没有`PDA`签名者时，使用`CpiContext::new`。
 
@@ -185,9 +185,9 @@ token::mint_to(
 
 自定义错误代码编号从自定义错误偏移量开始。
 
-您可以使用 `error_code` 属性为您的程序添加独特的错误。只需将其添加到一个您选择的枚举中即可。然后，您可以将枚举的变体用作程序中的错误。
+你可以使用 `error_code` 属性为你的程序添加独特的错误。只需将其添加到一个你选择的枚举中即可。然后，你可以将枚举的变体用作程序中的错误。
 
-此外，您可以使用 `msg` 为各个变体添加消息。如果发生错误，客户端将显示此错误消息。要实际抛出错误，请使用 `err!` 或 `error!` 宏。这些宏会将文件和行信息添加到错误中，然后由`anchor`记录。
+此外，你可以使用 `msg` 为各个变体添加消息。如果发生错误，客户端将显示此错误消息。要实际抛出错误，请使用 `err!` 或 `error!` 宏。这些宏会将文件和行信息添加到错误中，然后由`anchor`记录。
 
 ```rust
 #[program]
@@ -209,7 +209,7 @@ pub enum MyError {
 }
 ```
 
-您可以使用 `require` 宏来简化编写错误。上面的代码可以简化为这样（请注意 `>=` 翻转为 `<` ）。
+你可以使用 `require` 宏来简化编写错误。上面的代码可以简化为这样（请注意 `>=` 翻转为 `<` ）。
 
 ```rust
 #[program]
@@ -233,7 +233,7 @@ pub enum MyError {
 
 如果账户不存在，则初始化一个账户。如果账户已存在，则仍需检查其他限制条件。
 
-如果您使用自己的编辑器，您必须在 `anchor-lang` 的 `Cargo.toml` 中添加 `features = ["init-if-needed"]` 。
+如果你使用自己的编辑器，你必须在 `anchor-lang` 的 `Cargo.toml` 中添加 `features = ["init-if-needed"]` 。
 
 
 e.g. `anchor-lang = {version = "0.26.0", features = ["init-if-needed"]}` .

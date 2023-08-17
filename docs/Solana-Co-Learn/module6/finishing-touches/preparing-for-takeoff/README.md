@@ -409,9 +409,9 @@ export const GearItem = ({
 }
 ```
 
-布局与上一个相当相似，但现在我们展示一张图片，以齿轮代币上的元数据作为来源。在其下方，我们展示您拥有的每个齿轮代币的数量。
+布局与上一个相当相似，但现在我们展示一张图片，以齿轮代币上的元数据作为来源。在其下方，我们展示你拥有的每个齿轮代币的数量。
 
-关于逻辑，我们传入该项作为代表代币铸币的`base58`编码字符串，以及您拥有的数量。
+关于逻辑，我们传入该项作为代表代币铸币的`base58`编码字符串，以及你拥有的数量。
 
 在`useEffect`中，我们创建了一个`metaplex`对象。我们将 `item` 的字符串转换为公钥。然后调用`metaplex`来通过`mint`查找物品。我们得到了`nft`，调用`nft`的`uri`上的`fetch`方法，这样我们就可以获取到链下的元数据。我们将该响应转换为`json`s，并将其设置为元数据，这样我们就可以在返回调用中显示一个图像属性。
 
@@ -469,7 +469,7 @@ const [gearBalances, setGearBalances] = useState<any>({})
 </HStack>
 ```
 
-这就是检查和显示装备的全部内容。这是[存储库](https://github.com/jamesrp13/buildspace-buildoors/blob/solution-lootboxes/components/GearItem.tsx)中的代码，供您参考。
+这就是检查和显示装备的全部内容。这是[存储库](https://github.com/jamesrp13/buildspace-buildoors/blob/solution-lootboxes/components/GearItem.tsx)中的代码，供你参考。
 
 接下来发生的事情取决于你。你可以决定要修复哪些错误，哪些你可以接受。将所有内容从本地主机移出并进行发布，这样你就可以分享一个公共链接。
 

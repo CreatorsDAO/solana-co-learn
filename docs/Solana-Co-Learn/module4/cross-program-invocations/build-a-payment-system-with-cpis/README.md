@@ -197,11 +197,11 @@ npm install
 const connection = new web3.Connection("http://localhost:8899");
 ```
 
-运行 `npm start` ，您的`Mint`账户将被初始化。
+运行 `npm start` ，你的`Mint`账户将被初始化。
 
 最后，我们将使用前端发送电影评论并获取一些令牌。
 
-一如既往，您可以继续使用上次停下的前端，或者从正确的分支创建一个新的实例
+一如既往，你可以继续使用上次停下的前端，或者从正确的分支创建一个新的实例
 
 ```bash
 git clone https://github.com/buildspace/solana-movie-frontend/
@@ -210,7 +210,7 @@ git checkout solution-add-tokens
 npm install
 ```
 
-更新 `PROGRAM_ID`，提交评论，留下评论。您现在应该在Phantom中拥有令牌！
+更新 `PROGRAM_ID`，提交评论，留下评论。你现在应该在Phantom中拥有令牌！
 
 ## 🚢 船舶挑战
 

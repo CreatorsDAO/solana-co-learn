@@ -21,7 +21,7 @@ sidebar_class_name: green
 
 跨程序调用是一个程序直接调用另一个程序的方式。就像任何客户端都可以使用JSON RPC调用任何程序一样，任何程序都可以直接调用其他程序。
 
-`CPIs`本质上将整个Solana生态系统转化为一个巨大的API，作为开发者，您可以随意使用。
+`CPIs`本质上将整个Solana生态系统转化为一个巨大的API，作为开发者，你可以随意使用。
 
 ## 🤔 如何制作一个CPI
 
@@ -31,8 +31,8 @@ CPIs是使用 `solana_program` 库中的[`invoke`](https://docs.rs/solana-progra
 
 `CPIs`将调用者的签名权限扩展给被调用者。
 
--  `invoke`将原始交易签名传递给您调用的程序。
-- `invoke_signed`使用（`PDA`）来让您的程序“签署”指令
+-  `invoke`将原始交易签名传递给你调用的程序。
+- `invoke_signed`使用（`PDA`）来让你的程序“签署”指令
 
 ```rust
 // Used when there are not signatures for PDAs needed
@@ -54,10 +54,10 @@ pub fn invoke_signed(
 `Instruction` 类型的定义如下：
 
 - `program_id` - 要调用的程序的公钥
-- `account` - 一个包含账户元数据的向量列表。您需要包括每个被调用程序将要读取或写入的账户。
+- `account` - 一个包含账户元数据的向量列表。你需要包括每个被调用程序将要读取或写入的账户。
 - `data` - 一个字节缓冲区，表示作为向被调用程序传递的数据的向量
 
-根据您所调用的程序，可能会有一个可用的包含辅助函数来创建 `Instruction` 对象的 `crate`。 `accounts` 和 `data` 字段都是 `Vec` 类型，或者是向量。您可以使用 [vec](https://doc.rust-lang.org/std/macro.vec.html?utm_source=buildspace.so&utm_medium=buildspace_project#) 宏来使用数组表示法构建一个向量。
+根据你所调用的程序，可能会有一个可用的包含辅助函数来创建 `Instruction` 对象的 `crate`。 `accounts` 和 `data` 字段都是 `Vec` 类型，或者是向量。你可以使用 [vec](https://doc.rust-lang.org/std/macro.vec.html?utm_source=buildspace.so&utm_medium=buildspace_project#) 宏来使用数组表示法构建一个向量。
 
 ```rust
 pub struct Instruction {
@@ -147,7 +147,7 @@ let instruction = Instruction {
 
 ![](./img/cpi-with-invoke.png)
 
-记住 - 调用就像传递一个交易，执行此操作的程序根本不会触及它。这意味着不需要包含签名，因为Solana运行时会将原始签名传递给您的程序。
+记住 - 调用就像传递一个交易，执行此操作的程序根本不会触及它。这意味着不需要包含签名，因为Solana运行时会将原始签名传递给你的程序。
 
 ## 🏑 `CPI`与 `invoke_signed`
 
@@ -163,11 +163,11 @@ Solana运行时将使用提供的种子和调用程序的 `program_id` 内部调
 
 ![](./img/cpi-1.png)
 
-在执行`CPI`时，您可能会遇到一些常见的错误，通常意味着您正在使用错误的信息构建`CPI`。
+在执行`CPI`时，你可能会遇到一些常见的错误，通常意味着你正在使用错误的信息构建`CPI`。
 
-“签名者权限升级”意味着您在指示中错误地代签地址。
+“签名者权限升级”意味着你在指示中错误地代签地址。
 
-如果您正在使用 `invoke_signed` 并收到此错误，则很可能是您提供的种子不正确。
+如果你正在使用 `invoke_signed` 并收到此错误，则很可能是你提供的种子不正确。
 
 ```bash
 EF1M4SPfKcchb6scq297y8FPCaLvj5kGjwMzjTM68wjA's signer privilege escalated
@@ -201,4 +201,4 @@ Program returned error: "Cross-program invocation with unauthorized signer or wr
 
 可组合性是加密货币如此独特的重要组成部分，而`CPI`则使其在Solana上成为可能。
 
-`CPI`的另一个重要方面是它们允许程序为其`PDAs`签名。正如您可能已经注意到的那样，`PDAs`在Solana开发中被广泛使用，因为它们允许程序以一种特定的方式控制特定地址，以便没有外部用户能够为这些地址生成有效签名的交易。
+`CPI`的另一个重要方面是它们允许程序为其`PDAs`签名。正如你可能已经注意到的那样，`PDAs`在Solana开发中被广泛使用，因为它们允许程序以一种特定的方式控制特定地址，以便没有外部用户能够为这些地址生成有效签名的交易。

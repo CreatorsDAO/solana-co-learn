@@ -143,11 +143,11 @@ solana balance
 一旦你整理好你的收藏品，并在巴厘岛享受休闲时光，"糖"工具也可以帮助你执行各种操作。如果你感到好奇，可以查看[这里的命令](https://docs.metaplex.com/developer-tools/sugar/reference/commands)了解更多。
 
 
-## 🌐 为您的NFT收藏创建前端界面
+## 🌐 为你的NFT收藏创建前端界面
 
-希望您已经用过晚餐，因为现在又到了享用更多糖果的时刻。
+希望你已经用过晚餐，因为现在又到了享用更多糖果的时刻。
 
-Metaplex基金会为您提供了一个时尚的React UI模板，您可以使用它来为您的NFT收藏打造前端界面。下面，让我们开始设置：
+Metaplex基金会为你提供了一个时尚的React UI模板，你可以使用它来为你的NFT收藏打造前端界面。下面，让我们开始设置：
 
 ```bash
 git clone https://github.com/metaplex-foundation/candy-machine-ui
@@ -155,29 +155,29 @@ cd candy-machine-ui
 npm i
 ```
 
-虽然这里进行了很多操作，但我们不必过于担心。只需将 `.env.example` 文件重命名为 `.env`，并粘贴您之前复制的糖果机ID。
+虽然这里进行了很多操作，但我们不必过于担心。只需将 `.env.example` 文件重命名为 `.env`，并粘贴你之前复制的糖果机ID。
 
 ```bash
 REACT_APP_CANDY_MACHINE_ID=GNfbQEfMA1u1irEFnThTcrzDyefJsoa7sndACShaS5vC
 ```
 
-这就是您需要做的全部工作！现在，如果您运行 `npm start`，您将在 `localhost:3000` 上看到一个精美的用户界面，可以用它来铸造您的NFT。
+这就是你需要做的全部工作！现在，如果你运行 `npm start`，你将在 `localhost:3000` 上看到一个精美的用户界面，可以用它来铸造你的NFT。
 
 对于Mac用户，如果遇到 `export NODE_OPTIONS=--openssl-legacy-provider` 问题，请在终端中运行。
 
-铸造完成后，您可以在钱包的收藏品部分查看NFT。
+铸造完成后，你可以在钱包的收藏品部分查看NFT。
 
 ![](./img/candy-nft.png)
 
-您会注意到铸造的NFT并不是`1.png`。这是因为糖果机的铸造过程默认是随机的。
+你会注意到铸造的NFT并不是`1.png`。这是因为糖果机的铸造过程默认是随机的。
 
-我们只是浅尝辄止地触及了Candy Machine和Sugar CLI的潜力。未来我们还会深入探讨更多内容——本节的目的是让您具备足够的基础知识，以便能够自主深入研究。随着我们对NFT项目的不断完善，我们将继续探索。
+我们只是浅尝辄止地触及了Candy Machine和Sugar CLI的潜力。未来我们还会深入探讨更多内容——本节的目的是让你具备足够的基础知识，以便能够自主深入研究。随着我们对NFT项目的不断完善，我们将继续探索。
 
 ## 🚢 船舶挑战
 
 让我们再享受一会儿糖果机的乐趣吧！🍭
 
-通过更新 `config.json` 文件并运行 `sugar update` 命令，您可以挖掘创造力并尝试不同的糖果机配置。
+通过更新 `config.json` 文件并运行 `sugar update` 命令，你可以挖掘创造力并尝试不同的糖果机配置。
 
 例如：
 

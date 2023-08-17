@@ -172,7 +172,7 @@ const { publicKey, sendTransaction } = useWallet();
 ```tsx
 const handleTransactionSubmit = async (movie: Movie) => {
     if (!publicKey) {
-        alert('请连接您的钱包！')
+        alert('请连接你的钱包！')
         return
     }
 
@@ -201,7 +201,7 @@ const handleTransactionSubmit = async (movie: Movie) => {
 ```tsx
 const handleTransactionSubmit = async (movie: Movie) => {
       if (!publicKey) {
-          alert('请连接您的钱包！')
+          alert('请连接你的钱包！')
           return
       }
 
@@ -216,7 +216,7 @@ const handleTransactionSubmit = async (movie: Movie) => {
       const instruction = new web3.TransactionInstruction({
           keys: [
               {
-                  // 您的帐户将支付费用，因此会写入网络
+                  // 你的帐户将支付费用，因此会写入网络
                   pubkey: publicKey,
                   isSigner: true,
                   isWritable: false,

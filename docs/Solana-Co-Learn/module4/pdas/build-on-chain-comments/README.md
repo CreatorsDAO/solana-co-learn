@@ -39,13 +39,13 @@ crate-type = ["cdylib", "lib"]
 
 你还需要将我们之前使用的[所有文件和代码带过来](https://beta.solpg.io/6312eaf988a7fca897ad7d15?utm_source=buildspace.so&utm_medium=buildspace_project)。这是我们上次离开时的电影评论程序，请将文件结构和内容复制到你的本地项目中。
 
-完成后，您可以通过构建程序来检查一切是否就位：
+完成后，你可以通过构建程序来检查一切是否就位：
 
 ```bash
 cargo build-sbf
 ```
 
-第一次运行可能需要几分钟时间。如果一切顺利，您应该会看到一个绿色的“完成”消息。
+第一次运行可能需要几分钟时间。如果一切顺利，你应该会看到一个绿色的“完成”消息。
 
 我们准备好开始拼凑东西了！
 
@@ -572,13 +572,13 @@ pub fn add_comment(
 
 本地部署比在游乐场上点击部署按钮多了一步。
 
-首先，您需要构建程序：
+首先，你需要构建程序：
 
 ```bash
 cargo build-sbf
 ```
 
-接下来，我们可以部署。确保 `target/deploy/pda_local.so` 被替换为您的路径：
+接下来，我们可以部署。确保 `target/deploy/pda_local.so` 被替换为你的路径：
 
 ```bash
 solana program deploy <PATH>
@@ -615,11 +615,11 @@ git checkout solution-add-comments
 
 利用你在本课程中学到的知识，尝试将所学应用到学生介绍计划中。你的补充应该使其他用户能够回复一个介绍。
 
-要进行测试，您需要获取此前端的 `solution-paging-account-data` 分支，并添加一个用于显示和提交评论的组件，或者您可以编写一个发送交易到程序的脚本。
+要进行测试，你需要获取此前端的 `solution-paging-account-data` 分支，并添加一个用于显示和提交评论的组件，或者你可以编写一个发送交易到程序的脚本。
 
 **起始代码：**
 
-如果您没有保存之前的`starter`代码，请随意使用[此存储库](https://github.com/buildspace/solana-student-intro-program?utm_source=buildspace.so&utm_medium=buildspace_project)的
+如果你没有保存之前的`starter`代码，请随意使用[此存储库](https://github.com/buildspace/solana-student-intro-program?utm_source=buildspace.so&utm_medium=buildspace_project)的
 starter 分支。
 
 **解决方案代码：**

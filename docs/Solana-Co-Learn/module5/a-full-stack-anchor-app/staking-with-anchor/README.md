@@ -9,7 +9,7 @@ sidebar_class_name: green
 是时候将NFT质押计划和用户界面转换为`Anchor`了！你一直在努力开发的buildoor项目已经很棒了，但是如果将其转移到Anchor上，以后的工作会更简单。继续运用你所学的知识，完成以下任务：
 
 - 使用`Anchor`从头开始重写程序。
-- 增加一些可靠的测试覆盖率，以确保您不会让安全风险从中溜走
+- 增加一些可靠的测试覆盖率，以确保你不会让安全风险从中溜走
 - 用`Anchor`方法构建器替换复杂的UI代码
 
 你应该花一些时间独立尝试做这件事。这不是一项简单的任务，但你能行。如果几个小时后你感到困惑，可以随时观看我们解决方案的视频演示。
@@ -211,9 +211,9 @@ anchor.setProvider(provider)
 const wallet = anchor.workspace.AnchorNftStaking.provider.wallet
 ```
 
-检查您的构建情况，如果已完成，请运行 `anchor deploy` ，如果失败，您可能需要向自己空投一些SOL。
+检查你的构建情况，如果已完成，请运行 `anchor deploy` ，如果失败，你可能需要向自己空投一些SOL。
 
-构建完成后，运行 `anchor keys list` 并获取程序`ID`，然后放入 `lib.rs` 和 `Anchor.toml` 文件中。如果构建需要一段时间，您可能需要回到这一步。
+构建完成后，运行 `anchor keys list` 并获取程序`ID`，然后放入 `lib.rs` 和 `Anchor.toml` 文件中。如果构建需要一段时间，你可能需要回到这一步。
 
 回到测试文件。
 

@@ -192,7 +192,7 @@ import { PROGRAM_ID as METADATA_PROGRAM_ID } from "@metaplex-foundation/mpl-toke
 
 是时候测试我们的进展了：
 
-- 1. 使用 `cargo build-sbf` 重新构建您的程序，然后使用 `solana program deploy {path}` 进行更新
+- 1. 使用 `cargo build-sbf` 重新构建你的程序，然后使用 `solana program deploy {path}` 进行更新
 - 2. 确保你在 `ts` 目录下，并执行 `npm run start` 。
 
 假设没有错误，让我们回到 `processor.rs` 文件中，并向我们的 `process_redeem` 函数添加类似的数据。
@@ -553,9 +553,9 @@ await testRedeem(connection, user, nft, stakeMint, userStakeATA.address)
  `new web3.PublicKey("USE YOUR PROGRAM ID")`
 
 
- 如果您找不到您的程序ID，您可以重新部署，控制台将显示您所需的程序ID。
+ 如果你找不到你的程序ID，你可以重新部署，控制台将显示你所需的程序ID。
 
- 向上滚动，超过 `const tokenMint` ，收回 `mintAuth` 。您可以在锚定NFT质押计划中找到以下内容的授权。
+ 向上滚动，超过 `const tokenMint` ，收回 `mintAuth` 。你可以在锚定NFT质押计划中找到以下内容的授权。
 
  ```ts
  const [mintAuth] = await web3.PublicKey.findProgramAddress(
@@ -603,6 +603,6 @@ const stakeMint = new web3.PublicKey(
   )
 ```
 
-现在应该已经设置好并正常工作了，请返回到ts目录，并使用`npm run start`进行全面测试。如果一切正常，您的控制台应该确认初始化、质押、赎回和解质押。
+现在应该已经设置好并正常工作了，请返回到ts目录，并使用`npm run start`进行全面测试。如果一切正常，你的控制台应该确认初始化、质押、赎回和解质押。
 
 这真的是很多东西。深呼吸，你正在努力奋斗。这非常具有挑战性，回头再看一遍，复习一下，再做一遍，不管需要多少努力——如果你能掌握这些内容，你就将成为一名优秀的Solana开发者。

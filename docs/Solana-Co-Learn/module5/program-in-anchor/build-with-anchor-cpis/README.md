@@ -339,7 +339,7 @@ pub struct AddComment<'info> {
 
 Solution: [https://beta.solpg.io/6319c7bf77ea7f12846aee87](https://beta.solpg.io/6319c7bf77ea7f12846aee87)
 
-如果您使用自己的编辑器，您必须在 `mpl-token-metadata` 的 `Cargo.toml` 中添加 `features = ["no-entrypoint"]` 。
+如果你使用自己的编辑器，你必须在 `mpl-token-metadata` 的 `Cargo.toml` 中添加 `features = ["no-entrypoint"]` 。
 
 否则，将会出现以下错误： the `#[global_allocator] in this crate conflicts with global allocator in: mpl_token_metadata` 。
 

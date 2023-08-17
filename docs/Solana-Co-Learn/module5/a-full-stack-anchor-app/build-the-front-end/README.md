@@ -131,7 +131,7 @@ if (
     )
 ```
 
-现在跳转到 `/utils/accounts.ts` 。您可以删除所有的`borsh`代码，并将 `getStakeAccount` 代码替换为此代码。这是使用Anchor工作的美妙之处之一，我们不需要担心序列化和反序列化。
+现在跳转到 `/utils/accounts.ts` 。你可以删除所有的`borsh`代码，并将 `getStakeAccount` 代码替换为此代码。这是使用Anchor工作的美妙之处之一，我们不需要担心序列化和反序列化。
 
 ```typescript
 export async function getStakeAccount(
@@ -264,6 +264,6 @@ transaction.add(
 
 还有一件事情我们需要做，在令牌目录中，我们已经创建了奖励令牌，现在需要用新的程序`ID`重新初始化它。在 `bld/index.ts` 文件中，当调用 `await createBldToken` 时，需要替换为新的程序`ID`。然后重新运行 `npm run create-bld-token` 脚本。如果我们不这样做，我们的兑换将无法正常工作。
 
-这将创建一个新的`Mint`程序`ID`，您需要将其添加到您的环境变量中。
+这将创建一个新的`Mint`程序`ID`，你需要将其添加到你的环境变量中。
 
 就是这样，我们在前端有一些功能正在运作。下周，我们将使用Anchor进行更多的发货，目前我们只是想展示它有多么容易，并让基本功能开始运行。

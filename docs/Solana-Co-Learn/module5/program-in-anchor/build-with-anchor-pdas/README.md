@@ -17,7 +17,7 @@ sidebar_class_name: green
 
 ## 设置
 
-请访问[https://beta.solpg.io/](https://beta.solpg.io/?utm_source=buildspace.so&utm_medium=buildspace_project)，如果您还没有SolPG钱包，请创建一个，并将[lib.rs](https://lib.rs/?utm_source=buildspace.so&utm_medium=buildspace_project)中的默认代码替换为：
+请访问[https://beta.solpg.io/](https://beta.solpg.io/?utm_source=buildspace.so&utm_medium=buildspace_project)，如果你还没有SolPG钱包，请创建一个，并将[lib.rs](https://lib.rs/?utm_source=buildspace.so&utm_medium=buildspace_project)中的默认代码替换为：
 
 ```rust
 use anchor_lang::prelude::*;

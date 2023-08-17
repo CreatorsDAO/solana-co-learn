@@ -256,7 +256,7 @@ const Disconnected: FC = () => {
 export default Disconnected
 ```
 
-这将是我们的登录页面 - 用户首次访问网站时会看到的视图。您需要将其导入到 `index.tsx` 中，并将其放置在渲染组件的中间位置（您可以再次查找相应的注释来找到正确的位置）。
+这将是我们的登录页面 - 用户首次访问网站时会看到的视图。你需要将其导入到 `index.tsx` 中，并将其放置在渲染组件的中间位置（你可以再次查找相应的注释来找到正确的位置）。
 
 ```ts
 // 现有的导入
@@ -288,7 +288,7 @@ const Home: NextPage = () => {
 // 其余的文件保持不变
 ```
 
-现在，如果您访问 `localhost:3000`，您应该会看到一个带有“成为 buildoor”按钮的登录页面。如果您点击它，目前什么也不会发生。这显然不是我们想要的，所以接下来我们要处理这个问题！让我们继续！
+现在，如果你访问 `localhost:3000`，你应该会看到一个带有“成为 buildoor”按钮的登录页面。如果你点击它，目前什么也不会发生。这显然不是我们想要的，所以接下来我们要处理这个问题！让我们继续！
 
 ## 🔌 连接到用户的钱包
 
@@ -302,7 +302,7 @@ npm i @solana/wallet-adapter-base @solana/wallet-adapter-react @solana/wallet-ad
 
 这些库将帮助我们与用户的Solana钱包连接。
 
-如果您要为特定钱包构建，您可以在这里自定义设置。这里我们只是使用默认配置。
+如果你要为特定钱包构建，你可以在这里自定义设置。这里我们只是使用默认配置。
 
 在 `components` 文件夹中，创建一个名为 `WalletContextProvider.tsx` 的文件，我们将在其中放置所有这些配置：
 
@@ -374,7 +374,7 @@ const handleClick: MouseEventHandler<HTMLButtonElement> = useCallback(
 )
 ```
 
-现在一切准备就绪，您应该可以连接到用户的钱包了！这一步骤使您的应用程序能够与Solana区块链进行交互，从而为用户提供更丰富的体验。
+现在一切准备就绪，你应该可以连接到用户的钱包了！这一步骤使你的应用程序能够与Solana区块链进行交互，从而为用户提供更丰富的体验。
 
 ## 🎇 创建连接视图
 
@@ -410,8 +410,8 @@ const Connected: FC = () => {
 
           <Text color="bodyText" fontSize="xl" textAlign="center">
             每个buildoor都是随机生成的，可以抵押接收
-            <Text as="b"> $BLD</Text>。使用您的 <Text as="b"> $BLD</Text>
-            升级您的buildoor，并在社区内获得特权！
+            <Text as="b"> $BLD</Text>。使用你的 <Text as="b"> $BLD</Text>
+            升级你的buildoor，并在社区内获得特权！
           </Text>
         </VStack>
       </Container>

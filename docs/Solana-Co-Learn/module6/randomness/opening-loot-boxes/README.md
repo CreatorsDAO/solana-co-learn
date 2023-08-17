@@ -19,7 +19,7 @@ switchboard-v2 = { version = "^0.1.14", features = ["devnet"] }
 bytemuck = "1.7.2"
 ```
 
-最后两个账户是付款人钱包，它是与您的`swithboard`代币关联的代币账户，用于支付随机性和最近的区块哈希。
+最后两个账户是付款人钱包，它是与你的`swithboard`代币关联的代币账户，用于支付随机性和最近的区块哈希。
 
 ```ts
 use crate::*;

@@ -15,7 +15,7 @@ sidebar_class_name: green
 
 这意味着我们需要两个指令，一个用于初始化该账户及其数据结构，另一个用于增加计数。
 
-`Anchor`使用一些 Rust 魔法来处理所有这些问题 ✨，它被设计用于处理许多常见的安全问题，因此您可以构建更安全的程序！添加 `initialize` 指令
+`Anchor`使用一些 Rust 魔法来处理所有这些问题 ✨，它被设计用于处理许多常见的安全问题，因此你可以构建更安全的程序！添加 `initialize` 指令
 
 - 在 `#[program]` 内实施 `initialize` 指令
 - `initialize` 需要一个类型为 `Initialize` 的 `Context` ，并且不需要额外的指令数据

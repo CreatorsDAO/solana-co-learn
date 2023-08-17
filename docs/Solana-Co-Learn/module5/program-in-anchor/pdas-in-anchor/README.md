@@ -36,7 +36,7 @@ sidebar_class_name: green
 - `example_seed` - 一个硬编码的字符串值
 - `user.key()` - 传入的账户的公钥 `user`
 - `instruction_data` - 传入指令的指令数据。
-    - 您可以使用 `#[instruction(...)]` 属性访问指令数据。
+    - 你可以使用 `#[instruction(...)]` 属性访问指令数据。
 
 
 ![](./img/example-instruction.png)
@@ -50,7 +50,7 @@ sidebar_class_name: green
 
 ![](./img/example-pda-2.png)
 
-您可以将 `init` 约束与 `seeds` 和 `bump` 约束结合使用，使用`PDA`初始化账户。
+你可以将 `init` 约束与 `seeds` 和 `bump` 约束结合使用，使用`PDA`初始化账户。
 
 `init` 约束必须与以下内容结合使用：
 
@@ -106,7 +106,7 @@ sidebar_class_name: green
 ![](./img/close2.png)
 
 - `has_one` 约束可以用来检查传入指令的账户是否与存储在 `data` 账户字段上的账户匹配
-- 您必须在您使用的账户的 `data` 字段上使用命名约定，以便对其进行 `has_one` 约束检查
+- 你必须在你使用的账户的 `data` 字段上使用命名约定，以便对其进行 `has_one` 约束检查
 - 使用 `has_one = receiver` ：
     - 账户的 `data` 与之对比的字段应该有一个 `receiver`
     - 在 `#[derive(Accounts)]` 结构中，账户名称也必须被称为 `receiver`

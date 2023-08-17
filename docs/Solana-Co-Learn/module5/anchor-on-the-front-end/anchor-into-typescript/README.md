@@ -168,7 +168,7 @@ setProvider(provider)
 
 导入程序 `IDL` 。
 
-请指定程序的`programId`，该`programId`通常包含在`IDL`中。或者，您也可以明确地声明`programId`。
+请指定程序的`programId`，该`programId`通常包含在`IDL`中。或者，你也可以明确地声明`programId`。
 
 创建程序对象时，如果没有明确指定提供程序，则使用默认提供程序。
 
@@ -230,7 +230,7 @@ const transactionSignature = await program.methods
   .rpc()
 ```
 
-您还可以通过将 `.rpc()` 更改为 `.transaction()` 来直接构建交易。
+你还可以通过将 `.rpc()` 更改为 `.transaction()` 来直接构建交易。
 
 使用指定的指令创建一个 `Transaction` 对象。
 
@@ -245,7 +245,7 @@ const transaction = await program.methods
 await sendTransaction(transaction, connection)
 ```
 
-同样，您可以使用相同的格式来构建一个使用 `.instruction` 的指令，然后手动将指令添加到新的交易中。
+同样，你可以使用相同的格式来构建一个使用 `.instruction` 的指令，然后手动将指令添加到新的交易中。
 
 使用指定的指令创建一个 `TransactionInstruction` 对象。
 
@@ -269,7 +269,7 @@ const transaction = new Transaction().add(instructionOne, instructionTwo)
 await sendTransaction(transaction, connection)
 ```
 
-总之，`Anchor MethodsBuilder` 提供了一种简化且更灵活的与链上程序交互的方式。您可以构建指令、交易，或者基本上使用相同的格式构建和发送交易，而无需手动序列化或反序列化账户或指令数据。
+总之，`Anchor MethodsBuilder` 提供了一种简化且更灵活的与链上程序交互的方式。你可以构建指令、交易，或者基本上使用相同的格式构建和发送交易，而无需手动序列化或反序列化账户或指令数据。
 
 ## Send Transactions
 
@@ -277,7 +277,7 @@ await sendTransaction(transaction, connection)
 
 该 `sendTransaction` 方法在发送之前提示连接的钱包进行交易的批准和签名。
 
-您可以通过包含 `{ signers: [] }` 来添加额外的签名：
+你可以通过包含 `{ signers: [] }` 来添加额外的签名：
 
 ```ts
 import { useWallet } from "@solana/wallet-adapter-react"
@@ -295,7 +295,7 @@ sendTransaction(transaction, connection, { signers: [] })
 
 ## 获取程序账户
 
-您还可以使用 `program` 对象来获取程序账户类型。使用 `fetch()` 来获取单个账户。使用 `all()` 来获取指定类型的所有账户。您还可以使用 `memcmp` 来筛选要获取的账户。
+你还可以使用 `program` 对象来获取程序账户类型。使用 `fetch()` 来获取单个账户。使用 `all()` 来获取指定类型的所有账户。你还可以使用 `memcmp` 来筛选要获取的账户。
 
 ```ts
 const account = await program.account.accountType.fetch(publickey)

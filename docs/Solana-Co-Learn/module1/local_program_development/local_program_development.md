@@ -11,7 +11,7 @@ sidebar_class_name: green
 本地开发的基本流程如下
 
 1. 安装 [Rust](https://www.rust-lang.org/tools/install) 和 [Solana CLI](https://docs.solana.com/cli/install-solana-cli-tools)
-2. 使用`Solana CLI`，您可以使用**solana-test-validator**命令运行本地测试验证器，初始化账户等基本操作
+2. 使用`Solana CLI`，你可以使用**solana-test-validator**命令运行本地测试验证器，初始化账户等基本操作
 3. 使用 `cargo build-sbf` 和 `solana program deploy` 命令在本地构建和部署程序
 4. 使用 `solana logs` 命令查看程序日志
 
@@ -32,15 +32,15 @@ Solana Program 使用Rust 编写，调试运行。建议使用Unix 系列系统:
 winver
 ```
 
-如果您使用的是Windows 10版本2004及更高版本（Build 19041及更高版本）或Windows 11，请运行以下命令。
+如果你使用的是Windows 10版本2004及更高版本（Build 19041及更高版本）或Windows 11，请运行以下命令。
 
 ```bash
 wsl --install
 ```
 
-如果您正在使用较旧版本的Windows，请按照[这里](https://docs.microsoft.com/en-us/windows/wsl/install-manual)的说明进行操作。
+如果你正在使用较旧版本的Windows，请按照[这里](https://docs.microsoft.com/en-us/windows/wsl/install-manual)的说明进行操作。
 
-您可以在[这里](https://learn.microsoft.com/en-us/windows/wsl/install)阅读更多关于安装WSL的信息。
+你可以在[这里](https://learn.microsoft.com/en-us/windows/wsl/install)阅读更多关于安装WSL的信息。
 
 #### 下载Ubuntu
 
@@ -48,7 +48,7 @@ wsl --install
 
 #### 下载 Rust（适用于 WSL）
 
-接下来，打开Ubuntu终端并使用以下命令下载适用于WSL的Rust。您可以在[此处](https://www.rust-lang.org/learn/get-started)阅读有关下载Rust的更多信息。
+接下来，打开Ubuntu终端并使用以下命令下载适用于WSL的Rust。你可以在[此处](https://www.rust-lang.org/learn/get-started)阅读有关下载Rust的更多信息。
 
 ```bash
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
@@ -56,7 +56,7 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 #### 下载 Solana CLI
 
-现在我们准备下载适用于Linux的Solana CLI。请在Ubuntu终端中运行以下命令。您可以[在此处阅读](https://docs.solana.com/cli/install-solana-cli-tools)有关下载Solana CLI的更多信息。
+现在我们准备下载适用于Linux的Solana CLI。请在Ubuntu终端中运行以下命令。你可以[在此处阅读](https://docs.solana.com/cli/install-solana-cli-tools)有关下载Solana CLI的更多信息。
 
 ```bash
 sh -c "$(curl -sSfL https://release.solana.com/v1.16.6/install)"
@@ -76,32 +76,32 @@ sh -c "$(curl -sSfL https://release.solana.com/v1.16.6/install)"
 sh -c "$(curl -sSfL https://release.solana.com/v1.16.6/install)"
 ```
 
-您可以在[这里](https://docs.solana.com/cli/install-solana-cli-tools)了解更多关于下载Solana CLI的信息。
+你可以在[这里](https://docs.solana.com/cli/install-solana-cli-tools)了解更多关于下载Solana CLI的信息。
 
 ## Solana CLI基础
 
 `Solana CLI`是一个命令行界面工具，提供了一系列命令，用于与Solana集群进行交互。
 
-在本课程中，我们将介绍一些最常见的命令，但您始终可以通过运行`solana --help`来查看所有可能的`Solana CLI`命令列表。
+在本课程中，我们将介绍一些最常见的命令，但你始终可以通过运行`solana --help`来查看所有可能的`Solana CLI`命令列表。
 
 ### Solana CLI 配置
 
-`Solana CLI`存储了一些配置设置，这些设置会影响某些命令的行为。您可以使用以下命令查看当前的配置：
+`Solana CLI`存储了一些配置设置，这些设置会影响某些命令的行为。你可以使用以下命令查看当前的配置：
 
 ```bash
 solana config get
 ```
 
 `solana config get`命令将返回以下内容：
-- 配置文件 - `Solana CLI`所在的文件位于您的计算机上
-- `RPC URL` - 您正在使用的端点，将您连接到本地主机、开发网络或主网络
+- 配置文件 - `Solana CLI`所在的文件位于你的计算机上
+- `RPC URL` - 你正在使用的端点，将你连接到本地主机、开发网络或主网络
 - `WebSocket URL` - 监听来自目标集群的事件的`WebSocket`（在设置`RPC URL`时计算）
 - 密钥对路径 - 在运行`Solana CLI`子命令时使用的密钥对路径
 - `Commitment` - 提供了网络确认的度量，并描述了一个区块在特定时间点上的最终性程度
 
-您可以随时使用`solana config set`命令更改您的`Solana CLI`配置，然后跟上您想要更新的设置。
+你可以随时使用`solana config set`命令更改你的`Solana CLI`配置，然后跟上你想要更新的设置。
 
-最常见的更改将是您要定位的集群。使用`solana config set --url`命令更改`RPC URL`。
+最常见的更改将是你要定位的集群。使用`solana config set --url`命令更改`RPC URL`。
 
 ```bash
 # localhost
@@ -115,7 +115,7 @@ solana config set --url devnet
 solana config set --url mainnet-beta
 ```
 
-同样地，您可以使用`solana config set --keypair`命令来更改密钥对路径。当运行命令时，`Solana CLI`将使用指定路径下的密钥对。
+同样地，你可以使用`solana config set --keypair`命令来更改密钥对路径。当运行命令时，`Solana CLI`将使用指定路径下的密钥对。
 
 ```bash
 solana config set --keypair ~/<FILE_PATH>
@@ -125,18 +125,18 @@ solana config set --keypair ~/<FILE_PATH>
 
 你会发现在测试和调试时运行本地验证器比部署到开发网络更有帮助。
 
-您可以使用`solana-test-validator`命令运行本地测试验证器。该命令会创建一个持续运行的进程，需要单独的命令行窗口。
+你可以使用`solana-test-validator`命令运行本地测试验证器。该命令会创建一个持续运行的进程，需要单独的命令行窗口。
 
 ### Stream program logs
 
-通常在打开一个新的控制台并在测试验证器旁边运行`solana logs`命令会很有帮助。这将创建另一个持续进行的进程，用于流式传输与您配置的集群相关的日志。
+通常在打开一个新的控制台并在测试验证器旁边运行`solana logs`命令会很有帮助。这将创建另一个持续进行的进程，用于流式传输与你配置的集群相关的日志。
 
-如果您的CLI配置指向本地主机，则日志将始终与您创建的测试验证器相关联，但您也可以从其他集群（如`Devnet`和`Mainnet Beta`）流式传输日志。当从其他集群流式传输日志时，您需要在命令中包含一个程序`ID`，以限制您所看到的日志仅针对您的特定程序。
+如果你的CLI配置指向本地主机，则日志将始终与你创建的测试验证器相关联，但你也可以从其他集群（如`Devnet`和`Mainnet Beta`）流式传输日志。当从其他集群流式传输日志时，你需要在命令中包含一个程序`ID`，以限制你所看到的日志仅针对你的特定程序。
 
 
 ### 密钥相关
 
-您可以使用`solana-keygen new --outfile`命令生成一个新的密钥对，并指定文件路径以存储该密钥对。
+你可以使用`solana-keygen new --outfile`命令生成一个新的密钥对，并指定文件路径以存储该密钥对。
 
 ```bash
 solana-keygen new --outfile ~/<FILE_PATH>
@@ -160,13 +160,13 @@ solana balance
 solana airdrop 2
 ```
 
-在您开发和测试本地环境中的程序时，很可能会遇到由以下原因引起的错误：
+在你开发和测试本地环境中的程序时，很可能会遇到由以下原因引起的错误：
 
 - 使用错误的密钥对
-- 没有足够的SOL来部署您的程序或执行交易
+- 没有足够的SOL来部署你的程序或执行交易
 - 指向错误的集群
 
-到目前为止，我们已经介绍了一些CLI命令，这些命令应该能帮助您快速解决那些问题。
+到目前为止，我们已经介绍了一些CLI命令，这些命令应该能帮助你快速解决那些问题。
 
 ### 挑战
 
@@ -186,7 +186,7 @@ console.log(
 );
 ```
 
-您还可以打开一个单独的命令行窗口，并使用`solana logs | grep " invoke" -A` 。在`Devnet`上使用`solana logs`时，您必须指定程序`ID`。否则，`solana logs`命令将返回来自`Devnet`的持续日志流。例如，您可以按照以下步骤监视对`Token`程序的调用，并显示每个调用的前5行日志：
+你还可以打开一个单独的命令行窗口，并使用`solana logs | grep " invoke" -A` 。在`Devnet`上使用`solana logs`时，你必须指定程序`ID`。否则，`solana logs`命令将返回来自`Devnet`的持续日志流。例如，你可以按照以下步骤监视对`Token`程序的调用，并显示每个调用的前5行日志：
 
 ```bash
 solana logs | grep "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA invoke" -A 5

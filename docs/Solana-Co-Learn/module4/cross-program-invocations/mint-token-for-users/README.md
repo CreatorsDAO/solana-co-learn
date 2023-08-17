@@ -8,7 +8,7 @@ sidebar_class_name: green
 
 我们的电影评论节目还不错，但它并不是非常符合Web3的特点。目前我们所做的只是将Solana用作数据库。让我们通过给用户使用我们的应用程序来增加一些趣味吧！每当他们评论一部电影或留下评论时，我们将为某人铸造代币。可以将其想象成StackOverflow，但使用代币而不是点赞。
 
-您可以从上次的本地环境继续进行，或者通过复制[这个环境](https://beta.solpg.io/6313104b88a7fca897ad7d19?utm_source=buildspace.so&utm_medium=buildspace_project)来设置一个新的
+你可以从上次的本地环境继续进行，或者通过复制[这个环境](https://beta.solpg.io/6313104b88a7fca897ad7d19?utm_source=buildspace.so&utm_medium=buildspace_project)来设置一个新的
 
 ```bash
 git clone https://github.com/buildspace/solana-movie-program/
@@ -262,7 +262,7 @@ pub fn initialize_token_mint(program_id: &Pubkey, accounts: &[AccountInfo]) -> P
 
 请查看代码注释，我尽可能地添加了上下文！
 
-由于我们在调用一个未声明的新错误，您现在会收到一个错误。打开 `error.rs` 并将 `IncorrectAccountError` 添加到 `ReviewError` 枚举中。
+由于我们在调用一个未声明的新错误，你现在会收到一个错误。打开 `error.rs` 并将 `IncorrectAccountError` 添加到 `ReviewError` 枚举中。
 
 ```rust
 #[derive(Debug, Error)]
@@ -299,7 +299,7 @@ cargo build-sbf
 
 如果你遇到 `insufficient funds` ，就直接运行 `solana airdrop 2` 。
 
-一旦您在本地部署完成，就该进行测试了！我们将使用本地客户端脚本来测试账户初始化。以下是您需要设置的内容：
+一旦你在本地部署完成，就该进行测试了！我们将使用本地客户端脚本来测试账户初始化。以下是你需要设置的内容：
 
 ```bash
 git clone https://github.com/buildspace/solana-movie-token-client
@@ -307,7 +307,7 @@ cd solana-movie-token-client
 npm install
 ```
 
-在运行脚本之前，您需要：
+在运行脚本之前，你需要：
 
 - 1. 更新 `PROGRAM_ID` 在 `index.ts` 中
 - 2. 将第67行的连接更改为在线连接

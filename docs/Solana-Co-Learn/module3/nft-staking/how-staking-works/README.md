@@ -9,7 +9,7 @@ sidebar_class_name: green
 你已经接近完成第三周了！让我们把你学到的一切都用在与你正在进行的NFT项目（buildoors项目）相关的质押计划上。
 
 
-我们希望您为质押计划搭建所有内容，除了实际的代币功能。这意味着在您预期与代币程序进行交互的任何地方，我们只会记录一条消息或跳过它，并在下周重新审视。
+我们希望你为质押计划搭建所有内容，除了实际的代币功能。这意味着在你预期与代币程序进行交互的任何地方，我们只会记录一条消息或跳过它，并在下周重新审视。
 
 
 目前，主要目标是编写一个程序，跟踪每个用户的质押状态。以下是一些大致的步骤：
@@ -18,9 +18,9 @@ sidebar_class_name: green
 
 - InitializeStakeAccount - 这将创建一个新的账户，用于存储每个用户/非同质化代币组合的质押过程的状态信息。该PDA的种子应为用户的公钥和非同质化代币的令牌账户。
 - 质押 - 这个指令通常是实际进行质押的地方。然而，我们目前不会进行任何真正的质押。我们只是要更新“状态”账户，以反映出代币已被质押，质押的时间等信息。
-- 兑换 - 这是您根据用户抵押时间来发送奖励代币的地方。但现在只需记录他们应该获得多少代币（暂时可以假设每单位时间1个代币），并更新状态以反映他们上次兑换代币的时间。
-- 解除质押 - 这是您赎回任何额外代币并解除 NFT 质押的地方。目前，这只意味着更新状态以反映 NFT 未质押，并记录应获得的奖励代币数量。
+- 兑换 - 这是你根据用户抵押时间来发送奖励代币的地方。但现在只需记录他们应该获得多少代币（暂时可以假设每单位时间1个代币），并更新状态以反映他们上次兑换代币的时间。
+- 解除质押 - 这是你赎回任何额外代币并解除 NFT 质押的地方。目前，这只意味着更新状态以反映 NFT 未质押，并记录应获得的奖励代币数量。
 
 这是具有挑战性的。在参考解决方案或观看视频指导之前，先试着自己设计一些东西。如果你做得不完美也没关系，挣扎是学习的一部分。
-提示：您可以使用solana_program::clock::Clock来获取时间。如果需要，可以[查看文档](https://docs.rs/solana-program/latest/solana_program/clock/struct.Clock.html?utm_source=buildspace.so&utm_medium=buildspace_project)。
+提示：你可以使用solana_program::clock::Clock来获取时间。如果需要，可以[查看文档](https://docs.rs/solana-program/latest/solana_program/clock/struct.Clock.html?utm_source=buildspace.so&utm_medium=buildspace_project)。
 如果你已经尽力尝试了一切，可以随意查看[解决方案代码](https://beta.solpg.io/6328f26177ea7f12846aee9b?utm_source=buildspace.so&utm_medium=buildspace_project)。如果你想继续，欢迎开始为质押和与该程序进行交互的用户界面进行开发。

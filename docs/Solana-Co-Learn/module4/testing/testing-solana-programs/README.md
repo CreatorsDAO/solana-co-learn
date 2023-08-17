@@ -12,7 +12,7 @@ sidebar_class_name: green
 
 单元测试是小而更专注的，一次只测试一个模块的隔离，并且可以测试私有接口。
 
-集成测试完全与您的库外部无关，并以与任何其他外部代码相同的方式使用您的代码，仅使用公共接口，并可能在每个测试中使用多个模块。
+集成测试完全与你的库外部无关，并以与任何其他外部代码相同的方式使用你的代码，仅使用公共接口，并可能在每个测试中使用多个模块。
 
 ## 🔢 单元测试
 
@@ -27,7 +27,7 @@ sidebar_class_name: green
 - `#[cfg(test)]` 注解告诉Cargo只在我们运行 `cargo test-sbf` 时编译我们的测试代码。
 - 运行 `cargo test-sbf` 时，该模块中标记为测试的每个函数都将被运行。
 
-您还可以在模块中创建非测试的辅助函数
+你还可以在模块中创建非测试的辅助函数
 
 ```rust
 // Example testing module with a single test
@@ -117,7 +117,7 @@ mod tests {
 
 集成测试的目的是完全与其测试的代码分离。
 
-这些测试旨在通过公共接口与您的代码进行交互，以便其他人可以按照预期的方式访问它。
+这些测试旨在通过公共接口与你的代码进行交互，以便其他人可以按照预期的方式访问它。
 
 他们的目的是测试你的库的许多部分是否能正确地协同工作。
 
@@ -178,7 +178,7 @@ test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 
 ## 🔌 使用Typescript进行集成测试
 
-测试程序的另一种方法是将其部署到Devnet或本地验证器，并从您创建的某个客户端向其发送交易。
+测试程序的另一种方法是将其部署到Devnet或本地验证器，并从你创建的某个客户端向其发送交易。
 
 使用Typescript编写客户端测试脚本：
 
@@ -188,7 +188,7 @@ test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 
 使用 `npm install mocha chai` 安装 `Mocha` 和 `Chai`
 
-然后在您的TypeScript项目中更新 `package.json` 文件。这会告诉编译器在运行命令 `npm run test` 时执行 `/test` 目录中的TypeScript文件或文件。
+然后在你的TypeScript项目中更新 `package.json` 文件。这会告诉编译器在运行命令 `npm run test` 时执行 `/test` 目录中的TypeScript文件或文件。
 
 你需要确保这里的路径是指向你的测试脚本所在的正确路径。
 
@@ -236,12 +236,12 @@ describe("begin tests", async () => {
 
 程序错误通常以程序返回的错误枚举中错误的十进制索引的十六进制表示形式显示。
 
-例如，如果您在向SPL代币程序发送交易时遇到错误，错误代码 `0x01` 的十进制等价值为1。
+例如，如果你在向SPL代币程序发送交易时遇到错误，错误代码 `0x01` 的十进制等价值为1。
 
 查看[Token程序](https://github.com/solana-labs/solana-program-library/blob/master/token/program/src/error.rs?utm_source=buildspace.so&utm_medium=buildspace_project)的源代码，我们可以看到程序错误枚举中该索引处的错误是 `InsufficientFunds` 。
 
 
-您需要能够访问任何返回自定义程序错误代码的程序的源代码来进行翻译。
+你需要能够访问任何返回自定义程序错误代码的程序的源代码来进行翻译。
 
 ## 📜 程序日志
 
@@ -272,11 +272,11 @@ Solana使创建新的自定义日志变得非常简单，只需使用 `msg!()` �
 `ComputeBudgetProgram.setComputeUnitPrice({ microLamports: number })` 将会将交易费用提高到基本费用（5,000 Lamports）之上。
 
 - 以微Lamports提供的价值将乘以CU预算，以确定`Lamports`s中的优先费用。
-- 例如，如果您的CU预算为1M CU，并且您增加了1微Lamport/CU，那么优先级费用将为1 Lamport（1M * 0.000001）。
+- 例如，如果你的CU预算为1M CU，并且你增加了1微Lamport/CU，那么优先级费用将为1 Lamport（1M * 0.000001）。
 - 总费用将为`5001 Lamports`。
 
 
-要更改交易的计算预算，您必须将交易的前三条指令之一设置为设置预算的指令。
+要更改交易的计算预算，你必须将交易的前三条指令之一设置为设置预算的指令。
 
 ```ts
 const modifyComputeUnits = ComputeBudgetProgram.setComputeUnitLimit({
@@ -322,7 +322,7 @@ pub fn process_instruction(
 
 在像Rust这样的系统编程语言中，一个值是在栈上还是堆上的区别可能很大，尤其是在像区块链这样受限环境中工作时。
 
-当处理更大、更复杂的程序时，您将开始遇到使用完整的4KB内存的问题。
+当处理更大、更复杂的程序时，你将开始遇到使用完整的4KB内存的问题。
 
 这通常被称为"[堆栈溢出](https://en.wikipedia.org/wiki/Stack_overflow?utm_source=buildspace.so&utm_medium=buildspace_project)"或"栈溢出"。
 
@@ -331,7 +331,7 @@ pub fn process_instruction(
 - 一些依赖的包可能包含违反堆栈帧限制的功能
 - 或者程序本身在运行时可以达到堆栈限制。
 
-以下是一个示例，当堆栈违规是由依赖的包引起时，您可能会看到的错误消息。
+以下是一个示例，当堆栈违规是由依赖的包引起时，你可能会看到的错误消息。
 
 ```bash
 Error: Function _ZN16curve25519_dalek7edwards21EdwardsBasepointTable6create17h178b3d2411f7f082E Stack offset of -30728 exceeded max offset of -4096 by 26632 bytes, please minimize large stack variables
@@ -347,7 +347,7 @@ Program failed to complete: Access violation in stack frame 3 at address 0x20000
 
 所有程序都可以访问一个`32KB`的运行时堆，可以帮助你释放一些堆栈上的内存。
 
-要做到这一点，您需要使用[Box](https://doc.rust-lang.org/std/boxed/struct.Box.html?utm_source=buildspace.so&utm_medium=buildspace_project)结构体。
+要做到这一点，你需要使用[Box](https://doc.rust-lang.org/std/boxed/struct.Box.html?utm_source=buildspace.so&utm_medium=buildspace_project)结构体。
 
 一个 `box` 是指向堆分配的类型为 `T` 的值的智能指针。
 

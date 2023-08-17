@@ -22,7 +22,7 @@ sidebar_class_name: green
 
 我希望你已经安装了`Rust`和`Solana CLI`（除非你跳过了某些部分哈哈）。你还需要[安装`Yarn`](https://yarnpkg.com/getting-started/install)。
 
-完成后，只需转到官方的[`Anchor`文档](https://www.anchor-lang.com/docs/installation)并进行设置。如果一切顺利，当您运行 `anchor --version` 时，您应该会看到一个版本被打印出来。
+完成后，只需转到官方的[`Anchor`文档](https://www.anchor-lang.com/docs/installation)并进行设置。如果一切顺利，当你运行 `anchor --version` 时，你应该会看到一个版本被打印出来。
 
 下面是我执行之后的数据的`Anchor`的具体版本信息：
 
@@ -44,7 +44,7 @@ anchor init <new-workspace-name>
 - `package.json` ：JavaScript 依赖文件。
 - `programs/` ：Solana程序包的目录。
 - `app/`: 你的应用前端在这里。
-- `tests/` ：这里是您的TypeScript集成测试。
+- `tests/` ：这里是你的TypeScript集成测试。
 - `migrations/deploy.js`: 部署脚本以迁移到不同版本的程序。
 - `.anchor` 文件夹：其中包含最新的程序日志和用于测试的本地账本
 
@@ -60,7 +60,7 @@ anchor init <new-workspace-name>
 anchor build
 ```
 
-这将花费几秒钟，在工作区中构建针对Solana的`BPF`运行时的程序，并在 `target/idl` 目录中生成“`IDLs`”。您还应该在终端中运行 `cargo build-sbf` 时看到类似的输出，其中包含一个部署命令。
+这将花费几秒钟，在工作区中构建针对Solana的`BPF`运行时的程序，并在 `target/idl` 目录中生成“`IDLs`”。你还应该在终端中运行 `cargo build-sbf` 时看到类似的输出，其中包含一个部署命令。
 
 顺便说一下，这是关于目标文件夹的一些需要了解的信息 ：
 
@@ -72,7 +72,7 @@ anchor build
 >
 > ？[`IDL`（接口描述语言）](https://en.wikipedia.org/wiki/Interface_description_language)文件是一个JSON文件，用于描述程序的接口 - 它告诉你有哪些函数可用以及它们接受的参数。可以将其视为程序的`API`文档。
 
-我们使用`IDL`程序来确定如何与客户端进行通信（可用的函数、参数等），并使用TypeScript `IDL`来定义类型。这些非常重要，因为要使您的程序开源，您需要发布经过验证的构建版本和`IDL`到`Anchor Programs Registry`。
+我们使用`IDL`程序来确定如何与客户端进行通信（可用的函数、参数等），并使用TypeScript `IDL`来定义类型。这些非常重要，因为要使你的程序开源，你需要发布经过验证的构建版本和`IDL`到`Anchor Programs Registry`。
 
 现在我们想要部署。但是我们还不能立即开始！我们需要做两件事情 - 获取程序地址并设置网络。
 
@@ -100,7 +100,7 @@ anchor deploy
 
 我们完成了！希望你在终端上能看到一个带有`Program Id`的“部署成功”消息。
 
-现在将您的集群更改为`localnet`，这样我们就可以进行测试了。在测试期间，`Anchor`将自动设置一个本地验证器！我喜欢机器人 🤖
+现在将你的集群更改为`localnet`，这样我们就可以进行测试了。在测试期间，`Anchor`将自动设置一个本地验证器！我喜欢机器人 🤖
 
 测试很简单：
 
