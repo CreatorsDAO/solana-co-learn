@@ -6,52 +6,51 @@ sidebar_class_name: green
 
 # 📝 你好，世界
 
-我们将在游乐场上制作一个简单的`Hello World`程序。它只会在交易日志中记录一条消息，哈哈。我们将在游乐场上制作一个简单的`Hello World`程序。它只会在交易日志中记录一条消息，哈哈。
+我们将在游乐场上制作一个简单的`Hello World`程序，这个程序只会在交易日志中记录一条消息，相当有趣。
 
 ## 📦 Rust模块系统
 
-就像我们对待客户一样，我们将使用一系列的库，这样我们就不必写大量的样板代码。Rust使用被统称为“模块系统”的方式来组织代码。这与`Node.js`中的模块或`C++`中的命名空间非常相似。
+在Solana上编写程序，我们会像对待客户一样用到一系列的库，免去了大量手动编写样板代码的麻烦。Rust采用一种被称为“模块系统”的方式来组织代码，它和`Node.js`中的模块或`C++`中的命名空间有许多相似之处。
 
-下面是一个方便的可视化：
+下面是一个直观的可视化展示：
 
 ![](./img/rust-modules.png)
 
 [srouce](https://www.reddit.com/r/learnrust/comments/wb0gdt/visual_to_understandremember_packages_crates/)
 
-这是一个方便的可视化工具：
+这个系统的三个部分包括：
 
-这个系统的三个部分是：
-
-- `package` - 一个包含一组木箱以及用于指定元数据和包之间依赖关系的清单文件的包。将其视为Node.js中的 `package.json` 。
-- `Crate（板条箱）`- 一个`crate`（板条箱）可以是一个库（library）或一个可执行程序（executable program）。一个`crate`（板条箱）的源代码通常被细分为多个模块（modules）。这就像一个节点模块（node module）。
-- `module` - 模块将代码分割成逻辑单元，为组织、作用域和路径的隐私提供了独立的命名空间。这些基本上是单独的文件和文件夹。
+- `package` - 这是一个包含一组crate和用于指定元数据及包之间依赖关系的清单文件的包。你可以将其理解为Node.js中的 `package.json`。
+- `crate（木箱）` - 一个crate可以是一个库或一个可执行程序。crate的源代码通常会被细分为多个模块。这就像一个Node.js模块。
+- `module` - 模块用于将代码分割成逻辑单元，为组织、作用域和路径的隐私提供了独立的命名空间。它们基本上是单独的文件和文件夹。
 
 ## 🛣 路径和范围
 
-就像你可以在React中重用组件和在Node中重用模块一样，`Crate`模块可以在项目中被重复使用。模块内部的项目比较棘手的地方在于我们需要知道它们的路径才能引用它们。
+Crate模块可以在项目中被重复使用，就像你可以在React中重用组件和在Node中重用模块一样。比较棘手的是我们需要知道它们的路径才能引用它们。
 
-将箱子结构看作一棵树，其中箱子是树的基础，模块是树枝，每个模块可以有子模块或者额外的分支。
+将crate结构想象成一棵树，其中crate是树的基础，模块是树枝，每个模块可能有子模块或额外的分支。
 
-我们需要的其中一件事是 `AccountInfo` 子模块中的 `account_info` 结构体，以下是它的样子：
+我们所需的其中一个事物是`AccountInfo`子模块中的`account_info`结构体，以下是它的样子：
 
 ![](./img/solana-module.png)
 
-`struct`是一种自定义的数据类型，顺便说一下。把它想象成一种自定义的原始数据类型，就像字符串或整数一样。与仅存储单个值不同，`struct`可以包含多个值。
+`struct`是一种自定义数据类型。把它想象成一种自定义的原始数据类型，就像字符串或整数一样，但与只存储一个值的原始类型不同，`struct`可以包含多个值。
 
-在Rust中， `::` 就像 `.` 或 `/` 一样。因此，要引用 `AccountInfo` 结构体，我们可以这样写： :: 。
+在Rust中， `::` 用作路径分隔符，就像 `.` 或 `/` 一样。因此，要引用 `AccountInfo` 结构体，我们可以这样写：
 
 ```rust
 use solana_program::account_info::AccountInfo;
 ```
 
+这里的层次结构是：
 
-- 基础箱子是 `solana_program`
+- 基础crate是 `solana_program`
 - `solana_program` 包含一个名为 `account_info` 的模块
 - `account_info` 包含一个名为 `AccountInfo` 的结构体
 
-在Rust文件的顶部经常会看到一系列的 `use` 命令，就像 `import` 或 `require` 语句一样。
+Rust文件的顶部常常会有一系列的 `use` 命令，这与 `import` 或 `require` 语句相似。
 
-我们还需要一些其他的项目。我们可以使用花括号从单个模块中引入多个项目，有点像JS中的解构。
+我们还需要一些其他项目。我们可以使用花括号从单个模块中引入多个项目，这有点像JS中的解构。
 
 ```rust
 use solana_program::{
@@ -63,26 +62,24 @@ use solana_program::{
 };
 ```
 
+到目前为止，一切都很简单明了。 `AccountInfo` 结构体是Solana账户数据的通用描述符，它定义了账户应具备的所有属性。
 
-到目前为止，非常直接了当。 `AccountInfo` 结构体是 Solana 账户数据的通用描述符 - 它定义了账户应具备的所有属性。
-
-
-如果你以前从未使用过像TypeScript或Java这样的静态类型语言，你可能会想知道为什么我们要导入像 `PubKey` 或 `AccountInfo` 这样的“数据类型”。简而言之，在Rust中，我们需要在声明变量时定义其类型。这有助于我们在编译或运行代码之前捕捉错误。因此，当你的程序在区块链上执行交易时，它不会崩溃，而是在开发过程中崩溃，这样你就可以更快地准备好可运行的代码 :)
+如果你以前从未使用过像TypeScript或Java这样的静态类型语言，你可能会想知道为什么我们要导入像 `PubKey` 或 `AccountInfo` 这样的“数据类型”。简言之，在Rust中，我们需要在声明变量时定义其类型。这有助于我们在编译或运行代码之前捕捉错误。因此，当程序在区块链上执行交易时，它不会崩溃，而是在开发过程中出错，这样你就可以更快地准备好可运行的代码。
 
 ![](./img/error-compare.png)
 
-我会在需要的时候处理剩下的这些项目。现在继续前进！
+我会在需要的时候介绍剩下的这些项目。现在让我们继续前进！
+
 
 ## 🏁 Solana程序入口
 
+回想一下我们的TypeScript客户端。我们在 `index.ts` 的 `main` 中有一个函数，它是我们脚本的入口点。同样的，Rust脚本也是这样的方式！但是，我们不仅仅是编写任何Rust脚本，我们正在编写一个将在Solana上运行的脚本。
 
-回想一下我们的TypeScript客户端。我们在 `index.ts` 的 `main` 中有一个函数，它是我们脚本的入口点。同样的方法也适用于Rust脚本！只不过我们不仅仅是编写任何Rust脚本，我们正在编写一个将在Solana上运行的脚本。
+这就是我们第二个 `use` 语句的用途 —— 它引入了 `entrypoint!` 宏：一种特殊类型的 main 函数，Solana将用它来执行我们的指令。
 
-这就是我们的第二个 `use` 语句的作用 - 它引入了 `entrypoint!` 宏：一种特殊类型的 main 函数，Solana将用它来执行我们的指令。
+宏就像是代码的快捷方式 —— 它们是一种可以编写代码的代码。在编译时，`entrypoint!(process_instruction)`; 将展开为一堆样板代码，有点像模板。你不必深入了解宏的工作原理，但你可以在[这里](https://doc.rust-lang.org/book/ch19-06-macros.html)阅读更多相关信息。
 
-宏就像代码的快捷方式 - 它们是一种编写代码的方式，可以编写代码。在编译时， `entrypoint!(process_instruction)`; 会展开为一堆样板代码，有点像模板。你不需要知道宏的工作原理，但你可以在[这里](https://doc.rust-lang.org/book/ch19-06-macros.html)阅读更多相关信息。
-
-我们的入口函数将调用 `process_instruction` ，所以这是我们的 `lib.rs` 文件目前应该是这样的：
+我们的入口函数将调用 `process_instruction`，所以这是我们的 `lib.rs` 文件目前应该的样子：
 
 ```rust
 use solana_program::{
@@ -96,40 +93,39 @@ use solana_program::{
 entrypoint!(process_instruction);
 ```
 
-
-现在是关于 `process_instruction` 函数的部分。
+接下来是关于 `process_instruction` 函数的部分。
 
 ## 🔨 Rust中的函数
 
-`function`与Typescript中的function非常相似 - 只需要参数、类型和返回类型。将此添加到 `entrypoint!` 宏下面：
+Rust中的 `function` 与Typescript中的function非常相似 —— 它们只需要参数、类型和返回类型。在 `entrypoint!` 宏下面添加以下内容：
 
 ```rust
 pub fn process_instruction(
-    //Arguments and their types
+    // 参数及其类型
     program_id: &Pubkey,
     accounts: &[AccountInfo],
     instruction_data: &[u8]
-    // The return type (i.e. what data type the function returns)
+    // 返回类型（即函数返回的数据类型）
 ) -> ProgramResult{
-  // Leave the body empty for now :)
+  // 暂时留空函数体
 }
 ```
 
 我们的 `process_instruction` 函数需要以下参数：
 
-- `program_id` ：程序账户的公钥。用于验证程序是否由正确的账户调用。类型为 `&Pubkey` 。
-- `accounts` ：指令所涉及的账户。必须为类型 `&[AccountInfo]` 。
-- `instruction_data` ：我们交易中的8位指令数据。必须为 `&[u8]` 类型。
+- `program_id`：程序账户的公钥。用于验证程序是否由正确的账户调用。类型为 `&Pubkey`。
+- `accounts`：指令所涉及的账户。必须为类型 `&[AccountInfo]`。
+- `instruction_data`：我们交易中的8位指令数据。必须为 `&[u8]` 类型。
 
-`[]` 的意思是 `AccountInfo` 和 `u8` 是“切片”类型 - 它们类似于长度未知的数组。我们不称它们为数组，因为它们更低级 - 在Rust中，切片是指向一块内存块的指针 🤯
+其中 `[]` 表示 `AccountInfo` 和 `u8` 是“切片”类型，类似于长度未知的数组。我们不称它们为数组，因为它们更底层 —— 在Rust中，切片是指向一块内存块的指针 🤯
 
-我们稍后会处理 `&` :)
+稍后我们会讨论 `&` :)
 
 ## 📜 Result 枚举
 
-是时候来介绍我们的第三个 `use` 语句 - `ProgramResult` 了。这是一个Rust枚举，代表了Solana程序执行的结果。
+现在是时候介绍我们的第三个 `use` 语句 - `ProgramResult` 了。这是一个Rust枚举，代表了Solana程序执行的结果。
 
-现在尝试通过点击左侧栏上的“构建”按钮来编译脚本。你应该会得到一个警告和一个错误。这是错误信息：
+现在试着点击左侧栏上的“构建”按钮来编译脚本。你应该会得到一个警告和一个错误，错误信息是：
 
 ```bash
 error[E0308]: mismatched types
@@ -145,21 +141,17 @@ error[E0308]: mismatched types
            found unit type `()`
 ```
 
-我想花点时间赞赏一下Rust错误信息有多么美丽。它准确地告诉你出了什么问题，问题出在哪里以及如何修复。我想知道如果JavaScript也能这么友好，我会少掉多少头发呢 😢
+我想花点时间欣赏一下Rust错误信息的精确性。它准确地告诉你出了什么问题，问题在哪里，以及如何修复。如果JavaScript也这样友好，我会少失去多少头发呢 😢
 
+由于我们的函数体为空，它会隐式地返回 `()` - 空元组。错误消息表示它期望 `Result`，但我们声明的返回类型是 `ProgramResult`。嗯，这里发生了什么呢🤔？
 
-由于我们的函数体为空，它会隐式地返回 `()` - 空元组。错误消息表示它期望 `Result` ，但我们声明的返回类型是 `ProgramResult` 。嗯，这里发生了什么呢🤔？
-
-
-
-这是因为Solana的 `ProgramResult` 类型使用了Rust的 `Result` 类型：
-
+这是因为Solana的 `ProgramResult` 类型是用Rust的 `Result` 类型实现的：
 
 ```rust
 pub type ProgramResult = Result<(), ProgramError>;
 ```
 
-`Result` 是一个标准库类型，表示两个离散的结果：
+`Result` 是一个标准库类型，代表两个离散的结果
 
 - 成功（ `Ok` ）或
 - 失败 ( `Err` )
@@ -171,10 +163,9 @@ pub enum Result<T, E> {
 }
 ```
 
-把它想象成HTTP错误代码——200是 `Ok` ，404是 `Err` 。所以当我们返回 `ProgramResult` 时，我们是在说我们的函数可以返回 `()` （一个空值）表示成功，或者使用自定义的 `ProgramError` 枚举告诉我们出了什么问题。非常有用！
+把它理解成HTTP错误代码也许会更直观——200代表 `Ok`，404代表 `Err`。因此，当我们返回 `ProgramResult` 时，实际上是在表示我们的函数可以返回 `()`（一个空值）以示成功，或者通过自定义的 `ProgramError` 枚举来告知出现了何种问题。非常实用！
 
-这是我们需要做的全部事情：
-
+我们所需要做的就是：
 
 ```rust
 pub fn process_instruction(
@@ -182,18 +173,16 @@ pub fn process_instruction(
     accounts: &[AccountInfo],
     instruction_data: &[u8]
 ) -> ProgramResult{
-  // Return Ok() for success
+  // 成功时返回 Ok()
   Ok(())
 }
 ```
 
-## 🚀 部署你的第一个程序
+## 🚀 部署你的首个程序
 
-我们的程序几乎完成了！唯一缺少的就是实际上说出“Hello World”，我们可以使用 `msg!` 宏来实现。我们暂时不会对指令数据做任何操作，为了避免“未使用的变量”警告，只需在变量名前加下划线即可。
+我们的程序现在已经接近完成了！唯一缺失的部分就是实际上输出“Hello World”，我们可以通过使用 `msg!` 宏来实现这一目的。由于我们暂时不会对指令数据进行任何操作，为了避免出现“未使用的变量”警告，只需在变量名前加上下划线即可。
 
-
-这是完整的 `process_instruction` 函数的样子：
-
+以下是 `process_instruction` 函数的完整样式：
 
 ```rust
 pub fn process_instruction(
@@ -206,6 +195,6 @@ pub fn process_instruction(
 }
 ```
 
-如果你点击构建，你应该在控制台上看到一个绿色的“构建成功”消息。恭喜！你已经编写了你的第一个Solana程序🎉
+如果你点击构建，控制台上应该会出现绿色的“构建成功”消息。恭喜你！你已经成功编写了你的第一个Solana程序🎉
 
-在这个游乐场上部署非常简单。切换到左上角的“构建和部署”选项卡，在“资源管理器”图标下方，点击“部署”按钮。
+在这个在线环境中部署程序非常便捷。只需切换到左上角的“构建和部署”选项卡，在“资源管理器”图标下方，点击“部署”按钮即可。
