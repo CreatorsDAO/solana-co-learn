@@ -4,18 +4,9 @@ sidebar_label: Start
 sidebar_class_name: green
 ---
 
-# Start
-
-- [Solana Co Learn](./Solana-Co-Learn/README.md)
-- [Solana Cook book Zh](https://davirain-su.github.io/solana-cookbook-zh/)
-
-- [Solana On CoinGecko](https://www.coingecko.com/en/coins/solana)
-
-## awesome solana development
-
 > 欢迎提交pr持续补充这个列表
 
-### Solana development 文档
+## Solana development 文档 📄
 
 - [Intro Solana](https://www.soldev.app/course)
 - [Solana Program Library](https://spl.solana.com/)
@@ -29,9 +20,10 @@ sidebar_class_name: green
 - [Solana WorkShop](https://github.com/solana-workshops)
 - [Solana Bootcamp](https://github.com/solana-developers/pirate-bootcamp)
 - [Anchor docs](https://book.anchor-lang.com/introduction/introduction.html)
+- [Solana Cook book Zh](https://davirain-su.github.io/solana-cookbook-zh/)
 
+## 介绍Solana的不错的文章
 
-### 不错的Solana文章
 - [Squads blog](https://squads.so/blog)
 - [Solana Dev](https://www.soldev.app/)
 - [Solana Summer](https://www.notboring.co/p/solana-summer)
@@ -40,7 +32,7 @@ sidebar_class_name: green
 - [Solana调研报告](https://shimo.im/docs/8wkxtyhCXWp88JDD)
 
 
-### Solana blog
+## Solana 开发相关的博客
 
 - [Anatoly Yakovenko blog](https://medium.com/@anatolyyakovenko)
 - [Anchor Example: Escrow Program](https://hackmd.io/@ironaddicteddog/anchor_example_escrow)
@@ -49,7 +41,12 @@ sidebar_class_name: green
 - [Programming on Solana - An Introduction](https://paulx.dev/blog/2021/01/14/programming-on-solana-an-introduction/)
 - [小鱼1998的blog](https://blog.csdn.net/weixin_42285518/category_11484618.html)
 
-## Solana explore
+## Solana 开发视频
+
+- [Solana Bootcamp](https://www.youtube.com/watch?v=0P8JeL3TURU&list=PLilwLeBwGuK6NsYMPP_BlVkeQgff0NwvU)
+- [Solana Bytes](https://www.youtube.com/watch?v=pRYs49MqapI&list=PLilwLeBwGuK51Ji870apdb88dnBr1Xqhm)
+
+## Solana 浏览器
 
 - [https://solscan.io/](https://solscan.io/)
 - [https://explorer.solana.com/](https://explorer.solana.com/)
@@ -59,9 +56,11 @@ sidebar_class_name: green
 - [https://xray.helius.xyz/](https://xray.helius.xyz/)
 - [https://www.hellomoon.io/solana](https://www.hellomoon.io/solana)
 
-### 希望后面要做的事情
+## 手机app开发
 
 - [Solana 手机App开发](https://solanamobile.com/zh/developers)
     - [Solana Mobile Stack SDK](https://github.com/solana-mobile/solana-mobile-stack-sdk#solana-mobile-stack-sdk)
     - [Mobile Wallet Adapter](https://github.com/solana-mobile/mobile-wallet-adapter)
 - [backpack app开发](https://docs.xnfts.dev/getting-started/introduction)
+
+## 其他
