@@ -38,7 +38,7 @@ pub enum NoteError {
 
 程序返回的错误必须是`ProgramError`类型。通过`impl`，我们可以将自定义错误与`ProgramError`类型进行转换。
 
-![](./img/convert-error.png)
+![](./img/convert-erorr.png)
 
 ```rust
 impl From<NoteError> for ProgramError {
