@@ -4,11 +4,11 @@ sidebar_label: 🥇 为用户Mint代币
 sidebar_class_name: green
 ---
 
-# 🥇 为用户Mint代币
+# 🥇 为用户铸造代币
 
-我们的电影评论节目还不错，但它并不是非常符合Web3的特点。目前我们所做的只是将Solana用作数据库。让我们通过给用户使用我们的应用程序来增加一些趣味吧！每当他们评论一部电影或留下评论时，我们将为某人铸造代币。可以将其想象成StackOverflow，但使用代币而不是点赞。
+我们的电影评论项目进展得不错，但还没有充分体现Web3的特性。目前我们主要将Solana用作数据库。让我们通过奖励用户增加一些趣味性吧！每当用户评论一部电影或留下评论时，我们将为其铸造代币。这可以想象成StackOverflow，只不过是用代币来代替点赞。
 
-你可以从上次的本地环境继续进行，或者通过复制[这个环境](https://beta.solpg.io/6313104b88a7fca897ad7d19?utm_source=buildspace.so&utm_medium=buildspace_project)来设置一个新的
+你可以在上一次的本地环境上继续开发，或者通过复制[这个环境](https://beta.solpg.io/6313104b88a7fca897ad7d19?utm_source=buildspace.so&utm_medium=buildspace_project)来创建一个新的环境。
 
 ```bash
 git clone https://github.com/buildspace/solana-movie-program/
@@ -16,7 +16,7 @@ cd solana-movie-program
 git checkout solution-add-comments
 ```
 
-我们将使用SPL令牌程序来实现所有这些神奇的事情，所以请继续更新 `Cargo.toml` 中的依赖项：
+我们将使用SPL代币程序来实现所有这些神奇的功能，所以请更新 `Cargo.toml` 文件中的依赖项：
 
 ```toml
 [dependencies]
@@ -27,21 +27,21 @@ spl-token = { version="3.2.0", features = [ "no-entrypoint" ] }
 spl-associated-token-account = { version="=1.0.5", features = [ "no-entrypoint" ] }
 ```
 
-让我们快速测试一下，使用这些新的依赖项构建一切是否正常 `cargo  build-sbf`。
+让我们快速测试一下，看看是否能够使用这些新的依赖项正常构建：`cargo  build-sbf`。
 
-我们准备好开始建设了！
+一切就绪，我们现在可以开始构建了！
 
 ## 🤖 设置代币铸造
 
-我们将首先创建一个代币铸造。提醒：代币铸造是一个特殊的账户，用于保存我们代币的数据。
+我们首先要创建一个代币铸造。提醒一下：代币铸造是一个特殊的账户，用于存储我们的代币数据。
 
-这是一条新的指示，所以我们将按照我们添加评论支持时所采取的相同步骤进行操作：
+这是一条新的指令，所以我们将按照添加评论支持时的相同步骤来操作：
 
 - 更新指令枚举
 - 更新`unpack`函数
-- 更新 `process_instruction` 功能
+- 更新 `process_instruction` 函数
 
-从上面`instruction.rs `开始，我们有枚举更新：
+从`instruction.rs`开始，我们先更新枚举：
 
 ```rust
 pub enum MovieInstruction {
@@ -58,13 +58,13 @@ pub enum MovieInstruction {
     AddComment {
         comment: String,
     },
-    InitializeMint,
+    InitializeMint, // 这里新增了初始化铸币的操作
 }
 ```
 
-我们这里不需要任何字段 - 调用该函数只需要地址！
+这里我们不需要任何字段——调用该函数时只需提供地址！
 
-接下来，我们将更新解压函数：
+接下来，我们将更新解包函数：
 
 ```rust
 impl MovieInstruction {
@@ -95,7 +95,7 @@ impl MovieInstruction {
                     comment: payload.comment,
                 }
             }
-            // New variant added here
+            // 这里新增了初始化铸币的操作
             3 => Self::InitializeMint,
             _ => return Err(ProgramError::InvalidInstructionData),
         })
@@ -103,7 +103,7 @@ impl MovieInstruction {
 }
 ```
 
-你会立即注意到 `process_instruction` 中的匹配语句中存在一个错误，因为我们没有处理所有的情况。让我们通过引入新的SPL导入并添加到匹配语句中来修复这个问题：
+你会立即注意到 `process_instruction` 的匹配语句中存在错误，因为我们没有处理所有情况。让我们通过引入新的SPL导入并添加到匹配语句中来修复这个问题，继续往下开发。
 
 ```rust
 // Update imports at the top
@@ -246,23 +246,21 @@ pub fn initialize_token_mint(program_id: &Pubkey, accounts: &[AccountInfo]) -> P
 }
 ```
 
-在一个高层次上，这里发生的事情是这样的：
+在高层次上，这里的操作过程可概括为以下几个步骤：
 
-- 1. 遍历账户列表以提取它们
-- 2. 派生代币 `mint PDA`
-- 3. 验证传入的所有重要账户：
-    - `Token mint account`
-    - `Mint authority account`
-    - `System program`
-    - `Token program`
-    - `Sysvar rent` - 租金计算账户
-- 4. 计算`mint account`的租金
-- 5. 创建`token mint PDA`
-- 6. 初始化`mint account`
+- 1. 遍历账户列表，提取必要的信息。
+- 2. 派生代币的`mint PDA`（程序派生地址）。
+- 3. 对传入的重要账户进行验证：
+    - `Token mint account` - 代币铸币账户。
+    - `Mint authority account` - 铸币权限账户。
+    - `System program` - 系统程序。
+    - `Token program` - 代币程序。
+    - `Sysvar rent` - 用于计算租金的系统变量账户。
+- 4. 计算`mint account`所需的租金。
+- 5. 创建`token mint PDA`。
+- 6. 初始化`mint account`。
 
-请查看代码注释，我尽可能地添加了上下文！
-
-由于我们在调用一个未声明的新错误，你现在会收到一个错误。打开 `error.rs` 并将 `IncorrectAccountError` 添加到 `ReviewError` 枚举中。
+由于我们调用了一个未声明的新错误类型，你会收到一个错误提示。解决方法是打开`error.rs`文件，并将`IncorrectAccountError`添加到`ReviewError`枚举中。
 
 ```rust
 #[derive(Debug, Error)]
@@ -279,27 +277,27 @@ pub enum ReviewError {
     #[error("Rating greater than 5 or less than 1")]
     InvalidRating,
 
-    // New error added
+    // 新增的错误类型
     #[error("Accounts do not match")]
     IncorrectAccountError,
 }
 ```
 
-相当明显 :)
+这个错误信息非常直观。
 
-在文件浏览器中打开目标文件夹，并删除部署文件夹中的密钥对。
+然后，在文件浏览器中打开目标文件夹，并在部署文件夹中删除密钥对。
 
-在你的控制台中：
+回到你的控制台，运行：
 
 ```bash
 cargo build-sbf
 ```
 
-复制并粘贴打印出的部署命令。
+然后复制并粘贴控制台打印的部署命令。
 
-如果你遇到 `insufficient funds` ，就直接运行 `solana airdrop 2` 。
+如果你遇到`insufficient funds`的问题，请直接运行`solana airdrop 2`。
 
-一旦你在本地部署完成，就该进行测试了！我们将使用本地客户端脚本来测试账户初始化。以下是你需要设置的内容：
+一旦在本地部署完成，你就可以开始进行测试了！我们将使用本地客户端脚本来测试账户初始化。以下是你需要做的设置步骤：
 
 ```bash
 git clone https://github.com/buildspace/solana-movie-token-client
@@ -307,17 +305,19 @@ cd solana-movie-token-client
 npm install
 ```
 
-在运行脚本之前，你需要：
+在运行脚本之前，请：
 
-- 1. 更新 `PROGRAM_ID` 在 `index.ts` 中
-- 2. 将第67行的连接更改为在线连接
+- 1. 更新`index.ts`中的`PROGRAM_ID`。
+- 2. 将第67行的连接更改为你的本地连接：
 
 ```ts
 const connection = new web3.Connection("http://localhost:8899");
 ```
 
-- 在第二个控制台窗口中运行 `solana logs PROGRAM_ID_HERE`
+- 在第二个控制台窗口中运行`solana logs PROGRAM_ID_HERE`。
 
-现在你应该有一个控制台记录了这个程序的所有输出，并且准备好运行脚本了！
+现在，你应该有一个控制台正在记录此程序的所有输出，并且已准备好运行脚本。
 
-如果你运行 `npm start` ，你应该能看到有关铸币账户创建的日志 :D
+如果你运行`npm start`，你应该能够看到有关创建铸币账户的日志信息。
+
+:D
