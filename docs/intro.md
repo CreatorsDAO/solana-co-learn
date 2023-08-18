@@ -32,12 +32,16 @@ sidebar_class_name: green
 - [Anchor Example: Escrow Program](https://hackmd.io/@ironaddicteddog/anchor_example_escrow)
 - [Anchor: A Powerful Framework for Solana Developers](https://hackmd.io/@ironaddicteddog/solana-anchor-escrow)
 - [A Starter Kit for New Solana Developer](https://hackmd.io/@ironaddicteddog/solana-starter-kit)
-- 
+- [Programming on Solana - An Introduction](https://paulx.dev/blog/2021/01/14/programming-on-solana-an-introduction/)
 
 ### 不错的Solana文章
 - [Squads blog](https://squads.so/blog)
 - [Solana Dev](https://www.soldev.app/)
-
+- [Anatoly Yakovenko blog](https://medium.com/@anatolyyakovenko)
+- [Solana Summer](https://www.notboring.co/p/solana-summer)
+- [Solana沉浮录：很多的偶然与少许的必然](https://www.theblockbeats.info/news/36742)
+- [Solana 白皮书](https://docs.qq.com/pdf/DR2ZsSlpsaUppanBD?)
+- [Solana调研报告](https://shimo.im/docs/8wkxtyhCXWp88JDD)
 
 ## Solana explore
 
