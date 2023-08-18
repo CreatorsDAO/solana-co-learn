@@ -6,11 +6,11 @@ sidebar_class_name: green
 
 # 💸 使用CPI构建支付系统
 
-上一堂课都是为了准备好Mint账户。预热已经结束，现在是正式表演的时候了。上一堂课都是为了准备好Mint账户。预热已经结束，现在是正式表演的时候了。
+上一堂课我们已经完成了Mint账户的准备工作，热身环节到此结束，现在正式开始主要表演。
 
-我们将进入我们的审查和评论工作流程，并添加必要的逻辑来铸造代币。
+我们将深入到审查和评论的工作流程中，并添加必要的逻辑来铸造代币。
 
-我们将从电影评论开始。请转到 `processor.rs` 并更新 `add_movie_review` 以要求传入额外的账户。
+我们首先从电影评论开始。请转到 `processor.rs` 文件，并更新 `add_movie_review` 函数，以便接收额外的账户。
 
 ```rust
 // Inside add_movie_review
@@ -31,16 +31,16 @@ let system_program = next_account_info(account_info_iter)?;
 let token_program = next_account_info(account_info_iter)?;
 ```
 
-新的是：
+新增的部分包括：
 
-- `token_mint` - 代币的铸币地址
-- `mint_auth` - 代币铸造机构的地址
-- `user_ata` - 用户与此代币发行机构关联的令牌账户（用于代币铸造）
-- `token_program` - 代币程序的地址
+- `token_mint` - 代币的铸币地址。
+- `mint_auth` - 代币铸造机构的地址。
+- `user_ata` - 用户与此代币发行机构关联的令牌账户（用于代币铸造）。
+- `token_program` - 代币程序的地址。
 
-这里没有什么特别的，这些只是在处理代币时你所期望的账户。
+这里并没有太多特殊之处，这些只是处理代币时所期望的账户。
 
-记得建立习惯了吗？每次添加一个账户后，立即添加验证！以下是我们需要在 `add_movie_review` 函数中添加的内容：
+还记得我们的编程习惯吗？每次添加一个账户后，立即添加验证！以下是我们需要在 `add_movie_review` 函数中添加的内容：
 
 ```rust
 msg!("deriving mint authority");
@@ -69,9 +69,9 @@ if *token_program.key != TOKEN_PROGRAM_ID {
 }
 ```
 
-你现在已经做过几次了，所以这应该感觉很熟悉 :)
+你现在已经反复实践过这样的流程，所以这些操作应该感觉得相当熟悉了 :)
 
-现在我们可以开始铸币了！就在程序结束之前，我们会添加这个： `Ok(())`
+现在我们可以开始铸币了！就在程序结束之前，我们会添加如下代码： `Ok(())`
 
 ```rust
 msg!("Minting 10 tokens to User associated token account");
@@ -84,7 +84,7 @@ invoke_signed(
         mint_auth.key,
         &[],
         10*LAMPORTS_PER_SOL,
-    )?, // ? unwraps and returns the error if there is one
+    )?,
     // Account_infos
     &[token_mint.clone(), user_ata.clone(), mint_auth.clone()],
     // Seeds
@@ -94,16 +94,16 @@ invoke_signed(
 Ok(())
 ```
 
-`mint_to` 是来自SPL令牌库的指令，因此我们还需要更新顶部的导入内容：
+`mint_to` 是来自SPL令牌库的指令，所以我们还需更新顶部的导入内容：
 
 ```rust
 // Existing imports
 use spl_token::{instruction::{initialize_mint, mint_to}, ID as TOKEN_PROGRAM_ID};
 ```
 
-我们的评论工作完成了！现在每当有人留下评论，我们就会给他们发送10个代币。
+我们的评论功能已经完成了！现在每当有人留下评论时，我们就会给他们发送10个代币。
 
-我们将在 `add_comment` 中做完全相同的事情：  `processor.rs`
+我们将在 `add_comment` 函数中执行完全相同的操作： `processor.rs`
 
 ```rust
 // Inside add_comment
@@ -144,7 +144,6 @@ if *token_program.key != TOKEN_PROGRAM_ID {
     msg!("Incorrect token program");
     return Err(ReviewError::IncorrectAccountError.into());
 }
-
 msg!("Minting 5 tokens to User associated token account");
 invoke_signed(
     // Instruction
@@ -165,22 +164,22 @@ invoke_signed(
 Ok(())
 ```
 
-确保不要重复 `Ok(())` ，因为那会导致错误，哈哈
+注意，不要重复 `Ok(())` ，因为那会导致错误，哈哈。
 
-希望你现在开始能看到这些模式了。在进行本地开发时，我们需要写很多代码，但整体的工作流程相当简单，感觉很“纯粹”。
+希望你现在能够看出这些模式的共通性了。虽然在进行本地开发时，我们需要写很多代码，但整个工作流程相当简单，并且感觉很“纯粹”。
 
 ## 🚀 构建、部署和测试
 
 是时候赚取一些爆米花代币了 🍿
 
-首先，我们将构建和部署。
+首先，让我们开始构建和部署项目。
 
 ```bash
 cargo build-sbf
 solana program deploy <PATH>
 ```
 
-然后我们将测试初始化代币铸造
+接下来，我们将测试初始化代币铸造流程。
 
 ```bash
 git clone https://github.com/buildspace/solana-movie-token-client
@@ -188,20 +187,20 @@ cd solana-movie-token-client
 npm install
 ```
 
-就像以前一样，
+和以前一样，需要进行以下操作：
 
-1. 更新 `PROGRAM_ID` 在 `index.ts` 中
-2. 将第67行的连接更改为在线连接
+1. 在 `index.ts` 中更新 `PROGRAM_ID` 的值。
+2. 修改第67行的连接为在线连接。
 
 ```ts
 const connection = new web3.Connection("http://localhost:8899");
 ```
 
-运行 `npm start` ，你的`Mint`账户将被初始化。
+运行 `npm start` 后，你的 `Mint` 账户将会被初始化。
 
-最后，我们将使用前端发送电影评论并获取一些令牌。
+最后，我们可以使用前端来发送电影评论，并因此获得一些代币。
 
-一如既往，你可以继续使用上次停下的前端，或者从正确的分支创建一个新的实例
+像往常一样，你可以继续使用之前停下的前端，或者从正确的分支创建一个新的实例。
 
 ```bash
 git clone https://github.com/buildspace/solana-movie-frontend/
@@ -210,12 +209,12 @@ git checkout solution-add-tokens
 npm install
 ```
 
-更新 `PROGRAM_ID`，提交评论，留下评论。你现在应该在Phantom中拥有令牌！
+更新 `PROGRAM_ID`，提交评论，发表评论后，你现在应该能在 Phantom 钱包中看到你的代币了！
 
 ## 🚢 船舶挑战
 
-为了应用你在本课程中学到的有关CPI的知识，思考一下如何将其融入到学生介绍计划中。你可以做类似于我们在演示中所做的事情，并为用户添加一些功能，当他们介绍自己时，可以铸造代币给他们。或者，如果你感到非常有雄心壮志，思考一下如何将你在课程中学到的一切，从头开始创造出全新的东西。
+为了运用你在本课程中学到的有关 CPI 的知识，不妨考虑如何将其整合到学生介绍方案中。你可以做些类似我们演示中的事情，比如在用户自我介绍时铸造一些代币给他们。或者，如果你感到更有挑战性，思考如何将课程中学到的所有内容整合在一起，从零开始创建全新的项目。
 
-如果你决定做类似的演示，可以随意使用相同的[脚本](https://github.com/buildspace/solana-movie-token-client?utm_source=buildspace.so&utm_medium=buildspace_project)来调用 `initialize_mint` 指令，或者你可以发挥创意，从客户端初始化铸币，然后将铸币权限转移到程序PDA。如果你需要查看潜在的解决方案，请看一下这个[游乐场](https://beta.solpg.io/631f631a77ea7f12846aee8d?utm_source=buildspace.so&utm_medium=buildspace_project)。
+如果你选择做类似的演示，可以自由使用相同的[脚本](https://github.com/buildspace/solana-movie-token-client?utm_source=buildspace.so&utm_medium=buildspace_project)来调用 `initialize_mint` 指令，或者你可以展现创造力，从客户端初始化铸币过程，然后将铸币权限转移到程序 PDA。如果你需要查看可能的解决方案，请查看这个[游乐场链接](https://beta.solpg.io/631f631a77ea7f12846aee8d?utm_source=buildspace.so&utm_medium=buildspace_project)。
 
-玩得开心，并将其视为一个推动自己的机会！
+享受编程的乐趣，并将此视为自我提升的机会！
