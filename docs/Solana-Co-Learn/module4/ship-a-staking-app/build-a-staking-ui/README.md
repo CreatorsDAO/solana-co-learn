@@ -6,37 +6,37 @@ sidebar_class_name: green
 
 # 构建一个质押用户界面
 
-我们开始吧，让我们在我们的buildoors NFT项目上取得一些进展。在这个核心部分，我们有三件事情想要完成：
+让我们开始吧，我们要在我们的buildoors NFT项目上取得一些进展。在这个核心环节，我们希望完成三件事情：
 
-**1. 为我们的质押页面构建用户界面**
+**1. 为质押页面构建用户界面**
 
 这就是我们的目标：
 
-在你的前端项目中，在根目录下创建一个新的 `utils` 文件夹。然后创建一个名为 `instructions.ts` 的文件，并从NFT质押项目中复制/粘贴整个 `instructions.ts` 文件。由于代码超过200行，我就不在这里粘贴了。 😬
+请在前端项目的根目录下创建一个新的 `utils` 文件夹。然后创建一个名为 `instructions.ts` 的文件，并从NFT质押项目中复制/粘贴整个 `instructions.ts` 文件。由于代码较长超过200行，所以在这里就不粘贴了。😬
 
 ![](./img/j75QTYE.png)
 
-请注意，“`STAKING 4 DAYS`”和“`READY TO STAKE`”这两个方块不会同时显示。只显示与当前NFT质押状态相关的方块。
+请注意，“`STAKING 4 DAYS`”和“`READY TO STAKE`”这两个方块不会同时显示，只会显示与当前NFT质押状态相关的方块。
 
-如有必要，请使用模拟数据，并使界面大致符合你的要求。请注意，你的界面不需要完全像这样。请个性化定制。
+如果需要，可以使用模拟数据来使界面大致符合你的要求。不过请注意，你的界面无需完全复制这个样子，可以根据需要进行个性化定制。
 
-**1.将实际的质押添加到我们的程序中**
+**2. 将实际质押功能添加到程序中**
 
-记住，我们已经做了一些工作来存储状态，但程序实际上还没有抵押NFT或铸造BLD代币。我们会解决这个问题！
+别忘了，我们已经做了一些工作来存储状态，但程序还没有实际进行NFT质押或铸造BLD代币。我们将解决这个问题！
 
-1. 一旦程序完全准备就绪，就是时候回到用户界面并让它开始工作了。
+3. 一旦程序完全准备就绪，就可以回到用户界面并使其工作起来。
 
-具体来说，“`claim $BLD`”，“`stake buildoor`”和“`unstake buildoor`”按钮应调用质押程序的相关指令。
+具体而言，“`claim $BLD`”，“`stake buildoor`”和“`unstake buildoor`”按钮应调用质押程序的相关指令。
 
 ---
 
-像往常一样，独立尝试一下。这不是一项琐碎的任务，可能需要几个小时甚至更长时间。
+像往常一样，你可以独立尝试。请注意，这不是一项简单的任务，可能需要几个小时甚至更长时间。
 
-一旦你完成了或者感觉到自己快要崩溃了，随时可以观看接下来的视频，这些视频将在下一课中展示一种可能的解决方案。
+一旦你完成了，或者感觉快要困顿了，可以随时观看接下来的视频教程。在下一课中，我们将展示一种可能的解决方案。
 
-## 样式添加
+## 添加样式
 
-回到构建更多的用户界面，首先我们将在我们的应用文件（`//pages/_app.tsx`）中为主题添加一些颜色。
+当我们回到用户界面构建时，首先要做的是在应用文件（`//pages/_app.tsx`）中为主题添加一些颜色。代码如下：
 
 ```tsx
 const colors = {
@@ -50,15 +50,15 @@ const colors = {
 }
 ```
 
-## 新薄荷路由
+## 新建薄荷路由
 
-我们将导航到`NewMint`文件（`//pages/newMint.tsx`），以实现 `handleClick` 函数，该函数将在质押后路由到新页面。
+我们将要在`NewMint`文件（`//pages/newMint.tsx`）中实现`handleClick`函数，这个函数将在质押后路由到新页面。
 
-首先，让我们称之为 `useRouter` ，不要忘记检查那些讨厌的导入。
+首先，我们来初始化路由，命名为`useRouter`，并且别忘了检查那些可能遗漏的导入。
 
 `const router = useRouter()`
 
-现在跳转到这个异步函数的事件，并路由到我们的新页面，我们将其称为 `stake` 。我们还将传递图片，因为我们已经从图片源获取到了，所以不需要再次加载。
+接下来我们来实现这个异步事件处理函数，并路由到我们新命名为`stake`的页面。我们还将传递图片，因为我们已经从图片源获取了它，所以不需要再次加载。
 
 ```tsx
 const handleClick: MouseEventHandler<HTMLButtonElement> = useCallback(
@@ -69,11 +69,11 @@ const handleClick: MouseEventHandler<HTMLButtonElement> = useCallback(
   )
 ```
 
-唉，目前这是一条无效的路径，会给我们一个错误，所以让我们去创建实际的页面。这将是一个新的文件，位于页面目录下（`//pages/stake.tsx`）。
+呀，当前这是一条无效的路径，会导致一个错误，所以让我们创建这个实际的页面。这将是一个新的文件，位于页面目录下（`//pages/stake.tsx`）。
 
-## 质押着陆页，左半部分
+## 质押着陆页面，左半部分
 
-让我们为 `Stake` 创建一个`NextPage`，并确保导入了`'next'`库。
+让我们为`Stake`创建一个`NextPage`，并确保已经导入了`'next'`库。
 
 ```tsx
 const Stake: NextPage<StakeProps> = ({ mint, imageSrc }) => {
@@ -83,7 +83,7 @@ const Stake: NextPage<StakeProps> = ({ mint, imageSrc }) => {
 }
 ```
 
-让我们来制作那些非常重要的道具。
+现在，让我们定义一些重要的属性。
 
 ```tsx
 interface StakeProps {
@@ -92,20 +92,19 @@ interface StakeProps {
 }
 ```
 
-好的，我们在这里继续前进，所以...快速检查一下 `npm run dev` ，确保前端正常渲染。
+好的，我们继续前进。不妨快速检查一下`npm run dev`，确保前端正常渲染。
 
-如果你一直在大量制造糖果，你可能想要重置你的糖果机。🍬📠
+如果你一直在忙着制造糖果，你可能会想要重置你的糖果机。🍬📠
 
-事情正在变得不错。
+一切进展顺利。
 
-从前端简短的休息...最佳实践是创建环境变量，你可以在前端中使用。在顶级目录下创建一个 `env.local` 文件，并使用以下格式
-使用 `NEXT_PUBLIC_<name of what you want>` 来命名你的变量，然后它将被注入到浏览器端的代码中，这样你就可以在你的文件中使用它。然后继续替换你代码中的硬编码键。
+稍事休息，我们来谈谈前端的最佳实践。在顶级目录下创建一个`env.local`文件，并使用格式`NEXT_PUBLIC_<变量名>`来命名你的变量。这样它就会被注入到浏览器端的代码中，你就可以在文件中使用它。然后可以继续替换代码中的硬编码键值。
 
-回到赌注页面...让我们来解决我们实际想要在页面上呈现的内容。我们将使用一些来自 Chakra 的项目，请确保你的导入正在自动完成，或手动添加它们。如果你是前端大师，随意在这里进行设计演进，否则只需跟随我的精美像素技巧。👾👾👾
+回到质押页面，让我们开始构建我们实际想要在页面上显示的内容。我们将使用一些来自Chakra的组件，请确保你的导入正在自动完成，或者手动添加它们。如果你是前端专家，可以自由设计，否则可以跟随我的精美像素设计。👾👾👾
 
-很多内容与我们之前为其他页面所做的类似，以下是需要注意的几个项目：
+有一些与我们之前为其他页面做的事情相似的部分，以下是需要注意的几点：
 
-- 1. 有一个与 `isStaking` 相关的押注检查，它决定页面上显示"`STAKING`"还是"`UNSTAKED`"。这需要一个 `useState` ，初始设置为 `false` 。
+- 1. 这里有一个与`isStaking`相关的押注检查，它会决定页面上显示"`STAKING`"还是"`UNSTAKED`"。你需要一个`useState`，并初始设置为`false`。
 
 `const [isStaking, setIsStaking] = useState(false)`
 
@@ -113,8 +112,7 @@ interface StakeProps {
 
 `const [level, setLevel] = useState(1)`
 
-
-让我们再做一个 `npm run dev` ……嗯，是的，我们需要一些道具，这样页面在我们首次访问时可以显示一张图片，所以让我们确保在文件底部调用`getInitialProps`函数：
+再次运行`npm run dev`…哦对，我们需要一些属性，这样在我们首次访问时页面就可以显示一张图片。所以，让我们确保在文件底部调用了`getInitialProps`函数：
 
 ```ts
 Stake.getInitialProps = async ({ query }: any) => {
@@ -133,9 +131,9 @@ Stake.getInitialProps = async ({ query }: any) => {
 
 ## 质押页面，右半部分 && 质押选项展示组件
 
-好的，我们已经完成了页面左半部分的大部分工作，现在让我们专注于右侧。我们需要另一个 VStack，在其中包含一些独立的逻辑，用于显示所需内容。所以，让我们创建一个名为 `StakeOptionsDisplay` 的独立组件（`//components/StakeOptionsDisplay.tsx`）。
+好的，左半部分的工作已经完成，现在我们来专注于右侧。我们需要一个名为 `VStack` 的容器，在其中包括一些用于展示所需内容的独立逻辑。因此，让我们创建一个独立组件，命名为 `StakeOptionsDisplay`（`//components/StakeOptionsDisplay.tsx`）。
 
-这里一个明显的检查是看看buildoor是否正在进行中，我们可以从这个检查开始，并构建出`VStack`。
+首先，我们从一个明显的检查开始，检查是否正在抵押，并在`VStack`中构建起来。
 
 ```tsx
 export const StakeOptionsDisplay = ({
@@ -150,14 +148,14 @@ export const StakeOptionsDisplay = ({
 }
 ```
 
-在你按照设计规范进行操作的同时，我们将会在各个部分检查以下道具：
+在你遵循设计规范的同时，我们将在各个部分检查以下属性：
 
-- 1. `isStaking`将显示抵押的天数，或者显示"准备抵押"
-- 2. 已质押的天数，作为一个数字
-- 3. 总收入，作为一个数字
-- 4. 可申领的，作为一个数字
+- 1. `isStaking`会显示抵押的天数，或者显示"准备抵押"
+- 2. 已质押的天数，作为数字
+- 3. 总收入，作为数字
+- 4. 可申领的，作为数字
 
-这是需要渲染的最终产品，适用于那些喜欢粘贴前端代码的人 :P
+以下是渲染的最终产品，适合那些喜欢粘贴前端代码的人 :P
 
 ```tsx
 return (
@@ -176,15 +174,15 @@ return (
        fontSize="sm"
      >
        {isStaking
-         ? `STAKING ${daysStaked} DAY${daysStaked === 1 ? "" : "S"}`
-         : "READY TO STAKE"}
+         ? `正在质押 ${daysStaked} 天${daysStaked === 1 ? "" : "S"}`
+         : "准备质押"}
      </Text>
      <VStack spacing={-1}>
        <Text color="white" as="b" fontSize="4xl">
          {isStaking ? `${totalEarned} $BLD` : "0 $BLD"}
        </Text>
        <Text color="bodyText">
-         {isStaking ? `${claimable} $BLD earned` : "earn $BLD by staking"}
+         {isStaking ? `${claimable} $BLD 已赚取` : "通过质押赚取 $BLD"}
        </Text>
      </VStack>
      <Button
@@ -192,24 +190,22 @@ return (
        bgColor="buttonGreen"
        width="200px"
      >
-       <Text as="b">{isStaking ? "claim $BLD" : "stake buildoor"}</Text>
+       <Text as="b">{isStaking ? "申领 $BLD" : "质押buildoor"}</Text>
      </Button>
-     {isStaking ? <Button onClick={handleUnstake}>unstake</Button> : null}
+     {isStaking ? <Button onClick={handleUnstake}>取消质押</Button> : null}
    </VStack>
  )
 ```
 
-正如你注意到的，我们需要为 `handleStake` 和 `handleClaim` 以及 `handleUnstake` 构建功能 - 我们将在本核心中稍后回到这些。
+如你所见，我们需要构建`handleStake`、`handleClaim`和`handleUnstake`的功能，稍后我们将回到这些。
 
-...然后回到桩文件（`//pages/stake.tsx`）导入这个组件和它所需的属性。
-
-
+...接着回到质押文件（`//pages/stake.tsx`）导入该组件和所需的属性。
 
 ## 装备和战利品箱组件
 
-最后，让我们为装备和战利品箱子构建另一个组件，我们可以称之为`ItemBox`（`//components/ItemBox.tsx`）。
+最后，我们来为装备和战利品箱构建另一个组件，可以称之为 `ItemBox`（`//components/ItemBox.tsx`）。
 
-这是一个相对简单的例子，只需跟随视频操作，随时可以与这个代码进行比较。
+这是一个相对简单的案例，你只需按照视频操作，并可以随时与此代码进行比较。
 
 ```tsx
 import { Center } from "@chakra-ui/react"
@@ -235,6 +231,6 @@ export const ItemBox = ({
 }
 ```
 
-就这样，随意调整，按照你的喜好设计。接下来我们将进入质押计划并添加代币相关内容。
+就这样，随意调整，根据你的喜好进行设计。接下来，我们将深入质押计划，并添加与代币相关的内容。
 
-干得不错，我们知道这变得更加复杂，还有很多详细的工作——慢慢来，检查代码，如果有什么不明白的地方，在`Discord上`联系我们。
+做得很好，我们知道事情变得更复杂了，还有许多细致的工作要做——慢慢来，检查代码，如果有什么不明白的地方，在`Discord`上与我们联系。
