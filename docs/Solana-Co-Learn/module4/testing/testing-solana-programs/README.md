@@ -6,31 +6,28 @@ sidebar_class_name: green
 
 # 🧪 测试 Solana 程序
 
-上节课的全部内容都是为了准备好Mint账户。预备阶段已经结束，现在是正式表演的时候了。一个强大的测试流程可以通过在问题真正出现之前捕捉到开发人员引入的错误来最大程度地减少生产代码中的bug数量。
+上节课的内容为准备 Mint 账户奠定了基础。预备阶段已完结，现在是真正行动的时候了。通过强大的测试流程，我们可以在问题真正显现之前捕捉开发人员引入的错误，从而最大限度地减少生产环境中的 bug 数量。
 
-在本课程中，我们将涵盖两种类型的测试：单元测试和集成测试。
+本课程将涉及两种类型的测试：单元测试和集成测试。
 
-单元测试是小而更专注的，一次只测试一个模块的隔离，并且可以测试私有接口。
-
-集成测试完全与你的库外部无关，并以与任何其他外部代码相同的方式使用你的代码，仅使用公共接口，并可能在每个测试中使用多个模块。
+- 单元测试更小、更专注，一次只测试一个隔离的模块，并能测试私有接口。
+- 集成测试与你的库完全外部无关，使用你的代码的方式与使用其他外部代码相同，仅使用公共接口，并可能在每个测试中涉及多个模块。
 
 ## 🔢 单元测试
 
-单元测试的目的是在与其他代码隔离的情况下测试每个代码单元，以快速确定代码是否按预期工作。
+单元测试的目的是隔离其他代码，测试每个代码单元的工作情况，以快速确认代码是否按预期执行。
 
-在Rust中，单元测试通常与它们所测试的代码位于同一个文件中。
+在 Rust 中，单元测试通常与它们所测试的代码放置在同一文件中，并在名为 `tests` 的模块内声明，该模块带有 `cfg(test)` 的注解。
 
-单元测试在一个名为 `tests` 的模块内声明，该模块带有 `cfg(test)` 的注解
+- 通过 `#[test]` 属性在 `tests` 模块中定义测试。
+- `cfg` 属性代表配置，指示 Rust 只有在特定配置下才包含随后的代码。
+- `#[cfg(test)]` 注解告诉 Cargo 只有在运行 `cargo test-sbf` 时才编译测试代码。
+- 运行 `cargo test-sbf` 时，该模块中标记为测试的每个函数都会执行。
 
-- 测试在 `tests` 模块中使用 `#[test]` 属性进行定义。
-- `cfg` 属性代表配置，告诉Rust只有在特定的配置选项下才应包含后续的项目。
-- `#[cfg(test)]` 注解告诉Cargo只在我们运行 `cargo test-sbf` 时编译我们的测试代码。
-- 运行 `cargo test-sbf` 时，该模块中标记为测试的每个函数都将被运行。
-
-你还可以在模块中创建非测试的辅助函数
+你还可以在模块中创建非测试的辅助函数，例如：
 
 ```rust
-// Example testing module with a single test
+// 示例测试模块，包含一个单元测试
 #[cfg(test)]
 mod tests {
     #[test]
@@ -47,32 +44,28 @@ mod tests {
 
 ## ❓ 如何构建单元测试
 
-使用 [solana_sdk](https://docs.rs/solana-sdk/latest/solana_sdk/) 创建 Solana 程序的单元测试。
+使用 [solana_sdk](https://docs.rs/solana-sdk/latest/solana_sdk/) 来创建 Solana 程序的单元测试。这个 crate 在 Rust 中与 Typescript 的 `@solana/web3.js` 包相对应。
 
-这个木箱本质上是Rust语言中与 `@solana/web3.js` Typescript包相对应的东西。
+[solana_program_test](https://docs.rs/solana-program-test/latest/solana_program_test/#) 也用于测试 Solana 程序，并包含一个基于 `BanksClient` 的测试框架。
 
- [solana_program_test](https://docs.rs/solana-program-test/latest/solana_program_test/#) 也用于测试 Solana 程序，并包含一个基于 `BanksClient` 的测试框架。
+在下面的代码片段中，我们为我们的 `program_id` 创建了一个公钥，然后初始化了一个 `ProgramTest` 对象。
 
- 在代码片段中，我们创建了一个公钥作为我们的 `program_id` ，然后初始化了一个 `ProgramTest` 。
+从 `banks_client` 返回的 `ProgramTest` 将作为我们进入测试环境的接口。
 
- 从 `banks_client` 返回的 `ProgramTest` 将作为我们进入测试环境的接口
+其中，payer 变量是使用 SOL 生成的新密钥对，将用于签名和支付交易。
 
- 该 payer 变量是一个使用 SOL 生成的新密钥对，将用于签名/支付交易。
+接着，我们创建一个第二个 `Keypair`，并使用合适的参数构建我们的 `Transaction`。
 
+最后，我们使用 `ProgramTest::new` 调用时返回的 `banks_client` 来处理此交易，并检查返回值是否等于 `Ok(_)`。
 
- 然后，我们创建一个第二个 `Keypair` 并使用适当的参数构建我们的 `Transaction` 。
+该函数使用 `#[tokio::test]` 属性进行注解。
 
- 最后，我们使用调用 `banks_client` 时返回的 `ProgramTest::new` 来处理此交易，并检查返回值是否等于 `Ok(_)` 。
+Tokio 是一个用于编写异步代码的 Rust crate，该属性仅将我们的测试函数标记为 `async`。
 
- 该函数使用 `#[tokio::test]` 属性进行注释。
-
- Tokio是一个用于编写异步代码的Rust crate。这只是将我们的测试函数标记为`async`。
-
-
- ```rust
- // Inside processor.rs
- #[cfg(test)]
- mod tests {
+```rust
+// 位于 processor.rs 内部的测试模块
+#[cfg(test)]
+mod tests {
      use {
          super::*,
          assert_matches::*,
@@ -108,119 +101,69 @@ mod tests {
          );
          transaction.sign(&[&payer, &test_acct], recent_blockhash);
 
-         assert_matches!(banks_client.process_transaction(transaction).await, Ok(_);
+         assert_matches!(banks_client.process_transaction(transaction).await, Ok(_));
      }
- }
- ```
-
-## 集成测试
-
-集成测试的目的是完全与其测试的代码分离。
-
-这些测试旨在通过公共接口与你的代码进行交互，以便其他人可以按照预期的方式访问它。
-
-他们的目的是测试你的库的许多部分是否能正确地协同工作。
-
-在单独运行时正常工作的代码单元，在集成时可能会出现问题，因此集成代码的测试覆盖率也很重要。
-
-## ❓ 如何构建集成测试
-
-要创建集成测试，首先需要在项目目录的顶层创建一个 `tests` 目录。
-
-我们可以在这个目录下创建任意数量的测试文件，每个文件都将作为自己的集成测试。
-
-- 每个 `tests` 目录中的文件都是一个独立的 crate，因此我们需要将我们想要测试的代码库引入到每个文件的作用域中 - 这就是 `use example_lib` 行的作用。
-- 我们不需要用 #[cfg(test)] 来注释 tests 目录中的测试，因为当我们运行 `cargo test-sbf` 时，Cargo只会编译 `tests` 目录中的文件。
-
-```rust
-// Example of integration test inside /tests/integration_test.rs file
-use example_lib;
-
-#[test]
-fn it_adds_two() {
-    assert_eq!(4, example_lib::add_two(2));
 }
 ```
 
-一旦你编写好测试（单元测试、集成测试或两者兼有），你只需要运行`cargo test-bpf`，它们就会执行。
+## 集成测试
 
-输出的三个部分包括：
-- 单元测试
-- 集成测试
-- doc tests
-    - 在这节课中，我们不会涉及到文档测试，但是在你的代码库中，有额外的功能可以执行文档中的代码示例。
+集成测试旨在完全与其测试的代码分离，以验证不同代码部分是否能够协同工作。
 
-```bash
-cargo test
-   Compiling adder v0.1.0 (file:///projects/adder)
-    Finished test [unoptimized + debuginfo] target(s) in 1.31s
-     Running unittests (target/debug/deps/adder-1082c4b063a8fbe6)
+这些测试通过公共接口与你的代码进行交互，确保其他人能够按预期的方式访问它。虽然在单独运行时正常工作的代码单元可能在集成时出现问题，因此对集成代码的测试覆盖范围同样重要。
 
-running 1 test
-test tests::it_works ... ok
+### ❓ 如何构建集成测试
 
-test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+1. **创建集成测试目录**: 在项目目录的顶层创建一个 `tests` 目录，在这个目录下创建任意数量的测试文件，每个文件都作为独立的集成测试。
 
-     Running tests/integration_test.rs (target/debug/deps/integration_test-1082c4b063a8fbe6)
+2. **独立测试**: `tests` 目录中的每个文件都是一个独立的crate，因此我们需要将我们想要测试的代码库引入每个文件的作用域。
 
-running 1 test
-test it_adds_two ... ok
+3. **编写集成测试**: 集成测试示例如下：
+    ```rust
+    // Example of integration test inside /tests/integration_test.rs file
+    use example_lib;
 
-test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+    #[test]
+    fn it_adds_two() {
+        assert_eq!(4, example_lib::add_two(2));
+    }
+    ```
 
-   Doc-tests adder
+4. **运行集成测试**: 运行 `cargo test-bpf` 命令即可执行编写的测试。
 
-running 0 tests
-
-test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
-```
-
+5. **输出包括三个部分**: 单元测试、集成测试和文档测试。
 
 ## 🔌 使用Typescript进行集成测试
 
-测试程序的另一种方法是将其部署到Devnet或本地验证器，并从你创建的某个客户端向其发送交易。
+除了Rust集成测试外，还可以通过将程序部署到Devnet或本地验证器，并从你创建的客户端向其发送交易来进行测试。
 
-使用Typescript编写客户端测试脚本：
+### 使用Typescript编写客户端测试脚本的步骤:
 
-- [Mocha 测试框架](https://mochajs.org/?utm_source=buildspace.so&utm_medium=buildspace_project)
+1. **安装测试框架**: 使用 `npm install mocha chai` 安装 `Mocha` 和 `Chai`。
 
-- [使用Chai断言库](https://www.chaijs.com/?utm_source=buildspace.so&utm_medium=buildspace_project)
+2. **更新`package.json`文件**: 这会告诉编译器在运行命令 `npm run test` 时执行 `/test` 目录中的TypeScript文件或文件。
 
-使用 `npm install mocha chai` 安装 `Mocha` 和 `Chai`
+3. **编写测试代码**: 使用“`describe`”关键字声明，并用`it`指定每个测试。
 
-然后在你的TypeScript项目中更新 `package.json` 文件。这会告诉编译器在运行命令 `npm run test` 时执行 `/test` 目录中的TypeScript文件或文件。
+    ```typescript
+    describe("begin tests", async () => {
+        // First Mocha test
+        it('first test', async () => {
+            // Initialization code here to send the transaction
+            ...
+            // Fetch account info and deserialize
+            const acct_info = await connection.getAccountInfo(pda)
+            const acct = acct_struct.decode(acct_info.data)
 
-你需要确保这里的路径是指向你的测试脚本所在的正确路径。
+            // Compare the value in the account to what you expect it to be
+            chai.expect(acct.num).to.equal(1)
+        }
+    })
+    ```
 
-```json
-// Inside package.json
-"scripts": {
-        "test": "mocha -r ts-node/register ./test/*.ts"
-},
-```
+4. **运行测试**: 执行 `npm run test` 将执行所有测试，并返回每个测试是否通过或失败的结果。
 
-`Mocha`测试部分使用“`describe`”关键字声明，告诉编译器其中包含了`Mocha`测试。
-
-- 在 `describe` 部分内，每个测试都用 it 指定
-- `Chai`包用于确定每个测试是否通过，它具有一个`expect`函数，可以轻松比较值。
-
-```typescript
-describe("begin tests", async () => {
-    // First Mocha test
-    it('first test', async () => {
-        // Initialization code here to send the transaction
-        ...
-        // Fetch account info and deserialize
-        const acct_info = await connection.getAccountInfo(pda)
-        const acct = acct_struct.decode(acct_info.data)
-
-        // Compare the value in the account to what you expect it to be
-        chai.expect(acct.num).to.equal(1)
-    }
-})
-```
-
-运行 `npm run test` 将执行 `describe` 块中的所有测试，并返回类似以下的结果，指示每个测试是否通过或失败。
+通过将测试集成到你的开发过程中，你可以确保代码质量和稳定性，同时减少未来可能出现的问题。在Solana开发中，这样的测试流程更是不可或缺的一环。
 
 ```bash
 > scripts@1.0.0 test
@@ -232,51 +175,50 @@ describe("begin tests", async () => {
     2 passing (1s)
 ```
 
+
 ## ❌ 错误代码
 
-程序错误通常以程序返回的错误枚举中错误的十进制索引的十六进制表示形式显示。
+程序错误通常显示为程序返回的错误枚举中错误的十进制索引的十六进制形式。
 
-例如，如果你在向SPL代币程序发送交易时遇到错误，错误代码 `0x01` 的十进制等价值为1。
+例如，当你在向SPL代币程序发送交易时遇到错误，错误代码 `0x01` 的十进制等价物就是1。
 
-查看[Token程序](https://github.com/solana-labs/solana-program-library/blob/master/token/program/src/error.rs?utm_source=buildspace.so&utm_medium=buildspace_project)的源代码，我们可以看到程序错误枚举中该索引处的错误是 `InsufficientFunds` 。
+通过查看[Token程序](https://github.com/solana-labs/solana-program-library/blob/master/token/program/src/error.rs?utm_source=buildspace.so&utm_medium=buildspace_project)的源代码，我们能发现程序错误枚举中该索引位置的错误为 `InsufficientFunds`。
 
-
-你需要能够访问任何返回自定义程序错误代码的程序的源代码来进行翻译。
+要翻译任何返回自定义程序错误代码的程序，你需要能访问其源代码。
 
 ## 📜 程序日志
 
-Solana使创建新的自定义日志变得非常简单，只需使用 `msg!()` 宏即可
+Solana提供了非常简单的创建新自定义日志的方法，只需使用 `msg!()` 宏。
 
 ![](./img/solana-log.png)
 
-在 Rust 中编写单元测试时，请注意不能在测试本身中使用 `msg!()` 宏来记录信息。
+在Rust中编写单元测试时，请注意测试本身不能使用 `msg!()` 宏来记录信息。
 
 你需要使用Rust的本地 `println!()` 宏。
 
-程序代码中的语句仍然有效，只是你不能在测试中使用它进行日志记录。
+程序代码中的该语句仍然有效，只是你不能在测试中使用它进行日志记录。
 
 ## 🧮 计算预算
 
-在区块链上进行开发会面临一些独特的限制，其中之一是 Solana 上的计算预算。
+开发区块链上的程序会遇到一些特殊限制，其中之一就是Solana上的计算预算。
 
-计算预算的目的是防止程序滥用资源。
+计算预算的目的在于防止程序滥用资源。
 
-当程序消耗完整个预算或超过限制时，运行时会停止程序并返回一个错误。
+当程序消耗完整个预算或超出限制时，运行时会终止程序并返回错误。
 
-默认情况下，计算预算设置为200k计算单元乘以指令数量，最多不超过1.4M计算单元。
+默认情况下，计算预算被设置为200k计算单元乘以指令数量，最多不超过1.4M计算单元。
 
-基础费用为5,000 Lamports。一个微`Lamport`等于`0.000001 Lamports`。
+基础费用为5,000 Lamports。一个微`Lamport`相当于`0.000001 Lamports`。
 
-使用 `ComputeBudgetProgram.setComputeUnitLimit({ units: number })` 来设置新的计算预算。
+你可以使用 `ComputeBudgetProgram.setComputeUnitLimit({ units: number })` 来设置新的计算预算。
 
-`ComputeBudgetProgram.setComputeUnitPrice({ microLamports: number })` 将会将交易费用提高到基本费用（5,000 Lamports）之上。
+`ComputeBudgetProgram.setComputeUnitPrice({ microLamports: number })` 可以将交易费用提高到基本费用（5,000 Lamports）之上。
 
-- 以微Lamports提供的价值将乘以CU预算，以确定`Lamports`s中的优先费用。
-- 例如，如果你的CU预算为1M CU，并且你增加了1微Lamport/CU，那么优先级费用将为1 Lamport（1M * 0.000001）。
-- 总费用将为`5001 Lamports`。
+- 以微Lamports为单位的价值将乘以CU预算，从而确定`Lamports`中的优先费用。
+- 例如，如果你的CU预算为1M CU，并且你每CU增加了1微Lamport，那么优先费用将为1 Lamport（1M * 0.000001）。
+- 总费用将达到`5001 Lamports`。
 
-
-要更改交易的计算预算，你必须将交易的前三条指令之一设置为设置预算的指令。
+要更改交易的计算预算，你必须将交易的前三条指令之一设置为预算设置指令。
 
 ```ts
 const modifyComputeUnits = ComputeBudgetProgram.setComputeUnitLimit({
@@ -299,7 +241,7 @@ const transaction = new Transaction()
   );
 ```
 
-可以使用函数 `sol_log_compute_units()` 来打印当前指令中程序剩余的计算单元数量。
+你还可以使用 `sol_log_compute_units()` 函数来打印当前指令中程序剩余的计算单元数量。
 
 ```rust
 use solana_program::log::sol_log_compute_units;
@@ -318,48 +260,50 @@ pub fn process_instruction(
 
 ## 📦 堆栈大小
 
-每个程序在执行时都可以访问4KB的堆栈帧大小。Rust中的所有值默认都是堆栈分配的。
+每个程序在执行过程中都可以访问4KB的堆栈帧大小。在Rust中，所有值默认都在栈上分配。
 
-在像Rust这样的系统编程语言中，一个值是在栈上还是堆上的区别可能很大，尤其是在像区块链这样受限环境中工作时。
+在像Rust这样的系统编程语言中，一个值是在栈上还是堆上分配的区别可能很重要，特别是在受限制的环境中，如区块链工作场景。
 
-当处理更大、更复杂的程序时，你将开始遇到使用完整的4KB内存的问题。
+当你处理更大、更复杂的程序时，可能会开始遇到使用完整4KB内存的问题。
 
-这通常被称为"[堆栈溢出](https://en.wikipedia.org/wiki/Stack_overflow?utm_source=buildspace.so&utm_medium=buildspace_project)"或"栈溢出"。
+这通常称为"[堆栈溢出](https://en.wikipedia.org/wiki/Stack_overflow?utm_source=buildspace.so&utm_medium=buildspace_project)"或"栈溢出"。
 
-程序可以通过两种方式达到堆栈限制：
+程序可能会以两种方式达到堆栈限制：
 
-- 一些依赖的包可能包含违反堆栈帧限制的功能
-- 或者程序本身在运行时可以达到堆栈限制。
+- 一些依赖的包可能包含违反堆栈帧限制的功能；
+- 或者程序本身在运行时达到堆栈限制。
 
-以下是一个示例，当堆栈违规是由依赖的包引起时，你可能会看到的错误消息。
+以下是当堆栈违规由依赖包引起时，可能出现的错误消息示例。
 
 ```bash
 Error: Function _ZN16curve25519_dalek7edwards21EdwardsBasepointTable6create17h178b3d2411f7f082E Stack offset of -30728 exceeded max offset of -4096 by 26632 bytes, please minimize large stack variables
 ```
 
-如果一个程序在运行时达到了它的4KB堆栈，它将停止并返回一个错误： AccessViolation
+如果一个程序在运行时达到了4KB的堆栈限制，它将停止运行并返回一个错误：AccessViolation
 
 ```bash
 Program failed to complete: Access violation in stack frame 3 at address 0x200003f70 of size 8 by instruction #5128
 ```
 
-为了解决这个问题，你可以重构你的代码，使其更加节省内存，或者将一些内存分配给堆。
+为了解决这个问题，你可以重构代码以更节省内存，或者将一部分内存分配到堆上。
 
-所有程序都可以访问一个`32KB`的运行时堆，可以帮助你释放一些堆栈上的内存。
+所有程序都可以访问一个`32KB`的运行时堆，这可以帮助你在堆栈上节省一些内存。
 
-要做到这一点，你需要使用[Box](https://doc.rust-lang.org/std/boxed/struct.Box.html?utm_source=buildspace.so&utm_medium=buildspace_project)结构体。
+为了实现这一点，你需要使用[Box](https://doc.rust-lang.org/std/boxed/struct.Box.html?utm_source=buildspace.so&utm_medium=buildspace_project)结构体。
 
-一个 `box` 是指向堆分配的类型为 `T` 的值的智能指针。
+一个 `box` 是一个指向堆上类型为 `T` 的值的智能指针。
 
-可以使用解引用运算符来解引用封装的值。
+你可以使用解引用运算符来访问封装的值。
 
-在这个例子中，从`Pubkey::create_program_address`返回的值，即一个公钥，将被存储在堆上，而`authority_pubkey`变量将持有指向存储公钥位置的堆上指针。
+在下面的示例中，从`Pubkey::create_program_address`返回的值（一个公钥）将存储在堆上，而`authority_pubkey`变量则会持有指向堆上存储公钥位置的指针。
 
 ```rust
 let authority_pubkey = Box::new(Pubkey::create_program_address(authority_signer_seeds, program_id)?);
 
 if *authority_pubkey != *authority_info.key {
-      msg!("Derived lending market authority {} does not match the lending market authority provided {}");
-      return Err();
+    msg!("Derived lending market authority {} does not match the lending market authority provided {}");
+    return Err();
 }
 ```
+
+通过这样的调整，代码不仅可以避免堆栈溢出问题，还能使整体结构更加清晰合理。
