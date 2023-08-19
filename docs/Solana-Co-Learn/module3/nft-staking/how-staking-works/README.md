@@ -1,6 +1,6 @@
 ---
 sidebar_position: 62
-sidebar_label: 🕒 质押的工作原理
+sidebar_label: 🕒 质押工作机制详解
 sidebar_class_name: green
 ---
 

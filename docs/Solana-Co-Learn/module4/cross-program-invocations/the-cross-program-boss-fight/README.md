@@ -1,10 +1,8 @@
 ---
 sidebar_position: 70
-sidebar_label: ⚔ 跨项目的Boss战
+sidebar_label: ⚔ 跨项目的Boss战斗
 sidebar_class_name: green
 ---
-
-当然，以下是润色后的中文版本：
 
 # ⚔ 跨项目的Boss战斗
 

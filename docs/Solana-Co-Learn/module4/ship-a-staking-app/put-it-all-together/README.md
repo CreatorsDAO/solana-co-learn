@@ -1,6 +1,6 @@
 ---
 sidebar_position: 79
-sidebar_label: 把它们都放在一起
+sidebar_label: 将所有部分整合到一起
 sidebar_class_name: green
 ---
 

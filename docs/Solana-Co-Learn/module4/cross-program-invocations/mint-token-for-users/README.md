@@ -1,6 +1,6 @@
 ---
 sidebar_position: 71
-sidebar_label: 🥇 为用户Mint代币
+sidebar_label: 🥇 为用户铸造代币
 sidebar_class_name: green
 ---
 

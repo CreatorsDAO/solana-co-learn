@@ -1,6 +1,6 @@
 ---
 sidebar_position: 53
-sidebar_label: 👋 与你部署的程序进行交互
+sidebar_label: 👋 与你部署的程序互动
 sidebar_class_name: green
 ---
 

@@ -1,6 +1,6 @@
 ---
 sidebar_position: 63
-sidebar_label: 🛠️ 构建一个NFT质押程序
+sidebar_label: 🛠️ 构建NFT质押程序
 sidebar_class_name: green
 ---
 

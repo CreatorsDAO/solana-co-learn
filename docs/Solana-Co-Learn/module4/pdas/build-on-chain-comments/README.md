@@ -1,6 +1,6 @@
 ---
 sidebar_position: 68
-sidebar_label: 💬 在链上构建评论功能
+sidebar_label: 💬 链上评论功能的构建
 sidebar_class_name: green
 ---
 
