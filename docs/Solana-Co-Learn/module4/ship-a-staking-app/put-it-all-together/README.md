@@ -4,26 +4,26 @@ sidebar_label: 把它们都放在一起
 sidebar_class_name: green
 ---
 
-# 把它们都放在一起
+# 将所有部分整合到一起
 
-**前端质押**
+**前端质押部分**
 
-你能感受到吗，终点线就在眼前...至少对于这个核心来说是这样。 😆
+你能感受到吗？终点线就在眼前了...至少对于这个核心部分来说是这样的。😆
 
-我们的重点将是使程序前端的质押和解质押指令正常运行。
+我们将集中精力使程序前端的质押和解质押指令正常运行。
 
-在你的前端项目中，在根目录下创建一个新的 `utils` 文件夹。然后创建一个名为 `instructions.ts` 的文件，并从NFT质押项目中复制/粘贴整个 `instructions.ts` 文件。由于代码超过200行，我不会在这里粘贴。😬在你的前端项目中，在根目录下创建一个新的 `utils` 文件夹。然后创建一个名为 `instructions.ts` 的文件，并从NFT质押项目中复制/粘贴整个 `instructions.ts` 文件。由于代码超过200行，我不会在这里粘贴。😬
+首先，在你的前端项目的根目录下创建一个名为 `utils` 的新文件夹。然后，创建一个名为 `instructions.ts` 的文件，并从NFT质押项目中复制/粘贴整个 `instructions.ts` 文件。由于代码超过200行，所以我不会在这里粘贴。😬
 
-接下来我们将进入 `StakeOptionsDisplay` 文件（`//components/StakeOptionsDisplay.rs`）。你会注意到我们有三个空函数 handleStake ， `handleUnstake` 和 `handleClaim` 。这是我们本节的重点。
+下一步我们将进入 `StakeOptionsDisplay` 文件（`//components/StakeOptionsDisplay.rs`）。你会注意到我们有三个空函数：`handleStake`、`handleUnstake` 和 `handleClaim`。这将是本节的重点。
 
-一如既往，让我们准备好钱包和网络连接。
+和往常一样，先让我们准备好钱包和网络连接。
 
 ```js
 const walletAdapter = useWallet()
 const { connection } = useConnection()
 ```
 
-我们先找找钱包。
+我们先确认下钱包是否已连接。
 
 ```js
 if (!walletAdapter.connected || !walletAdapter.publicKey) {
@@ -32,7 +32,7 @@ if (!walletAdapter.connected || !walletAdapter.publicKey) {
 }
 ```
 
-如果那个通过了，我们就可以开始制定我们的指示了。
+如果一切正常，我们可以开始创建质押指示。
 
 ```js
 const stakeInstruction = createStakingInstruction(
@@ -40,13 +40,13 @@ const stakeInstruction = createStakingInstruction(
       nftTokenAccount,
       nftData.mint.address,
       nftData.edition.address,
-      TOKEN_PROGRAM_ID, -- needs to be imported
-      METADATA_PROGRAM_ID, -- needs to be imported
-      PROGRAM_ID -- needs to be imported from constants.ts
+      TOKEN_PROGRAM_ID, // 需要导入
+      METADATA_PROGRAM_ID, // 需要导入
+      PROGRAM_ID // 需要从constants.ts导入
     )
 ```
 
-所以，进入 `utils` 文件夹，添加一个 `constants.ts` 文件，添加以下内容。
+因此，进入 `utils` 文件夹，添加一个名为 `constants.ts` 的文件，并加入以下内容：
 
 ```js
 import { PublicKey } from "@solana/web3.js"
@@ -56,9 +56,9 @@ export const PROGRAM_ID = new PublicKey(
 )
 ```
 
-这是我们在上面的指示中使用的程序ID。确保你的`env.local`文件中有正确的程序ID。
+这是我们在上述指示中使用的程序ID。确保你的`env.local`文件中有正确的程序ID。
 
-`stake`指令应该已经准备好了，接下来我们将创建一笔交易，添加指令，然后发送。
+`stake` 指令应该准备就绪了，接下来我们要创建一笔交易，添加指令，然后发送。
 
 ```js
 const transaction = new Transaction().add(stakeInstruction)
@@ -66,10 +66,9 @@ const transaction = new Transaction().add(stakeInstruction)
 const signature = await walletAdapter.sendTransaction(transaction, connection)
 ```
 
-由于这是一个等待操作，请确保向上滚动并进行 `handleStake` 回调 `async` 。实际上，这三个函数都应该是异步回调函数。
+由于这是一个等待操作，确保在 `handleStake` 回调中添加 `async` 关键字。实际上，这三个函数都应该是异步回调函数。
 
-我们可以进行一次检查，以确保它已经完成，所以让我们获取最新的区块哈希并确认交易。
-
+我们可以进行检查以确认是否已完成，因此让我们获取最新的区块哈希并确认交易。
 
 ```js
 const latestBlockhash = await connection.getLatestBlockhash()
@@ -98,21 +97,21 @@ const checkStakingStatus = useCallback(async () => {
     }
 ```
 
-我们还需要将 `walletAdapter` 和 `connection` 作为 `handleStake` 回调的依赖项添加进去。
+我们还需要将 `walletAdapter` 和 `connection` 添加为 `handleStake` 回调的依赖项。
 
-我们需要一些状态字段，所以向上滚动并添加用于质押的状态。
+我们需要添加一些状态字段，所以向上滚动并添加质押状态的相关字段。
 
 ```js
 const [isStaking, setIsStaking] = useState(isStaked)
 ```
 
-我们还要将参数 `StakeOptionsDisplay` 从 `isStaking` 改为 `isStaked` ，否则我们的状态无法正常工作。
+我们还要将参数 `StakeOptionsDisplay` 从 `isStaking` 改为 `isStaked`，否则我们的状态无法正常工作。
 
-我们还需要在 `utils` 中创建一个名为 `accounts.ts` 的新文件，并从我们的nft质押程序`utils`文件夹中复制文件过来。这可能需要安装我们的borsh库。
+同时，我们还需要在 `utils` 中创建一个名为 `accounts.ts` 的新文件，并从我们的NFT质押程序`utils`文件夹中复制文件过来。可能还需要安装我们的borsh库。
 
-我们之所以要带过来是因为每次我们检查状态时，我们都会检查抵押账户，并查看抵押的价值是多少。
+我们之所以要复制这些内容，是因为每次检查状态时，我们都要查看抵押账户的状态，并确认抵押的价值。
 
-然后在 `checkStakingStatus` 的回调函数中，我们调用 `getStakeAccount` 。
+接下来，在 `checkStakingStatus` 的回调函数中，我们要调用 `getStakeAccount`。
 
 ```js
 const account = await getStakeAccount(
@@ -127,46 +126,46 @@ setIsStaking(account.state === 0)
     }
 ```
 
-既然我们将发送多个交易，请继续设置一个辅助函数来确认我们的交易，我们可以将上面的代码粘贴进去。
+既然我们要发送多个交易，请继续设置一个辅助函数来确认我们的交易。我们可以将上述代码粘贴进去。
 
 ```js
 const sendAndConfirmTransaction = useCallback(
     async (transaction: Transaction) => {
       try {
-        const signature = await walletAdapter.sendTransaction(
-          transaction,
-          connection
-        )
-        const latestBlockhash = await connection.getLatestBlockhash()
-        await connection.confirmTransaction(
-          {
-            blockhash: latestBlockhash.blockhash,
-            lastValidBlockHeight: latestBlockhash.lastValidBlockHeight,
-            signature: signature,
-          },
-          "finalized"
-        )
-      } catch (error) {
-        console.log(error)
-      }
+            const signature = await walletAdapter.sendTransaction(
+              transaction,
+              connection
+            )
+            const latestBlockhash = await connection.getLatestBlockhash()
+            await connection.confirmTransaction(
+              {
+                blockhash: latestBlockhash.blockhash,
+                lastValidBlockHeight: latestBlockhash.lastValidBlockHeight,
+                signature: signature,
+              },
+              "finalized"
+            )
+          } catch (error) {
+            console.log(error)
+          }
 
-      await checkStakingStatus()
+          await checkStakingStatus()
     },
     [walletAdapter, connection]
   )
 ```
 
-现在，只需在 `handleStake` 函数中调用 `sendAndConfirmTransaction` 。
+现在，在 `handleStake` 函数中只需调用 `sendAndConfirmTransaction` 即可。
 
 **前端索赔/兑换**
 
-这就可以了。对于解除质押和领取奖励来说，实际上是一回事，只是增加了一个复杂性，即我们是否需要创建用户的代币账户，用于存放他们将要获得的奖励代币。
+现在就可以进行解除质押和领取奖励了。这两者实际上是相同的操作，不过增加了一个复杂的环节：我们是否需要为用户创建代币账户，用于存放他们即将获得的奖励代币。
 
-我们可以接下来解决 `handleClaim` 。
+下面我们将解决 `handleClaim` 函数。
 
-使用与上面相同的警报，检查钱包适配器是否已连接并具有公钥。
+首先，使用与之前相同的警报检查钱包适配器是否已连接并具有公钥。
 
-接下来我们将检查奖励的关联令牌账户是否存在。
+接着我们要检查奖励的关联令牌账户是否存在：
 
 ```js
 const userStakeATA = await getAssociatedTokenAddress(
@@ -175,7 +174,7 @@ const userStakeATA = await getAssociatedTokenAddress(
     )
 ```
 
-快速跳过我们创建的 `constants.ts` 文件，并为我们的薄荷添加这个，因为我们需要 `STAKE_MINT` 。
+请快速查看我们创建的 `constants.ts` 文件，并为薄荷地址添加以下代码，因为我们需要 `STAKE_MINT` 的值：
 
 ```js
 export const STAKE_MINT = new PublicKey(
@@ -183,11 +182,11 @@ export const STAKE_MINT = new PublicKey(
 )
 ```
 
-一旦我们有了`ATA`，我们需要调用 `getAccountInfo` ，它要么返回一个账户，要么返回`null`。
+当我们拥有了`ATA`后，我们需要调用 `getAccountInfo` 函数，它会返回一个账户或`null`：
 
 `const account = await connection.getAccountInfo(userStakeATA)`
 
-然后我们创建我们的交易并检查是否有一个账户，如果没有，我们调用 `createAssociatedTokenAccountInstruction` ，否则我们只是调用 `createRedeemInstruction` 。
+随后，我们创建交易并检查是否存在一个账户，如果没有，我们调用 `createAssociatedTokenAccountInstruction` 函数；否则，我们调用 `createRedeemInstruction` 函数。
 
 ```js
 const transaction = new Transaction()
@@ -222,11 +221,11 @@ await sendAndConfirmTransaction(transaction)
   }, [walletAdapter, connection, nftData, nftTokenAccount])
 ```
 
-最后，将我们的依赖项 `walletAdapter` 和 `connection` 添加到回调函数中。
+最后，别忘了将依赖项 `walletAdapter` 和 `connection` 添加到回调函数中。
 
-**前端解除质押**
+**前端解除质押操作**
 
-现在，关于 `handleUnstake` ，确保像其他的一样使用异步。以下内容可以直接从 `handleClaim` 复制过来。
+对于 `handleUnstake` 函数，我们要确保与其他函数一样使用异步处理。你可以直接从 `handleClaim` 复制以下内容：
 
 ```js
 if (
@@ -234,7 +233,7 @@ if (
       !walletAdapter.publicKey ||
       !nftTokenAccount
     ) {
-      alert("Please connect your wallet")
+      alert("请连接您的钱包")
       return
     }
 
@@ -259,7 +258,7 @@ if (
     }
 ```
 
-现在我们给我们的交易添加指令，并再次调用我们的辅助函数。
+接下来，我们将向交易中添加指令，并再次调用辅助函数：
 
 ```js
 transaction.add(
@@ -280,15 +279,15 @@ transaction.add(
   }
 ```
 
-**页面编辑的股份**
+**页面编辑的股份部分**
 
-让我们跳转到 `stake.tsx` （`//pages/stake.tsx`）并进行一些与上述相关的更改。
+我们继续转到 `stake.tsx` 文件（位于 `//pages/stake.tsx`）并进行一些与上述内容相关的修改。
 
-首先，根据我们上面的编辑，我们需要将 `isStaking` 的使用更改为 `isStaked` 。这是在 `<StakeOptionsDisplay>` 组件中。我们还需要添加一个字段 `nftData` ，并给它赋值 `nftData` ，我们需要一个状态来存储这个值。
+首先，根据我们之前的编辑，我们需要将 `isStaking` 的使用更改为 `isStaked`。这项修改应在 `<StakeOptionsDisplay>` 组件中进行。我们还需要添加一个名为 `nftData` 的字段，并将其赋值为 `nftData`，我们还需要一个状态来存储这个值。
 
 `const [nftData, setNftData] = useState<any>()`
 
-现在，我们没有实际的数据。我们将使用一个`useEffect`，在其中调用`metaplex`，并通过铸造地址找到NFT数据。
+目前，我们还没有实际的数据。我们将使用一个 `useEffect` 钩子，在其中调用 `metaplex`，并通过铸币地址找到 NFT 数据。
 
 ```js
 useEffect(() => {
@@ -301,22 +300,22 @@ useEffect(() => {
         .nfts()
         .findByMint({ mintAddress: mint })
         .then((nft) => {
-          console.log("nft data on stake page:", nft)
+          console.log("在质押页面上的 NFT 数据:", nft)
           setNftData(nft)
         })
     } catch (e) {
-      console.log("error getting nft:", e)
+      console.log("获取 NFT 时发生错误:", e)
     }
   }, [connection, walletAdapter])
 ```
 
-别忘了像我们之前做过的那样，获取一个连接和钱包适配器。
+不要忘了像我们之前所做的那样，获取一个连接和钱包适配器。
 
-好的，我们现在可以进行测试了，运行`npm run dev`，并在浏览器中打开本地主机。试试吧，点击按钮。🔘 ⏏️ 🆒
+现在一切准备就绪，可以进行测试了。运行 `npm run dev`，然后在浏览器中打开本地主机。赶快试试，点击按钮吧！🔘 ⏏️ 🆒
 
 **还需要进行一些编辑**
 
-所以，有几件事可能需要改进...简要地回到 `StakeOptionsDispla`y 文件，在 `handleStake` 函数之前添加以下`useEffect`。
+似乎还有几个方面可能需要改进。让我们回到 `StakeOptionsDisplay` 文件，并在 `handleStake` 函数之前添加以下的 `useEffect` 钩子。
 
 ```js
 useEffect(() => {
@@ -330,11 +329,11 @@ useEffect(() => {
   }, [nftData, walletAdapter, connection])
 ```
 
-这是一个快速检查，以确保我们有NFT数据，如果是的话，为NFT代币账户设置一个值。这是一个NFT，只有一个，所以它将是第一个地址，因此索引值为`'0'`。
+这是一个快速检查，确认我们是否有 NFT 数据，如果有的话，就为 NFT 代币账户设置值。这是一个 NFT，只有一个，所以它会是第一个地址，因此索引值为 `'0'`。
 
-此外，在所有三个回调函数中，还要将 `nftData` 添加为一个依赖项。
+此外，在所有三个回调函数中，我们还需要将 `nftData` 添加为依赖项。
 
-最后，在 `handleStake` 内，在创建交易之前添加此代码。
+最后，在 `handleStake` 中，在创建交易之前添加以下代码：
 
 ```js
 const [stakeAccount] = PublicKey.findProgramAddressSync(
@@ -356,10 +355,11 @@ const account = await connection.getAccountInfo(stakeAccount)
     }
 ```
 
+我们需要一个质押账户，也就是一个程序驱动的账户（PDA），用于在程序中存储有关你的质押状态的数据。如果我们没有这样的账户，上述代码会为我们初始化它。
 
-我们需要一个质押账户，一个在程序中存储有关你的质押状态数据的`PDA`。如果我们没有这样的账户，上面的代码将为我们初始化它。
+终于，我们完成了核心部分 4。这最后的部分有些杂乱，为确保没有遗漏任何东西，可以将整个 `StakeOptionsDisplay` 文件粘贴下来进行仔细检查。
 
-唉，我们终于完成了核心4。最后这一部分有点乱七八糟的，为了确保没有遗漏任何东西，我们将整个 `StakeOptionsDisplay` 文件粘贴如下。
+如果你想进一步改进代码或有任何其他问题，请随时提出。
 
 ```js
 import { VStack, Text, Button } from "@chakra-ui/react"
