@@ -102,8 +102,6 @@ use crate::error::ReviewError;
 
 接下来，我们将对 `add_movie_review` 函数增加安全检查。
 
-当然，以下是润色后的内容，使其读起来更流畅、自然，并确保中文表述的准确性。
-
 ### 签署人检查
 
 - 验证交易的评论的 `initializer` 是否同时也是交易的签署人。
