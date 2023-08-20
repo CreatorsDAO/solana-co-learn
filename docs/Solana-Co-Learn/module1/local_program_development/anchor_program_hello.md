@@ -10,7 +10,7 @@ sidebar_class_name: green
 
 我们将在本地完成所有操作，包括部署到本地测试验证器。在开始之前，请确保你已经安装了Rust和Solana CLI。如果你还没有安装，请参考概述中的说明进行设置。
 
-## Anchor 安装
+## 0. Anchor 安装
 
 这里是`Anchor`的[安装官方指南](https://www.anchor-lang.com/docs/installation).
 
@@ -35,7 +35,7 @@ anchor-cli 0.28.0
 anchor init hello_world
 ```
 
-#### 2. 编写你的程序
+## 2. 编写你的程序
 
 接下来，使用下面的`Hello World!`程序更新`hello_world/program/src/lib.rs`。当程序被调用时，该程序会将传入的数据保存到数据存储账户中去也就是下面的`HelloWorld`账户。
 
@@ -174,7 +174,7 @@ describe("hello-world", () => {
 });
 ```
 
-#### 3. 运行本地测试验证器
+## 3. 运行本地测试验证器
 
 在编写好你的程序之后，让我们确保我们的Solana CLI配置指向本地主机，使用`solana config set --url`命令。
 
@@ -194,7 +194,7 @@ solana config get
 solana-test-validator
 ```
 
-#### 4. 构建和部署
+## 4. 构建和部署
 
 我们现在准备好构建和部署我们的程序了。通过运行 `anchor build` 命令来构建程序。
 
@@ -211,7 +211,7 @@ anchor deploy
 Solana程序部署将输出你的程序的程序`ID`。你现在可以在[Solana Explorer](https://explorer.solana.com/?cluster=custom)上查找已部署的程序（对于localhost，请选择“自定义`RPC URL`”作为集群）。
 
 
-#### 5. 查看程序日志
+## 5. 查看程序日志
 
 在我们调用程序之前，打开一个单独的终端并运行`solana logs`命令。这将允许我们在终端中查看程序日志。
 

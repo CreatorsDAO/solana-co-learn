@@ -216,7 +216,7 @@ connection.getProgramAccounts(new web3.PublicKey(MOVIE_REVIEW_PROGRAM_ID))
 确保你正在运行 `npm run dev` 并访问 `localhost:3000`，你应该会看到其他开发者添加的许多随机评论。😃
 
 
-## 🚢 出航挑战
+## 🚢 挑战
 
 现在，我们已经能够序列化和反序列化数据了，不错吧？现在让我们回到序列化部分开始时的 "Student Intros" 应用程序。
 

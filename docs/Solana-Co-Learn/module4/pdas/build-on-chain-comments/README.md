@@ -597,7 +597,7 @@ git checkout solution-add-comments
 > solana logs PROGRAM_ID
 > ```
 
-## 🚢 船舶挑战
+## 🚢 挑战
 
 现在轮到你独立地构建一些东西了，你可以在之前课程中使用过的学生介绍程序的基础上进行扩展。
 

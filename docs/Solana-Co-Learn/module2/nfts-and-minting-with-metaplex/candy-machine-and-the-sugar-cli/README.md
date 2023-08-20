@@ -173,7 +173,7 @@ REACT_APP_CANDY_MACHINE_ID=GNfbQEfMA1u1irEFnThTcrzDyefJsoa7sndACShaS5vC
 
 我们只是浅尝辄止地触及了Candy Machine和Sugar CLI的潜力。未来我们还会深入探讨更多内容——本节的目的是让你具备足够的基础知识，以便能够自主深入研究。随着我们对NFT项目的不断完善，我们将继续探索。
 
-## 🚢 船舶挑战
+## 🚢 挑战
 
 让我们再享受一会儿糖果机的乐趣吧！🍭
 

@@ -66,8 +66,8 @@ sidebar_class_name: green
 
 ## Module6: Solana Module6
 
-- [Ship Week](./module6/ship-week/README.md)
+- [挑战周介绍](./module6/ship-week/README.md)
 
-- [Randomness](./module6/randomness/README.md)
+- [随机性](./module6/randomness/README.md)
 
-- [Finishing touches](./module6/finishing-touches/README.md)
+- [最后的作品](./module6/finishing-touches/README.md)

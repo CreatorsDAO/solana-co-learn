@@ -26,5 +26,5 @@ sidebar_class_name: green
 
 ## NFT质押
 
-- [🕒 质押的工作原理](./nft-staking/how-staking-works/README.md)
-- [🛠️ 构建一个NFT质押计划](./nft-staking/build-an-nft-staking-program/README.md)
+- [🕒 质押工作机制详解](./nft-staking/how-staking-works/README.md)
+- [🛠️ 构建NFT质押程序](./nft-staking/build-an-nft-staking-program/README.md)

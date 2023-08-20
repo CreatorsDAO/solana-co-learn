@@ -1,10 +1,10 @@
 ---
 sidebar_position: 99
-sidebar_label: 🚢 船舶周介绍
+sidebar_label: 🚢 挑战周介绍
 sidebar_class_name: green
 ---
 
-# 🚢 船舶周介绍
+# 🚢挑战周介绍
 
 既然你已经让程序正常运转了，那么我们就来调整前端代码，以适应Anchor。这个配置只需一分钟，稍作等待，我们会调整一些内容。欢迎来到你的Solana Core的最后一周！这一周与之前的五周有所不同。我们唯一的焦点是确保我们的项目在核心课程结束时做好发布准备。
 
