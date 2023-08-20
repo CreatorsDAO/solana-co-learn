@@ -6,21 +6,21 @@ sidebar_class_name: green
 
 # 使用Anchor CPIs构建
 
-回到未来。我们将以`CPIs`结束我们的电影评论节目，来个圆满收官。
+回归未来。我们将通过以`CPIs`结尾的电影评论来为这个话题画上完美的句号。
 
-这一次，让我们：
+这一次，我们将：
 
 - 添加指令以创建带有元数据的代币铸造
-- 添加指示以添加评论
-- 创建评论时铸造薄荷代币
-- 添加评论时铸造薄荷代币
+- 添加指令以添加评论
+- 在创建评论时铸造薄荷代币
+- 在添加评论时铸造薄荷代币
 
 **初始代码**
 
-- 起始代码：[https://beta.solpg.io/63184c17bb7e0b5f4ca6dfa5](https://beta.solpg.io/63184c17bb7e0b5f4ca6dfa5?utm_source=buildspace.so&utm_medium=buildspace_project)
+- 起始代码链接：[这里](https://beta.solpg.io/63184c17bb7e0b5f4ca6dfa5?utm_source=buildspace.so&utm_medium=buildspace_project)
 - 我们将在之前的`PDA`演示基础上进行扩展
 
-我们要做的第一件事是定义 `create_reward_mint` 指令：
+首先，我们来定义 `create_reward_mint` 指令：
 
 ```rust
 pub fn create_reward_mint(
@@ -71,11 +71,11 @@ pub fn create_reward_mint(
     }
 ```
 
-这个很长但非常简单！我们正在为`Token`元数据程序创建一个`CPI`到 `create_metadata_account_v2` 指令。
+尽管代码很长，但非常直观！我们正在为`Token`元数据程序创建一个`CPI`，用来指向 `create_metadata_account_v2` 指令。
 
-接下来，我们看到了 `CreateTokenReward` 上下文类型。
+接下来，我们会看到 `CreateTokenReward` 上下文类型。
 
-关于 /// [CHECK](https://book.anchor-lang.com/anchor_in_depth/the_accounts_struct.html#safety-checks?utm_source=buildspace.so&utm_medium=buildspace_project): 的详细信息在这里：安全检查。
+有关 /// [CHECK](https://book.anchor-lang.com/anchor_in_depth/the_accounts_struct.html#safety-checks?utm_source=buildspace.so&utm_medium=buildspace_project) 的详细信息在这里：安全检查。
 
 ```rust
 #[derive(Accounts)]
@@ -105,39 +105,39 @@ pub struct CreateTokenReward<'info> {
 }
 ```
 
-## 创建 ErrorCode
+## 创建错误代码（ErrorCode）
 
-- 检查评级的错误代码
-- （`Anchor`处理了我们在原生版本中的其他检查）
+- 用于检查评级的错误代码
+- （`Anchor`已处理我们在原生版本中的其他检查）
 
 ```rust
 #[error_code]
 pub enum ErrorCode {
-    #[msg("Rating greater than 5 or less than 1")]
+    #[msg("评分大于5或小于1")]
     InvalidRating,
 }
 ```
 
 ## 更新 `add_movie_review`
 
-- 添加 `ErrorCode` 检查
+- 添加对`ErrorCode`的检查
 - 设置评论计数器账户
-- `CPI`给 `mintTo` 指令，将代币铸造给审核者
+- 通过`CPI`给 `mintTo` 指令，将代币铸造给评论人
 
 ```rust
-ub fn add_movie_review(
+pub fn add_movie_review(
         ctx: Context<AddMovieReview>,
         title: String,
         description: String,
         rating: u8,
     ) -> Result<()> {
-        msg!("Movie Review Account Created");
-        msg!("Title: {}", title);
-        msg!("Description: {}", description);
-        msg!("Rating: {}", rating);
+        msg!("创建了影评账户");
+        msg!("标题：{}", title);
+        msg!("描述：{}", description);
+        msg!("评分：{}", rating);
 
         if rating > 5 || rating < 1 {
-            msg!("Rating cannot be higher than 5");
+            msg!("评分不能高于5");
             return err!(ErrorCode::InvalidRating);
         }
 
@@ -147,10 +147,10 @@ ub fn add_movie_review(
         movie_review.rating = rating;
         movie_review.description = description;
 
-        msg!("Movie Comment Counter Account Created");
+        msg!("创建了影评计数器账户");
         let movie_comment_counter = &mut ctx.accounts.movie_comment_counter;
         movie_comment_counter.counter = 0;
-        msg!("Counter: {}", movie_comment_counter.counter);
+        msg!("计数器：{}", movie_comment_counter.counter);
 
         let seeds = &["mint".as_bytes(), &[*ctx.bumps.get("reward_mint").unwrap()]];
 
@@ -167,7 +167,7 @@ ub fn add_movie_review(
         );
 
         token::mint_to(cpi_ctx, 10000000)?;
-        msg!("Minted Tokens");
+        msg!("已铸币");
         Ok(())
     }
 ```
@@ -180,7 +180,7 @@ ub fn add_movie_review(
 
 ```rust
 #[derive(Accounts)]
-#[instruction(title:String, description:String)]
+#[instruction(title: String, description: String)]
 pub struct AddMovieReview<'info> {
     #[account(
         init,
@@ -221,7 +221,7 @@ pub struct AddMovieReview<'info> {
 
 ## 将 `ErrorCode` 添加到 `update_movie_review` 中
 
-- 添加 `ErrorCode` 检查到 `update_movie_review` 指令
+- 在 `update_movie_review` 指令中添加 `ErrorCode` 检查
 
 ```rust
 pub fn update_movie_review(
@@ -230,13 +230,13 @@ pub fn update_movie_review(
         description: String,
         rating: u8,
     ) -> Result<()> {
-        msg!("Updating Movie Review Account");
-        msg!("Title: {}", title);
-        msg!("Description: {}", description);
-        msg!("Rating: {}", rating);
+        msg!("更新了影评账户");
+        msg!("标题：{}", title);
+        msg!("描述：{}", description);
+        msg!("评分：{}", rating);
 
         if rating > 5 || rating < 1 {
-            msg!("Rating cannot be higher than 5");
+            msg!("评分不能高于5");
             return err!(ErrorCode::InvalidRating);
         }
 
@@ -248,16 +248,17 @@ pub fn update_movie_review(
     }
 ```
 
+
 ### 添加 `add_comment`
 
-- `Create add_comment instruction`
+- 创建 `add_comment` 指令
 - 设置 `movie_comment` 数据
-- `CPI`给 `mintTo` 指令，将代币铸造给审核者
+- 通过 `CPI` 给 `mintTo` 指令，将代币铸造给审核者
 
 ```rust
 pub fn add_comment(ctx: Context<AddComment>, comment: String) -> Result<()> {
-        msg!("Comment Account Created");
-        msg!("Comment: {}", comment);
+        msg!("已创建评论账户");
+        msg!("评论：{}", comment);
 
         let movie_comment = &mut ctx.accounts.movie_comment;
         let movie_comment_counter = &mut ctx.accounts.movie_comment_counter;
@@ -284,7 +285,7 @@ pub fn add_comment(ctx: Context<AddComment>, comment: String) -> Result<()> {
         );
 
         token::mint_to(cpi_ctx, 5000000)?;
-        msg!("Minted Tokens");
+        msg!("已铸造代币");
 
         Ok(())
     }
@@ -297,7 +298,7 @@ pub fn add_comment(ctx: Context<AddComment>, comment: String) -> Result<()> {
 
 ```rust
 #[derive(Accounts)]
-#[instruction(comment:String)]
+#[instruction(comment: String)]
 pub struct AddComment<'info> {
     #[account(
         init,
@@ -337,12 +338,11 @@ pub struct AddComment<'info> {
 
 ## 构建，部署，测试
 
-Solution: [https://beta.solpg.io/6319c7bf77ea7f12846aee87](https://beta.solpg.io/6319c7bf77ea7f12846aee87)
+解决方案：[https://beta.solpg.io/6319c7bf77ea7f12846aee87](https://beta.solpg.io/6319c7bf77ea7f12846aee87)
 
-如果你使用自己的编辑器，你必须在 `mpl-token-metadata` 的 `Cargo.toml` 中添加 `features = ["no-entrypoint"]` 。
+如果你使用自己的编辑器，你必须在 `mpl-token-metadata` 的 `Cargo.toml` 中添加 `features = ["no-entrypoint"]`。
 
-否则，将会出现以下错误： the `#[global_allocator] in this crate conflicts with global allocator in: mpl_token_metadata` 。
-
+否则，将会出现以下错误：`the #[global_allocator] in this crate conflicts with global allocator in: mpl_token_metadata`。
 
 - 构建和部署
-- 使用SolPG进行测试
+- 使用 SolPG 进行测试

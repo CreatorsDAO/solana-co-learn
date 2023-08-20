@@ -243,7 +243,7 @@ pub enum MyError {
 #[program]
 mod example {
     use super::*;
-    public fn initialize(ctx: Context<Initialize>) -> Result<()> {
+    pub fn initialize(ctx: Context<Initialize>) -> Result<()> {
         Ok(())
     }
 }
