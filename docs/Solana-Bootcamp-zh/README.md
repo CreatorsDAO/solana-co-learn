@@ -9,11 +9,11 @@ sidebar_class_name: green
 ## Week1: Solana 基础知识
 
 - [Solana 介绍](./week1/solana-intro.md)
-- Solana核心概念
-- SPL 代币
-- 命令行工具
-- 钱包使用
-- 课后练习
+- [Solana核心概念](./week1/solana-core-concerpt.md)
+- [SPL 代币](./week1/spl-token.md)
+- [Solana命令行](./week1/tenermail_tools.md)
+- [钱包使用](./week1/wallet-useage.md)
+- [课后练习](./week1/homework.md)
 
 
 ## Week2: 通过RPC与Solana交互

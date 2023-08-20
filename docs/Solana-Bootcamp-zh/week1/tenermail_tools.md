@@ -6,8 +6,6 @@ sidebar_class_name: green
 
 # Solana命令行
 
-## Solana命令行
-
 接下来我们来开始体验Solana，Solana为我们提供了一套命令行工具来实现对Solana的操作。 这里注意，这个命令行工具，是除了节点外，官方提供的唯一工具。什么钱包，scan浏览器等还 都是第三方的，所以我们从这里开始。
 
 这里建议开发工具平台使用Mac/Linux(Ubuntu),Windows不建议折腾，虽然Solana也是支持 的，下面我们以Mac作为演示平台进行讲演。
