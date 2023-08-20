@@ -1,10 +1,10 @@
 ---
 sidebar_position: 26
-sidebar_label: Module2
+sidebar_label: Solana 进阶 (SPL token与NFT)
 sidebar_class_name: green
 ---
 
-# Solana Module2
+# Solana 进阶 (SPL token与NFT)
 
 ## SPL代币
 

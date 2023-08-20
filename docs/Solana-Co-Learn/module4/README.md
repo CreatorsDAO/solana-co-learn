@@ -1,10 +1,10 @@
 ---
 sidebar_position: 64
-sidebar_label: Module4
+sidebar_label: PDA与CPI
 sidebar_class_name: green
 ---
 
-# Solana Module4
+# PDA与CPI
 
 ## PDA
 

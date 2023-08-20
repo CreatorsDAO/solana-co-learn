@@ -1,10 +1,10 @@
 ---
 sidebar_position: 50
-sidebar_label: Module3
+sidebar_label: Solana Native 开发
 sidebar_class_name: green
 ---
 
-# Module3: Solana Module3
+# Module3: Solana Native 开发
 
 ## Rust简介
 

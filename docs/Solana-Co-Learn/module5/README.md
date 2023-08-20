@@ -1,10 +1,10 @@
 ---
 sidebar_position: 96
-sidebar_label: Module5
+sidebar_label: 深入Anchor框架
 sidebar_class_name: green
 ---
 
-# Module5: Solana Module5
+# 深入Anchor框架
 
 ## 关于 Anchor 的介绍
 
@@ -12,7 +12,7 @@ sidebar_class_name: green
 - [🐟 Anchor 框架](./introduction-to-anchor/the-anchor-framework/README.md)
 - [🧱 使用Solana Anchor框架进行建设](./introduction-to-anchor/build-with-solana-frameworks/README.md)
 
-## Anchor中的Program
+## Program in Anchor
 
 - [🛣 Anchor中的PDA](./program-in-anchor/pdas-in-anchor/README.md)
 - [使用Anchor PDA构建](./program-in-anchor/build-with-anchor-pdas/README.md)
@@ -20,7 +20,7 @@ sidebar_class_name: green
 - [使用Anchor CPIs构建](./program-in-anchor/build-with-anchor-cpis/README.md)
 
 
-## 一个全栈的Anchor应用程序
+## Anchor on the front-end
 
 - [🐹 Anchor到Typescript](./anchor-on-the-front-end/anchor-into-typescript/README.md)
 - [🎥 打造一个更好的电影评论程序](./anchor-on-the-front-end/build-a-better-movie-review-program/README.md)

@@ -6,7 +6,7 @@ sidebar_class_name: green
 
 # Solana Co Learn
 
-## Module1: Solana Module1
+## Module1: Solana 基础 （与Solana网络通过rpc交互）
 
 - [区块链基本概念介绍](./module1/block-chain-basic/README.md)
 - [本地程序开发环境配置](./module1/local_program_development/local_program_development.md)
@@ -25,7 +25,7 @@ sidebar_class_name: green
 
 - [开始你自己的定制项目](./module1/start-your-own-custom-project/README.md)
 
-## Module2: Solana Module2
+## Module2: Solana 进阶 （SPL token与NFT）
 
 - [SPL代币](./module2/spl-token/README.md)
 
@@ -34,7 +34,7 @@ sidebar_class_name: green
 - [在用户界面中展示NFTs](./module2/displayings-nfts-in-a-ui/README.md)
 -  [创造神奇的网络货币并出售JPEG图片](./module2/make-magic-internet-money-and-sell-jepgs/README.md)
 
-## Module3: Solana Module3
+## Module3: Solana Native 开发
 
 - [Rust简介](./module3/introduction-to-rust/README.md)
 
@@ -44,7 +44,7 @@ sidebar_class_name: green
 
 - [NFT质押](./module3/nft-staking/README.md)
 
-## Module4: Solana Module4
+## Module4: PDA与CPI
 
 - [PDA介绍](./module4/pdas/README.md)
 
@@ -54,7 +54,7 @@ sidebar_class_name: green
 
 - [发行一个质押应用程序](./module4/ship-a-staking-app/README.md)
 
-## Module5: Solana Module5
+## Module5: 深入Anchor框架
 
 - [关于Anchor的介绍](./module5/introduction-to-anchor/README.md)
 
@@ -64,7 +64,7 @@ sidebar_class_name: green
 
 - [一个全栈的Anchor应用程序](./module5/a-full-stack-anchor-app/README.md)
 
-## Module6: Solana Module6
+## Module6: VRF可验证随机数的应用
 
 - [挑战周介绍](./module6/ship-week/README.md)
 
