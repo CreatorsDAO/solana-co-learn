@@ -4,13 +4,13 @@ sidebar_label:  🎥 打造一个更好的电影评论程序
 sidebar_class_name: green
 ---
 
-# 🎥 打造一个更好的电影评论程序
+# 🎥 打造一款优秀的电影评论程序
 
-让我们把所有的魔力付诸行动吧！
+让我们开始行动，释放所有的魔力吧！
 
 我们将会将电影评论前端适配为使用`Anchor IDL`。
 
-## 下载起始代码
+## 获取起始代码
 
 ```bash
 git clone https://github.com/buildspace/anchor-solana-movie-review-frontend
@@ -19,8 +19,8 @@ git checkout starter-add-tokens
 npm i
 ```
 
-- 注意，起始代码在锚点设置完成之前无法运行
-- 在 `./context/Anchor/MockWallet.ts` 中，我们有一个临时的 `AnchorWallet` ，在钱包连接之前使用
+- 请注意，起始代码在锚点设置完成之前是无法运行的。
+- 在 `./context/Anchor/MockWallet.ts` 中，我们有一个临时的 `AnchorWallet`，在钱包连接之前可以使用。
 
 ```ts
 import { Keypair } from "@solana/web3.js"
@@ -34,12 +34,12 @@ const MockWallet = {
 export default MockWallet
 ```
 
-## Anchor 设置
+## Anchor 的设置
 
-- 在 `./context/Anchor/index.tsx` 中
-- 创造 `WorkspaceProvider` 的背景，并提供一个 `useWorkspace` 的引子
-    - 我们将使用 `useWorkspace` 钩子来访问我们组件中的 `program` 对象
-    - 这样，我们只需要进行一次设置
+- 位于 `./context/Anchor/index.tsx` 文件中。
+- 创建 `WorkspaceProvider` 的上下文，并提供一个名为 `useWorkspace` 的钩子。
+    - 我们将使用 `useWorkspace` 钩子来访问我们组件中的 `program` 对象。
+    - 这样做的好处是只需要进行一次设置。
 
 ```ts
 import { createContext, useContext } from "react"
@@ -90,9 +90,9 @@ const useWorkspace = (): WorkSpace => {
 export { WorkspaceProvider, useWorkspace }
 ```
 
-- 在 `..pages/_app.tsx` 中
-- 将应用程序包装在 `WorkspaceProvider` 中
-- 现在我们可以在不同的组件中使用 `useWorkspace` 钩子来访问 `program` 对象
+- 在 `..pages/_app.tsx` 文件中。
+- 将整个应用程序包裹在 `WorkspaceProvider` 中。
+- 现在我们可以在不同的组件中使用 `useWorkspace` 钩子来访问 `program` 对象。
 
 ```tsx
 import "../styles/globals.css"
@@ -118,9 +118,10 @@ export default MyApp
 
 ### `Form.tsx`
 
-- 在 `handleSubmit` 中
-    - 实现在 `addMovieReview` 和 `updateMovieReview` 指令之间切换
-- 请注意，`Anchor`可以使用`IDL`来推断`PDA`账户和其他账户（系统程序/代币程序），因此不需要显式传递
+- 在 `handleSubmit` 函数中：
+    - 可以实现根据情况选择调用 `addMovieReview` 或 `updateMovieReview` 指令。
+
+在使用Anchor时，利用IDL (Interface Description Language) 的特性可以推断PDA（程序派生地址）账户和其他账户（如系统程序或代币程序），因此无需显式传递这些信息。
 
 ```ts
 import { FC } from "react"
@@ -414,7 +415,7 @@ export const MovieList: FC = () => {
 - 在 `handleSubmit` 中
     - 实施 `addComment`
 
-- 请注意，Anchor可以使用`IDL`来推断`PDA`账户和其他账户（系统程序/代币程序），因此不需要显式传递
+请注意，Anchor可以使用`IDL`来推断`PDA`账户和其他账户（系统程序/代币程序），因此不需要显式传递
 
 ```tsx
 import {
