@@ -6,40 +6,42 @@ sidebar_class_name: green
 
 # 🚀 准备起飞
 
-好的，让我们开始吧。在深入逻辑`/components/Lootbox.tsx`之前，让我们先快速浏览一下布局。
+好的，让我们一起启动项目吧。在深入探讨`/components/Lootbox.tsx`文件的逻辑之前，我们先来快速预览一下布局的构造。
 
-我们将一切都集中在一起，只需进行三个检查：是否有可用的战利品箱、是否有押注账户，以及总收益是否大于战利品箱。如果是，它会呈现一个带有各种选项的盒子；否则，它会提示继续押注。我们很快会看一下 `handleRedeemLoot` 或 `handleOpenLootbox` 。
+我们将所有相关的组件集中在一起，只需进行三个主要检查：是否有可用的战利品箱、是否存在押注账户，以及总收益是否超过战利品箱的值。如果检查结果为真，则会渲染一个带有各种选项的按钮；否则，用户将会收到一个提示，建议他们继续押注。接下来，我们将深入了解如何处理`handleRedeemLoot` 或 `handleOpenLootbox` 函数的逻辑。
 
 ```tsx
 return (
-    <Center
-      height="120px"
-      width="120px"
-      bgColor={"containerBg"}
-      borderRadius="10px"
-    >
-      {availableLootbox &&
-      stakeAccount &&
-      stakeAccount.totalEarned.toNumber() >= availableLootbox ? (
-        <Button
-          borderRadius="25"
-          onClick={mint ? handleRedeemLoot : handleOpenLootbox}
-          isLoading={isConfirmingTransaction}
-        >
-          {mint
-            ? "Redeem"
-            : userAccountExists
-            ? `${availableLootbox} $BLD`
-            : "Enable"}
-        </Button>
-      ) : (
-        <Text color="bodyText">Keep Staking</Text>
-      )}
-    </Center>
-  )
+  <Center
+    height="120px"
+    width="120px"
+    bgColor={"containerBg"}
+    borderRadius="10px"
+  >
+    {availableLootbox &&
+    stakeAccount &&
+    stakeAccount.totalEarned.toNumber() >= availableLootbox ? (
+      <Button
+        borderRadius="25"
+        onClick={mint ? handleRedeemLoot : handleOpenLootbox}
+        isLoading={isConfirmingTransaction}
+      >
+        {mint
+          ? "Redeem"
+          : userAccountExists
+          ? `${availableLootbox} $BLD`
+          : "Enable"}
+      </Button>
+    ) : (
+      <Text color="bodyText">Keep Staking</Text>
+    )}
+  </Center>
+)
 ```
 
-在这个函数中，首先我们有大量的设置和状态。有一个`useEffect`来确保我们有一个公钥、一个战利品箱程序和一个质押程序，如果这些都存在，它调用 `handleStateRefresh` 。
+在这个函数体内，首先我们进行了大量的设置和状态定义。其中有一个`useEffect`钩子用来确保我们拥有公钥、战利品箱程序和质押程序。一旦这些都到位，它就会调用`handleStateRefresh`方法来刷新状态。
+
+通过这样的组织，我们可以确保逻辑清晰，并且易于理解和维护。
 
 ```tsx
 export const Lootbox = ({
@@ -66,46 +68,44 @@ export const Lootbox = ({
     handleStateRefresh(lootboxProgram, walletAdapter.publicKey)
   }, [walletAdapter, lootboxProgram])
 ```
-
-状态刷新被封装为一个独立的函数，因为它在每次交易之后被调用。这只是简单地调用了两个函数。
+状态的刷新是通过一个独立的函数来完成的，因为在每次交易后都需要调用它。这部分只是通过调用两个函数来实现。
 
 ```tsx
 const handleStateRefresh = async (
-    lootboxProgram: Program<LootboxProgram>,
-    publicKey: PublicKey
-  ) => {
-    checkUserAccount(lootboxProgram, publicKey)
-    fetchLootboxPointer(lootboxProgram, publicKey)
-  }
+  lootboxProgram: Program<LootboxProgram>,
+  publicKey: PublicKey
+) => {
+  checkUserAccount(lootboxProgram, publicKey);
+  fetchLootboxPointer(lootboxProgram, publicKey);
+}
 ```
 
- `checkUserAccount` 将获取用户状态`PDA`，如果存在，则调用 `setUserAccountExist` 并将其设置为`true`。
+`checkUserAccount`将检查用户状态的`PDA`，如果存在，则通过调用`setUserAccountExist`将其设置为`true`。
 
- ```tsx
- // check if UserState account exists
-   // if UserState account exists also check if there is a redeemable item from lootbox
-   const checkUserAccount = async (
-     lootboxProgram: Program<LootboxProgram>,
-     publicKey: PublicKey
-   ) => {
-     try {
-       const [userStatePda] = PublicKey.findProgramAddressSync(
-         [publicKey.toBytes()],
-         lootboxProgram.programId
-       )
-       const account = await lootboxProgram.account.userState.fetch(userStatePda)
-       if (account) {
-         setUserAccountExist(true)
-       } else {
-         setMint(undefined)
-         setUserAccountExist(false)
-       }
-     } catch {}
-   }
-
+```tsx
+// 检查UserState账户是否存在
+// 如果UserState账户存在，还要检查是否有可从战利品箱兑换的物品
+const checkUserAccount = async (
+  lootboxProgram: Program<LootboxProgram>,
+  publicKey: PublicKey
+) => {
+  try {
+    const [userStatePda] = PublicKey.findProgramAddressSync(
+      [publicKey.toBytes()],
+      lootboxProgram.programId
+    );
+    const account = await lootboxProgram.account.userState.fetch(userStatePda);
+    if (account) {
+      setUserAccountExist(true);
+    } else {
+      setMint(undefined);
+      setUserAccountExist(false);
+    }
+  } catch {}
+}
 ```
 
-`fetchLootboxPointer` 基本上是获取战利品盒指针，设置可用的战利品盒和可兑换的货币。
+`fetchLootboxPointer` 主要用于获取战利品盒的指针，并设置可用的战利品盒和可兑换的物品。
 
 ```tsx
 const fetchLootboxPointer = async (
@@ -409,23 +409,23 @@ export const GearItem = ({
 }
 ```
 
-布局与上一个相当相似，但现在我们展示一张图片，以齿轮代币上的元数据作为来源。在其下方，我们展示你拥有的每个齿轮代币的数量。
+布局与之前相似，不同的是，现在我们以一张图片来展示齿轮代币，使用代币上的元数据作为来源。在图片下方，我们会显示你拥有的每个齿轮代币的数量。
 
-关于逻辑，我们传入该项作为代表代币铸币的`base58`编码字符串，以及你拥有的数量。
+关于逻辑部分，我们会传入代表代币铸造的`base58`编码字符串和你拥有的数量。
 
-在`useEffect`中，我们创建了一个`metaplex`对象。我们将 `item` 的字符串转换为公钥。然后调用`metaplex`来通过`mint`查找物品。我们得到了`nft`，调用`nft`的`uri`上的`fetch`方法，这样我们就可以获取到链下的元数据。我们将该响应转换为`json`s，并将其设置为元数据，这样我们就可以在返回调用中显示一个图像属性。
+在`useEffect`中，我们创建了一个`metaplex`对象，并将`item`字符串转换为公钥。然后我们通过`mint`调用`metaplex`来查找物品。一旦得到`nft`，我们便在`nft`的`uri`上调用`fetch`方法，从而可以访问到链下的元数据。我们将响应转换为`json`格式，并设置为元数据，这样就可以在返回调用中显示一个图像属性。
 
-回到 `stake.tsx` 文件。首先，我们为齿轮平衡添加一行状态。
+切换回`stake.tsx`文件。首先，我们为齿轮平衡添加了一个状态行。
 
 ```tsx
 const [gearBalances, setGearBalances] = useState<any>({})
 ```
 
-我们在`fetchState`内部调用它。
+我们在`fetchState`函数内调用它。
 
-在获取状态中，我们将余额设置为空对象。然后循环遍历不同的齿轮选项，并获取与该铸币相关联的当前用户的`ATA`。这给了我们一个地址，我们用它来获取账户，并将特定齿轮铸币的余额设置为我们拥有的数字。在循环结束后，我们调用 `setGearBalances(balances)` 。
+在获取状态的过程中，我们首先将余额设置为空对象。然后，我们循环遍历不同的齿轮选项，并获取与该铸币相关联的当前用户的`ATA`。这为我们提供了一个地址，我们用它来获取账户，并将特定齿轮铸币的余额设置为我们所拥有的数字。在循环结束后，我们调用`setGearBalances(balances)`。
 
-所以在用户界面中，我们检查齿轮平衡的长度是否大于零，然后显示所有的齿轮相关内容，或者根本不显示。
+所以，在用户界面中，我们会检查齿轮平衡的长度是否大于零。如果是，就显示所有与齿轮相关的内容；否则，就不显示任何内容。
 
 ```tsx
 <HStack spacing={10} align="start">
@@ -469,8 +469,8 @@ const [gearBalances, setGearBalances] = useState<any>({})
 </HStack>
 ```
 
-这就是检查和显示装备的全部内容。这是[存储库](https://github.com/jamesrp13/buildspace-buildoors/blob/solution-lootboxes/components/GearItem.tsx)中的代码，供你参考。
+这部分描述了如何完成检查和显示装备的操作，并提供了[存储库](https://github.com/jamesrp13/buildspace-buildoors/blob/solution-lootboxes/components/GearItem.tsx)中的代码作为参考。
 
-接下来发生的事情取决于你。你可以决定要修复哪些错误，哪些你可以接受。将所有内容从本地主机移出并进行发布，这样你就可以分享一个公共链接。
+接下来的步骤由你来决定。你可以权衡要修复哪些错误，以及哪些错误可以接受。然后将所有内容从本地主机迁移出去并发布，这样你就可以分享一个公共链接。
 
-...如果你有兴趣的话，将其准备好并部署到主网。在上线主网之前，显然还有许多改进可以和应该进行，例如修复错误、添加更多检查、拥有更多的NFT等等——如果你有兴趣，就将其发布出去吧！
+如果你有兴趣，甚至可以准备并部署到主网。当然，在上线主网之前，还有许多地方可以改进和优化，例如修复错误、添加更多检查、拥有更多的NFT等等。如果这些让你感兴趣，那么就放手一搏吧！
