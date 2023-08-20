@@ -1,6 +1,6 @@
 ---
 sidebar_position: 91
-sidebar_label:  🥩 使用Anchor进行质押
+sidebar_label:  🥩 使用Anchor进行NFT的质押
 sidebar_class_name: green
 ---
 

@@ -1,6 +1,6 @@
 ---
 sidebar_position: 92
-sidebar_label: 💸 Redeeming with Anchor
+sidebar_label: 💸 使用Anchor赎回
 sidebar_class_name: green
 ---
 
