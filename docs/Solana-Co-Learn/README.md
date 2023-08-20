@@ -10,9 +10,9 @@ sidebar_class_name: green
 
 - [区块链基本概念介绍](./module1/block-chain-basic/README.md)
 - [本地程序开发环境配置](./module1/local_program_development/local_program_development.md)
-    - [原始Solana合约实现《hello, World》](./module1/local_program_development/native_program_hello.md)
-    - [Anchor 合约框架实现《hello, World》](./module1/local_program_development/anchor_program_hello.md)
-    - [使用Solang编译器编译solidity合约实现《hello, World》](./module1/local_program_development/solang_program_hello.md)
+    - [Native Solana合约实现 - hello, World](./module1/local_program_development/native_program_hello.md)
+    - [Anchor 合约框架实现 - hello, World](./module1/local_program_development/anchor_program_hello.md)
+    - [Solidity合约实现 - hello, World ](./module1/local_program_development/solang_program_hello.md)
 
 - [BackPack钱包使用](./module1/wallet-usage/README.md)
 
@@ -38,7 +38,7 @@ sidebar_class_name: green
 
 - [Rust简介](./module3/introduction-to-rust/README.md)
 
-- [原生SOLANA开发](./module3/native-solana-development/README.md)
+- [Native Solana开发](./module3/native-solana-development/README.md)
 
 - [安全和验证](./module3/security-and-validation/README.md)
 
