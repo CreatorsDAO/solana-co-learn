@@ -6,21 +6,21 @@ sidebar_class_name: green
 
 # 🔀 Anchor的CPIs
 
-现在我们可以通过添加`CPI`来提升等级。
+现在我们可以通过添加CPI（跨程序调用）来提升我们的代码水平。
 
-回想一下，`CPI`是使用 `invoke` 和 `invoke_signed` 制作的。
+首先回顾一下，CPI是通过使用`invoke`和`invoke_signed`方法来制作的。
 
-`Anchor`还提供了一种制作`CPI`的格式。使用这种格式需要访问所调用程序的`CPI`模块。常见的程序有一个你可以使用的包，例如 `anchor_spl` 用于令牌程序。否则，你将需要使用所调用程序的源代码或已发布的`IDL`来生成`CPI`模块。
+Anchor框架还提供了一种特殊的CPI制作格式。要使用这种格式，你需要访问所调用程序的CPI模块。一些常见的程序可能会有现成的包供你使用，例如`anchor_spl`，这可以用于令牌程序。否则，你将需要使用所调用程序的源代码或已发布的IDL（接口定义语言）来生成CPI模块。
 
-如果没有可用的`CPI`模块，你仍然可以直接在指令中使用 `invoke` 和 `invoke_signed` 。就像`Anchor`指令需要 `Context` 类型一样，`Anchor CPI`使用 `CpiContext` 。
+如果没有现成的CPI模块，你仍然可以直接在指令中使用`invoke`和`invoke_signed`方法。正如Anchor指令需要`Context`类型一样，Anchor CPI则使用`CpiContext`类型。
 
-`CpiContext`提供了指令所需的所有账户和种子。当没有`PDA`签名者时，使用`CpiContext::new`。
+`CpiContext`提供了执行指令所需的所有账户和种子信息。当不需要PDA（程序衍生账户）签名者时，使用`CpiContext::new`：
 
 ```rust
 CpiContext::new(cpi_program, cpi_accounts)
 ```
 
-当需要一个`PDA`作为签名者时，使用 `CpiContext::new_with_signer` 。
+当需要一个PDA作为签名者时，使用`CpiContext::new_with_signer`：
 
 ```rust
 CpiContext::new_with_signer(cpi_program, cpi_accounts, seeds)
@@ -28,8 +28,8 @@ CpiContext::new_with_signer(cpi_program, cpi_accounts, seeds)
 
 - `accounts` - 账户列表
 - `remaining_accounts` - 如果有的话
-- `program` - 程序正在调用`CPI`
-- `signer_seeds` - 如果需要使用`PDA`签署`CPI`
+- `program` - 正在调用CPI的程序
+- `signer_seeds` - 如果需要使用PDA签署CPI
 
 ```rust
 pub struct CpiContext<'a, 'b, 'c, 'info, T>
@@ -43,7 +43,7 @@ where
 }
 ```
 
-当不需要 `signer_seeds` 时使用 `CpiContext::new` （不使用`PDA`签名）。
+当不需要`signer_seeds`时使用`CpiContext::new`（不使用PDA签名）。
 
 ```rust
 pub fn new(
@@ -59,7 +59,7 @@ pub fn new(
     }
 ```
 
-`CpiContext::new_with_signer` 用于种子在`PDA`上签名。
+`CpiContext::new_with_signer`用于在PDA上用种子签名。
 
 ```rust
 pub fn new_with_signer(
@@ -76,11 +76,11 @@ pub fn new_with_signer(
     }
 ```
 
-`anchor_spl` 包含一个 `token` 模块，用于简化创建`CPI`到令牌程序的过程。
+`anchor_spl`包还包括了一个`token`模块，用于简化创建到令牌程序的CPI的过程。
 
-(`Structs` are the list of accounts each respective token program instruction requires. `Functions` are the CPI to each respective instruction.) `Structs` 是每个相应的令牌程序指令所需的账户列表。`Functions` 是每个相应指令的`CPI`。
+在这里，“Structs”指的是每个相应的令牌程序指令所需的账户列表。“Functions”指的是每个相应指令的CPI。
 
-例如，这里`MintTo`是所需的账户：
+例如，下面的`MintTo`就是所需的账户：
 
 ```rust
 #[derive(Accounts)]
@@ -91,9 +91,9 @@ pub struct MintTo<'info> {
 }
 ```
 
-让我们也来看看`mint_to`引擎的内部。
+我们也可以深入了解一下`mint_to`方法的内部工作原理。
 
-它使用 `CpiContext` 来构建一个`CPI`到 `mint_to` 指令。它使用 `invoke_signed` 来制作`CPI`。
+它使用`CpiContext`来构建一个到`mint_to`指令的CPI，并使用`invoke_signed`来执行CPI。
 
 ```rust
 pub fn mint_to<'a, 'b, 'c, 'info>(
@@ -123,7 +123,7 @@ pub fn mint_to<'a, 'b, 'c, 'info>(
 
 例如：
 
-- `mint_to CPI`
+- 使用 `mint_to CPI` 来铸造代币
 
 ```rust
 let auth_bump = *ctx.bumps.get("mint_authority").unwrap();
@@ -146,7 +146,7 @@ let cpi_ctx = CpiContext::new_with_signer(cpi_program, cpi_accounts, signer);
 token::mint_to(cpi_ctx, amount)?;
 ```
 
-重构这个我们得到：
+我们可以重构这个代码段，得到：
 
 ```rust
 token::mint_to(
@@ -166,28 +166,28 @@ token::mint_to(
 )?;
 ```
 
-## ❌ Anchor 错误
+## ❌ Anchor 错误处理
 
 错误可以分为以下几种类型：
 
-- `Anchor`框架从其自身代码内部返回的内部错误
-- 用户（你！）可以返回的自定义错误
+- 来自 `Anchor` 框架自身代码的内部错误
+- 用户（也就是你！）定义的自定义错误
 
-`AnchorErrors`提供了各种信息，例如：
+`AnchorErrors` 能提供许多有关错误的信息，例如：
 
-- 错误名称和编号
-- 代码中抛出锚的位置
-- 违反约束条件的账户
+- 错误的名称和编号
+- 错误在代码中的位置
+- 违反的约束条件和相关账户
 
-最终，所有的程序都会返回相同的错误：[ProgramError](https://docs.rs/solana-program/latest/solana_program/program_error/enum.ProgramError.html?utm_source=buildspace.so&utm_medium=buildspace_project)。
+最后，所有程序会返回一个通用的错误：[ProgramError](https://docs.rs/solana-program/latest/solana_program/program_error/enum.ProgramError.html?utm_source=buildspace.so&utm_medium=buildspace_project)。
 
-`Anchor`有许多不同的内部错误代码。这些代码不是为用户使用的，但研究参考资料以了解代码和其原因之间的映射是很有用的。
+`Anchor` 有许多不同的内部错误代码。虽然这些代码不是为用户所设计，但通过研究可以了解代码和其背后原因的关联，这对理解很有帮助。
 
-自定义错误代码编号从自定义错误偏移量开始。
+自定义错误代码的编号将从自定义错误偏移量开始。
 
-你可以使用 `error_code` 属性为你的程序添加独特的错误。只需将其添加到一个你选择的枚举中即可。然后，你可以将枚举的变体用作程序中的错误。
+你可以使用 `error_code` 属性为你的程序定义独特的错误。只需将其添加到所选枚举中即可。然后，你可以在程序中将枚举的变体用作错误。
 
-此外，你可以使用 `msg` 为各个变体添加消息。如果发生错误，客户端将显示此错误消息。要实际抛出错误，请使用 `err!` 或 `error!` 宏。这些宏会将文件和行信息添加到错误中，然后由`anchor`记录。
+此外，你还可以使用 `msg` 为各个变体定义消息。如果发生错误，客户端将显示此错误消息。要实际触发错误，请使用 `err!` 或 `error!` 宏。这些宏会将文件和行信息添加到错误中，然后由 `anchor` 记录。
 
 ```rust
 #[program]
@@ -204,12 +204,12 @@ mod hello_anchor {
 
 #[error_code]
 pub enum MyError {
-    #[msg("MyAccount may only hold data below 100")]
+    #[msg("MyAccount 的数据只能小于 100")]
     DataTooLarge
 }
 ```
 
-你可以使用 `require` 宏来简化编写错误。上面的代码可以简化为这样（请注意 `>=` 翻转为 `<` ）。
+你还可以使用 `require` 宏来简化错误的编写。上面的代码可以简化为下面的样子（注意 `>=` 翻转为 `<` ）。
 
 ```rust
 #[program]
@@ -224,27 +224,26 @@ mod hello_anchor {
 
 #[error_code]
 pub enum MyError {
-    #[msg("MyAccount may only hold data below 100")]
+    #[msg("MyAccount 的数据只能小于 100")]
     DataTooLarge
 }
 ```
 
-### `constraint` 约束
+### `constraint` 约束条件
 
-如果账户不存在，则初始化一个账户。如果账户已存在，则仍需检查其他限制条件。
+如果账户不存在，系统将初始化一个账户。如果账户已存在，仍需检查其他的限制条件。
 
-如果你使用自己的编辑器，你必须在 `anchor-lang` 的 `Cargo.toml` 中添加 `features = ["init-if-needed"]` 。
+如果你在使用自定义的编辑器，请确保在 `anchor-lang` 的 `Cargo.toml` 文件中添加了 `features = ["init-if-needed"]` 特性。
 
+例如：`anchor-lang = {version = "0.26.0", features = ["init-if-needed"]}`。
 
-e.g. `anchor-lang = {version = "0.26.0", features = ["init-if-needed"]}` .
-
-例如，一个关联的令牌账户：
+下面是一个关联令牌账户的示例代码：
 
 ```rust
 #[program]
 mod example {
     use super::*;
-    pub fn initialize(ctx: Context<Initialize>) -> Result<()> {
+    public fn initialize(ctx: Context<Initialize>) -> Result<()> {
         Ok(())
     }
 }
@@ -259,7 +258,7 @@ pub struct Initialize<'info> {
     )]
     pub token_account: Account<'info, TokenAccount>,
     pub mint: Account<'info, Mint>,
-     #[account(mut)]
+    #[account(mut)]
     pub payer: Signer<'info>,
     pub system_program: Program<'info, System>,
     pub token_program: Program<'info, Token>,
@@ -268,7 +267,7 @@ pub struct Initialize<'info> {
 }
 ```
 
-这是 `init_if_needed` 生成的代码（来自 `anchor expand` 命令的代码片段）：
+以下是 `init_if_needed` 生成的代码（这段代码片段来自 `anchor expand` 命令）：
 
 ```rust
 let token_account: anchor_lang::accounts::account::Account<TokenAccount> = {
@@ -276,23 +275,25 @@ let token_account: anchor_lang::accounts::account::Account<TokenAccount> = {
     || AsRef::<AccountInfo>::as_ref(&token_account).owner
     == &anchor_lang::solana_program::system_program::ID
     {
-      let payer = payer.to_account_info();
-      let cpi_program = associated_token_program.to_account_info();
-      let cpi_accounts = anchor_spl::associated_token::Create {
-        payer: payer.to_account_info(),
-        associated_token: token_account.to_account_info(),
-        authority: payer.to_account_info(),
-        mint: mint.to_account_info(),
-        system_program: system_program.to_account_info(),
-        token_program: token_program.to_account_info(),
-        rent: rent.to_account_info(),
-      };
-      let cpi_ctx = anchor_lang::context::CpiContext::new(
-        cpi_program,
-        cpi_accounts,
-      );
-      anchor_spl::associated_token::create(cpi_ctx)?;
+        let payer = payer.to_account_info();
+        let cpi_program = associated_token_program.to_account_info();
+        let cpi_accounts = anchor_spl::associated_token::Create {
+            payer: payer.to_account_info(),
+            associated_token: token_account.to_account_info(),
+            authority: payer.to_account_info(),
+            mint: mint.to_account_info(),
+            system_program: system_program.to_account_info(),
+            token_program: token_program.to_account_info(),
+            rent: rent.to_account_info(),
+        };
+        let cpi_ctx = anchor_lang::context::CpiContext::new(
+            cpi_program,
+            cpi_accounts,
+        );
+        anchor_spl::associated_token::create(cpi_ctx)?;
     }
   ...
 }
 ```
+
+通过这个约束条件，可以确保在初始化时根据需要创建关联的令牌账户，使得整个流程更加自动化和智能。如果你对代码有任何疑问或需要进一步的解释，请随时告诉我。
