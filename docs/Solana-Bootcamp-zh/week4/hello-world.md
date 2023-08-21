@@ -83,7 +83,7 @@ $ cargo new --bin helloworld
 
 然后用VScode打开工程，并打开这里的`main.rs`。
 
-```rs
+```rust
 fn main() {
     println!("Hello, world!");
 }
@@ -91,7 +91,7 @@ fn main() {
 
 创建工程到时候，已经默认生成了打印"Hello, world!"。我们修改成:
 
-```rs
+```rust
 use std::env;
 
 fn main() {
@@ -145,7 +145,7 @@ use std::env;
 
 然后是main函数:
 
-```rs
+```rust
 fn main() {
     ...
 }
@@ -153,7 +153,7 @@ fn main() {
 
 函数的定义是`fn` 开头，然后跟函数名，以及用`()`括起来的参数列表，最后是返回值类型，这里因为没有返回值，所以是空。再来看个函数定义：
 
-```rs
+```rust
 // Function that returns a boolean value
 fn is_divisible_by(lhs: u32, rhs: u32) -> bool {
     // Corner case, early return
@@ -170,7 +170,7 @@ fn is_divisible_by(lhs: u32, rhs: u32) -> bool {
 
 这里在函数定义逻辑为：
 
-```rs
+```rust
 // Corner case, early return
 if rhs == 0 {
     return false;

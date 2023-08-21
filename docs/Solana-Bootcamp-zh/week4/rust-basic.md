@@ -36,7 +36,7 @@ sidebar_class_name: green
 
 元组：
 
-```rs
+```rust
 let tup: (i32, f64, u8) = (500, 6.4, 1);
 ```
 
@@ -44,13 +44,13 @@ let tup: (i32, f64, u8) = (500, 6.4, 1);
 
 数组：
 
-```rs
+```rust
 let arr = [1, 2, 3, 4, 5];
 ```
 
 和元组不通的是，这里每个元素的类型必须是同样的。访问的时候，下标用中括号表示: `arr[0]`
 
-```rs
+```rust
 struct User {
     active: bool,
     username: String,
@@ -72,19 +72,19 @@ let user = User {
 
 变量定义为：
 
-```rs
+```rust
 let x = 5;
 ```
 
 这里x的类型是由系统推到而来的。也可以显示指定类型
 
-```rs
+```rust
 let x:u32 = 5;
 ```
 
 这里`x`被赋值为5后，区别与其他语言的点。变量默认是不可以修改的，也就是：
 
-```rs
+```rust
 let x = 5;
 x=6;
 ```
@@ -107,14 +107,14 @@ error[E0384]: cannot assign twice to immutable variable `x`
 
 但是可以用如下形式：
 
-```rs
+```rust
 let x = 5;
 let x=6;
 ```
 
 甚至如下形式：
 
-```rs
+```rust
 let x = 5;
 let x="6";
 ```
@@ -123,7 +123,7 @@ let x="6";
 
 如果要修改变量，可以这样定义：
 
-```rs
+```rust
 let mut x = 5;
 x=5;
 ```
@@ -137,13 +137,13 @@ x=5;
 
 let 主要用于变量的定义：
 
-```rs
+```rust
 let condition = true;
 ```
 
 let还可以和if组合：
 
-```rs
+```rust
 let number = if condition { 5 } else { "six" };
 ```
 
@@ -153,7 +153,7 @@ let number = if condition { 5 } else { "six" };
 
 match可以做类型匹配和解包：
 
-```rs
+```rust
 let config_max = Some(3u8);
 match config_max {
     Some(max) => println!("The maximum is configured to be {}", max),
@@ -165,7 +165,7 @@ match config_max {
 
 `if`和Go语言的`if`比较类似，都是去除了传统语言里面的括号
 
-```rs
+```rust
 let number = 3;
 
 if number < 5 {
@@ -191,7 +191,7 @@ if number < 5 {
 
 rust给无限循环增加了一个`loop`,约等于 `while 1`：
 
-```rs
+```rust
 loop {
     println!("again and again!");
 }
@@ -199,7 +199,7 @@ loop {
 
 但是`loop`可以通过`break`来返回一个结果：
 
-```rs
+```rust
 let mut counter = 0;
 
 let result = loop {
@@ -215,7 +215,7 @@ println!("The result is {result}");
 
 在循环中，可以通过类似`goto`的label定义，`break`到对应层级：
 
-```rs
+```rust
 let mut count = 0;
 'counting_up: loop {
     println!("count = {count}");
@@ -239,7 +239,7 @@ println!("End count = {count}");
 
 除了`loop`，常见的`while`也是有的：
 
-```rs
+```rust
 while true {
     println!("again and again!");
 }
@@ -248,7 +248,7 @@ while true {
 以及`for`语句，不同于c-like语言，`for`语句是迭代器风格的，而不是两个";"三语句模式。
 
 
-```rs
+```rust
 let a = [10, 20, 30, 40, 50];
 
 for element in a {
@@ -265,7 +265,7 @@ for element in a {
 
 函数分为`main`函数和普通函数。`main`函数是可执行程序的入口函数。对于库是不需要的。`main`函数本身也是个普通函数 只是函数名为`main`。
 
-```rs
+```rust
 fn main() {
     println!("Hello, world!");
 
@@ -279,7 +279,7 @@ fn another_function() {
 
 上面这个是不带参数，没有返回值的函数的最基本定义结构。首先用 fn开始，然后跟函数名以及`()`。最后用`{}`,括起来 的函数逻辑。
 
-```rs
+```rust
 fn main() {
     print_labeled_measurement(5, 'h');
 }
@@ -293,7 +293,7 @@ fn print_labeled_measurement(value: i32, unit_label: char) {
 
 带返回的函数如：
 
-```rs
+```rust
 fn main() {
     let x = plus_one(5);
 
@@ -315,7 +315,7 @@ fn plus_one(x: i32) -> i32 {
 
 定义结构体如下：
 
-```rs
+```rust
 struct User {
     active: bool,
     username: String,
@@ -328,7 +328,7 @@ struct User {
 
 `struct`的初始化：
 
-```rs
+```rust
 let user1 = User {
     email: String::from("someone@example.com"),
     username: String::from("someusername123"),
@@ -339,7 +339,7 @@ let user1 = User {
 
 如果用其他`struct`来初始化同类型时，可以用：
 
-```rs
+```rust
 let user2 = User {
     email: String::from("another@example.com"),
     ..user1
@@ -348,7 +348,7 @@ let user2 = User {
 
 有一种特殊的`struct,元组`struct`:
 
-```rs
+```rust
 struct Color(i32, i32, i32);
 struct Point(i32, i32, i32);
 
@@ -362,7 +362,7 @@ fn main() {
 
 还有种更特殊的`struct`：
 
-```rs
+```rust
 struct AlwaysEqual;
 
 fn main() {
@@ -372,7 +372,7 @@ fn main() {
 
 他的值可以是`{}`,所以在代码中看到`{}`就可以认为是一个不占空间的struct的值，比如:
 
-```rs
+```rust
 Ok({})
 ```
 
@@ -382,7 +382,7 @@ rust中的`enum`比任何其他语言的都强大。
 
 简单版本：
 
-```rs
+```rust
 enum IpAddrKind {
     V4,
     V6,
@@ -393,7 +393,7 @@ enum IpAddrKind {
 
 指定类型版本：
 
-```rs
+```rust
 enum IpAddr {
     V4(String),
     V6(String),
@@ -402,7 +402,7 @@ enum IpAddr {
 
 使用的时候：`let home = IpAddr::V4(String::from("127.0.0.1"));` 这就有点不像传统`enum`了。更像一个`struct`定义。 这里"V4","V6"同样的类型，还不直观。
 
-```rs
+```rust
 struct Ipv4Addr {
     // --snip--
 }
@@ -421,7 +421,7 @@ enum IpAddr {
 
 来个不容易看的：
 
-```rs
+```rust
 enum IpAddr {
     V4(u8, u8, u8, u8),
     V6(String),
@@ -434,7 +434,7 @@ let home = IpAddr::V4(127, 0, 0, 1);
 
 最复杂的：
 
-```rs
+```rust
 enum Message {
     Quit,
     Move { x: i32, y: i32 },
@@ -452,7 +452,7 @@ enum Message {
 
 给struct定义方法：
 
-```rs
+```rust
 #[derive(Debug)]
 struct Rectangle {
     width: u32,
@@ -484,7 +484,7 @@ fn main() {
 
 给`enum`定义也是一样，用`impl Xxx {}`
 
-```rs
+```rust
 impl Message {
     fn call(&self) {
         // method body would be defined here
@@ -497,7 +497,7 @@ m.call();
 
 枚举的强大还体现在他的使用上，再不需要上面的类继承来做反射：
 
-```rs
+```rust
 pub enum NameRegistryInstruction {
 Create {
     hashed_name: Vec<u8>,
@@ -546,7 +546,7 @@ match instruction {
 
 通过`match`语句，首先能对`enum`做类型匹配，匹配的同时，还可以对类型做解包, 如`NameRegistryInstruction::Create`
 
-```rs
+```rust
 {
     hashed_name,
     lamports,
@@ -560,7 +560,7 @@ match instruction {
 
 ### list/vector
 
-```rs
+```rust
 Vec<T>
 ```
 
@@ -568,19 +568,19 @@ Vec<T>
 
 创建指定类型的`vector`：
 
-```rs
+```rust
 let v: Vec<i32> = Vec::new();
 ```
 
 也可以通过`vec!`宏直接赋值初始化：
 
-```rs
+```rust
 let v = vec![1, 2, 3];
 ```
 
 增加元素：
 
-```rs
+```rust
 let mut v = Vec::new();
 
 v.push(5);
@@ -594,7 +594,7 @@ v.push(8);
 
 通过`remove`进行删除元素：
 
-```rs
+```rust
 let mut v = vec![1, 2, 3];
 assert_eq!(v.remove(1), 2);
 assert_eq!(v, [1, 3]);
@@ -602,7 +602,7 @@ assert_eq!(v, [1, 3]);
 
 可以通过`get`给定下标，获取`vector`的元素，通过`Option`来做判断是否存在：
 
-```rs
+```rust
 let v = vec![1, 2, 3, 4, 5];
 
 let third: &i32 = &v[2];
@@ -617,7 +617,7 @@ match third {
 
 通过迭代器，遍历：
 
-```rs
+```rust
 let v = vec![100, 32, 57];
 for n_ref in &v {
     // n_ref has type &i32
@@ -628,7 +628,7 @@ for n_ref in &v {
 
 上面这个是只读的，如果需要修改，使用：
 
-```rs
+```rust
 let mut v = vec![100, 32, 57];
 for n_ref in &mut v {
     // n_ref has type &mut i32
@@ -640,7 +640,7 @@ for n_ref in &mut v {
 
 rust的`String`不是基础类型，是由`std`提供的类型。创建字符串可以用：
 
-```rs
+```rust
 let mut s = String::new();
 
 let data = "initial contents";
@@ -654,7 +654,7 @@ let s = String::from("initial contents");
 
 修改字符串：
 
-```rs
+```rust
 let mut s = String::from("foo");
 s.push_str("bar");
 
@@ -675,7 +675,7 @@ let s3 = s1 + &s2; // note s1 has been moved here and can no longer be used
 
 可以通过下标操作。或者字符串中的字符：
 
-```rs
+```rust
 let s1 = String::from("hello");
     let h = s1[0];
 ```
@@ -687,7 +687,7 @@ rust中的`map`也不是基础类型，而是`std`提供的，并且也和一般
 
 创建：
 
-```rs
+```rust
 use std::collections::HashMap;
 
 let mut scores = HashMap::new();
@@ -698,7 +698,7 @@ scores.insert(String::from("Yellow"), 50);
 
 访问：
 
-```rs
+```rust
 use std::collections::HashMap;
 
 let mut scores = HashMap::new();
@@ -712,7 +712,7 @@ let score = scores.get(&team_name).copied().unwrap_or(0);
 
 遍历：
 
-```rs
+```rust
 use std::collections::HashMap;
 
 let mut scores = HashMap::new();
@@ -727,7 +727,7 @@ for (key, value) in &scores {
 
 插入修改：
 
-```rs
+```rust
 use std::collections::HashMap;
 
 let mut scores = HashMap::new();
@@ -740,7 +740,7 @@ println!("{:?}", scores);
 
 判断是否存在，存在才插入：
 
-```rs
+```rust
 use std::collections::HashMap;
 
 let mut scores = HashMap::new();
@@ -758,7 +758,7 @@ println!("{:?}", scores);
 
 `trait` 的定义类似`struct`:
 
-```rs
+```rust
 pub trait Summary {
     fn summarize(&self) -> String;
 }
@@ -768,7 +768,7 @@ pub trait Summary {
 
 `trait`只是定义了接口方法，而具体实现需要再`struct`中实现：
 
-```rs
+```rust
 pub struct NewsArticle {
     pub headline: String,
     pub location: String,
@@ -801,7 +801,7 @@ impl Summary for Tweet {
 
 这里还可以再`trait`中给出默认实现：
 
-```rs
+```rust
 pub trait Summary {
     fn summarize(&self) -> String {
         String::from("(Read more...)")
@@ -813,7 +813,7 @@ pub trait Summary {
 
 `trait`的作用主要要结合泛型限制，和参数专递才能体现。比如类似其他语言中基本的OOP的动态：
 
-```rs
+```rust
 pub fn notify(item: &impl Summary) {
     println!("Breaking news! {}", item.summarize());
 }
@@ -823,7 +823,7 @@ pub fn notify(item: &impl Summary) {
 
 除了可以限制参数，还可以限制返回值。这个就有点类似其他语言的基类、接口。
 
-```rs
+```rust
 fn returns_summarizable() -> impl Summary {
     Tweet {
         username: String::from("horse_ebooks"),
@@ -844,7 +844,7 @@ fn returns_summarizable() -> impl Summary {
 
 来看个定义：
 
-```rs
+```rust
 pub struct Iter<'a, K, V> {
     db_iter: rocksdb::DBIterator<'a>,
     _phantom: PhantomData<(K, V)>,
@@ -876,7 +876,7 @@ impl<'a, K: DeserializeOwned, V: DeserializeOwned> Iterator for Iter<'a, K, V> {
 
 回到泛型基础语法上来。先来看定义函数：
 
-```rs
+```rust
 fn largest<T>(list: &[T]) -> &T {
     let mut largest = &list[0];
 
@@ -906,7 +906,7 @@ fn main() {
 
 还可以出现在结构体中：
 
-```rs
+```rust
 struct Point<T> {
     x: T,
     y: T,
@@ -929,7 +929,7 @@ fn main() {
 
 以及枚举中，如典型的`Result`：
 
-```rs
+```rust
 enum Result<T, E> {
     Ok(T),
     Err(E),
@@ -938,7 +938,7 @@ enum Result<T, E> {
 
 在后面有介绍生命周期，生命周期也类似类型，也需要放在这里'`<>`' 如：
 
-```rs
+```rust
 pub struct Iter<'a, K, V> {
     db_iter: rocksdb::DBIterator<'a>,
     _phantom: PhantomData<(K, V)>,
