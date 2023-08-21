@@ -35,7 +35,7 @@ sidebar_class_name: green
 - [Hello World](./week4/hello-world.md)
 - [Rust基本语法](./week4/rust-basic.md)
 - [通过Cargo管理工程](./week4/cargo.md)
-- [Rustaceans的理解](./week4/rustaceasns-understand.md)
+- [Rustaceans的理解](./week4/rustaceans-understand.md)
 - [课后练习](./week4/homework.md)
 
 ## Week5: Solana合约开发 Part.1
