@@ -6,6 +6,8 @@ sidebar_class_name: green
 
 # Solana 中文 BootCamp 💾
 
+video: [https://www.youtube.com/channel/UC55hLTz7EuR97neBW2trFMA](https://www.youtube.com/channel/UC55hLTz7EuR97neBW2trFMA)
+
 ## Week1: Solana 基础知识
 
 - [Solana 介绍](./week1/solana-intro.md)
