@@ -157,7 +157,7 @@ $ solana balance
 这里通过命令行给另一个账号转账：
 
 ```bash
-solana transfer --allow-unfunded-recipient CZmVK1DymrSVWHiQCGXx6VG5zgHVrh5J1P514jHKRDxA 0.01
+$ solana transfer --allow-unfunded-recipient CZmVK1DymrSVWHiQCGXx6VG5zgHVrh5J1P514jHKRDxA 0.01
 ```
 
 输出：

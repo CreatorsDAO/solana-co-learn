@@ -15,7 +15,6 @@ sidebar_class_name: green
 - [钱包使用](./week1/wallet-useage.md)
 - [课后练习](./week1/homework.md)
 
-
 ## Week2: 通过RPC与Solana交互
 
 - Solana的RPC介绍

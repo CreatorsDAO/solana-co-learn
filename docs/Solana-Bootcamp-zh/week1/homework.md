@@ -13,6 +13,8 @@ sidebar_class_name: green
 - 命令行操作，查看`spl-token`命令的帮助文档
 - `solana config set --url https://api.devnet.solana.com`
 
+---
+
 ## 示例
 
 设置环境为开发环境：
