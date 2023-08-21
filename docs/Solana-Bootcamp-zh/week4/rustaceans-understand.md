@@ -17,14 +17,16 @@ sidebar_class_name: green
 rust 不是说不需要像 C++一样 new/delete，自己开辟/释放内存么？怎么还需要说内存管理。
 
 所有权和借用
+
 智能指针
+
 rust 的智能指针，主要提供了
 
 - `Box<T>` 在堆上分配空间
 - `Rc<T>` 引用计数，可以使得一个对象有多个 `owner`
 - `Ref<T>` and `RefMut<T>`, `RefCell<T>` 强制要求在运行时检查借用关系，而不是编译期间，就有点动态检查的意思
 
-### Box<T>
+### `Box<T>`
 
 box 顾名思义，就是装箱，在 Objective-C 中有相关概念。本质就类似 C 里面 alloc 一段内存，然后将值 copy 过去。
 
@@ -51,11 +53,12 @@ fn main() {
     let list = Cons(1, Box::new(Cons(2, Box::new(Cons(3, Box::new(Nil))))));
 }
 ```
+
 就好比是 C++里面的前向类声明，然后存一个该类的指针。如果这里不用 `Box`，就会导致，这里在推测使用了多少空间的时候，陷入了循环。而 `Box` 只需要放一个指针大小就可以了。具体的内容在里面指向。
 
-![](../img/week3/coins.png)
+![](../img/week3/cons.png)
 
-### Rc<T>
+### `Rc<T>`
 
 Rc：Reference Count，也就是 C++里面智能指针最常见的方式，当某个空间需要使用时，就对其计数加一。当不需要的时候，就减一。当引用技术的值为 0 的时候，就对其进行销毁。
 
@@ -114,7 +117,7 @@ fn main() {
 
 因此就可以同时创建 `b` 和 `c` 了。
 
-### RefCell<T>
+### `RefCell<T>`
 
 前面借用有介绍到,不可以在 `mut` 借用后，继续可读借用。
 
