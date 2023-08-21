@@ -17,25 +17,26 @@ sidebar_class_name: green
 
 ## Week2: 通过RPC与Solana交互
 
-- Solana的RPC介绍
-- 接口RPC
-- 推送RPC
-- 课后练习
+- [Solana的RPC介绍](./week2/solana-rpc-intro.md)
+- [接口RPC](./week2/interface-rpc.md)
+- [推送RPC](./week2/push-rpc.md)
+- [课后练习](./week2/homework.md)
 
 ## Week3: 与Solana合约交互
 
-- Solana的Web3.js
-- 与钱包交互
-- 合约调用
-- 课后练习
+- [Solana的Web3.js](./week3/web3-js.md)
+- [与钱包交互](./week3/call-wallet.md)
+- [`Program`调用](./week3/call-program.md)
+- [课后练习](./week3/homework.md)
+
 
 ## Week4: Rust基本知识
 
-- Hello World
-- Rust基本语法
-- 通过Cargo管理工程
-- Rustaceans的理解
-- 课后练习
+- [Hello World](./week4/hello-world.md)
+- [Rust基本语法](./week4/rust-basic.md)
+- [通过Cargo管理工程](./week4/cargo.md)
+- [Rustaceans的理解](./week4/rustaceasns-understand.md)
+- [课后练习](./week4/homework.md)
 
 ## Week5: Solana合约开发 Part.1
 
