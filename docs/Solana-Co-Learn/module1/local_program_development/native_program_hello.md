@@ -20,6 +20,8 @@ cargo new --lib solana-hello-world-local
 
 记得更新 `Cargo.toml` 文件，将 `solana-program` 添加为依赖项，并检查 `crate-type` 是否已经存在。
 
+这里的`solana-program` 可以通过在命令行执行`cargo add solana-program`添加到依赖管理的配置文件中。
+
 ```toml
 [package]
 name = "solana-hello-world-local"
@@ -104,7 +106,7 @@ Solana程序部署将输出你的程序的程序`ID`。你现在可以在[Solana
 solana logs <PROGRAM_ID>
 ```
 
-在测试验证器仍在运行时，尝试使用[此处](https://github.com/Unboxed-Software/solana-hello-world-client)的客户端脚本调用你的程序。
+在测试验证器仍在运行时，尝试使用[此处](https://github.com/CreatorsDAO/native-hello/tree/main/hello-frontend)的客户端脚本调用你的程序。
 
 在`index.ts`中用刚刚部署的`PROGRAM ID`替换掉原来的`PROGRAM ID`，然后运行`npm install`，接着运行`npm start`。这将返回一个Solana Explorer的`URL`。将URL复制到浏览器中，在Solana Explorer上查找该交易，并检查程序日志中是否打印了`Hello, world!`。或者，你可以在运行`solana logs`命令的终端中查看程序日志。
 
