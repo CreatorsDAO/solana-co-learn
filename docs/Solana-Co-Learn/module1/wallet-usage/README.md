@@ -6,7 +6,7 @@ Solana的钱包种类繁多，如众所周知的Phantom钱包。然而，在此�
 
 ## 下载Backpack钱包
 
-下载地址：[`https://www.backpack.app/`](https://www.backpack.app/)。点击页面上的“Download”按钮，然后选择适合自己浏览器的插件。
+下载地址：[`https://www.backpack.app/`](https://www.backpack.app/)。点击页面上的“`Download`”按钮，然后选择适合自己浏览器的插件。
 
 目前Backpack钱包只支持Chrome、Brave和Arc浏览器。移动端版本还在开发中。
 
@@ -40,7 +40,7 @@ Solana的钱包种类繁多，如众所周知的Phantom钱包。然而，在此�
 
 ![](./backpack-setting1.png)
 
-然后点击Preference选项。
+然后点击`Preference`选项。
 
 ![](./backpack-perference.png)
 
@@ -48,13 +48,14 @@ Solana的钱包种类繁多，如众所周知的Phantom钱包。然而，在此�
 
 ![](./backpack-custom-rpc.png)
 
-接下来就是设置自定义rpc的环节，我们在此选择了`localnet`。
+接下来就是设置自定义RPC的环节，我们在此选择了`localnet`。
 
-在`Custom`选项下，你可以自定义Rpc地址。除了官方提供的`testnet`或`mainbeta`地址，你还可以通过`quicknode`或`helius`申请自己的rpc地址。
+在`Custom`选项下，你可以自定义RPC地址。除了官方提供的`testnet`或`mainbeta`地址，你还可以通过`Quicknode`或`Helius`申请自己的RPC地址。
 
 ## 参考资料
 
-- Quicknode
-- helius
+- [Quicknode](https://dashboard.quicknode.com/)
+- [helius](https://www.helius.dev/)
+- [helloMoon](https://www.hellomoon.io/dashboard)
 
 总而言之，Backpack钱包由于其对开发者友好的特性，以及灵活的自定义RPC设置功能，成为了一款值得推荐的钱包选项。它使得开发者能够更便捷、灵活地进行Solana开发和测试工作。
