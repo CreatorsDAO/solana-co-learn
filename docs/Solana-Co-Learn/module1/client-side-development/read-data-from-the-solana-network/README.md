@@ -15,15 +15,15 @@ sidebar_class_name: green
 从Solana的字母表开始，我们有A代表账户。我们从账户开始，因为Solana上的智能合约（也称为“程序”）是无状态的——除了代码之外，它们不存储任何信息。一切都存储在账户中，所以账户对Solana来说至关重要。它们负责存储、合约和本地区块链程序的管理。
 
 Solana 上有三种类型的账户：
-- 数据帐户 - 嗯，这些就是用来存储数据的！
-- 程序帐户 - 存储可执行程序（又称智能合约）的地方
-- 原生账户 - 用于核心区块链功能，例如权益和投票的账户
+- **数据帐户** - 就是用来存储数据的！
+- **程序帐户** - 存储可执行程序（又称智能合约）的地方
+- **原生账户** - 用于核心区块链功能，例如权益和投票的账户
 
-至于本地账户（`native account`），是区块链运行所必需的，我们稍后会详细介绍。目前，我们只关注数据和程序账户。
+至于原生账户，是区块链运行所必需的，我们稍后会详细介绍。目前，我们只关注数据和程序账户。
 
 在数据账户方面，还有两种进一步的类型：
-- 系统拥有的帐户
-- `PDA`（程序派生地址）帐户
+- **系统拥有的帐户**
+- **`PDA`（程序派生地址）帐户**
 
 我们很快会介绍这些具体是什么，现在请跟着一起学习。
 
@@ -39,7 +39,7 @@ Solana 上有三种类型的账户：
 
 我们现在只关注我们需要了解的部分，所以即使有些内容不那么清晰，也请勇往直前 - 我们将在学习过程中填补这些空白。
 
-`Lamport`是Solana的最小单位，类似于以太坊的Gwei。一个`Lamport`等于0.000000001 SOL，所以这个字段告诉我们账户拥有多少SOL。
+`Lamport`是Solana的最小单位，类似于以太坊的`Gwei`。一个`Lamport`等于0.000000001 SOL，所以这个字段告诉我们账户拥有多少SOL。
 
 每个账户都有一个公钥，就像账户的地址一样。你知道你的钱包有一个地址来接收那些炫酷的NFT吗？这就是同样的原理！Solana的地址只是用`base58`编码的字符串。
 
@@ -88,8 +88,7 @@ async function getBalanceUsingJSONRPC(address: string): Promise<number> {
 
 这里涉及了很多步骤。我们正在进行一个POST请求，请求体中包含特定的参数来指导RPC执行什么操作。我们要指定RPC的版本、id、方法（本例中是`getBalance`），以及该方法所需的参数（本例中只有`address`）。
 
-由于我们对一个非常简单的方法有大量的样板代码，我们可以使用Solana的Web3.js SDK。以下是所需的代码：
-
+由于我们对一个非常简单的方法有大量的样板代码，我们可以使用Solana的`Web3.js` SDK。以下是所需的代码：
 
 ```ts
 async function getBalanceUsingWeb3(address: PublicKey): Promise<number> {
@@ -97,6 +96,8 @@ async function getBalanceUsingWeb3(address: PublicKey): Promise<number> {
     return connection.getBalance(address);
 }
 ```
+
+这里有Solana RPC API 关于介绍如何使用`getBalance`的[文档](https://docs.solana.com/developing/clients/jsonrpc-api#getbalance)。
 
 是不是很美观？我们仅用三行代码就能获取某人的Solana余额。试想一下，如果获取任何人的银行余额也能如此简单。
 
@@ -106,7 +107,7 @@ async function getBalanceUsingWeb3(address: PublicKey): Promise<number> {
 
 现在是时候构建一个通用的余额查询器了（假设整个宇宙都在Solana上运行）。这将是一个简洁而强大的应用程序，能查询Solana上任何账户的余额。
 
-首先，在你的工作空间中创建一个文件夹，比如放在桌面上。[克隆起始库](https://github.com/RustyCab/solana-intro-frontend.git)并按照以下步骤设置：
+首先，在你的工作空间中创建一个文件夹，比如放在桌面上。[克隆起始库](https://github.com/CreatorsDAO/solana-intro-frontend)并按照以下步骤设置：
 
 ```bash
 git clone https://github.com/CreatorsDAO/solana-intro-frontend
@@ -165,7 +166,7 @@ const addressSubmittedHandler = (address: string) => {
 
 - 我们正在使用 `key.toBase58` 来设置地址，这是Solana地址的字符串编码方式。
 - 我们正在连接到 `devnet` 网络，有三个网络可供选择：主网、测试网和开发网。我们将在开发网上进行所有操作。
-- 我们正在将余额从`Lamports`转换为SOL，因为余额是以Lamports返回的，而不是SOL。
+- 我们正在将余额从`Lamports`转换为SOL，因为余额是以`Lamports`返回的，而不是SOL。
 
 我们做完了！如果你在这里粘贴一个地址，你会看到余额显示。确保你的账户有开发网络上的SOL！如果没有，你可以使用我的账户来测试应用 - `B1aLAAe4vW8nSQCetXnYqJfRxzTjnbooczwkUJAr7yMS`。
 
@@ -211,3 +212,9 @@ const addressSubmittedHandler = (address: string) => {
 请尽量自己尝试解决，不要提前查看答案！相信你会发现挑战其实并不复杂。
 
 完成后，你可以在[这里](https://github.com/CreatorsDAO/solana-intro-frontend/tree/challenge-solution)查看挑战解决方案的参考代码。
+
+## 📚 更多关于账户相关的资源
+
+- [Solana Cookbook Account](https://solanacookbook.com/core-concepts/accounts.html#facts)
+- [[Question] 只有数据账户的所有者才能修改其数据和扣除lamports](https://github.com/CreatorsDAO/all-in-one-solana/discussions/12)
+- [Solana Docs - Accounts](https://docs.solana.com/developing/programming-model/accounts)
