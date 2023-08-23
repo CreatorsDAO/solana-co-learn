@@ -25,7 +25,7 @@ npx create-solana-client solana-intro-client
 
 如果系统询问你是否要安装`create-solana-client`软件包，请选择“是”。
 
-接下来，只需导航到新创建的目录，并使用`VS Code`打开它：
+接下来，只需导航到新创建的目录，并使用文本编辑器打开它：
 
 ```bash
 cd solana-intro-client
@@ -118,7 +118,7 @@ async function main() {
 
 现在，如果我们还能自动获取 `devnet SOL` 就更好了。哦等等，我们确实可以！
 
-看看这个超酷的空投功能-
+看看这个超酷的空投功能。
 
 ```ts
 async function airdropSolIfNeeded(
@@ -191,9 +191,9 @@ const PROGRAM_ID = new Web3.PublicKey("ChT1B39WKLS8qUrkLvFDXMhEJ4F1XZzwUNHUt4AU9
 const PROGRAM_DATA_PUBLIC_KEY = new Web3.PublicKey("Ah9K7dQ8EHaZqcAsgBW8w37yN2eAy3koFmUn4x3CJtod")
 ```
 
-`PROGRAM_ID` 是“ping”程序本身的地址。`PROGRAM_DATA_PUBLIC_KEY` 是存储程序数据的账户地址。记得，可执行代码和状态数据在Solana上是分开存储的！
+`PROGRAM_ID` 是“`ping`”程序本身的地址。`PROGRAM_DATA_PUBLIC_KEY` 是存储程序数据的账户地址。记得，**可执行代码和状态数据在Solana上是分开存储的！**
 
-然后，添加下列函数以在任何地方调用“ping”程序：
+然后，添加下列函数以在任何地方调用“`ping`”程序：
 
 ```ts
 async function pingProgram(connection: Web3.Connection, payer: Web3.Keypair) {
@@ -270,4 +270,4 @@ async function pingProgram(connection: Web3.Connection, payer: Web3.Keypair) {
 
 附注：如果你确定自己已经了解了这些内容，但转账仍然失败，那么问题可能是转账金额太少——尝试至少转账0.1 SOL。
 
-就像以往一样，在查看解决方案代码之前，尽量自己完成这个任务。当你真正需要参考解决方案时，[请点击这里查看](https://github.com/RustyCab/solana-send-sol-client)。👀
+就像以往一样，在查看解决方案代码之前，尽量自己完成这个任务。当你真正需要参考解决方案时，[请点击这里查看](https://github.com/CreatorsDAO/solana-co-learn-code/blob/main/src/transferSol.ts)。👀
