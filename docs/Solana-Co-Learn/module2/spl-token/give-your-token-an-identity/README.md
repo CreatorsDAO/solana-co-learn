@@ -6,7 +6,7 @@ sidebar_class_name: green
 
 # 🧬 为你的代币赋予身份
 
-现在是时候让代币与它们的创造者（也就是你）相遇了。我们将在之前构建的基础上继续前进。如果需要，你可以从[这个链接获取起始代码](https://github.com/buildspace/solana-token-client/tree/solution-without-burn)（确保你处于 `solution-without-burn` 分支）。
+现在是时候让代币与它们的创造者（也就是你）相遇了。我们将在之前构建的基础上继续前进。如果需要，你可以从[这个链接获取起始代码](https://github.com/CreatorsDAO/solana-token-client/tree/solution-without-burn)（确保你处于 `solution-without-burn` 分支）。
 
 首先，我们要添加新的依赖项：
 
@@ -15,7 +15,7 @@ npm install @metaplex-foundation/js fs
 npm install @metaplex-foundation/mpl-token-metadata
 ```
 
-我们将借助Metaplex SDK添加元数据，并使用 `fs` 库来读取代币的标志图片。接下来，创建一个名为 `assets` 的新文件夹，并添加你的标志。这将在测试网络上进行，所以尽情玩乐吧！我选了一个比萨饼的表情符号，所以我把文件命名为`pizza.png`，哈哈。
+我们将借助`Metaplex SDK`添加元数据，并使用 `fs` 库来读取代币的标志图片。接下来，创建一个名为 `assets` 的新文件夹，并添加你的标志。这将在测试网络上进行，所以尽情玩乐吧！我选了一个比萨饼的表情符号，所以我把文件命名为`pizza.png`，哈哈。
 
 Metaplex将负责所有繁重的工作，所以请在`index.ts`文件顶部添加以下导入语句：
 
@@ -40,7 +40,7 @@ import * as fs from "fs"
 1. 使用 `toMetaplexFile()` 方法将图像文件转换为Metaplex文件。
 2. 使用 `metaplex.storage().upload` 方法上传图片。
 3. 使用 `metaplex.uploadMetadata()` 方法上传链下元数据。
-4. 使用 `findMetadataPda()` 方法推导出元数据账户的程序派生地址（PDA）。
+4. 使用 `findMetadataPda()` 方法推导出元数据账户的程序派生地址（`PDA`）。
 5. 构建类型为 `DataV2` 的链上数据格式。
 6. 使用 `createCreateMetadataAccountV2Instruction` 方法创建元数据账户的构建指令（不是拼写错误哦，哈哈）。
 7. 发送带有指令的交易，以创建令牌元数据账户。
@@ -127,7 +127,7 @@ async function createTokenMetadata(
 }
 ```
 
-确保你更新了文件名！此外，不必担心 `nfts()` 的调用 - 最初，Metaplex是为NFT构建的，但最近它扩展到了可替代代币的工作。
+确保你更新了文件名！此外，不必担心 `nfts()` 的调用 - 最初，Metaplex是为`NFT`构建的，但最近它扩展到了可替代代币的工作。
 
 你会注意到我们在这里留下了许多空白的地方 - 那是因为在创建可替代代币时，我们并不需要设置这些内容。非可替代代币则需要定义更具体的行为特性。
 
@@ -208,7 +208,7 @@ Create Metadata Account: https://explorer.solana.com/tx/4w8XEGCJY82MnBnErW9F5r1i
 Finished successfully
 ```
 
-所有必要的步骤都已一次性完成！你可以随意点击Arweave链接，就像去中心化和永久的AWS S3/Google Cloud存储一样，它会展示你上传的资产是什么样子的。
+所有必要的步骤都已一次性完成！你可以随意点击`Arweave`链接，就像去中心化和永久的`AWS S3/Google Cloud`存储一样，它会展示你上传的资产是什么样子的。
 
 如果你回到浏览器上的代币铸造账户，你会看到一个漂亮的新图标和名称。这是我的样子：
 
@@ -218,9 +218,9 @@ Finished successfully
 
 ![](./img/spider-man-pizza-time.gif)
 
-你的代币已经准备就绪！记得传播一些爱心。也许你可以给你的朋友或者Discord服务器中的其他建设者发送一些代币。在 #progress 频道分享你的地址，这样别人就可以给你空投他们的代币了。加油，你做得很好！:D
+你的代币已经准备就绪！记得传播一些爱心。也许你可以给你的朋友或者`Discord`服务器中的其他建设者发送一些代币。在 `#progress` 频道分享你的地址，这样别人就可以给你空投他们的代币了。加油，你做得很好！:D
 
-## 🚢 船舶挑战
+## 🚢 挑战
 
 年轻的区块链探索者，现在是时候重新运用所学的课程概念从头开始构建了。
 

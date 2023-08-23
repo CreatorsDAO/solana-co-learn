@@ -6,7 +6,7 @@ sidebar_class_name: green
 
 # 🍭 糖果机和Sugar CLI
 
-将自己的脸做成NFT有何不好呢？你可以永久地将自己视为一个早期的建设者，并告诉你的妈妈你已经进入了区块链世界。既然我们已经铸造了一个单独的NFT，现在我们将学习如何铸造一系列的NFT。为了实现这一目标，我们将使用`Candy Machine`——这是一个Solana程序，让创作者能够将他们的资产上链。尽管这不是创建系列的唯一方法，但在Solana上它已经成为一种标准，因为它拥有一些有用的功能，如防机器人保护和安全随机化。
+将自己的脸做成`NFT`有何不好呢？你可以永久地将自己视为一个早期的建设者，并告诉你的妈妈你已经进入了区块链世界。既然我们已经铸造了一个单独的`NFT`，现在我们将学习如何铸造一系列的`NFT`。为了实现这一目标，我们将使用`Candy Machine`——这是一个Solana程序，让创作者能够将他们的资产上链。尽管这不是创建系列的唯一方法，但在Solana上它已经成为一种标准，因为它拥有一些有用的功能，如防机器人保护和安全随机化。
 
 由于这是一个链上程序，所有的数据都存储在账户中。你首先需要为你的收藏创建一个糖果机实例。这只是一个账户，其中存储了一些关于所有者的重要信息以及糖果机在元数据字段中的配置。
 
@@ -18,17 +18,17 @@ sidebar_class_name: green
 
 再次强调一下，这里有很多细节，我们将在适当的时候逐一解释。
 
-为了与糖果机程序互动，我们将使用[Sugar CLI](https://docs.metaplex.com/developer-tools/sugar/overview/introduction)。这是一个非常棒的工具，让你能够直接从命令行与程序交互。
+为了与糖果机程序互动，我们将使用[`Sugar CLI`](https://docs.metaplex.com/developer-tools/sugar/overview/introduction)。这是一个非常棒的工具，让你能够直接从命令行与程序交互。
 
 ## 🛠 安装命令行界面（CLIs）
 
 在我们开始之前，我们需要安装以下两样东西：
 
-- 1. Solana CLI - Sugar CLI 依赖于此。你可以在[这里](https://docs.solana.com/cli/install-solana-cli-tools)找到适合你操作系统的安装指南。
+- 1. `Solana CLI` - `Sugar CLI` 依赖于此。你可以在[这里](https://docs.solana.com/cli/install-solana-cli-tools)找到适合你操作系统的安装指南。
 
-- 2. Sugar CLI - 你可以在[这里](https://docs.metaplex.com/developer-tools/sugar/overview/installation)找到安装方法。
+- 2. `Sugar CLI` - 你可以在[这里](https://docs.metaplex.com/developer-tools/sugar/overview/installation)找到安装方法。
 
-注意 - 如果你想将CLI的安装与你的计算机隔离开来，你可以在Docker上设置Solana CLI，然后下载Sugar CLI。Docker镜像在[这里](https://hub.docker.com/r/solanalabs/solana)。如果你不了解Docker是什么，也不要担心！
+注意 - 如果你想将CLI的安装与你的计算机隔离开来，你可以在Docker上设置`Solana CLI`，然后下载`Sugar CLI`。Docker镜像在[这里](https://hub.docker.com/r/solanalabs/solana)。如果你不了解Docker是什么，也不要担心！
 
 如果安装正确，当你在终端中运行 `solana --version` 和 `sugar --version` 时，应该会看到版本号而不是错误信息。
 
@@ -41,13 +41,13 @@ solana airdrop 2
 solana balance
 ```
 
-这些命令与我们在本地客户端脚本中执行的操作相同，只不过现在是在终端中完成。这样，你就为在Solana上创建一系列NFT做好了准备。
+这些命令与我们在本地客户端脚本中执行的操作相同，只不过现在是在终端中完成。这样，你就为在Solana上创建一系列`NFT`做好了准备。
 
 ## 🍬 创建你的珍藏品
 
-这可能是整个构建过程中最具挑战的部分：确定你想要制作的NFT收藏品的内容。你至少需要准备5张图片，每张图片对应收藏中的一个NFT。我挑选了一些经典的`pepes`图像，因为它们总能引起我的共鸣。
+这可能是整个构建过程中最具挑战的部分：确定你想要制作的`NFT`收藏品的内容。你至少需要准备5张图片，每张图片对应收藏中的一个`NFT`。我挑选了一些经典的`pepes`图像，因为它们总能引起我的共鸣。
 
-在Solana工作空间中，创建一个新的项目文件夹，并在其中创建一个名为 `assets` 的文件夹。你需要将每个NFT资产与一份元数据JSON文件配对，并从零开始为每一对编号。因此，你的文件夹结构应该如下所示：
+在Solana工作空间中，创建一个新的项目文件夹，并在其中创建一个名为 `assets` 的文件夹。你需要将每个`NFT`资产与一份元数据JSON文件配对，并从零开始为每一对编号。因此，你的文件夹结构应该如下所示：
 
 ```
 ...
@@ -99,7 +99,7 @@ solana balance
 
 ## 🍭 配置你的糖果机
 
-接下来，我们需要创建一个糖果机的配置文件。这个文件用于在链上创建糖果机实例。Sugar CLI将指导你完成最基本的设置，无需手动操作！以下是它的样子：
+接下来，我们需要创建一个糖果机的配置文件。这个文件用于在链上创建糖果机实例。`Sugar CLI`将指导你完成最基本的设置，无需手动操作！以下是它的样子：
 
 ![](./img/config-file.png)
 
@@ -134,11 +134,11 @@ solana balance
 
 现在我们暂时不需要任何特殊功能。如果你感兴趣，可以在[此处](https://docs.metaplex.com/developer-tools/sugar/learning/settings)阅读更多相关信息。
 
-如果遇到任何问题或中途改变主意，你可以随时退出并重新开始。你还可以直接编辑 `config.json` 文件。Sugar CLI会显示非常有用的错误信息，所以如果遇到困难，只需仔细阅读，通常就能找到解决方案。
+如果遇到任何问题或中途改变主意，你可以随时退出并重新开始。你还可以直接编辑 `config.json` 文件。`Sugar CLI`会显示非常有用的错误信息，所以如果遇到困难，只需仔细阅读，通常就能找到解决方案。
 
 如果一切顺利，最终你会看到一个绿色的“命令成功”消息。在消息上方，你会看到一个SolanEyes链接。点击该链接，你就可以在Solana网络上查看你的糖果机！复制糖果机的ID以备后用。
 
-如果这还不足以让你惊奇，那么你可以尝试使用 `sugar mint` 命令来铸造一个NFT，这简直是一种美味的体验。
+如果这还不足以让你惊奇，那么你可以尝试使用 `sugar mint` 命令来铸造一个`NFT`，这简直是一种美味的体验。
 
 一旦你整理好你的收藏品，并在巴厘岛享受休闲时光，"糖"工具也可以帮助你执行各种操作。如果你感到好奇，可以查看[这里的命令](https://docs.metaplex.com/developer-tools/sugar/reference/commands)了解更多。
 
@@ -171,7 +171,7 @@ REACT_APP_CANDY_MACHINE_ID=GNfbQEfMA1u1irEFnThTcrzDyefJsoa7sndACShaS5vC
 
 你会注意到铸造的NFT并不是`1.png`。这是因为糖果机的铸造过程默认是随机的。
 
-我们只是浅尝辄止地触及了Candy Machine和Sugar CLI的潜力。未来我们还会深入探讨更多内容——本节的目的是让你具备足够的基础知识，以便能够自主深入研究。随着我们对NFT项目的不断完善，我们将继续探索。
+我们只是浅尝辄止地触及了`Candy Machine`和`Sugar CLI`的潜力。未来我们还会深入探讨更多内容——本节的目的是让你具备足够的基础知识，以便能够自主深入研究。随着我们对NFT项目的不断完善，我们将继续探索。
 
 ## 🚢 挑战
 
