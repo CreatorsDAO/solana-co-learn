@@ -12,7 +12,12 @@ sidebar_class_name: green
 
 要将数据写入区块链，我们需要提交一笔交易，这就像是一条写入命令。如果不满足某些条件，该命令就会被拒绝。
 
-要深入理解交易及其工作原理，你需要先了解密钥对。密钥对包括一对密钥 - 一个公钥和一个私钥。公钥代表网络上的账户地址，每个公钥都与一个相应的私钥/秘密密钥配对。
+要深入理解交易及其工作原理，你需要先了解密钥对。
+
+密钥对包括一对密钥:
+
+- 一个公钥，公钥代表网络上的账户地址。
+- 一个私钥，每个公钥都与一个相应的私钥/秘密密钥配对。
 
 `Web3.js` 库提供了几个用于处理密钥对的辅助函数。你可以使用它们生成密钥对，并获取公钥或私钥。
 
@@ -35,7 +40,7 @@ const secretKey = ownerKeypair.secretKey
 pill tomorrow foster begin walnut borrow virtual kick shift mutual shoe scatter
 ```
 
-2. bs58 字符串 - 有时钱包会导出此格式的字符串：
+2. `bs58` 字符串 - 有时钱包会导出此格式的字符串：
 
 ```bash
 5MaiiCavjCmn9Hs1o3eznqDEhRwxo7pXiAYez7keQUviUkauRiTMD8DrESdrNjN8zd9mTmVhRvBJeg5vhyvgrAhG
@@ -103,7 +108,10 @@ const signature = sendAndConfirmTransaction(
 )
 ```
 
-这里的内容涵盖了所有你需要了解的事项 - “连接”是我们通过JSON RPC与网络通信的方式；“交易”是我们刚刚使用转账指令创建的任务；最后一个参数是签名者的数组。这些密钥对就是“签署”事务的凭证，这样Solana的运行时环境和你的程序就知道谁授权了该事务。某些交易可能需要多个地址签名。
+这里的内容涵盖了所有你需要了解的事项。
+- `connection`是我们通过JSON RPC与网络通信的方式；
+- `transaction`是我们刚刚使用转账指令创建的任务；
+- 最后一个参数是签名者的数组。这些密钥对就是“签署”事务的凭证，这样Solana的运行时环境和你的程序就知道谁授权了该事务。某些交易可能需要多个地址签名。
 
 签名是授权更改的必要步骤。因为这笔交易会将SOL从一个账户转移到另一个账户，我们需要证明我们确实掌控着要发送的账户。
 
@@ -178,4 +186,4 @@ async function callProgram(
 
 主要需要注意的一点是，在交易的签名者数组中，第一个签名者总是负责支付交易费用。如果你没有足够的SOL怎么办呢？交易将会被取消！
 
-当你在`devnet`或`LocalHost`上进行开发时，你可以通过Solana的命令行界面（CLI）使用airdrop功能来获取`devnet SOL`。此外，你还可以通过[SPL代币水龙头](https://spl-token-faucet.com/)来获取`SPL`代币（稍后我们会了解这些是什么东西:P）。
+当你在`devnet`或`LocalHost`上进行开发时，你可以通过Solana的命令行界面（CLI）使用`airdrop`功能来获取`devnet SOL`。此外，你还可以通过[SPL代币水龙头](https://spl-token-faucet.com/)来获取`SPL`代币（稍后我们会了解这些是什么东西:P）。
