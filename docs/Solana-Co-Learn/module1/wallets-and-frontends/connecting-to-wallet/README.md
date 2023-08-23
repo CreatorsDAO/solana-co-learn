@@ -20,7 +20,7 @@ sidebar_class_name: green
 
 你需要使用的适配器库包括 `wallet-adapter-base` 和 `wallet-adapter-react`，这两者都是必选的。然后，你可以根据需求选择支持的钱包或使用 `wallet-adapter-wallets`。
 
-下面是一个使用Phantom登录的示例代码：
+下面是一个使用`BackPack🎒`登录的示例代码：
 
 ```bash
 npm install @solana/wallet-adapter-base \
@@ -30,7 +30,7 @@ npm install @solana/wallet-adapter-base \
 ```
 
 - `wallet-adapter-react-ui` 为我们处理了整个UI，包括连接、选择钱包、断开连接等，一切都已经安排妥当！
-- 可选择使用 `@solana/wallet-adapter-phantom` 钱包。
+- 可选择使用 `@solana/wallet-adapter-backpack` 钱包。
 
 ## 👜 创建一个钱包连接按钮
 
@@ -118,7 +118,7 @@ export default App;
 3. `WalletModalProvider`会向用户提示选择钱包。
 4. `ConnectionProvider`接受一个RPC端点，并允许我们直接与Solana区块链上的节点通信。我们将在整个应用程序中使用它来发送交易。
 5. `WalletProvider`为我们提供了连接各种钱包的统一接口。
-6. `wallet-adapter-wallets`提供了钱包适配器。我们将使用从中导入的内容来创建我们将提供给`WalletProvider`的钱包列表。在本例中，选择了Phantom和Glow, BackPack。
+6. `wallet-adapter-wallets`提供了钱包适配器。我们将使用从中导入的内容来创建我们将提供给`WalletProvider`的钱包列表。在本例中，选择了Phantom和Glow, BackPack🎒。
 7. 最后，我们有`clusterApiURL`，这只是一个根据我们提供的网络为我们生成RPC端点的函数。
 8. 总结一下：这个文件是我们网页应用程序的核心。其实它是一个由Vercel构建的React应用程序，使用`_app.tx`来构建应用的基本骨架。
 

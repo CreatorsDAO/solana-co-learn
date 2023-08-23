@@ -10,10 +10,10 @@ sidebar_class_name: green
 
 ## 在Solana工作空间中设置初始代码
 
-首先，你可以从GitHub克隆起始代码，并安装所需的依赖项：
+首先，你可以从[GitHub克隆起始代码](https://github.com/CreatorsDAO/solana-movie-frontend.git)，并安装所需的依赖项：
 
 ```bash
-git clone https://github.com/RustyCab/solana-movie-frontend.git
+git clone https://github.com/CreatorsDAO/solana-movie-frontend.git
 cd solana-movie-frontend
 git checkout starter
 npm i
@@ -80,7 +80,7 @@ export class Movie {
 
 - `variant`：一个无符号的8位整数，表示要执行的指令（换句话说，应在程序上调用哪个函数）。
 - `title`：一个字符串，代表你正在评价的电影的标题。
-- `rating`：一个无符号的8位整数，表示你对正在评论的电影的评分（满分为5）。
+- `rating`：一个无符号的8位整数，表示你对正在评论的电影的评分（满分为`5`）。
 - `description`：一个字符串，表示你为电影留下的书面评论。
 
 这个架构必须与程序所期望的完全匹配，包括结构中项目的顺序。当程序读取你的数据时，它将按照定义的顺序进行反序列化。如果你的顺序不同，它生成的数据将无效。由于我们使用的是已部署的程序，所以我已经为你提供了架构。通常，你会需要阅读文档或自己检查程序代码来了解这些细节。
@@ -188,7 +188,7 @@ const handleTransactionSubmit = async (movie: Movie) => {
 
 除了 `pda` 外，你应该对所有内容都很熟悉。回想一下指令的要求。它需要与之交互的程序`ID`、可选的数据和它将从中读取或写入的账户列表。由于我们要将数据提交到网络上进行存储，我们将创建一个新的账户来存储它。
 
-在提到`PDA`（程序派生地址）时出现了“Patrick”！这是用来存储我们电影评论的账户。你可能开始注意到了，这里出现了经典的“先有鸡还是先有蛋”的情况...
+在提到`PDA`（程序派生地址）时出现了“`Patrick`”！这是用来存储我们电影评论的账户。你可能开始注意到了，这里出现了经典的“先有鸡还是先有蛋”的情况...
 
 ![](./img/upload_2.png)
 
@@ -273,7 +273,7 @@ const handleTransactionSubmit = async (movie: Movie) => {
 你可以通过以下命令设置项目：
 
 ```bash
-git clone https://github.com/RustyCab/solana-student-intros-frontend
+git clone https://github.com/CreatorsDAO/solana-student-intros-frontend.git
 cd solana-student-intros-frontend
 git checkout starter
 npm i
@@ -283,7 +283,7 @@ npm i
 
 程序预计将接收以下顺序的指令数据：
 
-1. `variant` 以无符号8位整数表示，用于指示要调用的指令（在本例中应为0）。
+1. `variant` 以无符号8位整数表示，用于指示要调用的指令（在本例中应为`0`）。
 2. `name` 以字符串形式表示名字。
 3. `message` 以字符串形式表示消息。
 
