@@ -47,7 +47,7 @@ Solana 程序中绝对不存储任何内容。它不知道所有者是谁，甚�
 
 序列化就是将常规的代码或数据转换为字节数组（机器代码：1和0）的过程。
 
-在我们的项目中，我们将使用 [Borsh](https://borsh.io/) 序列化格式，因为它提供了一个方便的库供我们使用。
+在我们的项目中，我们将使用 [`Borsh`](https://borsh.io/) 序列化格式，因为它提供了一个方便的库供我们使用。
 
 以装备一个链上游戏物品为例，我们需要以下三个数据：
 
@@ -85,7 +85,7 @@ equipPlayerSchema.encode({ variant: 2, playerId: 1435, itemId: 737498}, buffer)
 const instructBuffer = buffer.slice(0, equipPlayerSchema.getSpan(buffer))
 ```
 
-在这里，我们定义了一个包括三个无符号整数的Borsh结构，并将它们编码为一个字节缓冲区。图示解释了如何将这些数据分解为适当的长度，就像切香肠一样。
+在这里，我们定义了一个包括三个无符号整数的`Borsh`结构，并将它们编码为一个字节缓冲区。图示解释了如何将这些数据分解为适当的长度，就像切香肠一样。
 
 ![](./img/upload_4.png)
 
