@@ -7,7 +7,7 @@ sidebar_class_name: green
 
 # 💻 构建 NFT 铸造者前端
 
-欢迎来到第一周的SHIPPING环节。每周，你都会有一个特定的部分，用来将你所学的内容应用到自定义的NFT质押应用程序上，并且还有战利品箱子等你拿！
+欢迎来到第一周的`SHIPPING`环节。每周，你都会有一个特定的部分，用来将你所学的内容应用到自定义的NFT质押应用程序上，并且还有战利品箱子等你拿！
 
 这些部分的核心目的是鼓励你走出本地开发环境，构建真实的、可以供他人使用的项目。许多成功的构建者都是通过在公众面前展示和开发他们的作品而获得成功的。这是你一直在准备的时刻——让我们开始吧🤘。
 
@@ -168,7 +168,7 @@ const NavBar: FC = () => {
 export default NavBar
 ```
 
-这里我们使用 `import dynamic from "next/dynamic"` 从 `@solana/wallet-adapter-react-ui` 动态导入 `WalletMultiButton`，并将其分配给 `WalletMultiButtonDynamic`。这是必需的，因为 NextJS 是服务器端渲染的，在客户端加载之前无法访问依赖于浏览器 API（例如 window）的外部依赖项或组件。因此，通过 `{ ssr: false }`，我们禁用了导入的服务器渲染。关于动态导入的更多信息，你可以在[这里](https://nextjs.org/docs/advanced-features/dynamic-import?utm_source=buildspace.so&utm_medium=buildspace_project)阅读。
+这里我们使用 `import dynamic from "next/dynamic"` 从 `@solana/wallet-adapter-react-ui` 动态导入 `WalletMultiButton`，并将其分配给 `WalletMultiButtonDynamic`。这是必需的，因为 NextJS 是服务器端渲染的，在客户端加载之前无法访问依赖于浏览器 API（例如 window）的外部依赖项或组件。因此，通过 `{ ssr: false }`，我们禁用了导入的服务器渲染。关于动态导入的更多信息，你可以在[这里](https://nextjs.org/docs/advanced-features/dynamic-import)阅读。
 
 现在返回到 `index.tsx` 文件，导入 `NavBar` 并将其放在堆栈的顶部（我已留下评论说明它应该放在哪里）：
 
@@ -297,7 +297,12 @@ const Home: NextPage = () => {
 首先，我们需要安装一些必要的依赖包：
 
 ```bash
-npm i @solana/wallet-adapter-base @solana/wallet-adapter-react @solana/wallet-adapter-react-ui @solana/wallet-adapter-wallets @solana/web3.js
+npm install @solana/wallet-adapter-base \
+    @solana/wallet-adapter-react \
+    @solana/wallet-adapter-react-ui \
+    @solana/wallet-adapter-wallets \
+    @solana/wallet-adapter-backpack \
+    @solana/web3.js
 ```
 
 这些库将帮助我们与用户的Solana钱包连接。
@@ -314,16 +319,16 @@ import {
 } from "@solana/wallet-adapter-react"
 import { WalletModalProvider } from "@solana/wallet-adapter-react-ui"
 import { clusterApiUrl } from "@solana/web3.js"
-import { PhantomWalletAdapter } from "@solana/wallet-adapter-wallets"
+import { BackPackWalletAdapter } from "@solana/wallet-adapter-wallets"
 require("@solana/wallet-adapter-react-ui/styles.css")
 
 const WalletContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const url = useMemo(() => clusterApiUrl("devnet"), [])
-  const phantom = new PhantomWalletAdapter()
+  const backpack = new BackPackWalletAdapter()
 
   return (
     <ConnectionProvider endpoint={url}>
-      <WalletProvider wallets={[phantom]}>
+      <WalletProvider wallets={[backpack]}>
         <WalletModalProvider>{children}</WalletModalProvider>
       </WalletProvider>
     </ConnectionProvider>
@@ -472,4 +477,4 @@ const Home: NextPage = () => {
           <Spacer />
 ```
 
-完成了！现在我们已经配置好了前端，并且在用户铸造buildoors时流程顺畅。这个界面不仅直观，还提供了丰富的用户体验。
+完成了！现在我们已经配置好了前端，并且在用户铸造`buildoors`时流程顺畅。这个界面不仅直观，还提供了丰富的用户体验。
