@@ -3,9 +3,9 @@ sidebar_position: 1
 sidebar_label: Solana Co Learn tutorials
 sidebar_class_name: green
 ---
-我们共学开源资料是 buildspace 课程，all-in-one-solana 对此做了汉化与更新，大家可以对照着看
-# Solana Co Learn
 
+# Solana Co Learn
+✨ 我们共学开源资料是 buildspace 课程，all-in-one-solana 对此做了汉化与更新，大家可以对照着看
 ## Module1: Solana 基础 （与Solana网络通过rpc交互）
 
 - [区块链基本概念介绍](./module1/block-chain-basic/README.md)
@@ -89,7 +89,7 @@ sidebar_class_name: green
 - [Anchor docs](https://book.anchor-lang.com/introduction/introduction.html)
 - [Solana Cook book Zh](https://davirain-su.github.io/solana-cookbook-zh/)
 
-## 介绍Solana的不错的文章
+## 介绍Solana的不错的文章 ✏️
 
 - [Squads blog](https://squads.so/blog)
 - [Solana Dev](https://www.soldev.app/)
@@ -99,7 +99,7 @@ sidebar_class_name: green
 - [Solana调研报告](https://shimo.im/docs/8wkxtyhCXWp88JDD)
 
 
-## Solana 开发相关的博客
+## Solana 开发相关的博客 📖
 
 - [Anatoly Yakovenko blog](https://medium.com/@anatolyyakovenko)
 - [Anchor Example: Escrow Program](https://hackmd.io/@ironaddicteddog/anchor_example_escrow)
@@ -108,12 +108,12 @@ sidebar_class_name: green
 - [Programming on Solana - An Introduction](https://paulx.dev/blog/2021/01/14/programming-on-solana-an-introduction/)
 - [小鱼1998的blog](https://blog.csdn.net/weixin_42285518/category_11484618.html)
 
-## Solana 开发视频
+## Solana 开发视频 📹
 
 - [Solana Bootcamp](https://www.youtube.com/watch?v=0P8JeL3TURU&list=PLilwLeBwGuK6NsYMPP_BlVkeQgff0NwvU)
 - [Solana Bytes](https://www.youtube.com/watch?v=pRYs49MqapI&list=PLilwLeBwGuK51Ji870apdb88dnBr1Xqhm)
 
-## Solana 浏览器
+## Solana 浏览器 💻
 
 - [https://solscan.io/](https://solscan.io/)
 - [https://explorer.solana.com/](https://explorer.solana.com/)
@@ -123,11 +123,11 @@ sidebar_class_name: green
 - [https://xray.helius.xyz/](https://xray.helius.xyz/)
 - [https://www.hellomoon.io/solana](https://www.hellomoon.io/solana)
 
-## 手机app开发
+## 手机 app 开发 📱
 
 - [Solana 手机App开发](https://solanamobile.com/zh/developers)
     - [Solana Mobile Stack SDK](https://github.com/solana-mobile/solana-mobile-stack-sdk#solana-mobile-stack-sdk)
     - [Mobile Wallet Adapter](https://github.com/solana-mobile/mobile-wallet-adapter)
 - [backpack app开发](https://docs.xnfts.dev/getting-started/introduction)
 
-## 其他
+## 其他 💡
