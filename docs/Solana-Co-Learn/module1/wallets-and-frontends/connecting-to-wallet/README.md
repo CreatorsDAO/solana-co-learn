@@ -12,7 +12,7 @@ sidebar_class_name: green
 
 “钱包”这个词可能听起来有些奇怪，因为它们不仅仅用来存储东西。钱包的关键功能是使用其中的密钥进行安全的交易签名。钱包有很多形式，最常见的是浏览器扩展，它们为你（作为开发者）提供API，以向用户建议交易。钱包让你能够安全地进行操作。
 
-推荐使用 [Phantom](https://phantom.app/)。
+推荐使用 [BackPack](https://www.backpack.app/)。
 
 ## 🛠 Solana 钱包适配器
 
@@ -25,12 +25,12 @@ sidebar_class_name: green
 ```bash
 npm install @solana/wallet-adapter-base \
     @solana/wallet-adapter-react \
-    @solana/wallet-adapter-phantom \
+    @solana/wallet-adapter-backpack \
     @solana/wallet-adapter-react-ui
 ```
 
 - `wallet-adapter-react-ui` 为我们处理了整个UI，包括连接、选择钱包、断开连接等，一切都已经安排妥当！
-- 可选择使用 @solana/wallet-adapter-phantom 钱包。
+- 可选择使用 `@solana/wallet-adapter-phantom` 钱包。
 
 ## 👜 创建一个钱包连接按钮
 
@@ -65,7 +65,8 @@ import { WalletModalProvider } from "@solana/wallet-adapter-react-ui";
 import { ConnectionProvider, WalletProvider } from "@solana/wallet-adapter-react";
 import {
   GlowWalletAdapter,
-  PhantomWalletAdapter
+  PhantomWalletAdapter,
+  BackPackWalletAdapter
 } from "@solana/wallet-adapter-wallets";
 import { clusterApiUrl } from "@solana/web3.js";
 
@@ -86,7 +87,8 @@ const App = ({ Component, pageProps }) => {
   const wallets = useMemo(
     () => [
       new PhantomWalletAdapter(),
-      new GlowWalletAdapter()
+      new GlowWalletAdapter(),
+      new BackPackWalletAdapter()
     ],
     [network]
   );
@@ -111,12 +113,12 @@ export default App;
 
 以下是关于如何连接和使用钱包的详细步骤和解释。
 
-1. 这是一个基于`React`的应用框架。通过`useMemo`，它会根据网络连接状态确定与Solana网络交互的rpc endpoint。
-2. 使用`@solana/wallet-adapter-base`的`wallet-adapter-network`来展示可用的网络。
+1. 这是一个基于`React`的应用框架。通过`useMemo`，它会根据网络连接状态确定与Solana网络交互的`rpc endpoint`。
+2. 使用`@solana/wallet-adapter-base`的`WalletAdapterNetwork`来展示可用的网络。
 3. `WalletModalProvider`会向用户提示选择钱包。
 4. `ConnectionProvider`接受一个RPC端点，并允许我们直接与Solana区块链上的节点通信。我们将在整个应用程序中使用它来发送交易。
 5. `WalletProvider`为我们提供了连接各种钱包的统一接口。
-6. `wallet-adapter-wallets`提供了钱包适配器。我们将使用从中导入的内容来创建我们将提供给`WalletProvider`的钱包列表。在本例中，选择了Phantom和Glow。
+6. `wallet-adapter-wallets`提供了钱包适配器。我们将使用从中导入的内容来创建我们将提供给`WalletProvider`的钱包列表。在本例中，选择了Phantom和Glow, BackPack。
 7. 最后，我们有`clusterApiURL`，这只是一个根据我们提供的网络为我们生成RPC端点的函数。
 8. 总结一下：这个文件是我们网页应用程序的核心。其实它是一个由Vercel构建的React应用程序，使用`_app.tx`来构建应用的基本骨架。
 
