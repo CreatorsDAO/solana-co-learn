@@ -6,7 +6,7 @@ sidebar_class_name: green
 
 # 🎨 创建奖励代币
 
-既然我们已经铸造了一个NFT，那么接下来我们要探讨如何铸造一系列的NFT。为了达成这个目标，我们将采用Candy Machine——一款在Solana上广泛使用的程序，允许创作者将其资产上链。Candy Machine在Solana上受到欢迎的原因在于，它具备了如机器人防护和安全随机化等实用功能。现在我们可以回归到我们自定义的NFT质押应用上来，借助我们在代币程序和Candy Machine上的经验来构建这个应用。
+既然我们已经铸造了一个`NFT`，那么接下来我们要探讨如何铸造一系列的`NFT`。为了达成这个目标，我们将采用`Candy Machine`——一款在Solana上广泛使用的程序，允许创作者将其资产上链。`Candy Machine`在Solana上受到欢迎的原因在于，它具备了如机器人防护和安全随机化等实用功能。现在我们可以回归到我们自定义的`NFT`质押应用上来，借助我们在代币程序和`Candy Machine`上的经验来构建这个应用。
 
 请按照以下步骤操作：
 
@@ -15,7 +15,7 @@ sidebar_class_name: green
 
    ![](./img/tokens.png)
 
-我们这样做的目的是整理建立Builder时所需的奖励代币和与我们的NFT有关的内容。
+我们这样做的目的是整理建立`Builder`时所需的奖励代币和与我们的`NFT`有关的内容。
 
 3. 接下来，我们要创建资源文件夹，用于存放代币的图像。请进入你的`bld`文件夹，并创建名为`assets`的新文件夹。同时，在你的`bld`文件夹内，创建名为`index.ts`的新文件。目录结构应如下所示：
 
@@ -169,7 +169,7 @@ const tokenMint = await token.createMint(
 );
 ```
 
-接下来，我们创建一个Metaplex对象，以便我们可以创建Metaplex元数据，并将其上传到BundlrStorage中。
+接下来，我们创建一个Metaplex对象，以便我们可以创建Metaplex元数据，并将其上传到`BundlrStorage`中。
 
 ```ts
 // 创建一个Metaplex对象，这样我们就可以创建Metaplex元数据了
@@ -293,7 +293,7 @@ async function main() {
 
 ![](./img/config-result.png)
 
-现在，请复制 `mint` 下列出的地址，并将其粘贴到 `https://explorer.solana.com/?cluster=devnet`。你现在应该能够看到显示你选择图像的代币，就像下图所示。
+现在，请复制 `mint` 下列出的地址，并将其粘贴到 [`https://explorer.solana.com/?cluster=devnet`](https://explorer.solana.com/?cluster=devnet)。你现在应该能够看到显示你选择图像的代币，就像下图所示。
 
 ![](./img/tokens.png)
 

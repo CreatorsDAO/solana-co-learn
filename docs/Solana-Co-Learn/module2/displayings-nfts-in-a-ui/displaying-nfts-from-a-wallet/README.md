@@ -6,10 +6,10 @@ sidebar_class_name: green
 
 # 📱 在钱包中展示NFTs
 
-现在我们已经铸造了一个NFT，接下来我们要探索如何铸造一系列的NFT。我们将使用Candy Machine来完成这项任务，这是一款Solana程序，能让创作者方便地将他们的资产上链。虽然这不是创建系列的唯一方式，但在Solana上它已经成为标准，因为它具有诸如防机器人保护和安全随机化等有用的功能。你懂的，模板时间到了。然而，随着我们构建的项目越来越复杂，我们的模板也会变得更先进。这次我们将基于[Solana dApp脚手架](https://github.com/solana-labs/dapp-scaffold)构建一个模板。与之前的模板一样，它是一个由`create-next-app`创建的Next.js应用程序。不过这次，它具有更多功能。不用担心！我们依然会使用相同的工具。
+现在我们已经铸造了一个`NFT`，接下来我们要探索如何铸造一系列的`NFT`。我们将使用Candy Machine来完成这项任务，这是一款Solana程序，能让创作者方便地将他们的资产上链。虽然这不是创建系列的唯一方式，但在Solana上它已经成为标准，因为它具有诸如防机器人保护和安全随机化等有用的功能。你懂的，模板时间到了。然而，随着我们构建的项目越来越复杂，我们的模板也会变得更先进。这次我们将基于[Solana dApp脚手架](https://github.com/solana-labs/dapp-scaffold)构建一个模板。与之前的模板一样，它是一个由`create-next-app`创建的Next.js应用程序。不过这次，它具有更多功能。不用担心！我们依然会使用相同的工具。
 
 ```bash
-git clone https://github.com/buildspace/solana-display-nfts-frontend
+git clone https://github.com/CreatorsDAO/solana-display-nfts-frontend
 cd solana-display-nfts-frontend
 git checkout starter
 npm install @metaplex-foundation/js@latest
@@ -21,7 +21,7 @@ npm run dev
 
 ![](./img/display-from-wallet.png)
 
-“展示NFT”页面目前还没有展示任何内容——这就是你的任务所在。
+“展示`NFT`”页面目前还没有展示任何内容——这就是你的任务所在。
 
 打开`src/components/FetchNFT.tsx`，让我们开始吧。我们会从组件顶部的Metaplex设置开始：
 
@@ -67,7 +67,7 @@ const fetchNfts = async () => {
  }
 ```
 
-由于我们希望在钱包更改时更新展示的NFTs，因此我们将在`useEffect`函数下方添加一个钩子来调用`fetchNfts`函数。
+由于我们希望在钱包更改时更新展示的`NFTs`，因此我们将在`useEffect`函数下方添加一个钩子来调用`fetchNfts`函数。
 
 ```tsx
 export const FetchNft: FC = () => {
@@ -86,7 +86,7 @@ export const FetchNft: FC = () => {
 }
 ```
 
-最后，我们需要更新`return`语句以展示NFTs。我们将使用之前创建的`nftData`状态变量。
+最后，我们需要更新`return`语句以展示`NFTs`。我们将使用之前创建的`nftData`状态变量。
 
 ```tsx
 return (
@@ -105,10 +105,10 @@ return (
   )
 ```
 
-现在我们可以看到我们的NFT了！🎉 这就是我的钱包的样子 😆
+现在我们可以看到我们的`NFT`了！🎉 这就是我的钱包的样子 😆
 
 ![](./img/nfts-wallet.png)
 
 回顾过去的日子（大约在2021年10月），那时我不得不手动完成所有这些工作，并且我一直受到RPC的速率限制，所以请花一些时间感谢Metaplex的开发人员为我们带来了这个精彩的SDK！
 
-在`nftData`上玩一下。将其记录到控制台，并尝试显示其他值，如符号或描述！也许你还可以添加一个过滤器，让用户只能显示特定收藏的NFT？
+在`nftData`上玩一下。将其记录到控制台，并尝试显示其他值，如符号或描述！也许你还可以添加一个过滤器，让用户只能显示特定收藏的`NFT`？
