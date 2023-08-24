@@ -110,6 +110,7 @@ sidebar_class_name: green
 - [A Starter Kit for New Solana Developer](https://hackmd.io/@ironaddicteddog/solana-starter-kit)
 - [Programming on Solana - An Introduction](https://paulx.dev/blog/2021/01/14/programming-on-solana-an-introduction/)
 - [小鱼1998的blog](https://blog.csdn.net/weixin_42285518/category_11484618.html)
+- [solana的程序实例](https://github.com/solana-developers/program-examples/)
 
 ## 📹 Solana 开发视频
 
