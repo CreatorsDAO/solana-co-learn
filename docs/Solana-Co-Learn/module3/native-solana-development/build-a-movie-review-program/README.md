@@ -92,7 +92,7 @@ impl MovieInstruction {
 let (&variant, rest) = input.split_first().ok_or(ProgramError::InvalidInstructionData)?;
 ```
 
-如果 `unpack` 的结果是错误，这是一种返回错误并退出 `unpack` 函数的简写方式。就像一个精简版的 `try/catch`。这在Rust中是常见的模式，你会经常看到它。
+如果 `unpack` 的结果是错误，这是一种返回错误并退出 `unpack` 函数的简写方式。就像一个精简版的 `try/catch`。这在`Rust`中是常见的模式，你会经常看到它。
 
 ```rust
 let payload = MovieReviewPayload::try_from_slice(rest).unwrap();
@@ -104,7 +104,7 @@ let payload = MovieReviewPayload::try_from_slice(rest).unwrap();
 
 > 将缺失的可能性编码到类型系统中是一项重要的概念，因为它会迫使编译器强制程序员处理这种缺失的情况。
 
-Rust助你成为更出色的开发者！现在，你又多了解了`Rust`的另一部分内容🍰
+`Rust`助你成为更出色的开发者！现在，你又多了解了`Rust`的另一部分内容🍰
 
 ## 👀 将指令添加到程序中
 
