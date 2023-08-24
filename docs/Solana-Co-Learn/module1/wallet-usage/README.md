@@ -1,14 +1,14 @@
 # Solana钱包使用 - Backpack 🎒
 
-Solana的钱包种类繁多，如众所周知的Phantom钱包。然而，在此我并不推荐使用Phantom，因为对于开发者来说，它并不够友好。
+Solana的钱包种类繁多，如众所周知的`Phantom`钱包。然而，在此我并不推荐使用`Phantom`，因为对于开发者来说，它并不够友好。
 
-在本地开发时，Phantom不支持本地RPC地址，只能使用Solana官方的测试网络。这样一来，开发者在本地开发时就会受限制。正因如此，我推荐使用`Backpack`钱包。
+在本地开发时，`Phantom`不支持本地`RPC`地址，只能使用`Solana`官方的测试网络。这样一来，开发者在本地开发时就会受限制。正因如此，我推荐使用`Backpack`钱包。
 
 ## 下载Backpack钱包
 
 下载地址：[`https://www.backpack.app/`](https://www.backpack.app/)。点击页面上的“`Download`”按钮，然后选择适合自己浏览器的插件。
 
-目前Backpack钱包只支持Chrome、Brave和Arc浏览器。移动端版本还在开发中。
+目前`Backpack`钱包只支持`Chrome`、`Brave`和`Arc`浏览器。移动端版本还在开发中。
 
 ## 创建账户
 
@@ -28,7 +28,7 @@ Solana的钱包种类繁多，如众所周知的Phantom钱包。然而，在此�
 
 ![](./backpack-mnemonic.png)
 
-由于Backpack是一个多链钱包，在此我们选择Solana链，然后继续下一步。
+由于`Backpack`是一个多链钱包，在此我们选择`Solana`链，然后继续下一步。
 
 ![](./backpack-chose-solana.png)
 
@@ -44,13 +44,13 @@ Solana的钱包种类繁多，如众所周知的Phantom钱包。然而，在此�
 
 ![](./backpack-perference.png)
 
-你将看到有两个网络选项，分别是Solana和以太坊。我们在这里选择Solana。
+你将看到有两个网络选项，分别是`Solana`和以太坊。我们在这里选择`Solana`。
 
 ![](./backpack-custom-rpc.png)
 
-接下来就是设置自定义RPC的环节，我们在此选择了`localnet`。
+接下来就是设置自定义`RPC`的环节，我们在此选择了`localnet`。
 
-在`Custom`选项下，你可以自定义RPC地址。除了官方提供的`testnet`或`mainbeta`地址，你还可以通过`Quicknode`或`Helius`申请自己的RPC地址。
+在`Custom`选项下，你可以自定义`RPC`地址。除了官方提供的`testnet`或`mainbeta`地址，你还可以通过`Quicknode`或`Helius`申请自己的`RPC`地址。
 
 ## 参考资料
 
@@ -58,4 +58,4 @@ Solana的钱包种类繁多，如众所周知的Phantom钱包。然而，在此�
 - [helius](https://www.helius.dev/)
 - [helloMoon](https://www.hellomoon.io/dashboard)
 
-总而言之，Backpack钱包由于其对开发者友好的特性，以及灵活的自定义RPC设置功能，成为了一款值得推荐的钱包选项。它使得开发者能够更便捷、灵活地进行Solana开发和测试工作。
+总而言之，`Backpack`钱包由于其对开发者友好的特性，以及灵活的自定义`RPC`设置功能，成为了一款值得推荐的钱包选项。它使得开发者能够更便捷、灵活地进行`Solana`开发和测试工作。

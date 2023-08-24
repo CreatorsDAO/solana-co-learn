@@ -74,7 +74,7 @@ export const PingButton: FC = () => {
 
 是时候挑战自己了。
 
-在此挑战中，你将使用[此起始代码](https://github.com/CreatorsDAO/solana-send-sol-frontend.git)创建一个应用程序，允许用户连接其`Backpack🎒`钱包并将SOL发送到另一个账户。确保克隆后使用`git checkout starter`切换到起始分支。
+在此挑战中，你将使用[此起始代码](https://github.com/CreatorsDAO/solana-send-sol-frontend.git)创建一个应用程序，允许用户连接其`Backpack🎒`钱包并将`SOL`发送到另一个账户。确保克隆后使用`git checkout starter`切换到起始分支。
 
 你需要通过以下两个关键步骤来完成这个挑战：
 - 使用适当的上下文提供程序包装启动应用程序。

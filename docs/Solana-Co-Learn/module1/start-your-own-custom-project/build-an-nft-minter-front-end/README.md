@@ -19,11 +19,11 @@ sidebar_class_name: green
 
 ![](./img/upload_2.png)
 
-第二个屏幕的功能将在下一个核心项目中实现，所以不必为“mint buildoor”按钮实现任何功能。
+第二个屏幕的功能将在下一个核心项目中实现，所以不必为“`mint buildoor`”按钮实现任何功能。
 
 ## 🕸 项目设置
 
-我们将从零开始，没有模板！设置一个新的 Next.js 应用程序，并向其中添加 Chakra UI：
+我们将从零开始，没有模板！设置一个新的 `Next.js` 应用程序，并向其中添加 `Chakra UI`：
 
 ```bash
 npx create-next-app --typescript
@@ -32,17 +32,17 @@ npm i @chakra-ui/react @emotion/react@^11 @emotion/styled@^11 framer-motion@^6 @
 npm i @solana/wallet-adapter-base @solana/wallet-adapter-react @solana/wallet-adapter-react-ui @solana/wallet-adapter-wallets @solana/web3.js
 ```
 
-注意：在整个项目中，我们将使用Typescript！当然，如果你更喜欢，完全可以使用普通的Javascript :)。
+注意：在整个项目中，我们将使用`Typescript`！当然，如果你更喜欢，完全可以使用普通的`Javascript` :)。
 
 如果系统要求安装 `create-next-app`，请确认安装。你可以为你的应用程序取任何你想要的名字，比如我就给我的应用程序命名为“构建器”，哈哈。
 
-下一步，你可能想添加一些视觉素材。你可以在[这里](https://cdn.disco.co/media%2FAssets_a68f5cab-20c9-45c7-b25c-43bc9dcd9e7d.zip)找到资源包，也可以自己创建。包里有五个“头像”文件和一个背景的svg文件。请将它们放入项目的公共文件夹中。
+下一步，你可能想添加一些视觉素材。你可以在[这里](https://cdn.disco.co/media%2FAssets_a68f5cab-20c9-45c7-b25c-43bc9dcd9e7d.zip)找到资源包，也可以自己创建。包里有五个“头像”文件和一个背景的`svg`文件。请将它们放入项目的公共文件夹中。
 
 现在，一切准备就绪，让我们开始构建吧！🚀
 
 ## ✨ 配置 Chakra UI
 
-首个任务是配置 Chakra UI，这样我们就能避免手动编写大量的 CSS。我们将在 `pages/_app.tsx` 文件中执行此操作：
+首个任务是配置 `Chakra UI`，这样我们就能避免手动编写大量的 `CSS`。我们将在 `pages/_app.tsx` 文件中执行此操作：
 
 ```ts
 import type { AppProps } from "next/app"
@@ -85,7 +85,7 @@ export default MyApp
 
 如果样式文件夹中有 `globals.css` 文件，请将其删除。我们不会用到它！
 
-然后，我们将处理 `index.tsx` 文件。我们将更新导入语句，以使用 Chakra UI，并修改渲染代码（只需保留一个 `<div className={styles.container}`）。然后将导入更新为：
+然后，我们将处理 `index.tsx` 文件。我们将更新导入语句，以使用 `Chakra UI`，并修改渲染代码（只需保留一个 `<div className={styles.container}`）。然后将导入更新为：
 
 ```ts
 import { Box, Center, Spacer, Stack } from "@chakra-ui/react"
@@ -138,7 +138,7 @@ const Home: NextPage = () => {
 export default Home
 ```
 
-这段代码设置了应用程序的主页面，并使用了Chakra UI的一些组件来简化布局和样式。现在，你的前端页面应该已经具备了基本的结构和风格，接下来你可以继续添加更多的功能和内容！🎨
+这段代码设置了应用程序的主页面，并使用了`Chakra UI`的一些组件来简化布局和样式。现在，你的前端页面应该已经具备了基本的结构和风格，接下来你可以继续添加更多的功能和内容！🎨
 
 ## 🎫 添加导航栏
 
@@ -168,7 +168,7 @@ const NavBar: FC = () => {
 export default NavBar
 ```
 
-这里我们使用 `import dynamic from "next/dynamic"` 从 `@solana/wallet-adapter-react-ui` 动态导入 `WalletMultiButton`，并将其分配给 `WalletMultiButtonDynamic`。这是必需的，因为 NextJS 是服务器端渲染的，在客户端加载之前无法访问依赖于浏览器 API（例如 window）的外部依赖项或组件。因此，通过 `{ ssr: false }`，我们禁用了导入的服务器渲染。关于动态导入的更多信息，你可以在[这里](https://nextjs.org/docs/advanced-features/dynamic-import)阅读。
+这里我们使用 `import dynamic from "next/dynamic"` 从 `@solana/wallet-adapter-react-ui` 动态导入 `WalletMultiButton`，并将其分配给 `WalletMultiButtonDynamic`。这是必需的，因为 `NextJS` 是服务器端渲染的，在客户端加载之前无法访问依赖于浏览器 `API`（例如 `window`）的外部依赖项或组件。因此，通过 `{ ssr: false }`，我们禁用了导入的服务器渲染。关于动态导入的更多信息，你可以在[这里](https://nextjs.org/docs/advanced-features/dynamic-import)阅读。
 
 现在返回到 `index.tsx` 文件，导入 `NavBar` 并将其放在堆栈的顶部（我已留下评论说明它应该放在哪里）：
 
@@ -288,7 +288,7 @@ const Home: NextPage = () => {
 // 其余的文件保持不变
 ```
 
-现在，如果你访问 `localhost:3000`，你应该会看到一个带有“成为 buildoor”按钮的登录页面。如果你点击它，目前什么也不会发生。这显然不是我们想要的，所以接下来我们要处理这个问题！让我们继续！
+现在，如果你访问 `localhost:3000`，你应该会看到一个带有“成为 `buildoor`”按钮的登录页面。如果你点击它，目前什么也不会发生。这显然不是我们想要的，所以接下来我们要处理这个问题！让我们继续！
 
 ## 🔌 连接到用户的钱包
 
@@ -305,7 +305,7 @@ npm install @solana/wallet-adapter-base \
     @solana/web3.js
 ```
 
-这些库将帮助我们与用户的Solana钱包连接。
+这些库将帮助我们与用户的`Solana`钱包连接。
 
 如果你要为特定钱包构建，你可以在这里自定义设置。这里我们只是使用默认配置。
 
@@ -379,7 +379,7 @@ const handleClick: MouseEventHandler<HTMLButtonElement> = useCallback(
 )
 ```
 
-现在一切准备就绪，你应该可以连接到用户的钱包了！这一步骤使你的应用程序能够与Solana区块链进行交互，从而为用户提供更丰富的体验。
+现在一切准备就绪，你应该可以连接到用户的钱包了！这一步骤使你的应用程序能够与`Solana`区块链进行交互，从而为用户提供更丰富的体验。
 
 ## 🎇 创建连接视图
 
@@ -449,7 +449,7 @@ import { useWallet } from "@solana/wallet-adapter-react"
 import Connected from "../components/Connected"
 ```
 
-然后，我们可以使用`useWallet` hooks来访问一个告诉我们是否已连接的变量。我们可以用它来有条件地渲染`Connected`和`Disconnected`视图。
+然后，我们可以使用`useWallet hooks`来访问一个告诉我们是否已连接的变量。我们可以用它来有条件地渲染`Connected`和`Disconnected`视图。
 
 ```ts
 const Home: NextPage = () => {

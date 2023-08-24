@@ -9,13 +9,13 @@ sidebar_class_name: green
 ## 本地开发环境配置以及hello world合约
 
 - [本地开发环境配置](./local_program_development/local_program_development.md)
-- [Native Hello World合约](./local_program_development/native_program_hello.md)
-- [Anchor Hello World合约](./local_program_development/anchor_program_hello.md)
-- [Solidity Hello World合约](./local_program_development/solang_program_hello.md)
+- [`Native Hello World`合约](./local_program_development/native_program_hello.md)
+- [`Anchor Hello World`合约](./local_program_development/anchor_program_hello.md)
+- [`Solidity Hello World`合约](./local_program_development/solang_program_hello.md)
 
 ## 客户端开发
 
-- [从 Solana 🤓 区块链读取数据](./client-side-development/read-data-from-the-solana-network/README.md)
+- [从 `Solana` 🤓 区块链读取数据](./client-side-development/read-data-from-the-solana-network/README.md)
 - [✍将数据写入区块链](./client-side-development/write-data-to-the-blockchain/README.md)
 - [📝 构建一个互动脚本](./client-side-development/build-an-interaction-script/README.md)
 
@@ -28,7 +28,7 @@ sidebar_class_name: green
 
 - [🤔 自定义指令](./custom-instruction/custom-instructions/README.md)
 - [🎥 构建一个电影评论应用](./custom-instruction/build-a-movie-review-app/README.md)
-- [📡 Run is back - 反序列化](./custom-instruction/run-it-back-deserialization/README.md)
+- [📡 `Run is back` - 反序列化](./custom-instruction/run-it-back-deserialization/README.md)
 
 ## 开始你自己的定制项目
 

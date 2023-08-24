@@ -6,38 +6,38 @@ sidebar_class_name: green
 
 # Solang solidity合约实现 - hello, World
 
-欢迎来到Solana入门指南！`Solang`是一个Solidity编译器，它允许你使用Solidity编程语言编写Solana程序，其他区块链中称为“智能合约”。
+欢迎来到`Solana`入门指南！`Solang`是一个`Solidity`编译器，它允许你使用`Solidity`编程语言编写`Solana`程序，其他区块链中称为“智能合约”。
 
-如果你是一位对Solana网络的高速和低费用感兴趣的EVM开发者，那么`Solang`是你的完美工具。通过Solang，你可以利用你对Solidity的现有知识开始在Solana上进行构建！
+如果你是一位对`Solana`网络的高速和低费用感兴趣的`EVM`开发者，那么`Solang`是你的完美工具。通过`Solang`，你可以利用你对`Solidity`的现有知识开始在`Solana`上进行构建！
 
 ## 安装
 
 在本节中，我们将帮助你设置`Solang`的开发环境。只需按照下面列出的步骤进行操作即可：
 
-1. 检查先决条件：在开始之前，请确保你的系统上已安装了[Rust](https://www.rust-lang.org/tools/install)和[Node.js](https://nodejs.org/en)。Windows用户还需要设置好[Windows子系统](https://solana.com/developers/guides/setup-local-development#windows-users-only)以便运行Linux。
+1. 检查先决条件：在开始之前，请确保你的系统上已安装了[Rust](https://www.rust-lang.org/tools/install)和[Node.js](https://nodejs.org/en)。Windows用户还需要设置好[Windows子系统](https://solana.com/developers/guides/setup-local-development#windows-users-only)以便运行`Linux`。
 
-2. Solana工具套件安装：首先安装[Solana工具套件](https://docs.solana.com/cli/install-solana-cli-tools)，其中包括Solana命令行界面（CLI）和最新版本的Solang。
+2. `Solana`工具套件安装：首先安装[Solana工具套件](https://docs.solana.com/cli/install-solana-cli-tools)，其中包括`Solana`命令行界面（`CLI`）和最新版本的`Solang`。
 
-3. Anchor框架安装：接下来，[安装Anchor框架](https://www.anchor-lang.com/docs/installation)。Anchor是Solana生态系统中广泛使用的框架，可以简化构建Solana程序的过程。从`0.28`版本开始，你可以直接通过Anchor开始使用`Solang`进行构建。
+3. `Anchor`框架安装：接下来，[安装Anchor框架](https://www.anchor-lang.com/docs/installation)。`Anchor`是`Solana`生态系统中广泛使用的框架，可以简化构建`Solana`程序的过程。从`0.28`版本开始，你可以直接通过`Anchor`开始使用`Solang`进行构建。
 
-截至撰写本文时，请使用以下命令安装Anchor，以确保与Solang版本`0.3.1`兼容：
+截至撰写本文时，请使用以下命令安装`Anchor`，以确保与`Solang`版本`0.3.1`兼容：
 
 ```bash
 cargo install --git https://github.com/coral-xyz/anchor anchor-cli --locked --force
 ```
 
-4. Solang扩展适用于VSCode：如果你是`Visual Studio Code（VSCode）`的用户，建议安装[Solang扩展](https://marketplace.visualstudio.com/items?itemName=solang.solang)以辅助语法高亮显示。请记得禁用任何活动的Solidity扩展，以确保Solang扩展正常工作。
+4. `Solang`扩展适用于`VSCode`：如果你是`Visual Studio Code（VSCode）`的用户，建议安装[Solang扩展](https://marketplace.visualstudio.com/items?itemName=solang.solang)以辅助语法高亮显示。请记得禁用任何活动的`Solidity`扩展，以确保`Solang`扩展正常工作。
 
 
 ## 创建一个新项目
 
-一旦你安装了Solana CLI和Anchor，你可以使用以下命令创建一个新项目：
+一旦你安装了`Solana CLI`和`Anchor`，你可以使用以下命令创建一个新项目：
 
 ```bash
 anchor init project_name --solidity
 ```
 
-该命令生成一个新项目，其中包含一个基本的Solang on-chain程序（相当于EVM上的智能合约）和一个测试文件，演示了如何从客户端与该程序进行交互。
+该命令生成一个新项目，其中包含一个基本的`Solang on-chain`程序（相当于`EVM`上的智能合约）和一个测试文件，演示了如何从客户端与该程序进行交互。
 
 ## 链上程序概述
 
@@ -75,7 +75,7 @@ contract starter {
 
 ### 重要的差异
 
-与EVM智能合约相比，你可能会注意到两个重要的区别：
+与`EVM`智能合约相比，你可能会注意到两个重要的区别：
 
 1. `@program_id` 注解：
 在Solana上，智能合约被称为“程序”。使用 `@program_id` 注释来指定程序的链上地址。
@@ -86,7 +86,7 @@ contract starter {
 
 2. `@payer` 注解：
 
-在链上存储数据时，需要分配一定数量的SOL来支付存储成本。注释 `@payer` 指定了将支付所需SOL以创建用于存储状态变量的账户的用户。
+在链上存储数据时，需要分配一定数量的`SOL`来支付存储成本。注释 `@payer` 指定了将支付所需`SOL`以创建用于存储状态变量的账户的用户。
 
 
 ```solidity
@@ -99,10 +99,10 @@ constructor(address payer) {
 
 ### 状态数据的存储
 
-EVM智能合约和Solana程序之间的一个重要区别在于它们如何存储“状态”变量/数据：
+`EVM`智能合约和`Solana`程序之间的一个重要区别在于它们如何存储“状态”变量/数据：
 
-- EVM智能合约可以直接存储状态变量。
-- Solana的链上程序则会创建单独的账户来存储状态数据。这些账户通常被称为“数据账户”，并且是由程序“拥有”。
+- `EVM`智能合约可以直接存储状态变量。
+- `Solana`的链上程序则会创建单独的账户来存储状态数据。这些账户通常被称为“数据账户”，并且是由程序“拥有”。
 
 在这个例子中，当合约部署时，它被部署到 `@program_id` 中指定的地址。当程序部署后调用 `constructor` 时，会创建一个独立的帐户，用于存储状态变量，而不是存储在合约本身内部。
 
@@ -222,7 +222,7 @@ function flip() public {
 
 `anchor test` 命令执行以下任务：
 
-- 启动本地Solana验证节点
+- 启动本地`Solana`验证节点
 - 构建并部署你的链上程序到本地验证节点
 - 运行测试文件
 
@@ -237,7 +237,7 @@ state false
 ```
 
 
-你可以在 `./.anchor/program-logs` 中查看程序日志，那里会找到“Hello, World!”的消息
+你可以在 `./.anchor/program-logs` 中查看程序日志，那里会找到“`Hello, World!`”的消息
 
 ```bash
 Program F1ipperKF9EfD821ZbbYjS319LXYiBmjhzkkf5a26rC invoke [1]
@@ -246,12 +246,12 @@ Program 11111111111111111111111111111111 success
 Program log: Hello, World!
 ```
 
-恭喜！你成功地使用 Solang 构建了你的第一个 Solana 程序！虽然与标准 Solidity 智能合约相比可能存在一些差异，但 Solang 提供了一个极好的桥梁，帮助你利用现有的 Solidity 技能和经验来构建 Solana 上的应用。
+恭喜！你成功地使用 `Solang` 构建了你的第一个 `Solana` 程序！虽然与标准 `Solidity` 智能合约相比可能存在一些差异，但 `Solang` 提供了一个极好的桥梁，帮助你利用现有的 `Solidity` 技能和经验来构建 `Solana` 上的应用。
 
 ## 下一步
 
-有兴趣深入了解吗？请查看 [solana-developers/program-examples 存储库](https://github.com/solana-developers/program-examples)。你将在 `basics` 和 `tokens` 部分找到适用于常见Solana用例的Solang实现。
+有兴趣深入了解吗？请查看 [solana-developers/program-examples 存储库](https://github.com/solana-developers/program-examples)。你将在 `basics` 和 `tokens` 部分找到适用于常见`Solana`用例的`Solang`实现。
 
-如果你有问题，请随时在[Solana Stack exchange](https://solana.stackexchange.com/)上发布。如果你有关于Solang维护者的问题，可以直接在[Hyperledger Foundation](https://discord.com/invite/hyperledger)的discord上联系他们。
+如果你有问题，请随时在[`Solana Stack exchange`](https://solana.stackexchange.com/)上发布。如果你有关于`Solang`维护者的问题，可以直接在[`Hyperledger Foundation`](https://discord.com/invite/hyperledger)的`discord`上联系他们。
 
 玩得开心，尽情建造吧！

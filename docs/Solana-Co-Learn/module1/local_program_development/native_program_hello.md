@@ -8,11 +8,11 @@ sidebar_class_name: green
 
 让我们通过构建和部署 `Hello World!` 程序来进行练习。
 
-我们将在本地完成所有操作，包括部署到本地测试验证器。在开始之前，请确保你已经安装了Rust和Solana CLI。如果你还没有安装，请参考概述中的说明进行设置。
+我们将在本地完成所有操作，包括部署到本地测试验证器。在开始之前，请确保你已经安装了`Rust和`Solana CLI`。如果你还没有安装，请参考概述中的说明进行设置。
 
 ## 1. 创建一个新的Rust项目
 
-让我们从创建一个新的Rust项目开始。运行下面的`cargo new --lib`命令。随意用你自己的目录名替换它。
+让我们从创建一个新的`Rust`项目开始。运行下面的`cargo new --lib`命令。随意用你自己的目录名替换它。
 
 ```bash
 cargo new --lib solana-hello-world-local
@@ -63,13 +63,13 @@ pub fn process_instruction(
 
 ## 3. 运行本地测试验证器
 
-在编写好你的程序之后，让我们确保我们的Solana CLI配置指向本地主机，使用`solana config set --url`命令。
+在编写好你的程序之后，让我们确保我们的`Solana CLI`配置指向本地主机，使用`solana config set --url`命令。
 
 ```bash
 solana config set --url localhost
 ```
 
-接下来，使用`solana config get`命令检查Solana CLI配置是否已更新。
+接下来，使用`solana config get`命令检查`Solana CLI`配置是否已更新。
 
 ```bash
 solana config get
@@ -95,7 +95,7 @@ cargo build-sbf
 solana program deploy <PATH>
 ```
 
-Solana程序部署将输出你的程序的程序`ID`。你现在可以在[Solana Explorer](https://explorer.solana.com/?cluster=custom)上查找已部署的程序（对于`Localhost`，请选择“自定义`RPC URL`”作为集群）。
+`Solana`程序部署将输出你的程序的程序`ID`。你现在可以在[Solana Explorer](https://explorer.solana.com/?cluster=custom)上查找已部署的程序（对于`Localhost`，请选择“自定义`RPC URL`”作为集群）。
 
 
 ## 5. 查看程序日志
@@ -108,6 +108,6 @@ solana logs <PROGRAM_ID>
 
 在测试验证器仍在运行时，尝试使用[此处](https://github.com/CreatorsDAO/native-hello/tree/main/hello-frontend)的客户端脚本调用你的程序。
 
-在`index.ts`中用刚刚部署的`PROGRAM ID`替换掉原来的`PROGRAM ID`，然后运行`npm install`，接着运行`npm start`。这将返回一个Solana Explorer的`URL`。将URL复制到浏览器中，在Solana Explorer上查找该交易，并检查程序日志中是否打印了`Hello, world!`。或者，你可以在运行`solana logs`命令的终端中查看程序日志。
+在`index.ts`中用刚刚部署的`PROGRAM ID`替换掉原来的`PROGRAM ID`，然后运行`npm install`，接着运行`npm start`。这将返回一个`Solana Explorer`的`URL`。将URL复制到浏览器中，在`Solana Explorer`上查找该交易，并检查程序日志中是否打印了`Hello, world!`。或者，你可以在运行`solana logs`命令的终端中查看程序日志。
 
 就是这样！你刚刚在本地开发环境中创建并部署了你的第一个程序。

@@ -17,38 +17,38 @@ sidebar_class_name: green
 
 ## 本地环境配置
 
-Solana Program 使用Rust 编写，调试运行。建议使用Unix 系列系统: Mac , Linux 等。
-如果很不幸你使用的是Windows,建议使用 WSL 下载Ubuntu ,并在其中完成运行。
+`Solana Program` 使用`Rust` 编写，调试运行。建议使用`Unix` 系列系统: `Mac` , `Linux` 等。
+如果很不幸你使用的是`Windows`,建议使用 `WSL` 下载`Ubuntu` ,并在其中完成运行。
 
 ### 在Windows上设置（带有Linux）
 
 #### 下载Windows子系统Linux（WSL）
 
-如果你使用的是Windows电脑，建议使用Windows子系统Linux（WSL）来构建你的Solana程序。
+如果你使用的是`Windows`电脑，建议使用`Windows`子系统`Linux（WSL）`来构建你的`Solana`程序。
 
-打开**管理员**权限的PowerShell或Windows命令提示符，检查Windows版本
+打开**管理员**权限的`PowerShell`或`Windows`命令提示符，检查`Windows`版本
 
 ```bash
 winver
 ```
 
-如果你使用的是Windows 10版本2004及更高版本（Build 19041及更高版本）或Windows 11，请运行以下命令。
+如果你使用的是`Windows 10`版本`2004`及更高版本（`Build 19041`及更高版本）或`Windows 11`，请运行以下命令。
 
 ```bash
 wsl --install
 ```
 
-如果你正在使用较旧版本的Windows，请按照[这里](https://docs.microsoft.com/en-us/windows/wsl/install-manual)的说明进行操作。
+如果你正在使用较旧版本的`Windows`，请按照[这里](https://docs.microsoft.com/en-us/windows/wsl/install-manual)的说明进行操作。
 
-你可以在[这里](https://learn.microsoft.com/en-us/windows/wsl/install)阅读更多关于安装WSL的信息。
+你可以在[这里](https://learn.microsoft.com/en-us/windows/wsl/install)阅读更多关于安装`WS`L的信息。
 
 #### 下载Ubuntu
 
-接下来，在这里[下载Ubuntu](https://apps.microsoft.com/store/detail/ubuntu-2004/9N6SVWS3RX71?hl=en-us&gl=US)。Ubuntu提供了一个终端，可以让你在Windows电脑上运行Linux。这就是你将运行Solana CLI命令的地方。
+接下来，在这里[下载`Ubuntu`](https://apps.microsoft.com/store/detail/ubuntu-2004/9N6SVWS3RX71?hl=en-us&gl=US)。`Ubuntu`提供了一个终端，可以让你在`Windows`电脑上运行`Linux`。这就是你将运行`Solana CLI`命令的地方。
 
 #### 下载 Rust（适用于 WSL）
 
-接下来，打开Ubuntu终端并使用以下命令下载适用于WSL的Rust。你可以在[此处](https://www.rust-lang.org/learn/get-started)阅读有关下载Rust的更多信息。
+接下来，打开`Ubuntu`终端并使用以下命令下载适用于`WSL`的`Rust`。你可以在[此处](https://www.rust-lang.org/learn/get-started)阅读有关下载`Rust`的更多信息。
 
 ```bash
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
@@ -56,7 +56,7 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 #### 下载 Solana CLI
 
-现在我们准备下载适用于Linux的Solana CLI。请在Ubuntu终端中运行以下命令。你可以[在此处阅读](https://docs.solana.com/cli/install-solana-cli-tools)有关下载Solana CLI的更多信息。
+现在我们准备下载适用于`Linux`的`Solana CLI`。请在`Ubuntu`终端中运行以下命令。你可以[在此处阅读](https://docs.solana.com/cli/install-solana-cli-tools)有关下载`Solana CLI`的更多信息。
 
 ```bash
 sh -c "$(curl -sSfL https://release.solana.com/v1.16.9/install)"
@@ -66,21 +66,21 @@ sh -c "$(curl -sSfL https://release.solana.com/v1.16.9/install)"
 
 #### 下载 Rust
 
-首先，按照[这里](https://www.rust-lang.org/tools/install)的说明下载Rust
+首先，按照[这里](https://www.rust-lang.org/tools/install)的说明下载`Rust`。
 
 #### 下载Solana CLI
 
-接下来，在终端中运行以下命令下载Solana CLI。
+接下来，在终端中运行以下命令下载`Solana CLI`。
 
 ```bash
 sh -c "$(curl -sSfL https://release.solana.com/v1.16.9/install)"
 ```
 
-你可以在[这里](https://docs.solana.com/cli/install-solana-cli-tools)了解更多关于下载Solana CLI的信息。
+你可以在[这里](https://docs.solana.com/cli/install-solana-cli-tools)了解更多关于下载`Solana CLI`的信息。
 
 ## Solana CLI基础
 
-`Solana CLI`是一个命令行界面工具，提供了一系列命令，用于与Solana集群进行交互。
+`Solana CLI`是一个命令行界面工具，提供了一系列命令，用于与`Solana`集群进行交互。
 
 在本课程中，我们将介绍一些最常见的命令，但你始终可以通过运行`solana --help`来查看所有可能的`Solana CLI`命令列表。
 
@@ -148,13 +148,13 @@ solana-keygen new --outfile ~/<FILE_PATH>
 solana address
 ```
 
-要查看在solana配置中设置的当前密钥对的SOL余额，请使用`solana balance`命令。
+要查看在`Solana`配置中设置的当前密钥对的`SOL`余额，请使用`solana balance`命令。
 
 ```bash
 solana balance
 ```
 
-要在`Devnet`或`localhost`上进行SOL的空投，请使用`solana airdrop`命令。请注意，在`Devnet`上，每次空投限制为2个SOL。
+要在`Devnet`或`localhost`上进行`SOL`的空投，请使用`solana airdrop`命令。请注意，在`Devnet`上，每次空投限制为2个SOL。
 
 ```bash
 solana airdrop 2
@@ -166,7 +166,7 @@ solana airdrop 2
 - 没有足够的SOL来部署你的程序或执行交易
 - 指向错误的集群
 
-到目前为止，我们已经介绍了一些CLI命令，这些命令应该能帮助你快速解决那些问题。
+到目前为止，我们已经介绍了一些`CLI`命令，这些命令应该能帮助你快速解决那些问题。
 
 ## hello world 程序
 
@@ -177,7 +177,7 @@ solana airdrop 2
 
 ## 挑战
 
-现在轮到你独立构建一些东西了。尝试创建一个新的程序，将你自己的消息打印到程序日志中。这次将你的程序部署到Devnet而不是本地主机。
+现在轮到你独立构建一些东西了。尝试创建一个新的程序，将你自己的消息打印到程序日志中。这次将你的程序部署到`Devnet`而不是本地主机。
 
 记得使用`solana config set --url`命令将你的`RPC URL`更新为`Devnet`。
 
