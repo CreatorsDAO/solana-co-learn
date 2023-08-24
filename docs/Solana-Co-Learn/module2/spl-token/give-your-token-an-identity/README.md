@@ -141,7 +141,7 @@ async function createTokenMetadata(
 - [createCreateMetadataAccountV2Instruction指令的实际函数定义](https://github.com/metaplex-foundation/metaplex-program-library/blob/caeab0f7/token-metadata/js/src/generated/instructions/CreateMetadataAccountV2.ts#L73?utm_source=buildspace.so&utm_medium=buildspace_project)
 - [createMetadataAccountV2指令的测试](https://github.com/metaplex-foundation/js/blob/c171e1e31d9fe12852afb39e449123339848180e/packages/js/test/plugins/nftModule/createNft.test.ts#L465?utm_source=buildspace.so&utm_medium=buildspace_project)
 
-这并不是什么深奥的科学，你只需要深入代码，找到你所需要的。理解代码构建的基本元素（在这种情况下是Solana指令）可能需要几次尝试，但回报是巨大的。
+这并不是什么深奥的科学，你只需要深入代码，找到你所需要的。理解代码构建的基本元素（在这种情况下是`Solana`指令）可能需要几次尝试，但回报是巨大的。
 
 通常，我会尝试以下操作：
 

@@ -6,9 +6,9 @@ sidebar_class_name: green
 
 # 🖼 从糖果机展示NFTs
 
-现在我们已经铸造了一个`NFT`，接下来我们将学习如何铸造一系列的`NFT`。为此，我们将利用Candy Machine来实现——这是Solana的一个程序，使创作者能够将他们的资产上链。虽然这并非创建系列的唯一方式，但在Solana上它却成了标准，因为它具备了许多有用的功能，例如机器人保护和安全随机化。你是否感受到过看到闪亮的新iPhone时的那股兴奋感？稀有的`NFT`有点儿类似于此。对于优秀的艺术家而言，仅仅是观看这些`NFT`也极富乐趣。毕竟，艺术的本质就是用来欣赏的！接下来，我们将探讨如果我们只有Candy Machine的地址，应该如何展示`NFTs`。
+现在我们已经铸造了一个`NFT`，接下来我们将学习如何铸造一系列的`NFT`。为此，我们将利用Candy Machine来实现——这是`Solana`的一个程序，使创作者能够将他们的资产上链。虽然这并非创建系列的唯一方式，但在`Solana`上它却成了标准，因为它具备了许多有用的功能，例如机器人保护和安全随机化。你是否感受到过看到闪亮的新iPhone时的那股兴奋感？稀有的`NFT`有点儿类似于此。对于优秀的艺术家而言，仅仅是观看这些`NFT`也极富乐趣。毕竟，艺术的本质就是用来欣赏的！接下来，我们将探讨如果我们只有`Candy Machine`的地址，应该如何展示`NFTs`。
 
-你能猜到这里有何不同之处吗？没错，我们仅在SDK上采用了一种不同的方法！
+你能猜到这里有何不同之处吗？没错，我们仅在`SDK`上采用了一种不同的方法！
 
 ![](./img/candy-machine-nft.png)
 
@@ -48,7 +48,7 @@ export const FetchCandyMachine: FC = () => {
   const metaplex = Metaplex.make(connection)
   ```
 
-在创建有状态变量时，请确保添加你的Candy Machine地址。
+在创建有状态变量时，请确保添加你的`Candy Machine`地址。
 
 ```js
 export const FetchCandyMachine: FC = () => {
@@ -83,7 +83,7 @@ export const FetchCandyMachine: FC = () => {
 }
 ```
 
-注意：Metaplex CLI的最新版本在函数调用的末尾不需要 `run()`。
+注意：`Metaplex CLI`的最新版本在函数调用的末尾不需要 `run()`。
 
 现在来到重要的部分 - 浏览我们将获取的CM数据。以下是 `getPage` 函数的样子：
 
@@ -114,7 +114,7 @@ export const FetchCandyMachine: FC = () => {
 
 ```
 
-我们在这里做的是将 `items` 数组切割成大小为10的部分。然后我们获取页面上每个`NFT`的元数据，并将其存储在 `nftData` 中。最后，我们将 `pageItems` 状态变量设置为刚刚获取的 `nftData`。
+我们在这里做的是将 `items` 数组切割成大小为`10`的部分。然后我们获取页面上每个`NFT`的元数据，并将其存储在 `nftData` 中。最后，我们将 `pageItems` 状态变量设置为刚刚获取的 `nftData`。
 
 这意味着我们的应用程序在任何时候只会渲染当前页面的`NFT`。相当棒！
 
@@ -141,7 +141,7 @@ const next = async () => {
 现在我们需要一些 `useEffects` 来开始。整个过程一开始可能有点复杂，所以让我们一步一步解释。
 
 - 1. 在页面加载时运行 `fetchCandyMachine` 函数（如果 `candyMachineAddress` 不为空）。
-- 2. 每当使用 `fetchCandyMachine` 获取糖果机时，将 `page` 设置为1，这样你就可以从第一页开始。
+- 2. 每当使用 `fetchCandyMachine` 获取糖果机时，将 `page` 设置为`1`，这样你就可以从第一页开始。
 - 3. 每当 `candyMachineData` 或 `page` 发生变化时（即输入新的CM地址或点击下一个/上一个按钮），重新加载页面。
 
 以下是代码示例：

@@ -13,9 +13,9 @@ sidebar_class_name: green
 
 ![](./img/token-metadata.png)
 
-这就是所有的元数据！这适用于所有代币，不仅仅是可替代代币。在Solana上，`NFT`与任何其他代币无异，只不过通过属性（例如小数位）来定义它们作为`NFT`。
+这就是所有的元数据！这适用于所有代币，不仅仅是可替代代币。在`Solana`上，`NFT`与任何其他代币无异，只不过通过属性（例如小数位）来定义它们作为`NFT`。
 
-所有这些都是通过[`Token Metadata Program`](https://docs.metaplex.com/programs/token-metadata/overview)实现的 - 这是处理Solana区块链上的`Token`和`NFT`时最重要的程序之一。它的主要任务是将额外数据附加到Solana上的可替代或不可替代`Token`。它使用从`Mint`账户地址派生的程序派生地址（`PDAs`）来实现这个目标。
+所有这些都是通过[`Token Metadata Program`](https://docs.metaplex.com/programs/token-metadata/overview)实现的 - 这是处理`Solana`区块链上的`Token`和`NFT`时最重要的程序之一。它的主要任务是将额外数据附加到`Solana`上的可替代或不可替代`Token`。它使用从`Mint`账户地址派生的程序派生地址（`PDAs`）来实现这个目标。
 
 ## 🎭 令牌元数据账户
 
@@ -23,7 +23,7 @@ sidebar_class_name: green
 
 ![](./img/token-metada-program.png)
 
-这被称为元数据账户。它能存储有关特定代币铸造账户的各种信息。你会注意到一个 `URI`（统一资源标识符）属性 - 它指向链下的一个JSON文件，主要用于非同质化代币（`NFT`）。由于链下部分不受链上费用限制，你可以存储高质量图形和其他大型数据对象。
+这被称为元数据账户。它能存储有关特定代币铸造账户的各种信息。你会注意到一个 `URI`（统一资源标识符）属性 - 它指向链下的一个`JSON`文件，主要用于非同质化代币（`NFT`）。由于链下部分不受链上费用限制，你可以存储高质量图形和其他大型数据对象。
 
 元数据账户有许多属性，你不需要了解其中大部分。我们将在需要时深入探讨相关部分。现在，我们只关心链下部分，这是我们制作`Pizzacoin`所需的第一步。
 
@@ -50,7 +50,7 @@ sidebar_class_name: green
 
 ## 🧰 Metaplex SDK
 
-欢迎接触Solana上其中一款极为实用的SDK——`Metaplex SDK`。如果你之前在Solana上铸造过`NFT`，那么你很可能在毫不知情的情况下已经使用过`Metaplex SDK`了。我们将利用 `@metaplex-foundation/js` 和 `@metaplex-foundation/mpl-token-metadata` 库来创建和我们的代币铸造项目相关联的元数据账户。现在是时候赋予`Pizzacoin`独一无二的身份了。
+欢迎接触`Solana`上其中一款极为实用的`SDK`——`Metaplex SDK`。如果你之前在`Solana`上铸造过`NFT`，那么你很可能在毫不知情的情况下已经使用过`Metaplex SDK`了。我们将利用 `@metaplex-foundation/js` 和 `@metaplex-foundation/mpl-token-metadata` 库来创建和我们的代币铸造项目相关联的元数据账户。现在是时候赋予`Pizzacoin`独一无二的身份了。
 
 我们首先将着手于链下部分，准备好后，再继续创建代币元数据账户。
 

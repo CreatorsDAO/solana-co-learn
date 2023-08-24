@@ -6,12 +6,12 @@ sidebar_class_name: green
 
 # 🎨 创建奖励代币
 
-既然我们已经铸造了一个`NFT`，那么接下来我们要探讨如何铸造一系列的`NFT`。为了达成这个目标，我们将采用`Candy Machine`——一款在Solana上广泛使用的程序，允许创作者将其资产上链。`Candy Machine`在Solana上受到欢迎的原因在于，它具备了如机器人防护和安全随机化等实用功能。现在我们可以回归到我们自定义的`NFT`质押应用上来，借助我们在代币程序和`Candy Machine`上的经验来构建这个应用。
+既然我们已经铸造了一个`NFT`，那么接下来我们要探讨如何铸造一系列的`NFT`。为了达成这个目标，我们将采用`Candy Machine`——一款在`Solana`上广泛使用的程序，允许创作者将其资产上链。`Candy Machine`在`Solana`上受到欢迎的原因在于，它具备了如机器人防护和安全随机化等实用功能。现在我们可以回归到我们自定义的`NFT`质押应用上来，借助我们在代币程序和`Candy Machine`上的经验来构建这个应用。
 
 请按照以下步骤操作：
 
 1. 在根目录中创建名为`tokens`的新文件夹。
-2. 在`tokens`文件夹内，我们要创建2个子文件夹，分别命名为`bld`和`candy-machine`，它们的结构应如下图所示：
+2. 在`tokens`文件夹内，我们要创建`2`个子文件夹，分别命名为`bld`和`candy-machine`，它们的结构应如下图所示：
 
    ![](./img/tokens.png)
 
@@ -169,7 +169,7 @@ const tokenMint = await token.createMint(
 );
 ```
 
-接下来，我们创建一个Metaplex对象，以便我们可以创建Metaplex元数据，并将其上传到`BundlrStorage`中。
+接下来，我们创建一个`Metaplex`对象，以便我们可以创建`Metaplex`元数据，并将其上传到`BundlrStorage`中。
 
 ```ts
 // 创建一个Metaplex对象，这样我们就可以创建Metaplex元数据了
@@ -201,7 +201,7 @@ const { uri } = await metaplex
   });
 ```
 
-一旦我们成功将图像上传到Metaplex，我们就可以通过调用以下部分来查找元数据存储的地址。
+一旦我们成功将图像上传到`Metaplex`，我们就可以通过调用以下部分来查找元数据存储的地址。
 
 ```ts
 // 查找元数据存储的地址
@@ -241,7 +241,7 @@ const transactionSignature = await web3.sendAndConfirmTransaction(
 
 这部分代码将创建一个代币，并将其所需的所有输入与其关联起来。它还会读取图像文件，上传文件，并完成为你的代币创建完整元数据所需的其他操作。
 
-通过这样的操作，你将能够在Solana上成功创建并管理你的代币。
+通过这样的操作，你将能够在`Solana`上成功创建并管理你的代币。
 
 ## 🫙 元数据的存储
 
@@ -277,7 +277,7 @@ async function main() {
 
 ## 🚀 运行我们的代码
 
-首先，我们需要在VS Code中打开终端，并安装一个名为 `ts-node` 的模块，因为我们要运行一些TypeScript命令。在终端中输入 `npm install --save-dev ts-node`。然后，转到你的 `package.json` 文件，并将以下行添加到 `scripts` 部分。
+首先，我们需要在`VS Code`中打开终端，并安装一个名为 `ts-node` 的模块，因为我们要运行一些`TypeScript`命令。在终端中输入 `npm install --save-dev ts-node`。然后，转到你的 `package.json` 文件，并将以下行添加到 `scripts` 部分。
 
 ```json
 "create-bld-token": "ts-node ./src/tokens/bld/index.ts"
@@ -297,4 +297,4 @@ async function main() {
 
 ![](./img/tokens.png)
 
-以上就是如何在Solana网络上创建和铸造你自己的代币的全部步骤。现在你已经成功地执行了这一过程，可以在Solana网络上与你的代币互动了。
+以上就是如何在`Solana`网络上创建和铸造你自己的代币的全部步骤。现在你已经成功地执行了这一过程，可以在`Solana`网络上与你的代币互动了。

@@ -6,7 +6,7 @@ sidebar_class_name: green
 
 # 📱 在钱包中展示NFTs
 
-现在我们已经铸造了一个`NFT`，接下来我们要探索如何铸造一系列的`NFT`。我们将使用Candy Machine来完成这项任务，这是一款Solana程序，能让创作者方便地将他们的资产上链。虽然这不是创建系列的唯一方式，但在Solana上它已经成为标准，因为它具有诸如防机器人保护和安全随机化等有用的功能。你懂的，模板时间到了。然而，随着我们构建的项目越来越复杂，我们的模板也会变得更先进。这次我们将基于[Solana dApp脚手架](https://github.com/solana-labs/dapp-scaffold)构建一个模板。与之前的模板一样，它是一个由`create-next-app`创建的Next.js应用程序。不过这次，它具有更多功能。不用担心！我们依然会使用相同的工具。
+现在我们已经铸造了一个`NFT`，接下来我们要探索如何铸造一系列的`NFT`。我们将使用`Candy Machine`来完成这项任务，这是一款`Solana`程序，能让创作者方便地将他们的资产上链。虽然这不是创建系列的唯一方式，但在`Solana`上它已经成为标准，因为它具有诸如防机器人保护和安全随机化等有用的功能。你懂的，模板时间到了。然而，随着我们构建的项目越来越复杂，我们的模板也会变得更先进。这次我们将基于[Solana dApp脚手架](https://github.com/solana-labs/dapp-scaffold)构建一个模板。与之前的模板一样，它是一个由`create-next-app`创建的`Next.js`应用程序。不过这次，它具有更多功能。不用担心！我们依然会使用相同的工具。
 
 ```bash
 git clone https://github.com/CreatorsDAO/solana-display-nfts-frontend
@@ -109,6 +109,6 @@ return (
 
 ![](./img/nfts-wallet.png)
 
-回顾过去的日子（大约在2021年10月），那时我不得不手动完成所有这些工作，并且我一直受到RPC的速率限制，所以请花一些时间感谢Metaplex的开发人员为我们带来了这个精彩的SDK！
+回顾过去的日子，那时我不得不手动完成所有这些工作，并且我一直受到RPC的速率限制，所以请花一些时间感谢`Metaplex`的开发人员为我们带来了这个精彩的`SDK`！
 
 在`nftData`上玩一下。将其记录到控制台，并尝试显示其他值，如符号或描述！也许你还可以添加一个过滤器，让用户只能显示特定收藏的`NFT`？
