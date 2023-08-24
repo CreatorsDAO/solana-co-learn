@@ -6,6 +6,6 @@ sidebar_class_name: green
 
 # NFTs & Minting with Metaplex
 
-- [🎨 Solana上的NFT](./nfts-one-solana/README.md)
-- [🤨 NFT你的脸](./nft-your-face/README.md)
-- [🍭 糖果机和Sugar CLI](./candy-machine-and-the-sugar-cli/README.md)
+- [🎨 `Solana`上的`NFT`](./nfts-one-solana/README.md)
+- [🤨 `NFT`你的脸](./nft-your-face/README.md)
+- [🍭 糖果机和`Sugar CLI`](./candy-machine-and-the-sugar-cli/README.md)
