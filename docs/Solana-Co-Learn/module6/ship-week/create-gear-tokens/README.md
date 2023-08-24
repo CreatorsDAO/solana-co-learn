@@ -12,7 +12,7 @@ sidebar_class_name: green
 
 我们将会浏览两个不同的代码库。如果你还记得，我们在客户端项目中创建了`BLD`代币和NFT。幸运的是，我们在那里完成了这项工作，如果我们愿意，我们还可以将其转移到程序项目中。
 
-你可以在`/tokens/gear/assets`文件夹中找到齿轮的图像。我们选择将其制作为可替代资产，或带有关联元数据和0位小数的SPL代币，而不是NFT，这样它们就不仅限于一个单位。
+你可以在`/tokens/gear/assets`文件夹中找到齿轮的图像。我们选择将其制作为可替代资产，或带有关联元数据和0位小数的`SPL`代币，而不是NFT，这样它们就不仅限于一个单位。
 
 `/tokens/gear/index.ts`中的脚本负责生成与这些资产相关的货币，并将其存储在同一文件夹中的`cache.json`文件中。
 
@@ -48,7 +48,7 @@ let collection: any = {}
 let mints: Array<string> = []
 ```
 
-接下来我们获取图像缓冲区并将其上传到Arweave，进行持久化存储。
+接下来我们获取图像缓冲区并将其上传到`Arweave，进行持久化存储。
 
 ```ts
 const imageBuffer = fs.readFileSync(`tokens/gear/assets/${assets[i]}.png`)
@@ -56,7 +56,7 @@ const file = toMetaplexFile(imageBuffer, `${assets[i]}.png`)
 const imageUri = await metaplex.storage().upload(file)
 ```
 
-在那之后，如果你想要不同的经验等级，我们就循环执行相应的次数，针对这个装备。在我们的示例中，只执行一次，因为经验等级从10开始并结束于10。如果你想要每个等级的五个装备，只需将上限增加到`50`，即`xp <= 50`。
+在那之后，如果你想要不同的经验等级，我们就循环执行相应的次数，针对这个装备。在我们的示例中，只执行一次，因为经验等级从`10`开始并结束于`10`。如果你想要每个等级的五个装备，只需将上限增加到`50`，即`xp <= 50`。
 
 ```ts
 for (let xp = 10; xp <= 10; xp += 10)...
@@ -71,7 +71,7 @@ const [mintAuth] = await web3.PublicKey.findProgramAddress(
   )
 ```
 
-随后，我们创建了一个全新的代币，并将其小数位设置为0，因为它是一种不可分割的资产。
+随后，我们创建了一个全新的代币，并将其小数位设置为`0`，因为它是一种不可分割的资产。
 
 ```ts
 const tokenMint = await token.createMint(
@@ -177,7 +177,7 @@ await token.setAuthority(
 }
 ```
 
-最后，在内循环之外，我们将薄荷放入集合中，所以第一个是“Bow”（作为我们的例子）。
+最后，在内循环之外，我们将薄荷放入集合中，所以第一个是“`Bow`”（作为我们的例子）。
 
 ```ts
 collection[assets[i]] = mints

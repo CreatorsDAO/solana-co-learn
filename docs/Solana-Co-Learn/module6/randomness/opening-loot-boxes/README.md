@@ -6,7 +6,7 @@ sidebar_class_name: green
 
 # 🎁 开启战利品箱
 
-现在我们来深入探讨开启战利品箱的指南。首先你会注意到的是，这个过程涉及许多账号，总共有19个！
+现在我们来深入探讨开启战利品箱的指南。首先你会注意到的是，这个过程涉及许多账号，总共有`19`个！
 
 直到`stake_state`为止，这些信息都是我们之前已经了解的。
 
@@ -125,7 +125,7 @@ pub struct OpenLootbox<'info> {
 
 在我们的账户配置之后，下面的代码片段是我们在开放式战利品箱实现中真正进行的操作，需要注意的是，这正是我们逻辑所在的地方。
 
-起初，我们加载状态的部分与以前完全相同。一旦我们加载了状态，我们就从状态中获取了我们的 bump（译者注：bump通常用于校验或确保唯一性），还有我们在初始化用户时添加的另外两个 bump。我们还从内存中删除了状态。
+起初，我们加载状态的部分与以前完全相同。一旦我们加载了状态，我们就从状态中获取了我们的 `bump`（译者注：bump通常用于校验或确保唯一性），还有我们在初始化用户时添加的另外两个 `bump`。我们还从内存中删除了状态。
 
 ```rust
 let state = ctx.accounts.state.load()?;
@@ -179,7 +179,7 @@ vrf_request_randomness.invoke_signed(
 msg!("randomness requested successfully");
 ```
 
-最后，我们将随机请求更改为已初始化为true。
+最后，我们将随机请求更改为已初始化为`true`。
 
 ```rust
 ctx.accounts.lootbox_pointer.randomness_requested = true;
@@ -237,7 +237,7 @@ pub struct ConsumeRandomness<'info> {
 }
 ```
 
-在实际执行上，我们在流程指令功能中首先加载vrf和状态账户。随后，我们从`vrf`账户获取结果缓冲区，并检查确保其不为空。
+在实际执行上，我们在流程指令功能中首先加载`vrf`和状态账户。随后，我们从`vrf`账户获取结果缓冲区，并检查确保其不为空。
 
 ```rust
 impl ConsumeRandomness<'_> {
@@ -267,7 +267,7 @@ let available_gear: Vec<Pubkey> = Self::AVAILABLE_GEAR
            .collect();
 ```
 
-在 `value` 变量中，我们将结果缓冲区转换为无符号8位整数，这是switchboard推荐的实现方式，采用了 `bytemuck crate`。最后，我们通过取模运算和可用的最大薄荷数量来随机选择一个。
+在 `value` 变量中，我们将结果缓冲区转换为无符号`8`位整数，这是`switchboard`推荐的实现方式，采用了 `bytemuck crate`。最后，我们通过取模运算和可用的最大薄荷数量来随机选择一个。
 
 ```rust
 // maximum value to convert randomness buffer
@@ -277,7 +277,7 @@ let i = (value[0] as usize) % max_result;
 msg!("The chosen mint index is {} out of {}", i, max_result);
 ```
 
-最后，我们会选中第`i`个索引处的值，并分配给lootbox指针的`mint`，然后将`redeemable`的值更改为`true`。这样一来，客户端便可观察到这一变化，一旦`redeemable`为`true`，用户就能开始铸造他们的装备。
+最后，我们会选中第`i`个索引处的值，并分配给`lootbox`指针的`mint`，然后将`redeemable`的值更改为`true`。这样一来，客户端便可观察到这一变化，一旦`redeemable`为`true`，用户就能开始铸造他们的装备。
 
 ```rust
 let mint = available_gear[i];
@@ -383,7 +383,7 @@ await lootboxProgram.methods
   .rpc();
 ```
 
-接下来，我们使用了`awaitCallback`函数，在其中我们传递了`lootbox`程序、指针`PDA`，并设置了20秒的等待时间。在这段时间内，我们将观察lootbox指针是否更新为新的`mint`。
+接下来，我们使用了`awaitCallback`函数，在其中我们传递了`lootbox`程序、指针`PDA`，并设置了20秒的等待时间。在这段时间内，我们将观察`lootbox`指针是否更新为新的`mint`。
 
 ```ts
 await awaitCallback(
@@ -394,7 +394,7 @@ await awaitCallback(
 );
 ```
 
-下面是等待回调函数的部分，您可以随意引用。在这里，您会看到它实际上只是静静地等待。它会观察战利品盒指针上的账户变化，一旦有变化，它就会检查战利品盒指针，看看是否已设置为“可兑换”为真。如果是这样，它就会解决并完成回调，一切都将顺利进行。如果在20秒内没有发生任何变化，它将报告"未获得随机铸币"的错误。
+下面是等待回调函数的部分，您可以随意引用。在这里，您会看到它实际上只是静静地等待。它会观察战利品盒指针上的账户变化，一旦有变化，它就会检查战利品盒指针，看看是否已设置为“可兑换”为真。如果是这样，它就会解决并完成回调，一切都将顺利进行。如果在`20`秒内没有发生任何变化，它将报告"未获得随机铸币"的错误。
 
 
 ```ts

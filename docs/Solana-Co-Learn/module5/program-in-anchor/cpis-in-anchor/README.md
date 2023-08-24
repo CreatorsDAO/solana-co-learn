@@ -6,15 +6,15 @@ sidebar_class_name: green
 
 # 🔀 Anchor的CPIs
 
-现在我们可以通过添加CPI（跨程序调用）来提升我们的代码水平。
+现在我们可以通过添加`CPI`（跨程序调用）来提升我们的代码水平。
 
-首先回顾一下，CPI是通过使用`invoke`和`invoke_signed`方法来制作的。
+首先回顾一下，`CPI`是通过使用`invoke`和`invoke_signed`方法来制作的。
 
-Anchor框架还提供了一种特殊的CPI制作格式。要使用这种格式，你需要访问所调用程序的CPI模块。一些常见的程序可能会有现成的包供你使用，例如`anchor_spl`，这可以用于令牌程序。否则，你将需要使用所调用程序的源代码或已发布的IDL（接口定义语言）来生成CPI模块。
+`Anchor`框架还提供了一种特殊的`CPI`制作格式。要使用这种格式，你需要访问所调用程序的`CPI`模块。一些常见的程序可能会有现成的包供你使用，例如`anchor_spl`，这可以用于令牌程序。否则，你将需要使用所调用程序的源代码或已发布的`IDL`（接口定义语言）来生成CPI模块。
 
-如果没有现成的CPI模块，你仍然可以直接在指令中使用`invoke`和`invoke_signed`方法。正如Anchor指令需要`Context`类型一样，Anchor CPI则使用`CpiContext`类型。
+如果没有现成的CPI模块，你仍然可以直接在指令中使用`invoke`和`invoke_signed`方法。正如`Anchor`指令需要`Context`类型一样，`Anchor CPI`则使用`CpiContext`类型。
 
-`CpiContext`提供了执行指令所需的所有账户和种子信息。当不需要PDA（程序衍生账户）签名者时，使用`CpiContext::new`：
+`CpiContext`提供了执行指令所需的所有账户和种子信息。当不需要`PDA`（程序衍生账户）签名者时，使用`CpiContext::new`：
 
 ```rust
 CpiContext::new(cpi_program, cpi_accounts)
@@ -59,7 +59,7 @@ pub fn new(
     }
 ```
 
-`CpiContext::new_with_signer`用于在PDA上用种子签名。
+`CpiContext::new_with_signer`用于在`PDA`上用种子签名。
 
 ```rust
 pub fn new_with_signer(
@@ -78,7 +78,7 @@ pub fn new_with_signer(
 
 `anchor_spl`包还包括了一个`token`模块，用于简化创建到令牌程序的CPI的过程。
 
-在这里，“Structs”指的是每个相应的令牌程序指令所需的账户列表。“Functions”指的是每个相应指令的CPI。
+在这里，“`Structs`”指的是每个相应的令牌程序指令所需的账户列表。“`Functions`”指的是每个相应指令的`CPI`。
 
 例如，下面的`MintTo`就是所需的账户：
 
@@ -93,7 +93,7 @@ pub struct MintTo<'info> {
 
 我们也可以深入了解一下`mint_to`方法的内部工作原理。
 
-它使用`CpiContext`来构建一个到`mint_to`指令的CPI，并使用`invoke_signed`来执行CPI。
+它使用`CpiContext`来构建一个到`mint_to`指令的`CPI`，并使用`invoke_signed`来执行`CPI`。
 
 ```rust
 pub fn mint_to<'a, 'b, 'c, 'info>(
@@ -296,4 +296,4 @@ let token_account: anchor_lang::accounts::account::Account<TokenAccount> = {
 }
 ```
 
-通过这个约束条件，可以确保在初始化时根据需要创建关联的令牌账户，使得整个流程更加自动化和智能。如果你对代码有任何疑问或需要进一步的解释，请随时告诉我。
+通过这个约束条件，可以确保在初始化时根据需要创建关联的令牌账户，使得整个流程更加自动化和智能。

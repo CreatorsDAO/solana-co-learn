@@ -10,7 +10,7 @@ sidebar_class_name: green
 
 ## 概览
 
-我们将通过Switchboard来构建一个基础程序，以实现随机数的请求。在此视频中，我们将重点关注如何在测试环境中配置Switchboard客户端。
+我们将通过`Switchboard`来构建一个基础程序，以实现随机数的请求。在此视频中，我们将重点关注如何在测试环境中配置`Switchboard`客户端。
 
 首先，我们要进行交换机的初始化设置，你可以在[/tests/utils/setupSwitchboard.ts](https://github.com/Unboxed-Software/anchor-nft-staking-program/blob/solution-randomize-loot/tests/utils/setupSwitchboard.ts?utm_source=buildspace.so&utm_medium=buildspace_project)文件中找到相关代码。
 
@@ -26,7 +26,7 @@ import * as sbv2 from "@switchboard-xyz/switchboard-v2"
 
 在实际功能方面，你会注意到我们传入的三个项目分别是提供者、战利品箱计划和付款人。
 
-我们要做的第一件事是加载devnet队列，这样我们就可以在devnet上进行测试了。`ID`是Switchboard的程序ID，100,000,000则是`switchboard`代币数量，我们需要访问它们。
+我们要做的第一件事是加载`devne`t队列，这样我们就可以在`devnet`上进行测试了。`ID`是Switchboard的程序`ID`，`100,000,000`则是`switchboard`代币数量，我们需要访问它们。
 
 ```ts
 export const setupSwitchboard = async (provider, lootboxProgram, payer) => {
@@ -213,7 +213,7 @@ before(async () => {
 
 让我们开始吧，首先是 `init_user`。
 
-在文件的顶部，你会找到初始用户上下文，在底部有一个实现，其中有一个名为 `process instruction` 的函数，在该函数中执行了之前在 lib 文件中的逻辑。
+在文件的顶部，你会找到初始用户上下文，在底部有一个实现，其中有一个名为 `process instruction` 的函数，在该函数中执行了之前在 `lib`s 文件中的逻辑。
 
 在 `InitUser` 上下文中有四个账户。状态是我们的用户状态对象，其中包含 `vrf` 和 `payer` 密钥种子，这是用于测试的版本。对于生产代码，你只需要 `payer` 种子。我们这样做是为了节省时间，而不是使用环境变量。然后有 `vrf` 账户，switchboard 不会自动加载它，因此需要使用 `.load()` 调用来加载。可能有其他使用 switchboard 的方法，但我们目前采用的是最简单/最快的路径来启动和运行，随时可以对其进行探索和改进。最后，我们有 `payer` 和 `system` 程序来创建一个新账户。
 

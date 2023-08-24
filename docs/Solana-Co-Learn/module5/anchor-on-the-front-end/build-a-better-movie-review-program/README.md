@@ -121,7 +121,7 @@ export default MyApp
 - 在 `handleSubmit` 函数中：
     - 可以实现根据情况选择调用 `addMovieReview` 或 `updateMovieReview` 指令。
 
-在使用Anchor时，利用IDL (Interface Description Language) 的特性可以推断PDA（程序派生地址）账户和其他账户（如系统程序或代币程序），因此无需显式传递这些信息。
+在使用`Anchor`时，利用`IDL (Interface Description Language)` 的特性可以推断`PDA`（程序派生地址）账户和其他账户（如系统程序或代币程序），因此无需显式传递这些信息。
 
 ```ts
 import { FC } from "react"

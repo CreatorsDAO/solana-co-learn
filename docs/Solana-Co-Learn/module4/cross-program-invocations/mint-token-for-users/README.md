@@ -6,7 +6,7 @@ sidebar_class_name: green
 
 # 🥇 为用户铸造代币
 
-我们的电影评论项目进展得不错，但还没有充分体现Web3的特性。目前我们主要将Solana用作数据库。让我们通过奖励用户增加一些趣味性吧！每当用户评论一部电影或留下评论时，我们将为其铸造代币。这可以想象成StackOverflow，只不过是用代币来代替点赞。
+我们的电影评论项目进展得不错，但还没有充分体现Web3的特性。目前我们主要将`Solana`用作数据库。让我们通过奖励用户增加一些趣味性吧！每当用户评论一部电影或留下评论时，我们将为其铸造代币。这可以想象成`StackOverflow`，只不过是用代币来代替点赞。
 
 你可以在上一次的本地环境上继续开发，或者通过复制[这个环境](https://beta.solpg.io/6313104b88a7fca897ad7d19?utm_source=buildspace.so&utm_medium=buildspace_project)来创建一个新的环境。
 
@@ -103,7 +103,7 @@ impl MovieInstruction {
 }
 ```
 
-你会立即注意到 `process_instruction` 的匹配语句中存在错误，因为我们没有处理所有情况。让我们通过引入新的SPL导入并添加到匹配语句中来修复这个问题，继续往下开发。
+你会立即注意到 `process_instruction` 的匹配语句中存在错误，因为我们没有处理所有情况。让我们通过引入新的`SPL`导入并添加到匹配语句中来修复这个问题，继续往下开发。
 
 ```rust
 // Update imports at the top
@@ -308,7 +308,7 @@ npm install
 在运行脚本之前，请：
 
 - 1. 更新`index.ts`中的`PROGRAM_ID`。
-- 2. 将第67行的连接更改为你的本地连接：
+- 2. 将第`67`行的连接更改为你的本地连接：
 
 ```ts
 const connection = new web3.Connection("http://localhost:8899");

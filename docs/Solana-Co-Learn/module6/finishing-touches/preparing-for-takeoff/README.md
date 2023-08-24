@@ -298,7 +298,7 @@ const sendAndConfirmTransaction = async (
     }
 ```
 
-快速跳转到 `/pages/stake.tsx` 。我们做一个小修改，如果有 `nftData` 和 `nftTokenAccount` ，则显示战利品箱，并传入赌注账户、NFT代币账户，并调用`fetchstate`，将`mint address`作为上游属性传递。
+快速跳转到 `/pages/stake.tsx` 。我们做一个小修改，如果有 `nftData` 和 `nftTokenAccount` ，则显示战利品箱，并传入赌注账户、`NFT`代币账户，并调用`fetchstate`，将`mint address`作为上游属性传递。
 
 ```ts
 <HStack>

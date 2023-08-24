@@ -6,7 +6,7 @@ sidebar_class_name: green
 
 # 💸 使用CPI构建支付系统
 
-上一堂课我们已经完成了Mint账户的准备工作，热身环节到此结束，现在正式开始主要表演。
+上一堂课我们已经完成了`Mint`账户的准备工作，热身环节到此结束，现在正式开始主要表演。
 
 我们将深入到审查和评论的工作流程中，并添加必要的逻辑来铸造代币。
 
@@ -94,7 +94,7 @@ invoke_signed(
 Ok(())
 ```
 
-`mint_to` 是来自SPL令牌库的指令，所以我们还需更新顶部的导入内容：
+`mint_to` 是来自`SPL`令牌库的指令，所以我们还需更新顶部的导入内容：
 
 ```rust
 // Existing imports
@@ -190,7 +190,7 @@ npm install
 和以前一样，需要进行以下操作：
 
 1. 在 `index.ts` 中更新 `PROGRAM_ID` 的值。
-2. 修改第67行的连接为在线连接。
+2. 修改第`67`行的连接为在线连接。
 
 ```ts
 const connection = new web3.Connection("http://localhost:8899");
@@ -209,11 +209,11 @@ git checkout solution-add-tokens
 npm install
 ```
 
-更新 `PROGRAM_ID`，提交评论，发表评论后，你现在应该能在 Phantom 钱包中看到你的代币了！
+更新 `PROGRAM_ID`，提交评论，发表评论后，你现在应该能在 `Phantom` 钱包中看到你的代币了！
 
 ## 🚢 挑战
 
-为了运用你在本课程中学到的有关 CPI 的知识，不妨考虑如何将其整合到学生介绍方案中。你可以做些类似我们演示中的事情，比如在用户自我介绍时铸造一些代币给他们。或者，如果你感到更有挑战性，思考如何将课程中学到的所有内容整合在一起，从零开始创建全新的项目。
+为了运用你在本课程中学到的有关 `CPI` 的知识，不妨考虑如何将其整合到学生介绍方案中。你可以做些类似我们演示中的事情，比如在用户自我介绍时铸造一些代币给他们。或者，如果你感到更有挑战性，思考如何将课程中学到的所有内容整合在一起，从零开始创建全新的项目。
 
 如果你选择做类似的演示，可以自由使用相同的[脚本](https://github.com/buildspace/solana-movie-token-client?utm_source=buildspace.so&utm_medium=buildspace_project)来调用 `initialize_mint` 指令，或者你可以展现创造力，从客户端初始化铸币过程，然后将铸币权限转移到程序 PDA。如果你需要查看可能的解决方案，请查看这个[游乐场链接](https://beta.solpg.io/631f631a77ea7f12846aee8d?utm_source=buildspace.so&utm_medium=buildspace_project)。
 

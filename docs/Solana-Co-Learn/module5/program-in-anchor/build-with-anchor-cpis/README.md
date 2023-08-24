@@ -345,4 +345,4 @@ pub struct AddComment<'info> {
 否则，将会出现以下错误：`the #[global_allocator] in this crate conflicts with global allocator in: mpl_token_metadata`。
 
 - 构建和部署
-- 使用 SolPG 进行测试
+- 使用 `SolPG` 进行测试

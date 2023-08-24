@@ -12,7 +12,7 @@ sidebar_class_name: green
 
 我们将集中精力使程序前端的质押和解质押指令正常运行。
 
-首先，在你的前端项目的根目录下创建一个名为 `utils` 的新文件夹。然后，创建一个名为 `instructions.ts` 的文件，并从NFT质押项目中复制/粘贴整个 `instructions.ts` 文件。由于代码超过200行，所以我不会在这里粘贴。😬
+首先，在你的前端项目的根目录下创建一个名为 `utils` 的新文件夹。然后，创建一个名为 `instructions.ts` 的文件，并从NFT质押项目中复制/粘贴整个 `instructions.ts` 文件。由于代码超过`200`行，所以我不会在这里粘贴。😬
 
 下一步我们将进入 `StakeOptionsDisplay` 文件（`//components/StakeOptionsDisplay.rs`）。你会注意到我们有三个空函数：`handleStake`、`handleUnstake` 和 `handleClaim`。这将是本节的重点。
 
@@ -56,7 +56,7 @@ export const PROGRAM_ID = new PublicKey(
 )
 ```
 
-这是我们在上述指示中使用的程序ID。确保你的`env.local`文件中有正确的程序ID。
+这是我们在上述指示中使用的程序`ID`。确保你的`env.local`文件中有正确的程序`ID`。
 
 `stake` 指令应该准备就绪了，接下来我们要创建一笔交易，添加指令，然后发送。
 
@@ -107,7 +107,7 @@ const [isStaking, setIsStaking] = useState(isStaked)
 
 我们还要将参数 `StakeOptionsDisplay` 从 `isStaking` 改为 `isStaked`，否则我们的状态无法正常工作。
 
-同时，我们还需要在 `utils` 中创建一个名为 `accounts.ts` 的新文件，并从我们的NFT质押程序`utils`文件夹中复制文件过来。可能还需要安装我们的borsh库。
+同时，我们还需要在 `utils` 中创建一个名为 `accounts.ts` 的新文件，并从我们的`NFT`质押程序`utils`文件夹中复制文件过来。可能还需要安装我们的`borsh`库。
 
 我们之所以要复制这些内容，是因为每次检查状态时，我们都要查看抵押账户的状态，并确认抵押的价值。
 
@@ -285,9 +285,11 @@ transaction.add(
 
 首先，根据我们之前的编辑，我们需要将 `isStaking` 的使用更改为 `isStaked`。这项修改应在 `<StakeOptionsDisplay>` 组件中进行。我们还需要添加一个名为 `nftData` 的字段，并将其赋值为 `nftData`，我们还需要一个状态来存储这个值。
 
-`const [nftData, setNftData] = useState<any>()`
+```ts
+const [nftData, setNftData] = useState<any>()`
+```
 
-目前，我们还没有实际的数据。我们将使用一个 `useEffect` 钩子，在其中调用 `metaplex`，并通过铸币地址找到 NFT 数据。
+目前，我们还没有实际的数据。我们将使用一个 `useEffect` 钩子，在其中调用 `metaplex`，并通过铸币地址找到 `NFT` 数据。
 
 ```js
 useEffect(() => {
@@ -329,7 +331,7 @@ useEffect(() => {
   }, [nftData, walletAdapter, connection])
 ```
 
-这是一个快速检查，确认我们是否有 NFT 数据，如果有的话，就为 NFT 代币账户设置值。这是一个 NFT，只有一个，所以它会是第一个地址，因此索引值为 `'0'`。
+这是一个快速检查，确认我们是否有 `NFT` 数据，如果有的话，就为 `NFT` 代币账户设置值。这是一个 `NFT`，只有一个，所以它会是第一个地址，因此索引值为 `'0'`。
 
 此外，在所有三个回调函数中，我们还需要将 `nftData` 添加为依赖项。
 
@@ -355,9 +357,9 @@ const account = await connection.getAccountInfo(stakeAccount)
     }
 ```
 
-我们需要一个质押账户，也就是一个程序驱动的账户（PDA），用于在程序中存储有关你的质押状态的数据。如果我们没有这样的账户，上述代码会为我们初始化它。
+我们需要一个质押账户，也就是一个程序驱动的账户（`PDA`），用于在程序中存储有关你的质押状态的数据。如果我们没有这样的账户，上述代码会为我们初始化它。
 
-终于，我们完成了核心部分 4。这最后的部分有些杂乱，为确保没有遗漏任何东西，可以将整个 `StakeOptionsDisplay` 文件粘贴下来进行仔细检查。
+终于，我们完成了核心部分 `4`。这最后的部分有些杂乱，为确保没有遗漏任何东西，可以将整个 `StakeOptionsDisplay` 文件粘贴下来进行仔细检查。
 
 如果你想进一步改进代码或有任何其他问题，请随时提出。
 

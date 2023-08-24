@@ -16,7 +16,7 @@ sidebar_class_name: green
 - 安全检查
 - 序列化/反序列化
 
-`Anchor` 使用一些 Rust 的巧妙技巧来解决所有这些问题✨。它被设计为处理许多常见的安全问题，使你能够构建更安全的程序！
+`Anchor` 使用一些 `Rust` 的巧妙技巧来解决所有这些问题✨。它被设计为处理许多常见的安全问题，使你能够构建更安全的程序！
 
 ## 🍱 `Anchor Program` 的结构
 
@@ -78,7 +78,7 @@ pub struct Context<'a, 'b, 'c, 'info, T> {
 
 #### 第二层：Rust。
 
-我们之前没在Rust中谈论过“生命周期”，这在参数`'a, 'b, 'c, 'info`的 `'` 符号中体现。生命周期是Rust用来追踪引用有效期的机制。每个带生命周期标记的属性都与`Context`的生命周期关联。简而言之，它的意思是，在`Context`的其他属性消失前，不要释放或解引用它，以免出现悬挂引用。但现阶段我们无需过多深究，因为这对我们即将要做的事情影响不大。
+我们之前没在`Rust`中谈论过“生命周期”，这在参数`'a, 'b, 'c, 'info`的 `'` 符号中体现。生命周期是`Rust`用来追踪引用有效期的机制。每个带生命周期标记的属性都与`Context`的生命周期关联。简而言之，它的意思是，在`Context`的其他属性消失前，不要释放或解引用它，以免出现悬挂引用。但现阶段我们无需过多深究，因为这对我们即将要做的事情影响不大。
 
 ```rust
 pub accounts: &'b mut T,
@@ -86,7 +86,7 @@ pub accounts: &'b mut T,
 
 重要的是 `T`，这是一个通用占位符，代表一种类型。这意味着`Context`将包含一个类型，并且该类型可以在运行时确定。
 
-简单来说，我们告诉Rust：“嘿，我现在还不知道`accounts`的确切类型，我会在实际使用时告诉你。”
+简单来说，我们告诉`Rust`：“嘿，我现在还不知道`accounts`的确切类型，我会在实际使用时告诉你。”
 
 #### 第三层：`Anchor`。
 
@@ -175,8 +175,8 @@ pub accounts: &'b mut T,
 - `init` - 通过`CPI`创建和初始化账户，将其设置为账户的`discriminator`。
 - `payer` - 指定`payer`为结构中定义的`user`账户的初始化值。
 - `space` - 指定为账户分配的`space`的大小为8 + 8字节。
-    - 前8个字节是一个`discriminator`，`Anchor`会自动添加以识别账户类型。
-    - 接下来的8个字节为账户中存储的数据分配空间，其定义在`AccountStruct`类型中。
+    - 前`8`个字节是一个`discriminator`，`Anchor`会自动添加以识别账户类型。
+    - 接下来的`8`个字节为账户中存储的数据分配空间，其定义在`AccountStruct`类型中。
     - 更多细节请参考：[Space Reference](https://www.anchor-lang.com/docs/space)。
 
 再来复习一遍。我们在一行代码中执行一个`CPI`到系统程序来创建一个账户！想想看，这有多简便？我们不需要手动编写代码来创建账户，我们只需指定要创建的账户，`Anchor`就会完成剩下的工作！
@@ -189,7 +189,7 @@ pub accounts: &'b mut T,
 
 ![](./img/accounts.png)
 
-`#[account]`属性用于表现Solana账户的数据结构，并且实现了以下几个`Trait`：
+`#[account]`属性用于表现`Solana`账户的数据结构，并且实现了以下几个`Trait`：
 
 - `AccountSerialize`
 - `AccountDeserialize`
@@ -201,7 +201,7 @@ pub accounts: &'b mut T,
 
 简单来说，`#[account]`属性实现了序列化和反序列化功能，并为账户实现了`discriminator`和`Owner trait`。
 
-- `discriminator`是一个8字节的唯一标识符，代表账户类型，并由账户结构名称的`SHA256`的前8字节派生。
+- `discriminator`是一个`8`字节的唯一标识符，代表账户类型，并由账户结构名称的`SHA256`的前8字节派生。
 - 任何对`AccountDeserialize`的`try_deserialize`的调用都会检查这个`discriminator`。
 - 如果不匹配，那么账户就会被视为无效，并且账户反序列化会以错误退出。
 

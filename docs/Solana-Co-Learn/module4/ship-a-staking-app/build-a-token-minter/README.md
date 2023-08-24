@@ -8,11 +8,11 @@ sidebar_class_name: green
 
 ## 铸币、质押等等
 
-很好，我们已经走了很长的路，现在让我们重新关注NFT质押计划。今天，我们将为质押者添加铸造奖励代币和执行质押操作所需的所有功能。有别于以前使用Solana Playground的方式，我们将在本地完成所有操作。可以从以下起始库开始：[solutions-sans-tokens分支](https://github.com/Unboxed-Software/solana-nft-staking-program/tree/solution-sans-tokens?utm_source=buildspace.so&utm_medium=buildspace_project)。
+很好，我们已经走了很长的路，现在让我们重新关注`NFT`质押计划。今天，我们将为质押者添加铸造奖励代币和执行质押操作所需的所有功能。有别于以前使用`Solana Playground`的方式，我们将在本地完成所有操作。可以从以下起始库开始：[solutions-sans-tokens分支](https://github.com/Unboxed-Software/solana-nft-staking-program/tree/solution-sans-tokens?utm_source=buildspace.so&utm_medium=buildspace_project)。
 
-你会注意到这里有些不同。现在有一个名为“TS”的文件夹，其中包含了我们之前在Solana Playground的客户端项目中的全部内容。
+你会注意到这里有些不同。现在有一个名为“`TS`”的文件夹，其中包含了我们之前在`Solana Playground`的客户端项目中的全部内容。
 
-在你的前端项目中，需要在根目录下创建一个新的 `utils` 文件夹。接着创建一个名为 `instructions.ts` 的文件，并从NFT质押项目中复制/粘贴整个 `instructions.ts` 文件。由于代码超过200行，我在此不做展示。😬唯一重要的修改是在 `/<project-name>/src/ts/src/utils/constants.ts` 中，`PROGRAM_ID` 从项目的密钥对中读取。
+在你的前端项目中，需要在根目录下创建一个新的 `utils` 文件夹。接着创建一个名为 `instructions.ts` 的文件，并从`NFT`质押项目中复制/粘贴整个 `instructions.ts` 文件。由于代码超过`200`行，我在此不做展示。😬唯一重要的修改是在 `/<project-name>/src/ts/src/utils/constants.ts` 中，`PROGRAM_ID` 从项目的密钥对中读取。
 
 ```ts
 const string = fs.readFileSync(
@@ -25,7 +25,7 @@ const string = fs.readFileSync(
 export const PROGRAM_ID = Keypair.fromSecretKey(secretKey).publicKey
 ```
 
-准备好了！我们可以开始了。首先切换到TS目录，然后运行 `npm run start`。确保你已经完成了 `cargo build-sbf` 和 `solana program deploy`，并且你的集群设置是正确的。如果一切正常，它应该能够启动并运行。在控制台上，你应该能看到 `stakes`、`redeems` 和 `unstakes` 的输出。请耐心等待，年轻的练剑师，这可能需要一两分钟的时间。
+准备好了！我们可以开始了。首先切换到`TS`目录，然后运行 `npm run start`。确保你已经完成了 `cargo build-sbf` 和 `solana program deploy`，并且你的集群设置是正确的。如果一切正常，它应该能够启动并运行。在控制台上，你应该能看到 `stakes`、`redeems` 和 `unstakes` 的输出。请耐心等待，年轻的练剑师，这可能需要一两分钟的时间。
 
 假设一切顺利🎉，我们可以跳转到处理器文件（`//src/processor.rs`）。
 
@@ -52,7 +52,7 @@ let metadata_program = next_account_info(account_info_iter)?;
 
 ## 委托和冻结 —— 质押
 
-下一步，我们需要将程序设置为NFT的代理，委托NFT的权限，以便程序能够代表我们发起交易。
+下一步，我们需要将程序设置为`NFT`的代理，委托`NFT`的权限，以便程序能够代表我们发起交易。
 
 ```rust
 msg!("Approving delegation");
@@ -74,7 +74,7 @@ invoke(
 )?;
 ```
 
-现在，我们可以开始实际冻结代币的过程。我们不是真正改变代币的所有权，而是将其冻结，使在质押期间无法对代币进行任何操作。首先，我们需要为程序权限派生PDA（程序派生地址）。简单来说，我们会使用`PDA`作为代币铸造的授权实体，从而能够冻结账户。
+现在，我们可以开始实际冻结代币的过程。我们不是真正改变代币的所有权，而是将其冻结，使在质押期间无法对代币进行任何操作。首先，我们需要为程序权限派生`PDA`（程序派生地址）。简单来说，我们会使用`PDA`作为代币铸造的授权实体，从而能够冻结账户。
 
 别忘了检查并确保`PDA`已经被提取。
 
@@ -113,7 +113,7 @@ invoke_signed(
 
 我们的程序的`PDA`现在具备了冻结令牌的权限。🧊
 
-接下来，我们将转到TypeScript文件（`//ts/src/utils/instruction.rs`），并向`createStakingInstruction`函数中添加更多的账户，确保其正常工作。
+接下来，我们将转到`TypeScript`文件（`//ts/src/utils/instruction.rs`），并向`createStakingInstruction`函数中添加更多的账户，确保其正常工作。
 
 我们需要确保新添加的账户与`//src/processor.rs`文件中`process_stake`函数的账户相匹配：
 
@@ -135,7 +135,7 @@ const [delegateAuthority] = PublicKey.findProgramAddressSync(
 )
 ```
 
-总共有5个新账户，你需要再次确保它们的顺序，并检查哪些是可写的，哪些是签名者。
+总共有`5`个新账户，你需要再次确保它们的顺序，并检查哪些是可写的，哪些是签名者。
 
 ```ts
 ...
@@ -203,7 +203,7 @@ let user_stake_ata = next_account_info(account_info_iter)?;
 let token_program = next_account_info(account_info_iter)?;
 ```
 
-接下来，我们将验证一些新账户。首先，我们要推导出`stake_auth_pda`，然后用自定义错误验证PDA。
+接下来，我们将验证一些新账户。首先，我们要推导出`stake_auth_pda`，然后用自定义错误验证`PDA`。
 
 ```rust
 let (stake_auth_pda, auth_bump) = Pubkey::find_program_address(&[b"mint"], program_id);
@@ -214,7 +214,7 @@ if *stake_authority.key != stake_auth_pda {
 }
 ```
 
-向下滚动一些，我们要调用一个`invoke_signed`来调用令牌程序，以铸造代币，等我们了解了`redeem_amount`之后。我们需要指令的各种键，然后是所需的账户，最后是授权的种子。别忘了使用?来传播错误，否则红色波浪线将始终困扰你。
+向下滚动一些，我们要调用一个`invoke_signed`来调用令牌程序，以铸造代币，等我们了解了`redeem_amount`之后。我们需要指令的各种键，然后是所需的账户，最后是授权的种子。别忘了使用`?`来传播错误，否则红色波浪线将始终困扰你。
 
 ```rust
 invoke_signed(
@@ -257,7 +257,7 @@ const [mintAuth] = PublicKey.findProgramAddressSync(
   )
 ```
 
-接下来进入`return new TransactionInstruction`，添加相关账户，并标明它们是否可写和/或可签。以下是我们需要添加的4个账户 - 请记住，顺序很重要。
+接下来进入`return new TransactionInstruction`，添加相关账户，并标明它们是否可写和`/`或可签。以下是我们需要添加的`4`个账户 - 请记住，顺序很重要。
 
 ```ts
 {
@@ -319,7 +319,7 @@ if *stake_authority.key != stake_auth_pda {
 }
 ```
 
-好的，这是相当新的部分，我们要“解冻”NFT代币账户。如果你还记得，我们之前冻结了它，现在我们要解冻它。这段代码与上面的冻结代码完全相反，我们只需更改辅助函数，使用 `thaw_delegated_account`。
+好的，这是相当新的部分，我们要“解冻”`NFT`代币账户。如果你还记得，我们之前冻结了它，现在我们要解冻它。这段代码与上面的冻结代码完全相反，我们只需更改辅助函数，使用 `thaw_delegated_account`。
 
 ```rust
 msg!("thawing NFT token account");
@@ -507,7 +507,7 @@ METADATA_PROGRAM_ID,
 
 现在向下滚动到`main()`函数的调用位置，你会注意到`testRedeem`和`testUnstaking`都是红色的，因为它们缺少一些参数。
 
-首先，我们要声明`stakeMint`，目前我们将其硬编码，以及`userStakeATA`，该函数会创建ATA（如果ATA还不存在的话）。
+首先，我们要声明`stakeMint`，目前我们将其硬编码，以及`userStakeATA`，该函数会创建`ATA`（如果`ATA`还不存在的话）。
 
 ```ts
 const stakeMint = new web3.PublicKey(
@@ -531,11 +531,11 @@ await testUnstaking(connection, user, nft, stakeMint, userStakeATA.address)
 
 ## 前端编辑以测试功能
 
-我们暂时要切换到前端Buildoors项目中的`index.ts`文件（`//tokens/bld/index.ts`）。在这里，我们使用`createBldToken`函数创建`BLD`令牌。
+我们暂时要切换到前端`Buildoors`项目中的`index.ts`文件（`//tokens/bld/index.ts`）。在这里，我们使用`createBldToken`函数创建`BLD`令牌。
 
 在该函数内部，我们称`token.CreateMint`的第三个参数为铸币授权，它掌管着铸币过程。最初，它是一个`payer.publicKey`，用于初始调用。我们很快就会更改铸币授权。
 
-首先，我们要向createBldToken函数添加一个参数：
+首先，我们要向`createBldToken`函数添加一个参数：
 
 `programId: web3.PublicKey`
 
@@ -543,9 +543,9 @@ await testUnstaking(connection, user, nft, stakeMint, userStakeATA.address)
 
 `new web3.PublicKey("USE YOUR PROGRAM ID")`
 
-如果你找不到程序ID，你可以重新部署，控制台会显示你所需的程序ID。
+如果你找不到程序`ID`，你可以重新部署，控制台会显示你所需的程序`ID`。
 
-向上滚动，超过`const tokenMint`，找到`mintAuth`。你可以在锚定NFT质押计划中找到授权的具体信息。
+向上滚动，超过`const tokenMint`，找到`mintAuth`。你可以在`Anchor NFT`质押计划中找到授权的具体信息。
 
 ```ts
 const [mintAuth] = await web3.PublicKey.findProgramAddress(
@@ -583,9 +583,9 @@ const stakeMint = new web3.PublicKey(
 
 `"creat-bld-token": "ts-node tokens/bld/index.ts"`
 
-一旦成功执行完毕，你可以从tokens/bld目录中的cache.json文件中获取新的密钥。
+一旦成功执行完毕，你可以从`tokens/bld`目录中的`cache.json`文件中获取新的密钥。
 
-现在我们终于回到了NFT质押计划，并且可以在stakeMint创建中使用这个密钥：
+现在我们终于回到了`NFT`质押计划，并且可以在`stakeMint`创建中使用这个密钥：
 
 ```ts
 const stakeMint = new web3.PublicKey(
@@ -593,6 +593,6 @@ const stakeMint = new web3.PublicKey(
   )
 ```
 
-现在应该一切准备就绪，并可以正常工作。返回到ts目录，并使用`npm run start`进行全面测试。如果一切顺利，你的控制台将确认初始化、质押、赎回和解质押都已成功完成。
+现在应该一切准备就绪，并可以正常工作。返回到`ts`目录，并使用`npm run start`进行全面测试。如果一切顺利，你的控制台将确认初始化、质押、赎回和解质押都已成功完成。
 
-确实涉及了许多细节。深呼吸，给自己一些喘息的空间。这是一项充满挑战性的任务，不妨再回头看一遍，复习一下，甚至再次实践，不管需要付出多少努力。只要你能掌握这些内容，你就将成为一名出色的Solana开发者。
+确实涉及了许多细节。深呼吸，给自己一些喘息的空间。这是一项充满挑战性的任务，不妨再回头看一遍，复习一下，甚至再次实践，不管需要付出多少努力。只要你能掌握这些内容，你就将成为一名出色的`Solana`开发者。

@@ -6,7 +6,7 @@ sidebar_class_name: green
 
 # 😳 使用Rust编写测试
 
-上一节课我们已经为MINT账户做好了准备。预热阶段已经结束，现在是正式开始的时候了。让我们为我们心爱的电影评论程序编写测试吧。
+上一节课我们已经为`MINT`账户做好了准备。预热阶段已经结束，现在是正式开始的时候了。让我们为我们心爱的电影评论程序编写测试吧。
 
 设置 - 入门：[https://github.com/buildspace/solana-movie-program/tree/solution-add-tokens](https://github.com/buildspace/solana-movie-program/tree/solution-add-tokens)
 
@@ -83,9 +83,9 @@ fn create_init_mint_ix(payer: Pubkey, program_id: Pubkey) -> (Pubkey, Pubkey, In
 - 测试 `initialize_token_mint` 指令。
 - 我们的辅助函数将返回一个元组。
 - 我们可以使用解构来获取我们所需的值：
-    - mint pubkey，
-    - mint_auth pubkey，
-    - 相应的Instruction。
+    - `mint pubkey`，
+    - `mint_auth pubkey`，
+    - 相应的`Instruction`。
 - 一旦指令组装完成，我们可以将其添加到 `Transaction` 中，并使用从 `ProgramTest` 构造函数生成的 `banks_client` 来处理它。
 - 使用 `assert_matches!` 宏来确认测试是否通过。
 
@@ -211,8 +211,8 @@ assert_matches!(banks_client.process_transaction(transaction).await, Ok(_));
 
 ## 🚢 挑战
 
-既然你已经掌握了如何在Rust中编写单元测试，那就不妨继续添加一些你认为对电影评论或学生介绍程序功能至关重要的测试。
+既然你已经掌握了如何在`Rust`中编写单元测试，那就不妨继续添加一些你认为对电影评论或学生介绍程序功能至关重要的测试。
 
-如果你想进一步挑战自己，还可以尝试添加一些TypeScript的集成测试。虽然我们没有一起走过这些步骤，但尝试一下肯定不会错！
+如果你想进一步挑战自己，还可以尝试添加一些`TypeScript`的集成测试。虽然我们没有一起走过这些步骤，但尝试一下肯定不会错！
 
 随着你在项目中的进展，一些挑战可能会变得更加开放，从而让你能够根据自己的需求推动自己前进。不要滥用这个机会，而是把它看作提升学习效果的机会。

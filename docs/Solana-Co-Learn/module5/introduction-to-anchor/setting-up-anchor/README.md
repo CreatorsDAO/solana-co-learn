@@ -8,7 +8,7 @@ sidebar_class_name: green
 
 你好，朋友。欢迎来到应许之地。
 
-你已经像一位先驱者一样原生地构建了 Solana 程序。当然，你可以继续原生地构建，但有了框架的帮助，事情将变得更加轻松迅捷。
+你已经像一位先驱者一样原生地构建了 `Solana` 程序。当然，你可以继续原生地构建，但有了框架的帮助，事情将变得更加轻松迅捷。
 
 试想一下前端开发中的 `React` —— 你只需用很少的代码就能做很多事情。`Anchor` 也与之类似，它将程序划分为不同的部分，使指令逻辑与账户验证和安全检查分开。就像 `React` 处理状态更新一样，`Anchor` 能够处理许多基本任务，如账户解析、验证、序列化/反序列化等，让你能够更快速地构建程序。
 
@@ -40,19 +40,19 @@ anchor init <new-workspace-name>
 这将建立以下结构：
 
 - `Anchor.toml` ：`Anchor` 配置文件。
-- `Cargo.toml` ：Rust 工作区配置文件。
-- `package.json` ：JavaScript 依赖文件。
-- `programs/` ：Solana 程序包的目录。
+- `Cargo.toml` ：`Rust` 工作区配置文件。
+- `package.json` ：`JavaScript` 依赖文件。
+- `programs/` ：`Solana` 程序包的目录。
 - `app/`：你的应用前端所在地。
-- `tests/` ：TypeScript 集成测试的位置。
+- `tests/` ：`TypeScript` 集成测试的位置。
 - `migrations/deploy.js`：用于部署迁移到不同版本的程序的脚本。
 - `.anchor` 文件夹：包含最新程序日志和本地测试账本。
 
 你现在基本上可以忽略这些文件。打开 `programs/<workspace-name>/src/lib.rs`，你会发现它与我们的原生程序有所不同。`Anchor` 将定义入口点，我们将使用 Rust 属性告诉 `Anchor` 我们所有的需求，这样它就能自动化大部分工作。
 
-当我们使用 `#[program]` 时，我们实际上是在声明一个 Rust 宏。`Anchor` 将使用它为我们生成所有必要的本地 Solana 样板代码。
+当我们使用 `#[program]` 时，我们实际上是在声明一个 `Rust `宏。`Anchor` 将使用它为我们生成所有必要的本地 `Solana` 样板代码。
 
-`Anchor CLI` 的美妙之处还在于它集成了 TypeScript 测试。只需编写测试，然后使用 `Anchor` 命令就可以了！
+`Anchor CLI` 的美妙之处还在于它集成了 `TypeScript` 测试。只需编写测试，然后使用 `Anchor` 命令就可以了！
 
 构建/部署的设置与本地程序相同，只不过使用的命令有所不同。以下是我们的构建方式：
 
@@ -60,19 +60,19 @@ anchor init <new-workspace-name>
 anchor build
 ```
 
-这将花费几秒钟时间，在工作区中构建适用于 Solana 的 `BPF` 运行时程序，并在 `target/idl` 目录中生成“`IDLs`”。运行 `cargo build-sbf` 时，你还应该在终端中看到类似的输出，其中包含一个部署命令。
+这将花费几秒钟时间，在工作区中构建适用于 `Solana` 的 `BPF` 运行时程序，并在 `target/idl` 目录中生成“`IDLs`”。运行 `cargo build-sbf` 时，你还应该在终端中看到类似的输出，其中包含一个部署命令。
 
 这里有一些关于目标文件夹你需要了解的信息：
 
 - `target/deploy` ：存放部署程序的生成密钥对。
 - `target/idl` ：程序的 `IDL` 文件，`.json` 格式。
-- `target/types` ：TypeScript 的 `IDL` —— 所有我们需要的类型。
+- `target/types` ：`TypeScript` 的 `IDL` —— 所有我们需要的类型。
 
 > 什么是 `IDL`？
 >
-> [`IDL`（接口描述语言）](https://en.wikipedia.org/wiki/Interface_description_language)文件是一个 JSON 文件，用于描述程序的接口，它告诉你有哪些函数可用以及它们接受的参数。你可以将其看作程序的 `API` 文档。
+> [`IDL`（接口描述语言）](https://en.wikipedia.org/wiki/Interface_description_language)文件是一个 `JSON` 文件，用于描述程序的接口，它告诉你有哪些函数可用以及它们接受的参数。你可以将其看作程序的 `API` 文档。
 
-我们使用 `IDL` 程序来确定如何与客户端通信（可用的函数、参数等），并使用 TypeScript 的 `IDL` 来定义类型。这些是非常重要的，因为要让你的程序开源，你需要发布经过验证的构建版本和 `IDL` 到 `Anchor Programs Registry`。
+我们使用 `IDL` 程序来确定如何与客户端通信（可用的函数、参数等），并使用 `TypeScript` 的 `IDL` 来定义类型。这些是非常重要的，因为要让你的程序开源，你需要发布经过验证的构建版本和 `IDL` 到 `Anchor Programs Registry`。
 
 现在，我们想要部署程序。但我们还不能立即开始！我们需要做两件事情 - 获取程序地址并设置网络。
 
@@ -92,7 +92,7 @@ anchor keys list
 
 我们需要解决的第二个问题是：程序默认会部署到本地主机网络。我们可以启动一个本地验证器，或者切换到开发网络。
 
-作为一个专业人士，我计划直接推送到开发网络，因此我将打开 `Anchor.toml` 文件，并将 cluster 改为 `devnet`。只要我拥有足够的开发网络的 SOL，我就可以直接部署。
+作为一个专业人士，我计划直接推送到开发网络，因此我将打开 `Anchor.toml` 文件，并将 `cluster` 改为 `devnet`。只要我拥有足够的开发网络的 `SOL`，我就可以直接部署。
 
 ```bash
 anchor deploy

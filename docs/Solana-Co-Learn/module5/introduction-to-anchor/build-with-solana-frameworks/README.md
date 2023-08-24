@@ -6,7 +6,7 @@ sidebar_class_name: green
 
 # 🧱 使用Anchor框架进行开发
 
-我们将从零开始。首先与Solana互动的是`Ping`程序。让我们使用`Anchor`从头开始构建它。你可以在playground上进行操作，但我建议在本地设置，因为这样测试会更方便。
+我们将从零开始。首先与`Solana`互动的是`Ping`程序。让我们使用`Anchor`从头开始构建它。你可以在`playground`上进行操作，但我建议在本地设置，因为这样测试会更方便。
 
 我们要构建的是一个相当简单的程序：
 
@@ -15,7 +15,7 @@ sidebar_class_name: green
 
 这样，我们需要两个指令：一个用于初始化该账户及其数据结构，另一个用于增加计数。
 
-`Anchor`利用Rust的一些独特魔法来处理所有这些问题✨，它被专门设计用于解决许多常见的安全问题，所以你可以构建出更安全的程序！现在，添加`initialize`指令：
+`Anchor`利用`Rust`的一些独特魔法来处理所有这些问题✨，它被专门设计用于解决许多常见的安全问题，所以你可以构建出更安全的程序！现在，添加`initialize`指令：
 
 - 在 `#[program]` 内实施 `initialize` 指令
 - `initialize` 需要一个类型为 `Initialize` 的 `Context`，并且不需要额外的指令数据
@@ -103,9 +103,9 @@ pub struct Increment<'info> {
 解决方案：[此处查看](https://beta.solpg.io/631b39c677ea7f12846aee8c)
 
 - 构建和部署
-- 使用SolPG进行测试（支持`Anchor`测试）
+- 使用`SolPG`进行测试（支持`Anchor`测试）
 
-## 🚢  Ship 挑战
+## 🚢  挑战
 
 好了，是时候展现你的技能，独立地建造一些东西了。
 
@@ -118,7 +118,7 @@ pub struct Increment<'info> {
 - 1. 编写一个新程序，初始化一个 `counter` 账户，并使用传入指令数据参数设置 `count` 字段。
 - 2. 执行 `initialize` ， `increment` 和 `decrement` 指令
 - 3. 按照我们在演示中的方式，为每个指令编写测试
-- 4. 使用 `anchor deploy` 来部署你的程序。如果你愿意，可以像之前一样编写一个脚本来发送交易到你新部署的程序，然后使用Solana Explorer查看程序日志。
+- 4. 使用 `anchor deploy` 来部署你的程序。如果你愿意，可以像之前一样编写一个脚本来发送交易到你新部署的程序，然后使用`Solana Explorer`查看程序日志。
 
 像往常一样，发挥你的创意，超越基本指示，如果你愿意的话，尽情享受吧！
 

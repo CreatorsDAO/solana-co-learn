@@ -6,11 +6,11 @@ sidebar_class_name: green
 
 # 🏬 前端开发
 
-既然程序已经运行起来了，现在我们来进入前端代码的部分，为Anchor做适当的调整。整个设置过程只需一分钟，稍作等待，我们还会有一些修改要做。
+既然程序已经运行起来了，现在我们来进入前端代码的部分，为`Anchor`做适当的调整。整个设置过程只需一分钟，稍作等待，我们还会有一些修改要做。
 
-首先，我们需要从程序中引入`IDL`文件。你可以直接将整个文件复制并粘贴到`utils`文件夹中，包括JSON和TypeScript格式。
+首先，我们需要从程序中引入`IDL`文件。你可以直接将整个文件复制并粘贴到`utils`文件夹中，包括`JSON`和`TypeScript`格式。
 
-然后，创建一个名为`WorkspaceProvider.ts`的新组件文件。为了节省时间，我们可以直接从我们之前构建的电影评论前端中复制粘贴这段代码，然后将所有的"电影评论"实例替换为"Anchor NFT质押"。你会注意到我们正在从常量文件夹中导入`PROGRAM_ID`s，所以请进入该文件夹并确保程序`ID`是我们Anchor NFT质押程序的新`ID`（而非我们Solana原生程序的`ID`）。
+然后，创建一个名为`WorkspaceProvider.ts`的新组件文件。为了节省时间，我们可以直接从我们之前构建的电影评论前端中复制粘贴这段代码，然后将所有的"电影评论"实例替换为"`Anchor NFT`质押"。你会注意到我们正在从常量文件夹中导入`PROGRAM_ID`s，所以请进入该文件夹并确保程序`ID`是我们`Anchor NFT`质押程序的新`ID`（而非我们Solana原生程序的`ID`）。
 
 ```typescript
 import { createContext, useContext } from "react"
@@ -88,7 +88,7 @@ export default MockWallet
 
 现在执行`npm run dev`，打开本地主机看看是否一切正常。如果没问题，我们就继续进行下去。
 
-既然进口和额外组件已经准备好了，我们来仔细检查文件，找出我们在使用Anchor时可以进一步简化的地方。
+既然进口和额外组件已经准备好了，我们来仔细检查文件，找出我们在使用`Anchor`时可以进一步简化的地方。
 
 请跳转到文件（`/pages/_app.tsx`），并添加我们的新`WorkspaceProvider`组件，同时确保已经正确导入。
 
@@ -108,7 +108,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 
 跳转到组件文件夹中的`StakeOptionsDisplay.ts`文件。
 
-首先，我们导入Anchor。
+首先，我们导入`Anchor`。
 
 ```typescript
 import * as anchor from '@project-serum/anchor'
@@ -131,7 +131,7 @@ if (
 )
 ```
 
-现在，跳转到`/utils/accounts.ts`文件。你可以删除所有的`borsh`代码，并将`getStakeAccount`代码替换为以下代码。这就是使用Anchor工作的美妙之处之一，我们不需要担心序列化和反序列化的问题。
+现在，跳转到`/utils/accounts.ts`文件。你可以删除所有的`borsh`代码，并将`getStakeAccount`代码替换为以下代码。这就是使用`Anchor`工作的美妙之处之一，我们不需要担心序列化和反序列化的问题。
 
 ```typescript
 export async function getStakeAccount(
@@ -266,4 +266,4 @@ transaction.add(
 
 这将创建一个新的`Mint`程序`ID`，你需要将其添加到你的环境变量中。
 
-就这样，我们的前端功能已经有一些正在运作了。下周，我们将更深入地使用Anchor进行开发，目前我们只是想展示一下使用Anchor有多么容易，并让基本功能开始运行。
+就这样，我们的前端功能已经有一些正在运作了。下周，我们将更深入地使用`Anchor`进行开发，目前我们只是想展示一下使用`Anchor`有多么容易，并让基本功能开始运行。

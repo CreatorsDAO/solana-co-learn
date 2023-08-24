@@ -21,7 +21,7 @@ sidebar_class_name: green
 
 ## IDL（接口描述语言）
 
-当构建一个 Anchor 程序时，Anchor 会生成一个名为 `IDL` 的 JSON 文件。
+当构建一个 `Anchor` 程序时，`Anchor` 会生成一个名为 `IDL` 的 JSON 文件。
 
 `IDL` 文件包含程序的结构，并由客户端用于了解如何与特定程序进行交互。
 
@@ -68,16 +68,16 @@ sidebar_class_name: green
 
 `Provider` 对象代表了两个主要部分的结合：
 
-- `Connection` - 连接到 Solana 集群（例如 `localhost`、`devnet`、`mainnet`）
+- `Connection` - 连接到 `Solana` 集群（例如 `localhost`、`devnet`、`mainnet`）
 - `Wallet` - 用于支付和签署交易的指定地址
 
-接着，`Provider` 就能够代表 `Wallet` 向 Solana 区块链发送交易，并在发送的交易中加入钱包的签名。
+接着，`Provider` 就能够代表 `Wallet` 向 `Solana` 区块链发送交易，并在发送的交易中加入钱包的签名。
 
-当使用 Solana 钱包提供商的前端时，所有的外部交易仍然需要通过提示用户进行批准。
+当使用 `Solana` 钱包提供商的前端时，所有的外部交易仍然需要通过提示用户进行批准。
 
 `AnchorProvider` 构造函数接受三个参数：
 
-- `connection` - 连接到 Solana 集群的 `Connection`
+- `connection` - 连接到 `Solana` 集群的 `Connection`
 - `wallet` - `Wallet` 对象
 - `opts` - 可选参数，用于指定确认选项，如果未提供，则使用默认设置
 
@@ -104,7 +104,7 @@ export class AnchorProvider implements Provider {
 }
 ```
 
-> 请注意，来自 `@solana/wallet-adapter-react` 的 `useWallet` 钩子提供的 `Wallet` 对象与 Anchor `Provider` 期望的 `Wallet` 对象不兼容。
+> 请注意，来自 `@solana/wallet-adapter-react` 的 `useWallet` 钩子提供的 `Wallet` 对象与 `Anchor Provider` 期望的 `Wallet` 对象不兼容。
 
 因此，让我们来比较一下来自 `useAnchorWallet` 的 `AnchorWallet` 和来自 `useWallet` 的 `WalletContextState`。
 
@@ -140,7 +140,7 @@ export interface WalletContextState {
 此外，您可以使用以下方式：
 
 - 使用 `useAnchorWallet` 钩子来获取兼容的 `AnchorWallet`
-- 使用 `useConnection` 钩子连接到 Solana 集群
+- 使用 `useConnection` 钩子连接到 `Solana` 集群
 - 通过 `AnchorProvider` 对象的构造函数创建 `Provider`
 - 使用 `setProvider` 来设置客户端的默认提供程序
 
@@ -201,7 +201,7 @@ const program = new Program(idl as Idl, programId);
 
 ## `Anchor MethodsBuilder` 使用
 
-一旦 `Program` 对象设置完成，我们就可以利用 Anchor 的 `MethodsBuilder` 来根据程序中的指令构建交易。
+一旦 `Program` 对象设置完成，我们就可以利用 `Anchor` 的 `MethodsBuilder` 来根据程序中的指令构建交易。
 
 `MethodsBuilder` 利用 `IDL`，为调用程序指令提供了一种简化格式，基本格式如下：
 

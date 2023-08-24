@@ -211,7 +211,7 @@ impl Sealed for MovieCommentCounter{}
 
 `MovieCommentCounter` 的大小始终保持不变，因此我们可以声明一个常量代替函数。
 
-在这里，我们也看到了我们的鉴别器！由于它不会改变，我们使用 'static 关键字来创建一个[静态常量](https://doc.rust-lang.org/rust-by-example/scope/lifetime/static_lifetime.html?utm_source=buildspace.so&utm_medium=buildspace_project)，在整个程序的运行期间保持不变。代码注释解释了每个字节的用途。
+在这里，我们也看到了我们的鉴别器！由于它不会改变，我们使用 `'static` 关键字来创建一个[静态常量](https://doc.rust-lang.org/rust-by-example/scope/lifetime/static_lifetime.html?utm_source=buildspace.so&utm_medium=buildspace_project)，在整个程序的运行期间保持不变。代码注释解释了每个字节的用途。
 
 最后，由于我们正在进行实现，我还包括了 `MovieCommentCounter` 的 `Sealed` 实现。提醒一下，当结构体的大小已知时， `Sealed` 特性可以让编译器进行一些优化。由于 `MovieCommentCounter` 有已知的固定大小，所以我们需要实现它！
 
@@ -455,7 +455,7 @@ Ok(())
 简要回顾一下这段复杂代码在做什么：
 
 - 计算评论计数器账户所需的租金。
-- 验证PDA的种子是否正确。
+- 验证`PDA`的种子是否正确。
 - 使用 `invoke_signed` 创建评论计数器账户。
 - 从新创建的账户中反序列化数据。
 - 检查账户是否已初始化。

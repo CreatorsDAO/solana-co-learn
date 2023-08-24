@@ -6,7 +6,7 @@ sidebar_class_name: green
 
 # 🔑 保障我们程序的安全
 
-是时候保障我们的Solana电影数据库（SMDB）程序不受到干扰了。我们将加入一些基础的安全防护，进行输入验证，并增添一个 `update_movie_review` 指令。
+是时候保障我们的`Solana`电影数据库（`SMDB`）程序不受到干扰了。我们将加入一些基础的安全防护，进行输入验证，并增添一个 `update_movie_review` 指令。
 
 我会为你在一个点击之下就开始，你可以看一下这个[Playground设置链接](https://beta.solpg.io/6322684077ea7f12846aee91?utm_source=buildspace.so&utm_medium=buildspace_project)。
 
@@ -341,7 +341,7 @@ npm install
 
 现在，是时候让你亲自动手构建一些内容了。你可以以之前课程中用到的学生自我介绍项目为基础进行构建。
 
-学生自我介绍项目是Solana上的一个有趣项目，允许学生们在线上展示自己的身份。该项目会获取用户的姓名和简短留言作为`instruction_data`，并创建一个专门的账户来将这些信息储存在链上。
+学生自我介绍项目是`Solana`上的一个有趣项目，允许学生们在线上展示自己的身份。该项目会获取用户的姓名和简短留言作为`instruction_data`，并创建一个专门的账户来将这些信息储存在链上。
 
 结合你在本课程中学到的知识，尝试对学生自我介绍项目进行扩展。你应该完成以下任务：
 

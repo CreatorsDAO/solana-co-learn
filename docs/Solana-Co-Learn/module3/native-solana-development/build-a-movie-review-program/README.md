@@ -61,7 +61,7 @@ struct MovieReviewPayload {
 
 虽然我们只有一种指令类型，但我们仍然会使用枚举。未来我们可能会考虑添加更多的指令 :)
 
-你可能会好奇，为何我们需要在有效负载中指定类型。这些类型告诉Borsh如何分割字节。在切割之前，得先知道香肠有多长，记得吗？
+你可能会好奇，为何我们需要在有效负载中指定类型。这些类型告诉`Borsh`如何分割字节。在切割之前，得先知道香肠有多长，记得吗？
 
 我们还需要为 `MovieInstruction` 枚举添加实现。在枚举定义下方添加以下内容。
 
@@ -100,11 +100,11 @@ let payload = MovieReviewPayload::try_from_slice(rest).unwrap();
 
 此外，我还想深入探讨一下 `.unwrap();` 在Rust中，“`unwrap`”意味着“给我计算的结果，如果出错就产生恐慌并停止程序。”你可能会想：“嗯，但是为什么我们需要从函数的结果中返回东西呢？难道 `try_from_slice()` 函数不会返回我们想要的吗？”
 
-不是的。Rust有一个 `Option` 类型：一种使用Rust类型系统来表示可能缺失的方式。这与其他语言中的 `null` 不同。 `Option` 是一种类型，可以是 `Some` 或 `None` 。 `Some` 是一个值，`None` 是一个值的缺失。为什么呢？因为有时候你没有一个值，这是可以接受的。从[文档](https://web.mit.edu/rust-lang_v1.25/arch/amd64_ubuntu1404/share/doc/rust/html/book/first-edition/error-handling.html#unwrapping-explained?utm_source=buildspace.so&utm_medium=buildspace_project)中了解更多：
+不是的。`Rust`有一个 `Option` 类型：一种使用Rust类型系统来表示可能缺失的方式。这与其他语言中的 `null` 不同。 `Option` 是一种类型，可以是 `Some` 或 `None` 。 `Some` 是一个值，`None` 是一个值的缺失。为什么呢？因为有时候你没有一个值，这是可以接受的。从[文档](https://web.mit.edu/rust-lang_v1.25/arch/amd64_ubuntu1404/share/doc/rust/html/book/first-edition/error-handling.html#unwrapping-explained?utm_source=buildspace.so&utm_medium=buildspace_project)中了解更多：
 
 > 将缺失的可能性编码到类型系统中是一项重要的概念，因为它会迫使编译器强制程序员处理这种缺失的情况。
 
-Rust助你成为更出色的开发者！现在，你又多了解了Rust的另一部分内容🍰
+Rust助你成为更出色的开发者！现在，你又多了解了`Rust`的另一部分内容🍰
 
 ## 👀 将指令添加到程序中
 
@@ -158,7 +158,7 @@ pub fn process_instruction(
 
 我们在这里做的只是解析指令数据，然后使用正确的参数调用 `add_movie_review` 函数。
 
-我们的程序现在已经完成了！请确保你点击部署按钮，并从游乐场复制程序ID。
+我们的程序现在已经完成了！请确保你点击部署按钮，并从游乐场复制程序`ID`。
 
 如果你觉得这有点让人失望，那是因为我们在上一课已经逐一讲解了每个部分。现在，让我们尝试使用客户端将电影评论添加到我们的程序中。
 
@@ -176,7 +176,7 @@ cd solana-movie-client
 npm install
 ```
 
-打开 `src/index.js` 并将第94行的程序ID更新为从playground复制的ID。如果你对程序做了任何更改，这里还需要更新客户端。
+打开 `src/index.js` 并将第`94`行的程序`ID`更新为从`playground`复制的`ID`。如果你对程序做了任何更改，这里还需要更新客户端。
 
 在终端输入 `npm start` ，你应该会得到一个资源管理器链接。点击该链接，然后向下滚动到程序指令日志，你应该能看到你的电影评论！
 
@@ -193,7 +193,7 @@ npm install
 利用你在本课程中学到的知识，构建一个学生介绍程序，使得当程序被调用时，能够将用户提供的姓名和信息打印到程序日志中。
 
 解决方案代码
-你可以通过构建这个前端并在Solana Explorer上检查程序日志来测试你的程序。记得用你部署的程序ID替换前端代码中的ID。
+你可以通过构建这个前端并在`Solana Explorer`上检查程序日志来测试你的程序。记得用你部署的程序`ID`替换前端代码中的`ID`。
 
 如果可以的话，尽量自己独立完成这个任务！但如果遇到困难，可以[参考解决方案代码](https://beta.solpg.io/62b0ce53f6273245aca4f5b0)。
 

@@ -402,7 +402,7 @@ const accounts = await getAccountsAndData(
   )
 }
 ```
-我们获得了包装的代币账户，其中包含了包装的SOL，因为这是我们用来支付请求随机数的必需品。
+我们获得了包装的代币账户，其中包含了包装的`SOL`，因为这是我们用来支付请求随机数的必需品。
 
 
 
@@ -457,7 +457,7 @@ let instructions: TransactionInstruction[] = []
   }
 ```
 
-然后我们推送一个转账指令，将SOL转移到`wrapped SOL`。然后是一个同步`wrapped SOL`余额的指令。
+然后我们推送一个转账指令，将`SOL`转移到`wrapped SOL`。然后是一个同步`wrapped SOL`余额的指令。
 
 ```tsx
 // transfer SOL to user's own wSOL token account

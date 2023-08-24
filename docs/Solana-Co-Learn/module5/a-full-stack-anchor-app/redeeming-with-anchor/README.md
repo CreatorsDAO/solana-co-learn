@@ -54,7 +54,7 @@ pub associated_token_program: Program<'info, AssociatedToken>,
 pub rent: Sysvar<'info, Rent>,
 ```
 
-然后，将我们的账户总数增加到10个。以下是所有代码的片段。
+然后，将我们的账户总数增加到`10`个。以下是所有代码的片段。
 
 ```rust
 #[derive(Accounts)]

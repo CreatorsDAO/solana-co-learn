@@ -6,7 +6,7 @@ sidebar_class_name: green
 
 # 🛠️ 构建NFT质押程序
 
-今天，我们将编写质押程序，并实现所有必要的质押功能，暂时不涉及任何代币转账。我将陪伴你，一步一步讲解整个过程，解释每个环节，以便你了解正在进行的操作。首先，让我们进入[Solana Playground](https://beta.solpg.io/?utm_source=buildspace.so&utm_medium=buildspace_project)，点击`create a new project`，并创建一个名为`src`的新文件夹，其中包括一个名为`lib.rs`的文件。
+今天，我们将编写质押程序，并实现所有必要的质押功能，暂时不涉及任何代币转账。我将陪伴你，一步一步讲解整个过程，解释每个环节，以便你了解正在进行的操作。首先，让我们进入[`Solana Playground`](https://beta.solpg.io/?utm_source=buildspace.so&utm_medium=buildspace_project)，点击`create a new project`，并创建一个名为`src`的新文件夹，其中包括一个名为`lib.rs`的文件。
 
 这就是你的集成开发环境应该呈现的样子。
 
@@ -512,4 +512,4 @@ fn process_unstake(
 }
 ```
 
-LFG（Let's Go）!!! 我们终于完成了所有的函数定义。现在如果你运行程序，它应该会显示“构建成功”。太棒了！我们已经完成了第三周的任务，已经过半了！加油，继续保持这样的势头，我们一起朝着最终目标前进！如果你有任何问题或需要进一步的帮助，请随时联系我。
+`LFG（Let's Go）`!!! 我们终于完成了所有的函数定义。现在如果你运行程序，它应该会显示“构建成功”。太棒了！我们已经完成了第三周的任务，已经过半了！加油，继续保持这样的势头，我们一起朝着最终目标前进！如果你有任何问题或需要进一步的帮助，请随时联系我。
