@@ -6,11 +6,11 @@ sidebar_class_name: green
 
 # 🧐 PDA深入探究
 
-啊，鸡蛋。或者更正式地称之为程序派生地址（`Program Derived Address，PDA`）。我们之前已经使用过它们来烹饪了。让我们一起深入了解它们的工作原理。
+程序派生地址（`Program Derived Address，PDA`）, 让我们一起深入了解它们的工作原理。
 
 `PDA`主要具有两个核心功能：
 
-- 提供一种[确定性](https://www.google.com.hk/search?q=define+deterministic&utm_source=buildspace.so&utm_medium=buildspace_project)的方法来查找程序拥有的账户地址。
+- 提供一种[确定性](https://www.google.com.hk/search?q=define+deterministic)的方法来查找程序拥有的账户地址。
 - 授权派生自`PDA`的程序代表其签署，就像用户使用私钥签署一样。
 
 换言之，它们是`Solana`网络上用于存储的安全键值存储解决方案。
@@ -25,7 +25,7 @@ sidebar_class_name: green
 
 由于`PDAs`由程序控制，所以它们不需要私钥。因此，我们使用不在`Ed25519`曲线上的地址来创建`PDAs`。这实际上意味着它们是没有相应私钥的公钥。
 
-就是这样。你不需要理解`Ed25519`，甚至不需要知道数字签名算法是什么。你只需要知道`PDA`看起来像普通的`Solana`地址，并且由程序控制。如果你想进一步了解，可以观看`Computerphile`关于[数字签名](https://www.youtube.com/watch?v=s22eJ1eVLTU&utm_source=buildspace.so&utm_medium=buildspace_project)的精彩视频。
+就是这样。你不需要理解`Ed25519`，甚至不需要知道数字签名算法是什么。你只需要知道`PDA`看起来像普通的`Solana`地址，并且由程序控制。如果你想进一步了解，可以观看`Computerphile`关于[数字签名](https://www.youtube.com/watch?v=s22eJ1eVLTU)的精彩视频。
 
 要在`Solana`程序中找到一个`PDA`，我们将使用 `find_program_address` 函数。
 
@@ -120,7 +120,7 @@ pub fn create_program_address(
 ## 🤔 有关程序派生地址（PDA）的一些说明
 
 - 对于相同的输入种子，不同的凸起值会生成不同的有效`PDA`。
-- `find_program_address` 返回的 `bump_seed` 总是找到的第一个有效的PDA。
+- `find_program_address` 返回的 `bump_seed` 总是找到的第一个有效的`PDA`。
 - 这个 `bump_seed` 通常被称作“标准`Bump`”（`canonical bump`）。
 - 该函数只返回一个程序派生地址和用于派生该地址的增量种子，不会做其他事情。
 - 该函数不会初始化新的账户，也不会返回与存储数据相关的`PDA`。

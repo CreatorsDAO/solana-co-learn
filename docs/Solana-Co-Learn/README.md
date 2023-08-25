@@ -111,6 +111,7 @@ sidebar_class_name: green
 - [Programming on Solana - An Introduction](https://paulx.dev/blog/2021/01/14/programming-on-solana-an-introduction/)
 - [小鱼1998的blog](https://blog.csdn.net/weixin_42285518/category_11484618.html)
 - [solana的程序实例](https://github.com/solana-developers/program-examples/)
+- [myMemoBlog by 256hax プログラミング系ハマったとこ解決ブログ](https://blog.tanebox.com/)
 
 ## 📹 Solana 开发视频
 
