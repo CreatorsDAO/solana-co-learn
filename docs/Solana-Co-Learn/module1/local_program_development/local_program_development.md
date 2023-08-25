@@ -110,10 +110,12 @@ solana config set --url localhost
 # devnet
 solana config set --url devnet
 
-
 # mainnet-beta
 solana config set --url mainnet-beta
+
 ```
+
+**tips:** 由于某些你知道的原因，devnet 或者 mainnet 可能访问不佳。建议开发过程中使用 localhost 网络。最后需要部署应用的使用，建议使用 [quicknode](https://www.quicknode.com/) 的rpc 节点。 
 
 同样地，你可以使用`solana config set --keypair`命令来更改密钥对路径。当运行命令时，`Solana CLI`将使用指定路径下的密钥对。
 
