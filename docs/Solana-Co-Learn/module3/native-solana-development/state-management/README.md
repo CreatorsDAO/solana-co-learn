@@ -102,7 +102,7 @@ let rent_lamports = rent.minimum_balance(account_len);
 
 更新账户数据的第一步是将其数据字节数组反序列化为`Rust`类型。你可以首先借用账户上的数据字段来实现此操作，这样可以在不获取所有权的情况下访问数据。
 
-然后，你可以使用`try_from_slice_unchecked`函数来反序列化借用的账户数据字段，根据你创建的类型来表示数据格式。这将提供一个Rust类型的实例，使你可以轻松使用点符号来更新字段。如果我们采用我们一直在使用的笔记应用程序示例，它的形式如下：
+然后，你可以使用`try_from_slice_unchecked`函数来反序列化借用的账户数据字段，根据你创建的类型来表示数据格式。这将提供一个`Rust`类型的实例，使你可以轻松使用点符号来更新字段。如果我们采用我们一直在使用的笔记应用程序示例，它的形式如下：
 
 ```rust
 let mut account_data = try_from_slice_unchecked::<NoteState>(note_pda_account.data.borrow()).unwrap();
@@ -128,14 +128,14 @@ account_data.serialize(&mut &mut note_pda_account.data.borrow_mut()[..])?;
 
 确实有点多了。我得休息一下，然后继续完成它。让我们回顾一下整个过程：
 
-- 1. 用户通过发送包含标题、正文和字节`ID`的交易来创建笔记。
-- 2. 我们的程序接收指令，提取数据并将其格式化为`Rust`类型。
-- 3. 我们使用`Rust`类型计算账户需要多少空间以及我们需要支付多少租金。
-- 4. 我们从程序`ID`和一组种子中推导出账户的地址。
-- 5. 我们使用`CPI`创建一个空白数据的账户。
-- 6. 我们将账户数据反序列化为`Rust`类型。
-- 7. 我们使用指令中的数据来更新`Rust`类型的账户数据。
-- 8. 我们将`Rust`类型序列化为原始字节，并将其保存到账户中。
+1. 用户通过发送包含标题、正文和字节`ID`的交易来创建笔记。
+2. 我们的程序接收指令，提取数据并将其格式化为`Rust`类型。
+3. 我们使用`Rust`类型计算账户需要多少空间以及我们需要支付多少租金。
+4. 我们从程序`ID`和一组种子中推导出账户的地址。
+5. 我们使用`CPI`创建一个空白数据的账户。
+6. 我们将账户数据反序列化为`Rust`类型。
+7. 我们使用指令中的数据来更新`Rust`类型的账户数据。
+8. 我们将`Rust`类型序列化为原始字节，并将其保存到账户中。
 
 就是这样，朋友们。你现在了解了如何在`Solana`上向账户写入数据。我真的很激动，因为这太重要了。给你一个巨大的赞扬，拿着它，你值得！
 
@@ -147,7 +147,7 @@ account_data.serialize(&mut &mut note_pda_account.data.borrow_mut()[..])?;
 
 # 📝 账户数据的表示
 
-我们需要一个新的Rust类型来表示我们要存储的数据。创建一个名为 `state.rs` 的新文件，并在其中定义 `MovieAccountState`。
+我们需要一个新的`Rust`类型来表示我们要存储的数据。创建一个名为 `state.rs` 的新文件，并在其中定义 `MovieAccountState`。
 
 ```rust
 use borsh::{BorshSerialize, BorshDeserialize};
@@ -213,8 +213,8 @@ let (pda, bump_seed) = Pubkey::find_program_address(&[initializer.key.as_ref(), 
 
 其中的种子包括：
 
-- 1. 初始化器的公钥
-- 2. 电影的标题
+1. 初始化器的公钥
+2. 电影的标题
 
 ### 🧮 计算空间和租金
 
@@ -271,7 +271,7 @@ account_data.serialize(&mut &mut pda_account.data.borrow_mut()[..])?;
 msg!("状态账户序列化");
 ```
 
-我们使用 `try_from_slice_unchecked` 将原始字节转换为Rust类型。然后我们更新数据，并将其序列化回原始字节。
+我们使用 `try_from_slice_unchecked` 将原始字节转换为`Rust`类型。然后我们更新数据，并将其序列化回原始字节。
 
 我们已经准备好升级并部署了！（可能需要几分钟时间）
 
@@ -316,6 +316,6 @@ npm install
 
 **解决方案代码：**
 
-你可以使用[这个链接](https://github.com/buildspace/solana-student-intros-frontend)的前端来测试你的程序。记得用你部署的程序ID替换前端代码中的那个。
+你可以使用[这个链接](https://github.com/buildspace/solana-student-intros-frontend)的前端来测试你的程序。记得用你部署的程序`ID`替换前端代码中的那个。
 
 如果可能的话，请尽量独立完成这个任务！但如果遇到困难，你可以参考[解决方案代码](https://beta.solpg.io/62b11ce4f6273245aca4f5b2)。

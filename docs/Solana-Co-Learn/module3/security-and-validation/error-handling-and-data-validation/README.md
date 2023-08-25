@@ -6,7 +6,7 @@ sidebar_class_name: green
 
 # ❗ 错误处理和数据验证
 
-嘿！你准备好成为一名“州长”了吗？不，我们并不是要去管理某个国家。这里的“州”指的是我们程序中存储在链上的数据状态。要构建这样的系统，你必须随时准备好进行防御。本节课将为你介绍一些程序安全方面的基本注意事项。虽然这并非全面的概述，但它能让你像攻击者那样思考，思索重要的问题：我如何破解这个程序？
+本节课将为你介绍一些程序安全方面的基本注意事项。虽然这并非全面的概述，但它能让你像攻击者那样思考，思索重要的问题：我如何破解这个程序？
 
 ## 😡 自定义错误
 
@@ -14,7 +14,6 @@ sidebar_class_name: green
 
 下面展示了如何为我们的笔记程序创建自定义错误的方法：
 
-![](./img/solana-program-error.png)
 
 ```rust
 use solana_program::{program_error::ProgramError};
@@ -22,10 +21,10 @@ use thiserror::Error;
 
 #[derive(Error)]
 pub enum NoteError {
-  #[error("错误的笔记所有者")]
+  #[error("Wrong Note Owner")]
   Forbidden,
 
-  #[error("文本过长")]
+  #[error("test is too long")]
   InvalidLength
 }
 ```
@@ -73,8 +72,6 @@ if pda != *note_pda.key {
 
 用户可能会发送结构与账户数据匹配但由不同程序创建的数据。
 
-![](./img/owner-check.png)
-
 ```rust
 if note_pda.owner != program_id {
     return Err(ProgramError::InvalidNoteAccount);
@@ -84,8 +81,6 @@ if note_pda.owner != program_id {
 ### 签名者检查
 
 签名者检查是为了验证账户是否已对交易签名。
-
-![](./img/signer-check.png)
 
 ```rust
 if !initializer.is_signer {
