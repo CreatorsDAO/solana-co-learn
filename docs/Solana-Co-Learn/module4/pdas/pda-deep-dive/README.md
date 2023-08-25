@@ -40,9 +40,8 @@ sidebar_class_name: green
 一旦找到有效的`PDA`，该函数将返回两个值：
 
 - `PDA`
-- `用于派生PDA的凸起`
+- `用于派生PDA的 Bump`
 
-![](./img/find-pda.png)
 
 ```rust
 let (pda, bump_seed) = Pubkey::find_program_address(&[user.key.as_ref(), user_input.as_bytes().as_ref(), "SEED".as_bytes()], program_id);
@@ -51,8 +50,6 @@ let (pda, bump_seed) = Pubkey::find_program_address(&[user.key.as_ref(), user_in
 ## 🍳 “find_program_address”函数内部解析
 
 `find_program_address` 是一个冒牌货 - 它实际上将输入 `seeds` 和 `program_id` 传递给 `try_find_program_address` 函数。
-
-![](./img/find-program-address.png)
 
 ```rust
 pub fn find_program_address(seeds: &[&[u8]], program_id: &Pubkey) -> (Pubkey, u8) {
@@ -64,8 +61,6 @@ pub fn find_program_address(seeds: &[&[u8]], program_id: &Pubkey) -> (Pubkey, u8
 然后， `try_find_program_address` 函数引入了 `bump_seed`。
 
 `bump_seed` 是一个 `u8` 变量，其值范围在`0`到`255`之间。它被附加到可选的输入种子中，然后传递给 `create_program_address` 函数。
-
-![](./img/try-find-program-address.png)
 
 ```rust
 pub fn try_find_program_address(seeds: &[&[u8]], program_id: &Pubkey) -> Option<(Pubkey, u8)> {
@@ -91,8 +86,6 @@ pub fn try_find_program_address(seeds: &[&[u8]], program_id: &Pubkey) -> Option<
 `create_program_address` 函数对种子和 `program_id` 执行一系列哈希操作。这些操作计算出一个密钥，然后验证计算出的密钥是否位于`Ed25519`椭圆曲线上。
 
 如果找到一个有效的`PDA`（即一个不在曲线上的地址），则返回该`PDA`。否则，返回一个错误。
-
-![](./img/create-program-address.png)
 
 ```rust
 pub fn create_program_address(
