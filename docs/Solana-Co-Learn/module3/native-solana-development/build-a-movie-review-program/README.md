@@ -100,7 +100,7 @@ let payload = MovieReviewPayload::try_from_slice(rest).unwrap();
 
 此外，我还想深入探讨一下 `.unwrap();` 在`Rust`中，“`unwrap`”意味着“给我计算的结果，如果出错就产生恐慌并停止程序。”你可能会想：“嗯，但是为什么我们需要从函数的结果中返回东西呢？难道 `try_from_slice()` 函数不会返回我们想要的吗？”
 
-不是的。`Rust`有一个 `Option` 类型：一种使用Rust类型系统来表示可能缺失的方式。这与其他语言中的 `null` 不同。 `Option` 是一种类型，可以是 `Some` 或 `None` 。 `Some` 是一个值，`None` 是一个值的缺失。为什么呢？因为有时候你没有一个值，这是可以接受的。从[文档](https://web.mit.edu/rust-lang_v1.25/arch/amd64_ubuntu1404/share/doc/rust/html/book/first-edition/error-handling.html#unwrapping-explained?utm_source=buildspace.so&utm_medium=buildspace_project)中了解更多：
+不是的。`Rust`有一个 `Option` 类型：一种使用`Rust`类型系统来表示可能缺失的方式。这与其他语言中的 `null` 不同。 `Option` 是一种类型，可以是 `Some` 或 `None` 。 `Some` 是一个值，`None` 是一个值的缺失。为什么呢？因为有时候你没有一个值，这是可以接受的。从[文档](https://web.mit.edu/rust-lang_v1.25/arch/amd64_ubuntu1404/share/doc/rust/html/book/first-edition/error-handling.html#unwrapping-explained?utm_source=buildspace.so&utm_medium=buildspace_project)中了解更多：
 
 > 将缺失的可能性编码到类型系统中是一项重要的概念，因为它会迫使编译器强制程序员处理这种缺失的情况。
 
