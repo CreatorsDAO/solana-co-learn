@@ -20,7 +20,10 @@ sidebar_class_name: green
 
 这是一个由`Rust`制作的蛋糕。
 
-> 注意：图层代表重量，哈哈！
+:::caution
+注意：图层代表重量，哈哈！
+:::
+
 
 ## 👶 变量声明和可变性
 
@@ -100,7 +103,9 @@ fn value_in_cents(coin: Coin) -> u8 {
 }
 ```
 
-> source code: https://kaisery.github.io/trpl-zh-cn/ch06-02-match.html
+:::info
+source code: https://kaisery.github.io/trpl-zh-cn/ch06-02-match.html
+:::
 
 当与匹配语句结合使用时，枚举非常有用。它们是一种检查变量值并根据该值执行代码的方式，与`JavaScript`中的`switch`语句类似。
 
@@ -133,8 +138,9 @@ fn main() {
     );
 }
 ```
-
-> source code: https://kaisery.github.io/trpl-zh-cn/ch05-03-method-syntax.html
+:::info
+source code: https://kaisery.github.io/trpl-zh-cn/ch05-03-method-syntax.html
+:::
 
 如果你对“向结构体添加方法”感到困惑，可以理解为赋予结构体特殊能力。例如，你可能有一个简单的`user`结构体，拥有速度、健康和伤害属性。通过使用 `impl` 关键字添加一个 `wordPerMinute` 方法，你就可以计算用户的打字速度⌨️。
 
@@ -164,7 +170,9 @@ struct InstructionData {
 }
 ```
 
-> 注意：可能有一个你已经忽略的层面——宏。它们用来生成代码。
+:::caution
+注意：可能有一个你已经忽略的层面——宏。它们用来生成代码。
+:::
 
 在我们的场景中，特质和宏通常一起使用。例如，`BorshDeserialize Traits`有两个必须实现的函数：`deserialize` 和 `try_from_slice`。我们可以使用 `#[derive(BorshDeserialize)]` 属性，让编译器在给定类型上（即指令数据结构）为我们实现这两个函数。
 整个流程是这样的：

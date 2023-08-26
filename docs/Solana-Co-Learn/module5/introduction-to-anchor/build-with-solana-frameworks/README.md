@@ -115,14 +115,14 @@ pub struct Increment<'info> {
 
 ### 行动步骤:
 
-- 1. 编写一个新程序，初始化一个 `counter` 账户，并使用传入指令数据参数设置 `count` 字段。
-- 2. 执行 `initialize` ， `increment` 和 `decrement` 指令
-- 3. 按照我们在演示中的方式，为每个指令编写测试
-- 4. 使用 `anchor deploy` 来部署你的程序。如果你愿意，可以像之前一样编写一个脚本来发送交易到你新部署的程序，然后使用`Solana Explorer`查看程序日志。
+1. 编写一个新程序，初始化一个 `counter` 账户，并使用传入指令数据参数设置 `count` 字段。
+2. 执行 `initialize` ， `increment` 和 `decrement` 指令
+3. 按照我们在演示中的方式，为每个指令编写测试
+4. 使用 `anchor deploy` 来部署你的程序。如果你愿意，可以像之前一样编写一个脚本来发送交易到你新部署的程序，然后使用`Solana Explorer`查看程序日志。
 
 像往常一样，发挥你的创意，超越基本指示，如果你愿意的话，尽情享受吧！
 
-> **提示**
-> 如果可能的话，尽量独立完成这个任务！但如果遇到困难，可以参考此仓库的解决方案 - [递减分支](https://github.com/buildspace/anchor-counter-program/tree/solution-decrement?utm_source=buildspace.so&utm_medium=buildspace_project)。
-
-这样的文字润色应该更符合中文阅读习惯。如果还有其他需要修改的地方，请随时通知我！
+:::info
+**提示**
+如果可能的话，尽量独立完成这个任务！但如果遇到困难，可以参考此仓库的解决方案 - [递减分支](https://github.com/buildspace/anchor-counter-program/tree/solution-decrement?utm_source=buildspace.so&utm_medium=buildspace_project)。
+:::

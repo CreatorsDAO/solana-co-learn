@@ -187,8 +187,8 @@ import { PROGRAM_ID as METADATA_PROGRAM_ID } from "@metaplex-foundation/mpl-toke
 
 现在是时候测试我们的进展了：
 
-- 1. 使用`cargo build-sbf`重新构建程序，然后使用`solana program deploy {path}`进行更新。
-- 2. 确保你处于`ts`目录下，并执行`npm run start`。
+1. 使用`cargo build-sbf`重新构建程序，然后使用`solana program deploy {path}`进行更新。
+2. 确保你处于`ts`目录下，并执行`npm run start`。
 
 假设没有出错，那我们就回到`processor.rs`文件，并向`process_redeem`函数添加相似的代码。
 

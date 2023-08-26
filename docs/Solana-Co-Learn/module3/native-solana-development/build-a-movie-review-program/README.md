@@ -102,7 +102,9 @@ let payload = MovieReviewPayload::try_from_slice(rest).unwrap();
 
 不是的。`Rust`有一个 `Option` 类型：一种使用`Rust`类型系统来表示可能缺失的方式。这与其他语言中的 `null` 不同。 `Option` 是一种类型，可以是 `Some` 或 `None` 。 `Some` 是一个值，`None` 是一个值的缺失。为什么呢？因为有时候你没有一个值，这是可以接受的。从[文档](https://web.mit.edu/rust-lang_v1.25/arch/amd64_ubuntu1404/share/doc/rust/html/book/first-edition/error-handling.html#unwrapping-explained?utm_source=buildspace.so&utm_medium=buildspace_project)中了解更多：
 
-> 将缺失的可能性编码到类型系统中是一项重要的概念，因为它会迫使编译器强制程序员处理这种缺失的情况。
+:::info
+将缺失的可能性编码到类型系统中是一项重要的概念，因为它会迫使编译器强制程序员处理这种缺失的情况。
+:::
 
 `Rust`助你成为更出色的开发者！现在，你又多了解了`Rust`的另一部分内容🍰
 

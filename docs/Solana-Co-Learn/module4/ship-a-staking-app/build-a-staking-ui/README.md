@@ -104,11 +104,11 @@ interface StakeProps {
 
 有一些与我们之前为其他页面做的事情相似的部分，以下是需要注意的几点：
 
-- 1. 这里有一个与`isStaking`相关的押注检查，它会决定页面上显示"`STAKING`"还是"`UNSTAKED`"。你需要一个`useState`，并初始设置为`false`。
+1. 这里有一个与`isStaking`相关的押注检查，它会决定页面上显示"`STAKING`"还是"`UNSTAKED`"。你需要一个`useState`，并初始设置为`false`。
 
 `const [isStaking, setIsStaking] = useState(false)`
 
-- 2. 我们想要显示抵押者的等级，所以需要另一个`useState`。
+2. 我们想要显示抵押者的等级，所以需要另一个`useState`。
 
 `const [level, setLevel] = useState(1)`
 
@@ -150,10 +150,10 @@ export const StakeOptionsDisplay = ({
 
 在你遵循设计规范的同时，我们将在各个部分检查以下属性：
 
-- 1. `isStaking`会显示抵押的天数，或者显示"准备抵押"
-- 2. 已质押的天数，作为数字
-- 3. 总收入，作为数字
-- 4. 可申领的，作为数字
+1. `isStaking`会显示抵押的天数，或者显示"准备抵押"
+2. 已质押的天数，作为数字
+3. 总收入，作为数字
+4. 可申领的，作为数字
 
 以下是渲染的最终产品，适合那些喜欢粘贴前端代码的人 :P
 

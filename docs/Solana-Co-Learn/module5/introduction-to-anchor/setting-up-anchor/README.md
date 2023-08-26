@@ -14,7 +14,9 @@ sidebar_class_name: green
 
 通过使用宏捆绑各种样板代码，`Anchor` 让你能够专注于程序的核心业务逻辑。此外，`Anchor` 还设计了许多常见的安全检查功能，并允许你轻松定义额外的检查，从而帮助你构建更加安全的程序。
 
-> 简单来说，`Anchor` 可以通过减少你按键的次数，让你快速前进！
+:::info
+简单来说，`Anchor` 可以通过减少你按键的次数，让你快速前进！
+:::
 
 ## 🗂 Anchor 应用程序结构
 
@@ -68,9 +70,11 @@ anchor build
 - `target/idl` ：程序的 `IDL` 文件，`.json` 格式。
 - `target/types` ：`TypeScript` 的 `IDL` —— 所有我们需要的类型。
 
-> 什么是 `IDL`？
->
-> [`IDL`（接口描述语言）](https://en.wikipedia.org/wiki/Interface_description_language)文件是一个 `JSON` 文件，用于描述程序的接口，它告诉你有哪些函数可用以及它们接受的参数。你可以将其看作程序的 `API` 文档。
+:::info
+什么是 `IDL`？
+
+[`IDL`（接口描述语言）](https://en.wikipedia.org/wiki/Interface_description_language)文件是一个 `JSON` 文件，用于描述程序的接口，它告诉你有哪些函数可用以及它们接受的参数。你可以将其看作程序的 `API` 文档。
+:::
 
 我们使用 `IDL` 程序来确定如何与客户端通信（可用的函数、参数等），并使用 `TypeScript` 的 `IDL` 来定义类型。这些是非常重要的，因为要让你的程序开源，你需要发布经过验证的构建版本和 `IDL` 到 `Anchor Programs Registry`。
 

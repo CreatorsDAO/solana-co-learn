@@ -155,10 +155,6 @@ const provider = new AnchorProvider(connection, wallet, {})
 setProvider(provider)
 ```
 
-当然，我会帮你润色一下内容，使其更符合中文阅读习惯。
-
----
-
 ## 程序
 
 最后一步是创建一个 `Program` 对象，代表了以下两个事物的组合：

@@ -248,17 +248,17 @@ pub fn initialize_token_mint(program_id: &Pubkey, accounts: &[AccountInfo]) -> P
 
 在高层次上，这里的操作过程可概括为以下几个步骤：
 
-- 1. 遍历账户列表，提取必要的信息。
-- 2. 派生代币的`mint PDA`（程序派生地址）。
-- 3. 对传入的重要账户进行验证：
+1. 遍历账户列表，提取必要的信息。
+2. 派生代币的`mint PDA`（程序派生地址）。
+3. 对传入的重要账户进行验证：
     - `Token mint account` - 代币铸币账户。
     - `Mint authority account` - 铸币权限账户。
     - `System program` - 系统程序。
     - `Token program` - 代币程序。
     - `Sysvar rent` - 用于计算租金的系统变量账户。
-- 4. 计算`mint account`所需的租金。
-- 5. 创建`token mint PDA`。
-- 6. 初始化`mint account`。
+4. 计算`mint account`所需的租金。
+5. 创建`token mint PDA`。
+6. 初始化`mint account`。
 
 由于我们调用了一个未声明的新错误类型，你会收到一个错误提示。解决方法是打开`error.rs`文件，并将`IncorrectAccountError`添加到`ReviewError`枚举中。
 
@@ -307,14 +307,14 @@ npm install
 
 在运行脚本之前，请：
 
-- 1. 更新`index.ts`中的`PROGRAM_ID`。
-- 2. 将第`67`行的连接更改为你的本地连接：
+1. 更新`index.ts`中的`PROGRAM_ID`。
+2. 将第`67`行的连接更改为你的本地连接：
 
 ```ts
 const connection = new web3.Connection("http://localhost:8899");
 ```
 
-- 在第二个控制台窗口中运行`solana logs PROGRAM_ID_HERE`。
+3. 在第二个控制台窗口中运行`solana logs PROGRAM_ID_HERE`。
 
 现在，你应该有一个控制台正在记录此程序的所有输出，并且已准备好运行脚本。
 
