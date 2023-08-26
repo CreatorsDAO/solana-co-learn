@@ -48,7 +48,7 @@ anchor init <new-workspace-name>
 - `migrations/deploy.js`：用于部署迁移到不同版本的程序的脚本。
 - `.anchor` 文件夹：包含最新程序日志和本地测试账本。
 
-你现在基本上可以忽略这些文件。打开 `programs/<workspace-name>/src/lib.rs`，你会发现它与我们的原生程序有所不同。`Anchor` 将定义入口点，我们将使用 Rust 属性告诉 `Anchor` 我们所有的需求，这样它就能自动化大部分工作。
+你现在基本上可以忽略这些文件。打开 `programs/<workspace-name>/src/lib.rs`，你会发现它与我们的原生程序有所不同。`Anchor` 将定义入口点，我们将使用 `Rust` 属性告诉 `Anchor` 我们所有的需求，这样它就能自动化大部分工作。
 
 当我们使用 `#[program]` 时，我们实际上是在声明一个 `Rust `宏。`Anchor` 将使用它为我们生成所有必要的本地 `Solana` 样板代码。
 
