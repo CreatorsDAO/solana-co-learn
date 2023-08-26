@@ -59,7 +59,7 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 现在我们准备下载适用于`Linux`的`Solana CLI`。请在`Ubuntu`终端中运行以下命令。你可以[在此处阅读](https://docs.solana.com/cli/install-solana-cli-tools)有关下载`Solana CLI`的更多信息。
 
 ```bash
-sh -c "$(curl -sSfL https://release.solana.com/v1.16.9/install)"
+sh -c "$(curl -sSfL https://release.solana.com/v1.16.10/install)"
 ```
 
 ### 在 macOS 上进行设置
@@ -73,7 +73,7 @@ sh -c "$(curl -sSfL https://release.solana.com/v1.16.9/install)"
 接下来，在终端中运行以下命令下载`Solana CLI`。
 
 ```bash
-sh -c "$(curl -sSfL https://release.solana.com/v1.16.9/install)"
+sh -c "$(curl -sSfL https://release.solana.com/v1.16.10/install)"
 ```
 
 你可以在[这里](https://docs.solana.com/cli/install-solana-cli-tools)了解更多关于下载`Solana CLI`的信息。
