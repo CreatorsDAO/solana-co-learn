@@ -36,9 +36,9 @@ sidebar_class_name: green
 
 通常在本地开发中，您需要创建一个文件系统钱包，以便与`Solana CLI`一起使用。但是在`Solana Playground`中，您只需要点击几个按钮就可以创建一个基于浏览器的钱包。
 
-> 注意⚠️：
->
-> 您的 `Playground` 钱包将保存在浏览器的本地存储中。清除浏览器缓存将删除您保存的钱包。创建新钱包时，您可以选择保存钱包的密钥对文件的本地副本。
+:::caution
+您的 `Playground` 钱包将保存在浏览器的本地存储中。清除浏览器缓存将删除您保存的钱包。创建新钱包时，您可以选择保存钱包的密钥对文件的本地副本。
+:::
 
 点击屏幕左下角的红色状态指示按钮，（可选）将您的钱包密钥文件保存到计算机备份，然后点击“继续”。
 
@@ -98,9 +98,10 @@ pub fn process_instruction(
 
 ![](./img/solana-get-started-successful-build.png)
 
-> 注意⚠️：
->
->当您的程序编译时，可能会收到有关未使用变量的警告。不用担心，这些警告不会影响您的构建。这是因为我们的非常简单的程序没有使用在 `process_instruction` 函数中声明的所有变量。
+:::caution
+当您的程序编译时，可能会收到有关未使用变量的警告。不用担心，这些警告不会影响您的构建。这是因为我们的非常简单的程序没有使用在 `process_instruction` 函数中声明的所有变量。
+:::
+
 
 ### 部署你的程序
 
@@ -108,7 +109,9 @@ pub fn process_instruction(
 
 每次部署后，您会看到您的Playground钱包余额发生变化。默认情况下，`Solana Playground`会自动代表您请求`SOL`空投，以确保您的钱包有足够的`SOL`来支付部署的费用。
 
-> 注意：如果你需要更多的`SOL`，你可以在游乐场终端中输入`airdrop`命令来进行空投
+:::info
+注意：如果你需要更多的`SOL`，你可以在游乐场终端中输入`airdrop`命令来进行空投
+:::
 
 ```bash
 solana airdrop 2
@@ -132,9 +135,9 @@ solana airdrop 2
 
 和大多数开发者一样，我们在创建`dApps`和网站时会使用`JavaScript`与我们的链上程序进行交互。具体来说，我们将使用开源的`NPM`包 [`@solana/web3.js`](https://www.npmjs.com/package/@solana/web3.js) 来帮助我们的客户端应用程序。
 
-> 信息：
->
-> 这个`web3.js`包是在[`JSON RPC API`](https://docs.solana.com/api)之上的一个抽象层，它减少了重写常见样板代码的需求，有助于简化客户端应用程序代码。
+:::info
+这个`web3.js`包是在[`JSON RPC API`](https://docs.solana.com/api)之上的一个抽象层，它减少了重写常见样板代码的需求，有助于简化客户端应用程序代码。
+:::
 
 ### 初始化客户端
 
@@ -150,9 +153,10 @@ run
 
 在游乐场上，有许多全球可用的实用工具，我们可以直接使用，无需安装或设置任何东西。对于我们的 `hello world` 程序来说，最重要的是 `web3` 用于 `@solana/web3.js` 和 `pg` 用于`Solana`游乐场实用工具。
 
-> 信息
->
-> 您可以在编辑器中按下 `CTRL+SPACE` （或在 `macOS` 上按下 `CMD+SPACE` ）来查看所有可用的全局变量。
+
+:::info
+您可以在编辑器中按下 `CTRL+SPACE` （或在 `macOS` 上按下 `CMD+SPACE` ）来查看所有可用的全局变量。
+:::
 
 ### 调用该程序
 
@@ -188,9 +192,9 @@ const txHash = await web3.sendAndConfirmTransaction(
 console.log("Transaction sent with hash:", txHash);
 ```
 
-> 信息：
->
-> 签名者数组中的第一个签名者默认为交易手续费支付者。我们将使用我们的密钥对 `pg.wallet.keypair` 进行签名。
+:::info
+签名者数组中的第一个签名者默认为交易手续费支付者。我们将使用我们的密钥对 `pg.wallet.keypair` 进行签名。
+:::
 
 ### 运行应用程序
 

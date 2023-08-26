@@ -30,6 +30,7 @@ sidebar_class_name: green
 - [Solana沉浮录：很多的偶然与少许的必然](https://www.theblockbeats.info/news/36742)
 - [Solana 白皮书](https://docs.qq.com/pdf/DR2ZsSlpsaUppanBD?)
 - [Solana调研报告](https://shimo.im/docs/8wkxtyhCXWp88JDD)
+- [【区块链】Solana 开发笔记 Part 1](https://rustmagazine.github.io/rust_magazine_2021/chapter_10/solana-learn-part1.html)
 
 
 ## Solana 开发相关的博客
