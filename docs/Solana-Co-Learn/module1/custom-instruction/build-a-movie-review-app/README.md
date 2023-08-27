@@ -268,6 +268,8 @@ const handleTransactionSubmit = async (movie: Movie) => {
 
 ![](./img/upload_4.png)
 
+**注意** ： HdE95RSVsdb315jfJtaykXhXY478h53X6okDupVfY9yf 合约是devnent 上的一个测试合约。所以，运行你的 dapp 之前，保证你的 钱包和应用的网络设置均为 devnent。 
+
 ### 起始代码和设置
 
 你可以通过以下命令设置项目：
