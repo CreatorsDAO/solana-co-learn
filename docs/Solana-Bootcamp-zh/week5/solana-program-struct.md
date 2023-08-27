@@ -7,11 +7,11 @@ sidebar_class_name: green
 # Solana Program 基础概念
 
 
-## Solana合约结构
+## Solana Program结构
 
 回到我们之前在`Playground`,这次我们直接用其给的模版创建项目。
 
-里面看到合约代码：
+里面看到`Program`代码：
 
 ```rust
 use borsh::{BorshDeserialize, BorshSerialize};
@@ -65,7 +65,7 @@ pub fn process_instruction(
 }
 ```
 
-合约的整体结构是：
+`Program`的整体结构是：
 
 ```rust
 use xxx;
@@ -84,7 +84,7 @@ pub fn process_instruction(
 
 最前面的 `use` 是`rust`的基本语法,导入相关定义。
 
-这里通过 `entrypoint` 宏声明了一个函数"`process_instruction`"为整个合约的入口函数。 在前面的调用我们知道，调用的基本单元是`instruction`,其定义为：
+这里通过 `entrypoint` 宏声明了一个函数"`process_instruction`"为整个`Program`的入口函数。 在前面的调用我们知道，调用的基本单元是`instruction`,其定义为：
 
 ```ts
 /**
@@ -108,7 +108,7 @@ export class TransactionInstruction {
 }
 ```
 
-这里的 `programId` 指定了和哪个合约交互。而具体执行这个合约的哪个方法呢？就是这里的 `entrypoint` 来指定的。其原型必须为：
+这里的 `programId` 指定了和哪个`Program`交互。而具体执行这个`Program`的哪个方法呢？就是这里的 `entrypoint` 来指定的。其原型必须为：
 
 ```rust
 pub fn process_instruction(
@@ -121,7 +121,7 @@ pub fn process_instruction(
 }
 ```
 
-`program_id`对应了调用`Instruction`里面的 `programId`, `accounts`则对应调用里面的 `keys`。 `instruction_data`则为调用指令里面的 `data`。这样`solana`在处理的时候，就可以将调用与 合约逻辑一一对上了。
+`program_id`对应了调用`Instruction`里面的 `programId`, `accounts`则对应调用里面的 `keys`。 `instruction_data`则为调用指令里面的 `data`。这样`solana`在处理的时候，就可以将调用与 `Program`逻辑一一对上了。
 
 因为函数返回的是一个`Result`:
 
@@ -134,7 +134,7 @@ pub type ProgramResult = ResultGeneric<(), ProgramError>;
 所以最后返回结果，成功的时候返回 `Ok(())`.如果错误，需要返回"`solana::program_error::ProgramError`"
 
 获取`Account`对象
-客户端通过`RPC`调用传递过来的`Account`对象，在合约里面要怎么去获取呢？
+客户端通过`RPC`调用传递过来的`Account`对象，在`Program`里面要怎么去获取呢？
 
 ```rust
 // Iterating accounts is safer than indexing
@@ -175,7 +175,7 @@ pub struct AccountInfo<'a> {
 
 这样就可以得到传递过来的最原始的`Account`对象了。
 
-比如这里我们传递了一个`owner`为这个合约的`account`对象，并在其`data`部分存储了：
+比如这里我们传递了一个`owner`为这个`Program`的`account`对象，并在其`data`部分存储了：
 
 ```rust
 pub struct GreetingAccount {
@@ -195,7 +195,7 @@ if account.owner != program_id {
 }
 ```
 
-如果`Account`里面的`owner`不是我们的合约，直接返回出错。并且指定了错误码。
+如果`Account`里面的`owner`不是我们的`Program`，直接返回出错。并且指定了错误码。
 
 `Account`数据存储
 上面我们读取了传递的存储单元`Account`的基础信息，那么具体存储的值是如何操作的呢？
@@ -226,7 +226,7 @@ greeting_account.serialize(&mut *account.data.borrow_mut())?;
 
 这里先修改 `GreetingAccount`对象，然后再将其序列化回`Account`的`data`部分中。实际就是将 "`greeting_account`" 序列化成二进制数据，然后再填入`account.data`部分的。
 
-因为我们在前端传递的时候，给这个`Account`的`isWritable`是`true`，所以我们合约中修改了`Account.data` 部分在合约执行结束时，就会修改链上的相关数据。
+因为我们在前端传递的时候，给这个`Account`的`isWritable`是`true`，所以我们`Program`中修改了`Account.data` 部分在`Program`执行结束时，就会修改链上的相关数据。
 
 ## 客户端访问
 
