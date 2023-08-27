@@ -31,7 +31,7 @@ sidebar_class_name: green
 - [Solana 白皮书](https://docs.qq.com/pdf/DR2ZsSlpsaUppanBD?)
 - [Solana调研报告](https://shimo.im/docs/8wkxtyhCXWp88JDD)
 - [【区块链】Solana 开发笔记 Part 1](https://rustmagazine.github.io/rust_magazine_2021/chapter_10/solana-learn-part1.html)
-
+- [How to mint NFTs on Solana using Rust and Metaplex](https://mirror.xyz/anoushk.eth/HLL3JE47SJE5AnvzMVrfz7Rec7FDupXK5948aYNsDUU)
 
 ## Solana 开发相关的博客
 
