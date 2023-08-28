@@ -263,10 +263,16 @@ const handleTransactionSubmit = async (movie: Movie) => {
 ## 🚢 挑战：`Solana`构建者的自我介绍
 
 现在，是时候挑战你的思维能力了，让我们的大脑多折几道皱纹 🧠。
+我们的目标是继续创建一个应用程序，允许`Solana Core`中的构建者进行自我介绍。我们将会使用地址`HdE95RSVsdb315jfJtaykXhXY478h53X6okDupVfY9yf`上的`Solana`程序来实现这个目的。
 
-我们的目标是继续创建一个应用程序，允许`Solana Core`中的构建者进行自我介绍。我们将会使用地址`HdE95RSVsdb315jfJtaykXhXY478h53X6okDupVfY9yf`上的`Solana`程序来实现这个目的。最终，你的应用程序应该看起来与电影评论应用程序相似：
+:::caution
+HdE95RSVsdb315jfJtaykXhXY478h53X6okDupVfY9yf 合约是devnent 上的一个测试合约。所以，运行你的 dapp 之前，保证你的 钱包和应用的网络设置均为 devnent。  
+:::
+
+最终，你的应用程序应该看起来与电影评论应用程序相似：
 
 ![](./img/upload_4.png)
+
 
 ### 起始代码和设置
 
