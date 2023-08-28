@@ -6,7 +6,7 @@ sidebar_class_name: green
 
 # 🤠 状态管理
 
-你还记得我们在第一节中互动的电影评论程序吗？现在我们要在这里构建它。你想评论的不一定只是电影，我可不会限制你。嘿！准备好成为一位州长了吗？不，不，我们不是要做那种类型的状态管理。我们所说的状态是指存储在链上的程序数据。
+你还记得我们在第一节中互动的电影评论程序吗？现在我们要在这里构建它。你想评论的不一定只是电影，我可不会限制你。状态是指存储在链上的程序数据。
 
 我们已经有了一个可靠的程序，它接收指令数据并做好了处理准备。要执行这些指令，我们需要学习更多关于 `Rust` 的知识。
 
@@ -22,7 +22,16 @@ sidebar_class_name: green
 
 我们将再次使用 `borsh macro`：
 
-![](./img/note-borsh.png)
+```rust
+use borsh::{BorshDeserialize, BorshSerialize};
+
+#[derive(BorshSerialize, BorshDeserialize, Debug)]
+struct NoteState {
+    title: String,
+    body: String,
+    id: u64,
+}
+```
 
 数据在传输和存储时以原始字节的形式存在，但当我们想要处理数据时，会将其转换为 `Rust` 类型。听起来很有道理，不是吗？
 
@@ -40,7 +49,7 @@ sidebar_class_name: green
 - 按每个时期支付租金。这就像每月支付房租一样——只要你继续支付，你就能继续居住。如果账户没有足够的 `SOL`，它将被清零，数据将丢失。
 - 保持等于 `2` 年租金的最低余额。这样账户就免除了租金。这里的逻辑是硬件成本每 `2` 年下降 `50%`，所以如果你有足够的 `SOL` 支付 `2` 年的租金，你就再也不用担心了！
 
-现在要求免租金，所以只有选项 `#2`。这种方法的最大优点是，当你不再需要存储数据时，可以销毁账户并取回你的 `SOL`！区块链上的免费存储（减去交易费用）🥳
+现在要求免租金，所以只有选项 `#2`。这种方法的最大优点是，当你不再需要存储数据时，可以销毁账户并取回你的 `SOL`！区块链上的免费存储（减去交易费用）🥳。
 
 那么，为什么要在区块链上支付租金呢？嗯，这是一种防止人们大量创建但从未使用的账户的方式。这会浪费空间和验证者的资源。这个机制也是 `Solana` 上存储如此便宜的原因之一——与以太坊不同，我的那些愚蠢的 `Hello World NFT` 收藏会被所有验证者永久存储。
 
@@ -72,7 +81,7 @@ let rent_lamports = rent.minimum_balance(account_len);
 
 ## 📜 程序派生地址
 
-我们已经从指令中提取了数据，计算出了需要支付的租金，现在我们需要一个账户来存储它。嗨，`PDAs`！还记得前端的鸡和蛋问题吗？这里也是一样的情况！我们将从程序`ID`和一组种子中推导出账户地址。
+我们已经从指令中提取了数据，计算出了需要支付的租金，现在我们需要一个账户来存储它。`PDAs`！我们将从程序`ID`和一组种子中推导出账户地址。
 
 ![](./img/pda.png)
 
@@ -84,7 +93,20 @@ let rent_lamports = rent.minimum_balance(account_len);
 
 `CPI`可以使用 `invoke` 或 `invoke_signed` 来实现。
 
-![](./img/invoke.png)
+```rust
+pub fn invoke(
+    instruction: &Instruction,
+    account_infos: &[AccountInfo],
+) -> ProgramResult
+```
+
+```rust
+pub fn invoke_signed(
+    instruction: &Instruction,
+    account_infos: &[AccountInfo],
+    signers_seeds: &[&[u8]],
+) -> ProgramResult
+```
 
 当你不需要签署交易时，使用 `invoke`。当你需要签署交易时，使用 `invoke_signed`。在我们的例子中，我们是唯一可以为`PDA`签署的人，因此我们将使用 `invoke_signed`。
 
@@ -98,7 +120,7 @@ let rent_lamports = rent.minimum_balance(account_len);
 
 一旦我们创建了一个新账户，我们需要访问并更新该账户的数据字段（目前为空字节）。这就涉及将其字节数组反序列化为我们创建的类型实例，更新该实例上的字段，然后将该实例重新序列化为字节数组。
 
-**账户数据的反序列化**
+### 账户数据的反序列化
 
 更新账户数据的第一步是将其数据字节数组反序列化为`Rust`类型。你可以首先借用账户上的数据字段来实现此操作，这样可以在不获取所有权的情况下访问数据。
 
@@ -112,7 +134,7 @@ account_data.body = body;
 account_data.id = id;
 ```
 
-**账户数据的序列化**
+### 账户数据的序列化
 
 一旦`Rust`实例更新了账户数据的合适值，你就可以将数据“保存”到账户上。
 
@@ -126,7 +148,7 @@ account_data.serialize(&mut &mut note_pda_account.data.borrow_mut()[..])?;
 
 ## 📼 总结 - 将所有内容整合在一起
 
-确实有点多了。我得休息一下，然后继续完成它。让我们回顾一下整个过程：
+让我们回顾一下整个过程：
 
 1. 用户通过发送包含标题、正文和字节`ID`的交易来创建笔记。
 2. 我们的程序接收指令，提取数据并将其格式化为`Rust`类型。
@@ -137,7 +159,7 @@ account_data.serialize(&mut &mut note_pda_account.data.borrow_mut()[..])?;
 7. 我们使用指令中的数据来更新`Rust`类型的账户数据。
 8. 我们将`Rust`类型序列化为原始字节，并将其保存到账户中。
 
-就是这样，朋友们。你现在了解了如何在`Solana`上向账户写入数据。我真的很激动，因为这太重要了。给你一个巨大的赞扬，拿着它，你值得！
+你现在了解了如何在`Solana`上向账户写入数据。
 
 ## 🎥 构建一个电影评论程序
 
@@ -189,7 +211,7 @@ use borsh::BorshSerialize;
 
 ### ⏩ 迭代账户
 
-在我们的 `add_movie_review` 函数中传入的第二个参数是一个账户数组。我们可以遍历这些账户，获取它们的数据并执行相应的操作。我们可以借助 `next_account_info` 函数来实现这一点——它是一个接受迭代器并安全返回列表中下一个项的函数。我们可以像下面这样使用它：
+在我们的 `add_movie_review` 函数中传入的第二个参数是一个账户数组。我们可以遍历这些账户，获取它们的数据并执行相应的操作。我们可以借助 `next_account_info` 函数（需要引入`use solana_program::account_info::next_account_info;`）来实现这一点 - 它是一个接受迭代器并安全返回列表中下一个项的函数。我们可以像下面这样使用它：
 
 ```rust
 // 获取账户迭代器
@@ -285,7 +307,7 @@ msg!("状态账户序列化");
 如果你需要一个新的设置，可以执行以下操作：
 
 ```bash
-git clone https://github.com/buildspace/solana-movie-client
+git clone https://github.com/CreatorsDAO/solana-movie-client
 cd solana-movie-client
 npm install
 ```
