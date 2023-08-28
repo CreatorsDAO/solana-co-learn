@@ -29,11 +29,11 @@ pub enum NoteError {
 }
 ```
 
-通过`derive`宏属性，我们可以使`NoteError`枚举具有默认的错误特质实现。
+通过`derive`宏属性，我们可以使`NoteError`枚举具有默认的错误`Trait`实现。
 
 每种错误类型我们都会通过`#[error("...")]`标记提供相应的错误信息。
 
-**返回自定义错误**
+### 返回自定义错误
 
 程序返回的错误必须是`ProgramError`类型。通过`impl`，我们可以将自定义错误与`ProgramError`类型进行转换。
 

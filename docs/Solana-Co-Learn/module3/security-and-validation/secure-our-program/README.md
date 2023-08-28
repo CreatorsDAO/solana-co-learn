@@ -6,7 +6,7 @@ sidebar_class_name: green
 
 # 🔑 保障我们程序的安全
 
-是时候保障我们的`Solana`电影数据库（`SMDB`）程序不受到干扰了。我们将加入一些基础的安全防护，进行输入验证，并增添一个 `update_movie_review` 指令。
+是时候保障我们的`Solana`电影数据库程序不受到干扰了。我们将加入一些基础的安全防护，进行输入验证，并增添一个 `update_movie_review` 指令。
 
 我会为你在一个点击之下就开始，你可以看一下这个[Playground设置链接](https://beta.solpg.io/6322684077ea7f12846aee91?utm_source=buildspace.so&utm_medium=buildspace_project)。
 
@@ -67,23 +67,22 @@ impl IsInitialized for MovieAccountState {
 
 ```rust
 // 在 error.rs 内
-use solana_program::{program_error::ProgramError};
+use solana_program::program_error::ProgramError;
 use thiserror::Error;
 
 #[derive(Debug, Error)]
 pub enum ReviewError{
-    // 错误 0
-    #[error("账户尚未初始化")]
+    // error 0
+    #[error("uninitialized account")]
     UninitializedAccount,
-    // 错误 1
-    #[error("派生的PDA与传入的PDA不匹配")]
+    // error 1
+    #[error("Derived PDA did not match the given PDA")]
     InvalidPDA,
-    // 错误 2
-    #[error("输入数据超过最大长度")]
+    // error 2
+    #[error("input data length is too long")]
     InvalidDataLength,
-    // 错误 3
-    #[error("评级超过5或低于1")]
-    InvalidRating,
+    // error 3
+    #[error("rating is out of range 5 or less than 1")]
 }
 
 impl From<ReviewError> for ProgramError {
