@@ -65,3 +65,4 @@ sidebar_class_name: green
 - [backpack app开发](https://docs.xnfts.dev/getting-started/introduction)
 
 ## 其他
+- [Solana項目demo](https://github.com/blocksecteam/solana_demo)
