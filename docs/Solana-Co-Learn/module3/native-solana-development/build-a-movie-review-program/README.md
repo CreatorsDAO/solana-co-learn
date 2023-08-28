@@ -10,6 +10,58 @@ sidebar_class_name: green
 
 让我们回到操场（是上一节课的操场，不是中学时的那个），开始一个全新的项目。我们将从基础的结构编写开始，具体如 `lib.rs` 文件：
 
+如果是在本地开发的话，我们需要执行`cargo init <your-program-name> --lib`。
+下面这个是以`cargo init hello --lib`生成的`Cargo.toml`文件。
+
+```toml
+[package]
+name = "hello"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+```
+
+并且还需要添加`solana-program`, `borsh`,通过在命令行执行`cargo add solana-program`和`cargo add borsh`安装。
+
+执行后的`Cargo.toml`内容是：
+
+```toml
+[package]
+name = "hello"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+borsh = "0.10.3"
+solana-program = "1.16.10"
+```
+
+还有需要配置下`Cargo.toml`,在文件内添加如下内容：
+
+```toml
+[package]
+name = "hello"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+borsh = "0.10.3"
+solana-program = "1.16.10"
+
+# 这是你需要添加的内容
+[lib]
+crate-type = ["cdylib", "lib"]
+```
+
+然后是将`lib.rs`里面的内容替换为下面的内容。
+
 ```rust
 use solana_program::{
     entrypoint,
@@ -31,7 +83,7 @@ pub fn process_instruction(
 }
 ```
 
-到目前为止，一切都很熟悉。就像我们构建记事程序一样，我们将从定义指令结构开始，并创建用于反序列化的逻辑。
+就像我们构建记事程序一样，我们将从定义指令结构开始，并创建用于反序列化的逻辑。
 
 ## 🔪 反序列化指令数据
 
@@ -173,14 +225,14 @@ pub fn process_instruction(
 下面是如何设置完整脚本的步骤，包括你所需的一切：
 
 ```rust
-git clone https://github.com/buildspace/solana-movie-client
+git clone https://github.com/CreatorsDAO/solana-movie-client
 cd solana-movie-client
 npm install
 ```
 
 打开 `src/index.js` 并将第`94`行的程序`ID`更新为从`playground`复制的`ID`。如果你对程序做了任何更改，这里还需要更新客户端。
 
-在终端输入 `npm start` ，你应该会得到一个资源管理器链接。点击该链接，然后向下滚动到程序指令日志，你应该能看到你的电影评论！
+在终端输入 `npm run start` ，你应该会得到一个资源管理器链接。点击该链接，然后向下滚动到程序指令日志，你应该能看到你的电影评论！
 
 ![](./img/movie-logo.png)
 
