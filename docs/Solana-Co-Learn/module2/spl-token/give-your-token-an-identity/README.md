@@ -15,7 +15,7 @@ npm install @metaplex-foundation/js fs
 npm install @metaplex-foundation/mpl-token-metadata
 ```
 
-我们将借助`Metaplex SDK`添加元数据，并使用 `fs` 库来读取代币的标志图片。接下来，创建一个名为 `assets` 的新文件夹，并添加你的标志。这将在测试网络上进行，所以尽情玩乐吧！我选了一个比萨饼的表情符号，所以我把文件命名为`pizza.png`，哈哈。
+我们将借助`Metaplex SDK`添加元数据，并使用 `fs` 库来读取代币的标志图片。接下来，创建一个名为 `assets` 的新文件夹，并添加你的标志。这将在测试网络上进行，所以尽情玩乐吧！我选了一个比萨饼的表情符号，所以我把文件命名为`pizza.png`。
 
 Metaplex将负责所有繁重的工作，所以请在`index.ts`文件顶部添加以下导入语句：
 
@@ -42,7 +42,7 @@ import * as fs from "fs"
 3. 使用 `metaplex.uploadMetadata()` 方法上传链下元数据。
 4. 使用 `findMetadataPda()` 方法推导出元数据账户的程序派生地址（`PDA`）。
 5. 构建类型为 `DataV2` 的链上数据格式。
-6. 使用 `createCreateMetadataAccountV2Instruction` 方法创建元数据账户的构建指令（不是拼写错误哦，哈哈）。
+6. 使用 `createCreateMetadataAccountV2Instruction` 方法创建元数据账户的构建指令（不是拼写错误哦）。
 7. 发送带有指令的交易，以创建令牌元数据账户。
 
 这里涉及许多步骤，但都是基础操作。花一点时间仔细阅读，你就能完全理解正在发生的事情！
@@ -131,7 +131,7 @@ async function createTokenMetadata(
 
 你会注意到我们在这里留下了许多空白的地方 - 那是因为在创建可替代代币时，我们并不需要设置这些内容。非可替代代币则需要定义更具体的行为特性。
 
-我可以逐个解释这个函数，但实际上我只是在重复自己，哈哈。了解它的工作原理固然重要，但更重要的是知道如何使用它。你需要阅读文档来学习如何使用API，从而创建像这样的函数。
+我可以逐个解释这个函数，但实际上我只是在重复自己。了解它的工作原理固然重要，但更重要的是知道如何使用它。你需要阅读文档来学习如何使用API，从而创建像这样的函数。
 
 我在讨论学会钓鱼的技能，而不仅仅是获取一条鱼。
 

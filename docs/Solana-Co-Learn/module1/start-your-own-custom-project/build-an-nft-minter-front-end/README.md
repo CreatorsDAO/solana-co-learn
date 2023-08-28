@@ -34,7 +34,7 @@ npm i @solana/wallet-adapter-base @solana/wallet-adapter-react @solana/wallet-ad
 
 注意：在整个项目中，我们将使用`Typescript`！当然，如果你更喜欢，完全可以使用普通的`Javascript` :)。
 
-如果系统要求安装 `create-next-app`，请确认安装。你可以为你的应用程序取任何你想要的名字，比如我就给我的应用程序命名为“构建器”，哈哈。
+如果系统要求安装 `create-next-app`，请确认安装。你可以为你的应用程序取任何你想要的名字，比如我就给我的应用程序命名为“构建器”。
 
 下一步，你可能想添加一些视觉素材。你可以在[这里](https://cdn.disco.co/media%2FAssets_a68f5cab-20c9-45c7-b25c-43bc9dcd9e7d.zip)找到资源包，也可以自己创建。包里有五个“头像”文件和一个背景的`svg`文件。请将它们放入项目的公共文件夹中。
 

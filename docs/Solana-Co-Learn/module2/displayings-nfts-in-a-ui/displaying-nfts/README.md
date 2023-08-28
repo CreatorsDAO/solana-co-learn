@@ -16,7 +16,7 @@ sidebar_class_name: green
 
 ![](./img/display-nft.png)
 
-你需要进行通常的Metaplex设置，但是我们将使用 `walletAdapterIdentity` 而不是 `keypairIdentity` 来进行连接，因为我们并不需要他们的密钥对，哈哈。一旦完成，我们只需使用Metaplex对象调用 `findAllByOwner` 方法。
+你需要进行通常的Metaplex设置，但是我们将使用 `walletAdapterIdentity` 而不是 `keypairIdentity` 来进行连接，因为我们并不需要他们的密钥对。一旦完成，我们只需使用Metaplex对象调用 `findAllByOwner` 方法。
 
 下图显示了单个`NFT`的`NFT`数据在控制台上的打印结果，我们主要关注的是 `uri` 字段：
 

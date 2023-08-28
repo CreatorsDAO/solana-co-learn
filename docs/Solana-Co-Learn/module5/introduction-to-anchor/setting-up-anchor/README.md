@@ -22,7 +22,7 @@ sidebar_class_name: green
 
 以下是具体的操作步骤。
 
-首先，确保你已经安装了 `Rust` 和 `Solana CLI`（除非你跳过了某些部分，哈哈）。此外，你还需要[安装 `Yarn`](https://yarnpkg.com/getting-started/install)。
+首先，确保你已经安装了 `Rust` 和 `Solana CLI`（除非你跳过了某些部分）。此外，你还需要[安装 `Yarn`](https://yarnpkg.com/getting-started/install)。
 
 完成这些后，只需根据官方的 [`Anchor` 文档](https://www.anchor-lang.com/docs/installation) 进行设置。一切顺利的话，运行 `anchor --version` 时，你会看到一个版本号被打印出来。
 
