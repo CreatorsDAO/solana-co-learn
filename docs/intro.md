@@ -65,3 +65,6 @@ sidebar_class_name: green
 - [backpack app开发](https://docs.xnfts.dev/getting-started/introduction)
 
 ## 其他
+- [Solana項目demo](https://github.com/blocksecteam/solana_demo)
+- [在Solana中實現Nft質押](https://github.com/0xShuk/NFT-Staking-Program)
+- [在Solana中實現Nft交易市場](https://github.com/Aurory-Game/comptoir)
