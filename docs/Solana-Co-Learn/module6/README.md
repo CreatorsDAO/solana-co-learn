@@ -1,10 +1,10 @@
 ---
 sidebar_position: 97
-sidebar_label: Mod6 VRF可验证随机数的应用
+sidebar_label: VRF可验证随机数的应用
 sidebar_class_name: green
 ---
 
-# Module6: VRF可验证随机数的应用
+# VRF可验证随机数的应用
 
 ## 挑战周
 

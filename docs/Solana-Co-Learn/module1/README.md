@@ -1,10 +1,10 @@
 ---
 sidebar_position: 11
-sidebar_label: Mod1 Solana 基础 (与Solana网络通过rpc交互)
+sidebar_label: Solana 基础 (与Solana网络通过rpc交互)
 sidebar_class_name: green
 ---
 
-# Module1: Solana 基础 (与Solana网络通过rpc交互)
+# Solana 基础 (与Solana网络通过rpc交互)
 
 ## 本地开发环境配置以及hello world合约
 

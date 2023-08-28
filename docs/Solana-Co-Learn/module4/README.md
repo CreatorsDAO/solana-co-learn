@@ -1,10 +1,10 @@
 ---
 sidebar_position: 64
-sidebar_label: Mod4 PDA与CPI
+sidebar_label: PDAs 与CPIs
 sidebar_class_name: green
 ---
 
-# Module4: PDA与CPI
+# PDAs 与 CPIs
 
 ## PDA
 

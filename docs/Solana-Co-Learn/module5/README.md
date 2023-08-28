@@ -1,10 +1,10 @@
 ---
 sidebar_position: 96
-sidebar_label: Mod5 深入Anchor框架
+sidebar_label: 深入Anchor框架
 sidebar_class_name: green
 ---
 
-# Module5: 深入Anchor框架
+# 深入Anchor框架
 
 ## 关于 Anchor 的介绍
 
