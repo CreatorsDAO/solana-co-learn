@@ -2,7 +2,13 @@ import React from 'react';
 import clsx from 'clsx';
 import styles from './styles.module.css';
 
-const FeatureList = [
+type FeatureItem = {
+  title: string;
+  Svg: React.ComponentType<React.ComponentProps<'svg'>>;
+  description: JSX.Element;
+};
+
+const FeatureList: FeatureItem[] = [
   {
     title: 'Solana CookBook Zh',
     Svg: require('@site/static/img/easter-island-svgrepo-com.svg').default,
@@ -12,15 +18,6 @@ const FeatureList = [
       </>
     ),
   },
-  // {
-  //   title: 'Solana的开发指南',
-  //   Svg: require('@site/static/img/parthenon-svgrepo-com.svg').default,
-  //   description: (
-  //     <>
-  //       🧭Solana的开发指南
-  //     </>
-  //   ),
-  // },
   {
     title: 'Solana Co Learn',
     Svg: require('@site/static/img/my_logo.svg').default,
@@ -32,7 +29,7 @@ const FeatureList = [
   },
 ];
 
-function Feature({ Svg, title, description }) {
+function Feature({ Svg, title, description }: FeatureItem) {
   return (
     <div className={clsx('col col--4')}>
       <div className="text--center">
@@ -46,7 +43,7 @@ function Feature({ Svg, title, description }) {
   );
 }
 
-export default function HomepageFeatures() {
+export default function HomepageFeatures(): JSX.Element {
   return (
     <section className={styles.features}>
       <div className="container">

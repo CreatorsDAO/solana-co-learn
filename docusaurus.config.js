@@ -1,6 +1,7 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 
+const lightCodeTheme = require('prism-react-renderer/themes/github');
 const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').Config} */
@@ -43,7 +44,7 @@ const config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+            'https://creatorsdao.github.io/all-in-one-solana/blog',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
@@ -63,8 +64,8 @@ const config = {
         },
         items: [
           {
-            type: 'doc',
-            docId: 'intro',
+            type: 'docSidebar',
+            sidebarId: 'tutorialSidebar',
             position: 'left',
             label: 'Tutorial',
           },
@@ -76,12 +77,12 @@ const config = {
           },
           { to: '/blog', label: 'Blog', position: 'left' },
           {
-            href: 'https://github.com/DaviRain-Su/all-in-one-solana/discussions',
+            href: 'https://github.com/CreatorsDAO/all-in-one-solana/discussions',
             label: 'Discussions',
             position: 'right',
           },
           {
-            href: 'https://github.com/DaviRain-Su/all-in-one-solana.git',
+            href: 'https://github.com/CreatorsDAO/all-in-one-solana.git',
             label: 'GitHub',
             position: 'right',
           },
@@ -104,11 +105,11 @@ const config = {
             items: [
               {
                 label: 'Discord',
-                href: 'https://discord.gg/Xd3EKQy5',
+                href: 'https://discord.gg/92B7aka3qr',
               },
               {
                 label: 'Twitter',
-                href: 'https://twitter.com/TheLongSnow',
+                href: 'https://twitter.com/SolanaCreators',
               },
             ],
           },
@@ -121,7 +122,7 @@ const config = {
               },
               {
                 label: 'GitHub',
-                href: 'https://github.com/DaviRain-Su',
+                href: 'https://github.com/CreatorsDAO',
               },
             ],
           },

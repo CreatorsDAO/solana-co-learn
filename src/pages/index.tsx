@@ -4,6 +4,7 @@ import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import HomepageFeatures from '@site/src/components/HomepageFeatures';
+// import WalletContextProvider from '../components/WalletContextProvider'
 
 import styles from './index.module.css';
 
@@ -26,9 +27,10 @@ function HomepageHeader() {
   );
 }
 
-export default function Home() {
+export default function Home(): JSX.Element {
   const { siteConfig } = useDocusaurusContext();
   return (
+    // <WalletContextProvider>
     <Layout
       title={`Hello from ${siteConfig.title}`}
       description="Description will go into a meta tag in <head />">
@@ -37,5 +39,6 @@ export default function Home() {
         <HomepageFeatures />
       </main>
     </Layout>
+    // </WalletContextProvider>
   );
 }
