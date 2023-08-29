@@ -1,7 +1,42 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 
+const lightCodeTheme = require('prism-react-renderer/themes/github');
 const darkCodeTheme = require('prism-react-renderer/themes/dracula');
+
+const path = require('path');
+
+/**
+ * Defines a section with overridable defaults
+ * @param {string} section
+ * @param {import('@docusaurus/plugin-content-docs').Options} options
+ */
+function defineSection(section, version = {}, options = {}) {
+  return [
+    '@docusaurus/plugin-content-docs',
+    /** @type {import('@docusaurus/plugin-content-docs').Options} */
+    ({
+      id: section,
+      path: `docs/${section}`,
+      routeBasePath: section,
+      include: ['**/*.md', '**/*.mdx'],
+      breadcrumbs: false,
+      sidebarPath: require.resolve('./sidebars.cjs'),
+      editUrl: 'https://github.com/CreatorsDAO/all-in-one-solana',
+      versions: version && {
+        current: {
+          label: version.label,
+        },
+      },
+      ...options,
+    }),
+  ];
+}
+
+const SECTIONS = [
+  defineSection('awesome-solana-zh'),
+  defineSection('Solana-Co-Learn'),
+];
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -28,14 +63,10 @@ const config = {
 
   presets: [
     [
-      'classic',
+      '@docusaurus/preset-classic',
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
-        docs: {
-          sidebarPath: require.resolve('./sidebars.js'),
-          editUrl:
-            'https://github.com/CreatorsDAO/all-in-one-solana/edit/main/',
-        },
+        docs: false,
         blog: {
           showReadingTime: true,
           editUrl:
@@ -46,6 +77,12 @@ const config = {
         },
       }),
     ],
+  ],
+
+  plugins: [
+    ...SECTIONS,
+    path.resolve(__dirname, './plugins/webpack-plugin.cjs'),
+    path.resolve(__dirname, './plugins/tailwind-loader.cjs'),
   ],
 
   themeConfig:
@@ -59,23 +96,16 @@ const config = {
         },
         items: [
           {
-            type: 'docSidebar',
-            sidebarId: 'tutorialSidebar',
+            href: '/awesome-solana-zh',
             position: 'left',
-            label: 'Tutorial',
+            label: 'Awesome Solana Zh',
           },
           {
-            type: 'doc',
-            docId: 'Solana-Co-Learn/README',
+            href: '/Solana-Co-Learn',
             position: 'left',
             label: 'Solana Co Learn',
           },
           { to: '/blog', label: 'Blog', position: 'left' },
-          {
-            href: 'https://github.com/CreatorsDAO/all-in-one-solana/discussions',
-            label: 'Discussions',
-            position: 'right',
-          },
           {
             href: 'https://github.com/CreatorsDAO/all-in-one-solana.git',
             label: 'GitHub',
@@ -87,11 +117,11 @@ const config = {
         style: 'dark',
         links: [
           {
-            title: 'Docs',
+            title: 'Products',
             items: [
               {
-                label: 'Tutorial',
-                to: '/docs/intro',
+                label: 'Forum',
+                href: 'https://github.com/CreatorsDAO/all-in-one-solana/discussions',
               },
             ],
           },
@@ -125,7 +155,7 @@ const config = {
         copyright: `Copyright © ${new Date().getFullYear()} All in One Solana site, Inc.`,
       },
       prism: {
-        theme: require('prism-react-renderer/themes/dracula'),
+        theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
         // Additional languages can be added here.
         additionalLanguages: ['powershell', 'rust', 'toml', 'yaml', 'c', 'cpp'],
