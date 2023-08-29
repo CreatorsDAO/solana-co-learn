@@ -37,15 +37,16 @@ Solana网络使用最大事务单元（MTU）大小为1280字节，遵循[IPv6 M
 
 ![Transaction Format](./versioned-transactions/tx_format.png)
 
-> **tip Compact-Array format**
->
->
-> A compact array is an array serialised to have the following components:
->
-> 1. An array length in a multi-byte encoding called [Compact-u16](https://beta.docs.solana.com/developing/programming-model/transactions#compact-u16-format)
-> 2. Followed by each array item
->
-> ![Compact array format](./versioned-transactions/compact_array_format.png)
+:::info
+**tip Compact-Array format**
+
+
+A compact array is an array serialised to have the following components:
+1. An array length in a multi-byte encoding called [Compact-u16](https://beta.docs.solana.com/developing/programming-model/transactions#compact-u16-format)
+2. Followed by each array item
+
+![Compact array format](./versioned-transactions/compact_array_format.png)
+:::
 
 ## 传统消息
 
