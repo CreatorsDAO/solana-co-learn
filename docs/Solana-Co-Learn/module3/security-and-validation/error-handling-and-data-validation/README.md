@@ -2,6 +2,11 @@
 sidebar_position: 59
 sidebar_label: ❗ 错误处理和数据验证
 sidebar_class_name: green
+tags:
+  - security-and-validation
+  - solana
+  - native-solana-program
+  - error-handle-and-data-validation
 ---
 
 # ❗ 错误处理和数据验证

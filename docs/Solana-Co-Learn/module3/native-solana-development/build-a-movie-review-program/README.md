@@ -2,6 +2,11 @@
 sidebar_position: 56
 sidebar_label: 🎥 构建一个电影评论程序
 sidebar_class_name: green
+tags:
+  - native-solana-development
+  - solana
+  - native-solana-program
+  - program
 ---
 
 # 🎥 构建一个电影评论程序

@@ -2,6 +2,10 @@
 sidebar_position: 10
 sidebar_label: Solang solidity合约实现 - hello, World
 sidebar_class_name: green
+tags:
+  - solang-program-hello
+  - solana
+  - program
 ---
 
 # Solang solidity合约实现 - hello, World

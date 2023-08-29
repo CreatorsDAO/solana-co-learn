@@ -2,6 +2,10 @@
 sidebar_position: 31
 sidebar_label: 🧮 令牌元数据
 sidebar_class_name: green
+tags:
+  - spl-token
+  - solana
+  - token-metadata
 ---
 
 # 🧮 令牌元数据

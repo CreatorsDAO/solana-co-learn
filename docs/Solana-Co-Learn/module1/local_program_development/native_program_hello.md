@@ -2,6 +2,10 @@
 sidebar_position: 8
 sidebar_label: Native Solana合约实现 - hello, World
 sidebar_class_name: green
+tags:
+  - native-program-hello
+  - solana
+  - program
 ---
 
 # Native Solana合约实现 - hello, World

@@ -2,6 +2,10 @@
 sidebar_position: 14
 sidebar_label: ✍将数据写入区块链
 sidebar_class_name: green
+tags:
+  - client-side-development
+  - solana
+  - rpc
 ---
 
 # ✍将数据写入区块链

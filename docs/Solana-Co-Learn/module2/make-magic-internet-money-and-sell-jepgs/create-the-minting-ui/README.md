@@ -2,6 +2,12 @@
 sidebar_position: 43
 sidebar_label: 🎨 创建铸币用户界面
 sidebar_class_name: green
+tags:
+  - displayings-nfts
+  - solana
+  - nft
+  - metaplex
+  - frontend
 ---
 
 # 🎨 创建铸币用户界面

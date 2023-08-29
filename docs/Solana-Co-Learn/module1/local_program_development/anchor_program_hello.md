@@ -2,6 +2,10 @@
 sidebar_position: 9
 sidebar_label: Anchor 合约框架实现 - hello, World 🌍 With PDA
 sidebar_class_name: green
+tags:
+  - anchor-program-hello
+  - solana
+  - program
 ---
 
 # Anchor 合约框架实现 - hello, World 🌍 With PDA

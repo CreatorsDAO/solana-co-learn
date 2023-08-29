@@ -2,6 +2,9 @@
 sidebar_position: 17
 sidebar_label: 🔌 连接到钱包
 sidebar_class_name: green
+tags:
+  - wallet-and-frontend
+  - solana
 ---
 
 # 🔌 连接到钱包

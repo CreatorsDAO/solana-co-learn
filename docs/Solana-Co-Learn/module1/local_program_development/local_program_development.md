@@ -2,6 +2,10 @@
 sidebar_position: 7
 sidebar_label: 本地开发环境配置
 sidebar_class_name: green
+tags:
+  - local-development
+  - solana
+  - program
 ---
 
 # 本地开发环境配置

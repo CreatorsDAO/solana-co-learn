@@ -2,6 +2,9 @@
 sidebar_position: 32
 sidebar_label: 🧬 为你的代币赋予身份
 sidebar_class_name: green
+tags:
+  - spl-token
+  - solana
 ---
 
 # 🧬 为你的代币赋予身份

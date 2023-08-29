@@ -2,6 +2,10 @@
 sidebar_position: 34
 sidebar_label: 🎨 Solana上的NFT
 sidebar_class_name: green
+tags:
+  - nfts-and-minting-with-metaplex
+  - solana
+  - nft
 ---
 
 # 🎨 Solana上的NFT

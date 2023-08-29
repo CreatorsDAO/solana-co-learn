@@ -1,3 +1,12 @@
+---
+sidebar_label: Solana钱包使用 - Backpack 🎒
+sidebar_class_name: green
+tags:
+  - wallet-usage
+  - solana
+  - backpack
+---
+
 # Solana钱包使用 - Backpack 🎒
 
 Solana的钱包种类繁多，如众所周知的`Phantom`钱包。然而，在此我并不推荐使用`Phantom`，因为对于开发者来说，它并不够友好。

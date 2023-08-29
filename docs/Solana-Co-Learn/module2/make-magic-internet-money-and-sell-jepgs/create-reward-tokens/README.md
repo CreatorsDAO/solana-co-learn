@@ -2,6 +2,12 @@
 sidebar_position: 41
 sidebar_label: 🎨 创建奖励代币
 sidebar_class_name: green
+tags:
+  - displayings-nfts
+  - solana
+  - nft
+  - metaplex
+  - spl-token
 ---
 
 # 🎨 创建奖励代币

@@ -2,6 +2,10 @@
 sidebar_position: 28
 sidebar_label: 💵 Token Program
 sidebar_class_name: green
+tags:
+  - spl-token
+  - solana
+  - token-program
 ---
 
 # 💵 Token Program

@@ -2,6 +2,9 @@
 sidebar_position: 52
 sidebar_label: 📝 你好，世界
 sidebar_class_name: green
+tags:
+  - intro-rust
+  - solana
 ---
 
 # 📝 你好，世界

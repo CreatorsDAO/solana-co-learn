@@ -2,6 +2,10 @@
 sidebar_position: 25
 sidebar_label: 🌐 部署到 Vercel
 sidebar_class_name: green
+tags:
+  - start-your-own-custom-project
+  - solana
+  - deploy
 ---
 
 # 🌐 部署到 Vercel

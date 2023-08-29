@@ -2,6 +2,12 @@
 sidebar_position: 39
 sidebar_label: 🖼 从糖果机展示NFTs
 sidebar_class_name: green
+tags:
+  - displayings-nfts
+  - solana
+  - nft
+  - metaplex
+  - candy
 ---
 
 # 🖼 从糖果机展示NFTs

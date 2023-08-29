@@ -2,6 +2,10 @@
 sidebar_position: 21
 sidebar_label: 🎥 构建一个电影评论应用
 sidebar_class_name: green
+tags:
+  - custom-instruction
+  - solana
+  - rpc
 ---
 
 # 🎥 构建一个电影评论应用

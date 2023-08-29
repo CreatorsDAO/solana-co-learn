@@ -2,6 +2,9 @@
 sidebar_position: 18
 sidebar_label: 🦺 与程序进行交互
 sidebar_class_name: green
+tags:
+  - wallet-and-frontend
+  - solana
 ---
 
 # 🦺 与程序进行交互

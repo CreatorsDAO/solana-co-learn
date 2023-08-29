@@ -2,6 +2,12 @@
 sidebar_position: 38
 sidebar_label: 📱 在钱包中展示NFTs
 sidebar_class_name: green
+tags:
+  - displayings-nfts
+  - solana
+  - nft
+  - metaplex
+  - wallet
 ---
 
 # 📱 在钱包中展示NFTs

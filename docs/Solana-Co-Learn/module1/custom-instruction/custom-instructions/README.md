@@ -2,6 +2,10 @@
 sidebar_position: 20
 sidebar_label: 🤔 自定义指令
 sidebar_class_name: green
+tags:
+  - custom-instruction
+  - solana
+  - rpc
 ---
 
 # 🤔 自定义指令

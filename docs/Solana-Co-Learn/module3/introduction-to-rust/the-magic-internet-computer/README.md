@@ -2,6 +2,9 @@
 sidebar_position: 51
 sidebar_label: ✨ 魔法互联网计算机
 sidebar_class_name: green
+tags:
+  - intro-rust
+  - solana
 ---
 
 # ✨ 魔法互联网计算机

@@ -2,6 +2,11 @@
 sidebar_position: 60
 sidebar_label: 🔑 保障我们程序的安全
 sidebar_class_name: green
+tags:
+  - security-and-validation
+  - solana
+  - native-solana-program
+  - srcure-our-program
 ---
 
 # 🔑 保障我们程序的安全

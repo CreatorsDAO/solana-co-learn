@@ -2,6 +2,10 @@
 sidebar_position: 22
 sidebar_label: 📡 Run is back - 反序列化
 sidebar_class_name: green
+tags:
+  - custom-instruction
+  - solana
+  - rpc
 ---
 
 # 📡 Run is back - 反序列化

@@ -2,6 +2,10 @@
 sidebar_position: 24
 sidebar_label: 💻 构建 NFT 铸造者前端
 sidebar_class_name: green
+tags:
+  - start-your-own-custom-project
+  - solana
+  - frontend
 ---
 
 

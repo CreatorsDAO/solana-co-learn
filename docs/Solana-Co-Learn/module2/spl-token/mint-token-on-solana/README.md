@@ -2,6 +2,10 @@
 sidebar_position: 29
 sidebar_label: 🏧 在Solana上铸造代币
 sidebar_class_name: green
+tags:
+  - spl-token
+  - solana
+  - mint-spl-token
 ---
 
 # 🏧 在Solana上铸造代币

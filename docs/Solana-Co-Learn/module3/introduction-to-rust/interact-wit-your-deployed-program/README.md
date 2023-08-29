@@ -2,6 +2,10 @@
 sidebar_position: 53
 sidebar_label: 👋 与你部署的程序互动
 sidebar_class_name: green
+tags:
+  - intro-rust
+  - solana
+  - program
 ---
 
 # 👋 与你部署的程序互动

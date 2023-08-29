@@ -2,6 +2,12 @@
 sidebar_position: 55
 sidebar_label: 🎂 Rust的分层蛋糕
 sidebar_class_name: green
+tags:
+  - native-solana-development
+  - solana
+  - native-solana-program
+  - program
+  - rust-layer-cake
 ---
 
 # 🎂 Rust的分层蛋糕

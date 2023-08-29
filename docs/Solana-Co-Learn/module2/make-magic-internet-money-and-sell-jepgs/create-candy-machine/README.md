@@ -2,6 +2,12 @@
 sidebar_position: 42
 sidebar_label: 🍬 创造糖果机
 sidebar_class_name: green
+tags:
+  - displayings-nfts
+  - solana
+  - nft
+  - metaplex
+  - candy-machine
 ---
 
 # 🍬 创建糖果机

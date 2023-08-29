@@ -2,6 +2,11 @@
 sidebar_position: 37
 sidebar_label: 💃 展示NFTs
 sidebar_class_name: green
+tags:
+  - displayings-nfts
+  - solana
+  - nft
+  - metaplex
 ---
 
 # 💃 展示`NFTs`

@@ -2,6 +2,11 @@
 sidebar_position: 62
 sidebar_label: 🕒 质押工作机制详解
 sidebar_class_name: green
+tags:
+  - nft-staking
+  - solana
+  - native-solana-program
+  - how-staking-works
 ---
 
 # 🕒 质押工作机制详解

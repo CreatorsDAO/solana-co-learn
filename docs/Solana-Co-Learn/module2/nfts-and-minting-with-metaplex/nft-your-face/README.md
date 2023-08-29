@@ -2,6 +2,10 @@
 sidebar_position: 35
 sidebar_label: 🤨 NFT你的脸
 sidebar_class_name: green
+tags:
+  - nfts-and-minting-with-metaplex
+  - solana
+  - nft
 ---
 
 # 🤨 NFT你的脸

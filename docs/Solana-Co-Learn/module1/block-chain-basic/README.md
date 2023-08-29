@@ -2,6 +2,9 @@
 sidebar_position: 6
 sidebar_label: 区块链基本概念介绍
 sidebar_class_name: green
+tags:
+  - blockchain
+  - basic
 ---
 
 # 区块链基本概念介绍
