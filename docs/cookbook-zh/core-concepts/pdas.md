@@ -15,7 +15,6 @@ PDA是[Cross-Program Invocation（跨程序调用）](https://docs.solana.com/de
 
 :::info
 **tip 要点**
-
 - PDA是长度为32的字节串，看起来和公钥很像，但是并没有与之对应的私钥
 - `findProgramAddress`可以针对一个programId（程序id）和seeds（种子）唯一确定的生成一个PDA。这里的seeds（种子）是一组指定的字节串
 - 一个跳跃（一个字节）用于将候选PDA推离ed25519椭圆曲线
@@ -30,8 +29,6 @@ PDA是Solana程序开发的重要构成要素。有了PDA，程序可以为账�
 除了为账户签名外，一些程序还可以修改自己派生出来的PDA里的数据。
 
 ![Accounts matrix](./account-matrix.png)
-
-![图片来源: Pencilflip](https://twitter.com/pencilflip)
 
 ### 生成PDA
 
@@ -54,5 +51,6 @@ PDA是Solana程序开发的重要构成要素。有了PDA，程序可以为账�
 这种机制可以让开发者轻易的对PDA进行验证，而不用重新在指令参数当中传入这个值。
 
 ## Other Resources
+
 - [官方文档](https://docs.solana.com/developing/programming-model/calling-between-programs#program-derived-addresses)
 - [Understanding Program Derived Addresses](https://www.brianfriel.xyz/understanding-program-derived-addresses/)

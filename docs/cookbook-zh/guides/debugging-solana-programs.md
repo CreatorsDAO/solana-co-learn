@@ -10,13 +10,13 @@ tags:
 
 有许多选项和支持工具可用于测试和调试Solana程序。
 
-
-> **tip 事实表**
-> - `solana-program-test`  包可以使用基本的本地运行时，在其中可以交互式地测试和调试程序（例如在 vscode 中）。
-> - `solana-validator` 包可以使用`solana-test-validator`实现进行更可靠的测试，该测试发生在本地验证器节点上。你可以从编辑器中运行，但是程序中的断点将被忽略。
-> - CLI工具`solana-test-validator` 可以从命令行运行和加载你的程序，并处理来自命令行 Rust 应用程序或使用 web3 的 JavaScript/TypeScript 应用程序的事务执行。
-> - 对于上述所有情况，建议在开始时大量使用`msg!`宏进行输出，然后在测试和确保行为稳定后将其移除。请记住，`msg!` 会消耗计算单位，如果达到计算单位的预算限制，最终可能导致程序失败。
-
+:::info
+**tip 事实表**
+- `solana-program-test`  包可以使用基本的本地运行时，在其中可以交互式地测试和调试程序（例如在 vscode 中）。
+- `solana-validator` 包可以使用`solana-test-validator`实现进行更可靠的测试，该测试发生在本地验证器节点上。你可以从编辑器中运行，但是程序中的断点将被忽略。
+- CLI工具`solana-test-validator` 可以从命令行运行和加载你的程序，并处理来自命令行 Rust 应用程序或使用 web3 的 JavaScript/TypeScript 应用程序的事务执行。
+- 对于上述所有情况，建议在开始时大量使用`msg!`宏进行输出，然后在测试和确保行为稳定后将其移除。请记住，`msg!` 会消耗计算单位，如果达到计算单位的预算限制，最终可能导致程序失败。
+:::
 
 
 按照以下步骤使用 [solana-program-bpf-template](#resources)。将其克隆到你的计算机上：
@@ -50,10 +50,10 @@ test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 
 多酷啊！
 
-> **tip 请注意**
->
-> 你并没有使用验证节点，因此默认的程序、区块哈希等在验证节点中的行为可能与你的运行结果不同。这就是 Solana 团队为我们提供本地验证节点测试的原因！
-
+:::info
+**tip 请注意**
+你并没有使用验证节点，因此默认的程序、区块哈希等在验证节点中的行为可能与你的运行结果不同。这就是Solana 团队为我们提供本地验证节点测试的原因！
+:::
 
 ## 在编辑器中进行本地验证节点测试
 

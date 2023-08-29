@@ -12,14 +12,15 @@ A Cross-Program Invocation (CPI) is a direct call from one program into another,
 
 The purpose of this section is to provide a high-level overview CPIs. Please refer to the linked resources below for more detailed explanations, examples, and walkthroughs.
 
-
-> **tip Fact Sheet**
-> - A Cross-Program Invocation (CPI) is a call from one program to another, targeting a specific instruction on the program being called
-> - CPIs allow the calling program to extend its signer privileges to the callee program
-> - Programs can execute CPIs using either `invoke` or `invoke_signed` within their instructions
-> - `invoke` is used when all required signatures are accessible prior to invocation, without the need for PDAs to act as signers
-> - `invoke_signed` is used when PDAs from the calling program are required as signers in the CPI
-> - After a CPI is made to another program, the callee program can make further CPIs to other programs, up to a maximum depth of 4
+:::info
+**tip Fact Sheet**
+- A Cross-Program Invocation (CPI) is a call from one program to another, targeting a specific instruction on the program being called
+- CPIs allow the calling program to extend its signer privileges to the callee program
+- Programs can execute CPIs using either `invoke` or `invoke_signed` within their instructions
+- `invoke` is used when all required signatures are accessible prior to invocation, without the need for PDAs to act as signers
+- `invoke_signed` is used when PDAs from the calling program are required as signers in the CPI
+- After a CPI is made to another program, the callee program can make further CPIs to other programs, up to a maximum depth of 4
+:::
 
 ## Deep Dive
 
@@ -161,6 +162,7 @@ let accounts_infos = [
 While this section has provided a high-level overview of CPIs, more detailed explanations, examples, and walkthroughs can be found in the linked resources below.
 
 ## Other Resources
+
 - [Official Documentation](https://docs.solana.com/developing/programming-model/calling-between-programs#cross-program-invocations)
 - [Solana Cookbook Reference](https://solanacookbook.com/references/programs.html#how-to-do-cross-program-invocation)
 - [Solana Course Native CPI Lesson](https://www.soldev.app/course/cpi)

@@ -11,17 +11,18 @@ tags:
 任何开发者都可以在Solana链上编写以及部署程序。Solana程序（在其他链上叫做智能合约），是所有链上活动的基础。
 链上的一切活动，从去中心化金融（DeFi），到非同质化代币（NFT），再到社交媒体，链上游戏，都由Solana程序所驱动。
 
-
-> **tip 要点**
-> - 程序可以处理来自用户和其他程序的[指令](./transactions)
-> - 所有的程序都是**无状态**的：所有的和程序交互的数据都是存储在独立的[账户](./accounts.md)中。执行时，这些账户借由指令传入程序
-> - 程序本身存储在标记为`executable`（可执行）的账户中。
-> - 任何程序的所有者都是[BPF Loader](https://docs.solana.com/developing/runtime-facilities/programs#bpf-loader) and executed by the [Solana Runtime](https://docs.solana.com/developing/programming-model/runtime)
-> - 开发者通常使用Rust或C++来编写程序，也可以采用任何其他可以编译为[LLVM](https://llvm.org/)的[BPF](https://en.wikipedia.org/wiki/Berkeley_Packet_Filter)后端的语言
-> - 所有的程序都有一个单独的入口点，指令的执行就是从这里开始的（亦即`process_instruction`）。参数须包括：
->     - `program_id`: `pubkey` （公钥）
->     - `accounts`: `array` （数组）
->     - `instruction_data`: `byte array` （字节数组）
+:::info
+**tip 要点**
+- 程序可以处理来自用户和其他程序的[指令](./transactions)
+- 所有的程序都是**无状态**的：所有的和程序交互的数据都是存储在独立的[账户](./accounts.md)中。执行时，这些账户借由指令传入程序
+- 程序本身存储在标记为`executable`（可执行）的账户中。
+- 任何程序的所有者都是[BPF Loader](https://docs.solana.com/developing/runtime-facilities/programs#bpf-loader) and executed by the [Solana Runtime](https://docs.solana.com/developing/programming-model/runtime)
+- 开发者通常使用Rust或C++来编写程序，也可以采用任何其他可以编译为[LLVM](https://llvm.org/)的[BPF](https://en.wikipedia.org/wiki/Berkeley_Packet_Filter)后端的语言
+- 所有的程序都有一个单独的入口点，指令的执行就是从这里开始的（亦即`process_instruction`）。参数须包括：
+    - `program_id`: `pubkey` （公钥）
+    - `accounts`: `array` （数组）
+    - `instruction_data`: `byte array` （字节数组）
+:::
 
 ## 深入
 

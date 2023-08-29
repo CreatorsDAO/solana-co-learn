@@ -10,35 +10,35 @@ tags:
 
 一个返回程序所拥有的账户的RPC方法。目前不支持分页。请求`getProgramAccounts`应该包括`dataSlice`和/或`filters`参数，以提高响应时间并返回只有预期结果的内容。
 
+:::info
+**tip 参数**
 
-> **tip 参数**
->
-> - `programId`: `string` - 要查询的程序的公钥，以base58编码的字符串形式提供。
-> - (可选) `configOrCommitment`: `object` - 包含以下可选字段的配置参数：
->     - (可选) `commitment`: `string` - [状态承诺/State commitment](https://docs.solana.com/developing/clients/jsonrpc-api#configuring-state-commitment)
->     - (可选) `encoding`: `string` - 账户数据的编码方式，可以是： `base58`, `base64`, 或 `jsonParsed`. 请注意 web3js 用户应改用 [getParsedProgramAccounts](https://solana-labs.github.io/solana-web3.js/classes/Connection.html#getParsedProgramAccounts)
->     - (可选) `dataSlice`: `object` - 根据以下内容限制返回的账户数据：
->         - `offset`: `number` - 开始返回账户数据的字节数
->         - `length`: `number` - 要返回的账户数据的字节数
->     - (可选) `filters`: `array` - 使用以下过滤器对象对结果进行过滤：
->         - `memcmp`: `object` - 将一系列字节与账户数据匹配：
->             - `offset`: `number` - 开始比较的账户数据字节偏移量
->             - `bytes`: `string` - 要匹配的数据，以base58编码的字符串形式，限制为129个字节
->         - `dataSize`: `number` - 将账户数据的长度与提供的数据大小进行比较
->     - (可选) `withContext`: `boolean` - 将结果包装在一个 [RpcResponse JSON object](https://docs.solana.com/developing/clients/jsonrpc-api#rpcresponse-structure)
->
-> ##### 响应
->
-> 默认情况下，`getProgramAccounts`将返回一个具有以下结构的 JSON 对象数组：
->
-> - `pubkey`: `string` - 账户公钥，以 base58 编码的字符串形式
-> - `account`: `object` - 一个包含以下子字段的 JSON 对象：
->     - `lamports`: `number`, 分配给账户的 lamports 数量
->     - `owner`: `string`, 账户所分配的程序的 base58 编码的公钥
->     - `data`: `string` | `object` - 与账户关联的数据，根据提供的编码参数，可以是编码的二进制数据或 JSON 格式 parameter
->     - `executable`: `boolean`, 指示账户是否包含着程序
->     - `rentEpoch`: `number`, 该账户下次需要支付租金的纪元（epoch）
+- `programId`: `string` - 要查询的程序的公钥，以base58编码的字符串形式提供。
+- (可选) `configOrCommitment`: `object` - 包含以下可选字段的配置参数：
+    - (可选) `commitment`: `string` - [状态承诺/State commitment](https://docs.solana.com/developing/clients/jsonrpc-api#configuring-state-commitment)
+     - (可选) `encoding`: `string` - 账户数据的编码方式，可以是： `base58`, `base64`, 或 `jsonParsed`. 请注意 web3js 用户应改用 [getParsedProgramAccounts](https://solana-labs.github.io/solana-web3.js/classes/Connection.html#getParsedProgramAccounts)
+    - (可选) `dataSlice`: `object` - 根据以下内容限制返回的账户数据：
+        - `offset`: `number` - 开始返回账户数据的字节数
+         - `length`: `number` - 要返回的账户数据的字节数
+     - (可选) `filters`: `array` - 使用以下过滤器对象对结果进行过滤：
+         - `memcmp`: `object` - 将一系列字节与账户数据匹配：
+         - `offset`: `number` - 开始比较的账户数据字节偏移量
+         - `bytes`: `string` - 要匹配的数据，以base58编码的字符串形式，限制为129个字节
+         - `dataSize`: `number` - 将账户数据的长度与提供的数据大小进行比较
+     - (可选) `withContext`: `boolean` - 将结果包装在一个 [RpcResponse JSON object](https://docs.solana.com/developing/clients/jsonrpc-api#rpcresponse-structure)
 
+##### 响应
+
+默认情况下，`getProgramAccounts`将返回一个具有以下结构的 JSON 对象数组：
+
+- `pubkey`: `string` - 账户公钥，以 base58 编码的字符串形式
+- `account`: `object` - 一个包含以下子字段的 JSON 对象：
+    - `lamports`: `number`, 分配给账户的 lamports 数量
+    - `owner`: `string`, 账户所分配的程序的 base58 编码的公钥
+    - `data`: `string` | `object` - 与账户关联的数据，根据提供的编码参数，可以是编码的二进制数据或 JSON 格式 parameter
+    - `executable`: `boolean`, 指示账户是否包含着程序
+    - `rentEpoch`: `number`, 该账户下次需要支付租金的纪元（epoch）
+:::
 
 ## 深入
 
