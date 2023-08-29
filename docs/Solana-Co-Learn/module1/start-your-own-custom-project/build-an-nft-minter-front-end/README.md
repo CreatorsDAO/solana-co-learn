@@ -39,7 +39,7 @@ npm i @solana/wallet-adapter-base @solana/wallet-adapter-react @solana/wallet-ad
 
 如果系统要求安装 `create-next-app`，请确认安装。你可以为你的应用程序取任何你想要的名字，比如我就给我的应用程序命名为“`buildoor`”。
 
-下一步，你可能想添加一些视觉素材。你可以在[这里](https://cdn.disco.co/media%2FAssets_a68f5cab-20c9-45c7-b25c-43bc9dcd9e7d.zip)找到资源包，也可以自己创建。包里有五个“头像”文件和一个背景的`svg`文件。请将它们放入项目的公共文件夹中。
+下一步，你可能想添加一些视觉素材。你可以在[这里](https://cdn.disco.co/media%2FAssets_a68f5cab-20c9-45c7-b25c-43bc9dcd9e7d.zip)找到资源包，也可以自己创建。包里有五个“头像”文件和一个背景的`svg`文件。请将它们放入项目的`public`文件夹中。
 
 现在，一切准备就绪，让我们开始构建吧！🚀
 
@@ -171,7 +171,11 @@ const NavBar: FC = () => {
 export default NavBar
 ```
 
-这里我们使用 `import dynamic from "next/dynamic"` 从 `@solana/wallet-adapter-react-ui` 动态导入 `WalletMultiButton`，并将其分配给 `WalletMultiButtonDynamic`。这是必需的，因为 `NextJS` 是服务器端渲染的，在客户端加载之前无法访问依赖于浏览器 `API`（例如 `window`）的外部依赖项或组件。因此，通过 `{ ssr: false }`，我们禁用了导入的服务器渲染。关于动态导入的更多信息，你可以在[这里](https://nextjs.org/docs/advanced-features/dynamic-import)阅读。
+这里我们使用 `import dynamic from "next/dynamic"` 从 `@solana/wallet-adapter-react-ui` 动态导入 `WalletMultiButton`，并将其分配给 `WalletMultiButtonDynamic`。
+
+这是必需的，因为 `NextJS` 是服务器端渲染的，在客户端加载之前无法访问依赖于浏览器 `API`（例如 `window`）的外部依赖项或组件。
+
+因此，通过 `{ ssr: false }`，我们禁用了导入的服务器渲染。关于动态导入的更多信息，你可以在[这里](https://nextjs.org/docs/advanced-features/dynamic-import)阅读。
 
 现在返回到 `index.tsx` 文件，导入 `NavBar` 并将其放在堆栈的顶部（我已留下评论说明它应该放在哪里）：
 
@@ -304,7 +308,6 @@ npm install @solana/wallet-adapter-base \
     @solana/wallet-adapter-react \
     @solana/wallet-adapter-react-ui \
     @solana/wallet-adapter-wallets \
-    @solana/wallet-adapter-backpack \
     @solana/web3.js
 ```
 
@@ -322,12 +325,12 @@ import {
 } from "@solana/wallet-adapter-react"
 import { WalletModalProvider } from "@solana/wallet-adapter-react-ui"
 import { clusterApiUrl } from "@solana/web3.js"
-import { BackPackWalletAdapter } from "@solana/wallet-adapter-wallets"
+import { BackpackWalletAdapter } from "@solana/wallet-adapter-wallets"
 require("@solana/wallet-adapter-react-ui/styles.css")
 
 const WalletContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const url = useMemo(() => clusterApiUrl("devnet"), [])
-  const backpack = new BackPackWalletAdapter()
+  const backpack = new BackpackWalletAdapter()
 
   return (
     <ConnectionProvider endpoint={url}>
