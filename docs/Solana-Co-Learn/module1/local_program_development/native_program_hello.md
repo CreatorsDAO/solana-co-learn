@@ -93,7 +93,34 @@ solana-test-validator
 cargo build-sbf
 ```
 
-现在让我们部署我们的程序。运行从`cargo build-sbf`命令输出的`solana program deploy`命令。
+现在让我们部署我们的程序。部署从`cargo build-sbf`命令输出的`*.so`。
+
+```bash
+ls --tree target/ --depth 2
+ target
+├──  .rustc_info.json
+├──  CACHEDIR.TAG
+├──  debug
+│   ├──  .cargo-lock
+│   ├──  .fingerprint
+│   ├──  build
+│   ├──  deps
+│   ├──  examples
+│   └──  incremental
+├──  deploy
+│   ├──  solana_hello_world_local-keypair.json
+│   └──  solana_hello_world_local.so
+├──  release
+│   ├──  .cargo-lock
+│   ├──  .fingerprint
+│   ├──  build
+│   ├──  deps
+│   ├──  examples
+│   └──  incremental
+└──  sbf-solana-solana
+    ├──  CACHEDIR.TAG
+    └──  release
+```
 
 ```bash
 solana program deploy <PATH>
