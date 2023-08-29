@@ -7,7 +7,7 @@ sidebar_class_name: green
 
 # 💻 构建 NFT 铸造者前端
 
-欢迎来到第一周的`SHIPPING`环节。每周，你都会有一个特定的部分，用来将你所学的内容应用到自定义的NFT质押应用程序上，并且还有战利品箱子等你拿！
+欢迎来到第一周的挑战环节。每周，你都会有一个特定的部分，用来将你所学的内容应用到自定义的`NFT`质押应用程序上，并且还有战利品箱子等你拿！
 
 这些部分的核心目的是鼓励你走出本地开发环境，构建真实的、可以供他人使用的项目。许多成功的构建者都是通过在公众面前展示和开发他们的作品而获得成功的。这是你一直在准备的时刻——让我们开始吧🤘。
 
@@ -26,15 +26,18 @@ sidebar_class_name: green
 我们将从零开始，没有模板！设置一个新的 `Next.js` 应用程序，并向其中添加 `Chakra UI`：
 
 ```bash
-npx create-next-app --typescript
+npx create-next-app <you-project-name> --typescript
+
 cd <you-project-name>
-npm i @chakra-ui/react @emotion/react@^11 @emotion/styled@^11 framer-motion@^6 @chakra-ui/icons
+
+npm i @chakra-ui/react @emotion/react@^11 @emotion/styled@^11 framer-motion@^10 @chakra-ui/icons
+
 npm i @solana/wallet-adapter-base @solana/wallet-adapter-react @solana/wallet-adapter-react-ui @solana/wallet-adapter-wallets @solana/web3.js
 ```
 
 注意：在整个项目中，我们将使用`Typescript`！当然，如果你更喜欢，完全可以使用普通的`Javascript` :)。
 
-如果系统要求安装 `create-next-app`，请确认安装。你可以为你的应用程序取任何你想要的名字，比如我就给我的应用程序命名为“构建器”。
+如果系统要求安装 `create-next-app`，请确认安装。你可以为你的应用程序取任何你想要的名字，比如我就给我的应用程序命名为“`buildoor`”。
 
 下一步，你可能想添加一些视觉素材。你可以在[这里](https://cdn.disco.co/media%2FAssets_a68f5cab-20c9-45c7-b25c-43bc9dcd9e7d.zip)找到资源包，也可以自己创建。包里有五个“头像”文件和一个背景的`svg`文件。请将它们放入项目的公共文件夹中。
 
