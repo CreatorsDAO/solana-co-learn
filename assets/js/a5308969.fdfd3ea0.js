@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkall_in_one_solana=self.webpackChunkall_in_one_solana||[]).push([[7903],{73031:a=>{a.exports=JSON.parse('{"label":"state-compression","permalink":"/all-in-one-solana/blog/tags/state-compression","allTagsPath":"/all-in-one-solana/blog/tags","count":1}')}}]);
