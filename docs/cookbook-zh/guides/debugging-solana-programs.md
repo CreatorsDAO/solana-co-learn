@@ -1,3 +1,11 @@
+---
+title: 调试 Solana 程序
+sidebar_position: 12
+tags:
+  - solana-cook-book
+  - debug
+---
+
 # 调试 Solana 程序
 
 有许多选项和支持工具可用于测试和调试Solana程序。

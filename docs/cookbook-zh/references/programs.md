@@ -1,3 +1,11 @@
+---
+title: 编写程序
+sidebar_position: 19
+tags:
+  - solana-cook-book
+  - program
+---
+
 # 编写程序
 
 ## 如何在程序中转移 SOL

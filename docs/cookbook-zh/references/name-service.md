@@ -1,3 +1,11 @@
+---
+title: 命名服务
+sidebar_position: 24
+tags:
+  - solana-cook-book
+  - name-service
+---
+
 # 命名服务
 
 ## 名称注册表

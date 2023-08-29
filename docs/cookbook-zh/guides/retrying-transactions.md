@@ -1,3 +1,11 @@
+---
+title: 重试交易
+sidebar_position: 11
+tags:
+  - solana-cook-book
+  - transactions
+---
+
 # 重试交易
 
 在某些情况下，一个看似有效的交易可能在输入区块之前会被丢弃。这种情况最常发生在网络拥堵期间，当一个RPC节点无法将交易重新广播给区块链的[领导](https://docs.solana.com/terminology#leader)节点时。对于最终用户来说，他们的交易可能会完全消失。虽然RPC节点配备了通用的重新广播算法，但应用程序开发人员也可以开发自己的自定义重新广播逻辑。

@@ -1,3 +1,13 @@
+---
+title: Storing SOL in PDA
+sidebar_position: 28
+tags:
+  - solana-cook-book
+  - game
+  - store-sol
+  - pda
+---
+
 # Storing SOL in PDAs for Game Rewards
 
 Video Walkthrough:

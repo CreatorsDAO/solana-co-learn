@@ -1,18 +1,27 @@
+---
+title: 账户
+sidebar_position: 4
+tags:
+  - solana-cook-book
+  - accounts
+---
+
 # 账户
 
 在Solana中，账户是用来存储状态的。账户是Solana开发中非常重要的构成要素。
 
+:::info
+**tip 要点**
 
-> **tip 要点**
->
-> - 账户是用来存放数据的
-> - 每个账户都有一个独一无二的地址
-> - 每个账户大小不能超过**10MB**
-> - 程序派生账户(PDA accounts)大小不能超过**10KB**
-> - 程序派生账户(PDA accounts)可以用其对应程序进行签名
-> - 账户大小在创建时固定，但可以使用[realloc](https://solanacookbook.com/references/programs.html#how-to-change-account-size)进行调整
-> - 账户数据存储需要付租金
-> - 默认的账户所有者是"系统程序"
+- 账户是用来存放数据的
+- 每个账户都有一个独一无二的地址
+- 每个账户大小不能超过**10MB**
+- 程序派生账户(PDA accounts)大小不能超过**10KB**
+- 程序派生账户(PDA accounts)可以用其对应程序进行签名
+- 账户大小在创建时固定，但可以使用[realloc](https://solanacookbook.com/references/programs.html#how-to-change-account-size)进行调整
+- 账户数据存储需要付租金
+- 默认的账户所有者是"系统程序"
+:::
 
 ## 深入
 

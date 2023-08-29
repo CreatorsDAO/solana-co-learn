@@ -1,3 +1,13 @@
+---
+title: Intro into gaming on Solana
+sidebar_position: 25
+tags:
+  - solana-cook-book
+  - game
+  - intro
+---
+
+
 # Intro into gaming on Solana
 
 The gaming space in the Solana ecosystem is expanding rapidly. Integrating with Solana can provide numerous benefits for games, such as enabling players to own and trade their assets via NFTs in games, building a real in-game economy, creating composable game programs, and allowing players to compete for valuable assets.

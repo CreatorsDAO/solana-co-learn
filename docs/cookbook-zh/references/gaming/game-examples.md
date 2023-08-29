@@ -1,3 +1,13 @@
+---
+title: Learn by example
+sidebar_position: 34
+tags:
+  - solana-cook-book
+  - game
+  - example
+  - learn
+---
+
 # Open source Solana games to reference for learning
 
 ## Interact with Anchor Program from Unity

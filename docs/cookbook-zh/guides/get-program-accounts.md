@@ -1,3 +1,11 @@
+---
+title: 获取程序帐户
+sidebar_position: 7
+tags:
+  - solana-cook-book
+  - account
+---
+
 # 获取程序帐户
 
 一个返回程序所拥有的账户的RPC方法。目前不支持分页。请求`getProgramAccounts`应该包括`dataSlice`和/或`filters`参数，以提高响应时间并返回只有预期结果的内容。

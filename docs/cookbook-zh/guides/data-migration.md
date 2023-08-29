@@ -1,3 +1,11 @@
+---
+title: 迁移程序的数据账户
+sidebar_position: 9
+tags:
+  - solana-cook-book
+  - data-migration
+---
+
 # 迁移程序的数据账户
 
 ## 你如何迁移一个程序的数据账户？

@@ -1,3 +1,11 @@
+---
+title: Cross Program Invocations (CPIs)
+sidebar_position: 7
+tags:
+  - solana-cook-book
+  - cpi
+---
+
 # Cross Program Invocations (CPIs)
 
 A Cross-Program Invocation (CPI) is a direct call from one program into another, allowing for the composability of Solana programs. Just as any client can call any program using the JSON RPC, any program can call any other program via a CPI. CPIs essentially turn the entire Solana ecosystem into one giant API that is at your disposal as a developer.

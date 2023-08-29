@@ -1,3 +1,11 @@
+---
+title: 功能相等测试
+sidebar_position: 13
+tags:
+  - solana-cook-book
+  - test
+---
+
 # 功能相等测试
 
 当测试程序时，确保它在各个集群中以相同的方式运行对于确保质量和产生预期结果非常重要。

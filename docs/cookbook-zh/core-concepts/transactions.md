@@ -1,3 +1,11 @@
+---
+title: 交易
+sidebar_position: 6
+tags:
+  - solana-cook-book
+  - transactions
+---
+
 # 交易
 
 客户端可以通过向一个集群提交交易来调用[程序](./programs.md)。一个交易可以包含多个指令，每个指令可以针对不同的程序。

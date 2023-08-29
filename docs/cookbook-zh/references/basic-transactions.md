@@ -1,3 +1,11 @@
+---
+title: 发送交易
+sidebar_position: 17
+tags:
+  - solana-cook-book
+  - transactions
+---
+
 # 发送交易
 
 ## 如何发送SOL

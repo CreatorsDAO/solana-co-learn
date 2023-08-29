@@ -1,3 +1,12 @@
+---
+title: Distribution
+sidebar_position: 33
+tags:
+  - solana-cook-book
+  - game
+  - distrbution
+---
+
 # Distribution
 
 Distribution of your game depends highly on the platform you are using. With Solana, there are game SDKs you can build for IOS, Android, Web and Native Windows or Mac. Using the Unity SDK you could even connect Nintendo Switch or XBox to Solana theoretically. Many game companies are pivoting to a mobile first approach because there are so many people with mobile phones in the world. Mobile comes with its own complications though, so you should pick what fits best to your game.

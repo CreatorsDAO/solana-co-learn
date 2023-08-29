@@ -1,3 +1,10 @@
+---
+title: 发送离线交易
+sidebar_position: 23
+tags:
+  - solana-cook-book
+  - transactions
+---
 
 # 发送离线交易
 

@@ -1,3 +1,12 @@
+---
+title: NFTs In Games
+sidebar_position: 27
+tags:
+  - solana-cook-book
+  - game
+  - nft
+---
+
 # NFTs In Games
 
 Non-fungible tokens (NFTs) are rapidly gaining popularity as a means of integrating Solana into games.

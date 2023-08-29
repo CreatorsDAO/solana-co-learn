@@ -1,3 +1,13 @@
+---
+title: How interact with tokens in program
+sidebar_position: 31
+tags:
+  - solana-cook-book
+  - game
+  - token
+  - program
+---
+
 # Using tokens in games on Solana
 
 Tokens on Solana can serve various purposes, such as in-game rewards, incentives, or other applications. For example, you can create tokens and distribute them to players when they complete specific in-game actions.

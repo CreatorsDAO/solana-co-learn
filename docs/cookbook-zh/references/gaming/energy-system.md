@@ -1,3 +1,11 @@
+---
+title: Energy System
+sidebar_position: 30
+tags:
+  - solana-cook-book
+  - game
+  - energy-system
+---
 
 # Energy System
 

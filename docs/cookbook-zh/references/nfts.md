@@ -1,3 +1,12 @@
+---
+title: 非同质化代币 (NFTs)
+sidebar_position: 22
+tags:
+  - solana-cook-book
+  - nft
+---
+
+
 # 非同质化代币 (NFTs)
 
 ## 如何创建一个NFT

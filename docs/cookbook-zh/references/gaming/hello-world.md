@@ -1,3 +1,13 @@
+---
+title: Hello world example
+sidebar_position: 28
+tags:
+  - solana-cook-book
+  - game
+  - example
+  - hello-world
+---
+
 # Building an on-chain game on Solana
 
 ## Getting started with your first Solana game

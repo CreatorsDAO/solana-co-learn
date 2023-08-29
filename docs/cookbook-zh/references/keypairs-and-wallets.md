@@ -1,3 +1,12 @@
+---
+title: 密钥对和钱包
+sidebar_position: 16
+tags:
+  - solana-cook-book
+  - wallet
+  - keypair
+---
+
 # 密钥对和钱包
 
 ## 如何生成新的密钥对

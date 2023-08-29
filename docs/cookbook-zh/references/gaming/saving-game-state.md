@@ -1,3 +1,11 @@
+---
+title: save game state
+sidebar_position: 29
+tags:
+  - solana-cook-book
+  - game
+---
+
 # How to save game state
 
 You can use Solana block chain to save the state of your game in program accounts. These are accounts that are owned by your program and they are derived from the program Id and some seeds. These can be thought of as data base entries.

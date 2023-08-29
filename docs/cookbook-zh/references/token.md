@@ -1,3 +1,11 @@
+---
+title: 代币
+sidebar_position: 20
+tags:
+  - solana-cook-book
+  - token
+---
+
 # 代币
 
 ## 我需要什么才能开始使用SPL代币？

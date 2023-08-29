@@ -1,3 +1,11 @@
+---
+title: 程序派生账户（PDA）
+sidebar_position: 5
+tags:
+  - solana-cook-book
+  - pda
+---
+
 # 程序派生账户（PDA）
 
 程序派生账户（PDA）是为了让特定程序可以控制一些账户而设计出来的。使用PDA，程序可以通过编程方法为一些地址进行签名，而不一定用到私钥。

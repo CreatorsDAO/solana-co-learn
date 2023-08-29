@@ -1,3 +1,13 @@
+---
+title: 安装
+sidebar_position: 2
+tags:
+  - solana-cook-book
+  - web3.js
+---
+
+# 安装
+
 ## 安装Web3.js
 
 用JavaScript或者TypeScript进行Solana编程时，你会用到下面的几个库。<br/>

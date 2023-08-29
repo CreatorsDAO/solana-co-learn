@@ -1,3 +1,11 @@
+---
+title: 本地开发
+sidebar_position: 15
+tags:
+  - solana-cook-book
+  - local-development
+---
+
 # 本地开发
 
 ## 开启本地验证器

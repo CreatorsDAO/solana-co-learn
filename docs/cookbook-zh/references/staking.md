@@ -1,6 +1,12 @@
+---
+title: 质押
+sidebar_position: 21
+tags:
+  - solana-cook-book
+  - staking
+---
+
 # 质押
-
-
 
 ## 获取当前验证器
 

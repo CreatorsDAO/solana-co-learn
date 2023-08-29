@@ -1,3 +1,12 @@
+---
+title: Solana秘籍
+sidebar_position: 0
+slug: /
+tags:
+  - solana-cook-book
+  - solana
+---
+
 # Solana秘籍
 
 《Solana秘籍》力图为你提供在Solana公链上编写去中心化应用所需的核心概念、 参考。

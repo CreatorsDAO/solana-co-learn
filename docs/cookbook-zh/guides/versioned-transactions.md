@@ -1,3 +1,11 @@
+---
+title: 版本化交易 (Versioned Transactions)
+sidebar_position: 14
+tags:
+  - solana-cook-book
+  - transaction
+---
+
 # 版本化交易 (Versioned Transactions)
 
 Solana最近发布了版本化交易。提议的更改如下：
