@@ -5,6 +5,8 @@ tags:
   - solana-cook-book
   - account
 ---
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 # 获取程序帐户
 
@@ -55,9 +57,11 @@ tags:
 `getProgramAccounts`的一个常见示例涉及与[SPL-Token Program](https://spl.solana.com/token) 程序交互。仅使用基本调用请求由Token程序拥有的所有账户将涉及大量的数据。然而，通过提供参数，我们可以高效地请求我们要使用的数据。
 
 ### `filters`
+
 与`getProgramAccounts`一起使用的最常见参数是`filters`数组。该数组接受两种类型的过滤器，即`dataSize`和`memcmp`。在使用这些过滤器之前，我们应该熟悉我们请求的数据的布局和序列化方式。
 
 #### `dataSize`
+
 在Token程序的情况下，我们可以看到[代币账户的长度为165个字节](https://github.com/solana-labs/solana-program-library/blob/08d9999f997a8bf38719679be9d572f119d0d960/token/program/src/state.rs#L86-L106)。 具体而言，一个代币账户有八个不同的字段，每个字段需要一定数量的字节。我们可以使用下面的示例图来可视化这些数据的布局。
 
 ![Account Size](./get-program-accounts/account-size.png)
@@ -65,6 +69,7 @@ tags:
 如果我们想找到由我们的钱包地址拥有的所有代币账户，我们可以在`filters`数组中添加`{ dataSize: 165 }`来将查询范围缩小为仅限长度为165个字节的账户。然而，仅此还不够。我们还需要添加一个过滤器来查找由我们的地址拥有的账户。我们可以使用`memcmp`过滤器实现这一点。
 
 #### `memcmp`
+
 `memcmp`过滤器，也叫"内存比较"过滤器，允许我们比较存储在账户上的任何字段的数据。具体而言，我们可以查询仅与特定位置上的特定一组字节匹配的账户。`memcmp`需要两个参数：
 
 - `offset`: 开始比较数据的位置。这个位置以字节为单位，表示为一个整数。
@@ -78,7 +83,8 @@ tags:
 
 我们可以通过以下实例来调用此查询：
 
-#### Rust
+<Tabs>
+<TabItem value="Rust" label="Rust">
 
 ```rust
 use solana_client::{
@@ -145,7 +151,8 @@ Amount: 3.0
 */
 ```
 
-#### typescript
+</TabItem>
+<TabItem value="typescript" label="typescript">
 
 ```typescript
 import { TOKEN_PROGRAM_ID } from "@solana/spl-token";
@@ -198,7 +205,8 @@ import { clusterApiUrl, Connection } from "@solana/web3.js";
 })();
 ```
 
-#### curl
+</TabItem>
+<TabItem value="curl" label="curl">
 
 ```bash
 curl http://api.mainnet-beta.solana.com -X POST -H "Content-Type: application/json" -d '
@@ -263,6 +271,9 @@ curl http://api.mainnet-beta.solana.com -X POST -H "Content-Type: application/js
 # }
 ```
 
+</TabItem>
+</Tabs>
+
 ### `dataSlice`
 
 除了上面提到的两个过滤器参数以外，`getProgramAccounts`的第三个最常见参数是`dataSlice`。与`filters`参数不同，`dataSlice`不会减少查询返回的账户数量。`dataSlice`将限制的是每个账户的数据量。
@@ -274,88 +285,8 @@ curl http://api.mainnet-beta.solana.com -X POST -H "Content-Type: application/js
 
 在处理大型数据集但实际上不关心账户数据本身时，`dataSlice`特别有用。例如，如果我们想找到特定代币发行的代币账户数量（即代币持有者数量），就可以使用`dataSlice`。
 
-#### JavaScript
-
-```typescript
-import { TOKEN_PROGRAM_ID } from "@solana/spl-token";
-import { clusterApiUrl, Connection } from "@solana/web3.js";
-
-(async () => {
-  const MY_TOKEN_MINT_ADDRESS = "BUGuuhPsHpk8YZrL2GctsCtXGneL1gmT5zYb7eMHZDWf";
-  const connection = new Connection(clusterApiUrl("devnet"), "confirmed");
-
-  const accounts = await connection.getProgramAccounts(
-    TOKEN_PROGRAM_ID, // new PublicKey("TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA")
-    {
-      dataSlice: {
-        offset: 0, // number of bytes
-        length: 0, // number of bytes
-      },
-      filters: [
-        {
-          dataSize: 165, // number of bytes
-        },
-        {
-          memcmp: {
-            offset: 0, // number of bytes
-            bytes: MY_TOKEN_MINT_ADDRESS, // base58 encoded string
-          },
-        },
-      ],
-    }
-  );
-  console.log(
-    `Found ${accounts.length} token account(s) for mint ${MY_TOKEN_MINT_ADDRESS}`
-  );
-  console.log(accounts);
-
-  /*
-  // Output (notice the empty <Buffer > at acccount.data)
-
-  Found 3 token account(s) for mint BUGuuhPsHpk8YZrL2GctsCtXGneL1gmT5zYb7eMHZDWf
-  [
-    {
-      account: {
-        data: <Buffer >,
-        executable: false,
-        lamports: 2039280,
-        owner: [PublicKey],
-        rentEpoch: 228
-      },
-      pubkey: PublicKey {
-        _bn: <BN: a8aca7a3132e74db2ca37bfcd66f4450f4631a5464b62fffbd83c48ef814d8d7>
-      }
-    },
-    {
-      account: {
-        data: <Buffer >,
-        executable: false,
-        lamports: 2039280,
-        owner: [PublicKey],
-        rentEpoch: 228
-      },
-      pubkey: PublicKey {
-        _bn: <BN: ce3b7b906c2ff6c6b62dc4798136ec017611078443918b2fad1cadff3c2e0448>
-      }
-    },
-    {
-      account: {
-        data: <Buffer >,
-        executable: false,
-        lamports: 2039280,
-        owner: [PublicKey],
-        rentEpoch: 228
-      },
-      pubkey: PublicKey {
-        _bn: <BN: d4560e42cb24472b0e1203ff4b0079d6452b19367b701643fa4ac33e0501cb1>
-      }
-    }
-  ]
-  */
-})();
-```
-
-#### rust
+<Tabs>
+<TabItem value="Rust" label="Rust">
 
 ```rust
 use solana_client::{
@@ -441,7 +372,90 @@ Found 3 token account(s) for mint BUGuuhPsHpk8YZrL2GctsCtXGneL1gmT5zYb7eMHZDWf:
 */
 ```
 
-### curl
+</TabItem>
+<TabItem value="typescript" label="typescript">
+
+```typescript
+import { TOKEN_PROGRAM_ID } from "@solana/spl-token";
+import { clusterApiUrl, Connection } from "@solana/web3.js";
+
+(async () => {
+  const MY_TOKEN_MINT_ADDRESS = "BUGuuhPsHpk8YZrL2GctsCtXGneL1gmT5zYb7eMHZDWf";
+  const connection = new Connection(clusterApiUrl("devnet"), "confirmed");
+
+  const accounts = await connection.getProgramAccounts(
+    TOKEN_PROGRAM_ID, // new PublicKey("TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA")
+    {
+      dataSlice: {
+        offset: 0, // number of bytes
+        length: 0, // number of bytes
+      },
+      filters: [
+        {
+          dataSize: 165, // number of bytes
+        },
+        {
+          memcmp: {
+            offset: 0, // number of bytes
+            bytes: MY_TOKEN_MINT_ADDRESS, // base58 encoded string
+          },
+        },
+      ],
+    }
+  );
+  console.log(
+    `Found ${accounts.length} token account(s) for mint ${MY_TOKEN_MINT_ADDRESS}`
+  );
+  console.log(accounts);
+
+  /*
+  // Output (notice the empty <Buffer > at acccount.data)
+
+  Found 3 token account(s) for mint BUGuuhPsHpk8YZrL2GctsCtXGneL1gmT5zYb7eMHZDWf
+  [
+    {
+      account: {
+        data: <Buffer >,
+        executable: false,
+        lamports: 2039280,
+        owner: [PublicKey],
+        rentEpoch: 228
+      },
+      pubkey: PublicKey {
+        _bn: <BN: a8aca7a3132e74db2ca37bfcd66f4450f4631a5464b62fffbd83c48ef814d8d7>
+      }
+    },
+    {
+      account: {
+        data: <Buffer >,
+        executable: false,
+        lamports: 2039280,
+        owner: [PublicKey],
+        rentEpoch: 228
+      },
+      pubkey: PublicKey {
+        _bn: <BN: ce3b7b906c2ff6c6b62dc4798136ec017611078443918b2fad1cadff3c2e0448>
+      }
+    },
+    {
+      account: {
+        data: <Buffer >,
+        executable: false,
+        lamports: 2039280,
+        owner: [PublicKey],
+        rentEpoch: 228
+      },
+      pubkey: PublicKey {
+        _bn: <BN: d4560e42cb24472b0e1203ff4b0079d6452b19367b701643fa4ac33e0501cb1>
+      }
+    }
+  ]
+  */
+})();
+```
+
+</TabItem>
+<TabItem value="curl" label="curl">
 
 ```bash
 # Note: encoding only available for "base58", "base64" or "base64+zstd"
@@ -534,6 +548,9 @@ curl http://api.mainnet-beta.solana.com -X POST -H "Content-Type: application/js
 #   "id": 1
 # }
 ```
+
+</TabItem>
+</Tabs>
 
 通过组合这三个参数（`dataSlice`、`dataSize`和`memcmp`），我们可以限制查询的范围，并高效地返回我们想要的数据。
 
