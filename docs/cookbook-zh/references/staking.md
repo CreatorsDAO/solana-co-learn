@@ -35,7 +35,7 @@ solana validators
 
 ## 创建质押账户
 
-所有的质押指令由[质押程序 (Stake Program)](https://docs.solana.com/developing/runtime-facilities/programs#stake-program) 处理。首先，我们创建一个[质押账户](https://docs.solana.com/staking/stake-accounts)， 该账户与标准[系统账户](accounts.md#create-a-system-account)创建和管理方式不同。特别是，我们需要设置账户的`Stake Authority`和`Withdrawal Authority`。
+所有的质押指令由[质押程序 (Stake Program)](https://docs.solana.com/developing/runtime-facilities/programs#stake-program) 处理。首先，我们创建一个[质押账户](https://docs.solana.com/staking/stake-accounts)， 该账户与标准[系统账户](./accounts.mdx#create-a-system-account)创建和管理方式不同。特别是，我们需要设置账户的`Stake Authority`和`Withdrawal Authority`。
 
 
 ```typescript

@@ -129,7 +129,7 @@ Signature: 5a3qbvoJQnTAxGPHCugibZTbSu7xuTgkxvF4EJupRjRXGgZZrnWFmKzfEzcqKF2ogCaF4
 
 ## 如何计算交易成本
 
-交易所需的签名数量用于计算交易成本。只要你不是创建账户，这将是最终的交易成本。如果想了解创建账户的成本，请参考 [计算租金豁免](accounts.md#calculating-rent-exemption)
+交易所需的签名数量用于计算交易成本。只要你不是创建账户，这将是最终的交易成本。如果想了解创建账户的成本，请参考 [计算租金豁免](./accounts.mdx#calculating-rent-exemption)
 
 下面的两个示例展示了目前可用于计算估计交易成本的两种方法。
 
