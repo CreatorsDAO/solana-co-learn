@@ -6,15 +6,19 @@ tags:
   - transactions
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 # 账户
 
 ## 如何创建系统账户
 
 创建一个由[系统程序](https://docs.solana.com/developing/clients/javascript-reference#systemprogram) 拥有的账户。Solana运行时将授予账户的所有者对其数据的写入权限或转移Lamports的访问权限。在创建账户时，我们需要预先分配一定大小的存储空间（space）和足够的Lamports来支付租金。 [租金（Rent）](https://docs.solana.com/developing/programming-model/accounts#rent) 是在Solana上保持账户活跃所需支付的费用。
 
+<Tabs>
+<TabItem value="typescript" label="Typescript">
 
-```typescript
-// typescript
+```ts
 const createAccountParams = {
   fromPubkey: fromPubkey.publicKey,
   newAccountPubkey: newAccountPubkey.publicKey,
@@ -34,8 +38,10 @@ await sendAndConfirmTransaction(connection, createAccountTransaction, [
 
 ```
 
+</TabItem>
+<TabItem value="rust" label="Rust">
+
 ```rust
-// rust
 let create_account_ix = system_instruction::create_account(
     &from_pubkey,
     &new_account_pubkey,
@@ -64,16 +70,20 @@ match connection.send_and_confirm_transaction(&create_account_tx) {
     },
     Err(_) => println!("Error creating system account"),
 };
-
 ```
+
+</TabItem>
+</Tabs>
+
 
 ## 如何计算账户费用
 
 在Solana上保持账户活跃会产生一项存储费用，称为 [租金/rent](https://docs.solana.com/developing/programming-model/accounts#rent)。通过存入至少两年租金的金额，你可以使账户完全免除租金收取。对于费用的计算，你需要考虑你打算在账户中存储的数据量。
 
+<Tabs>
+<TabItem value="typescript" label="Typescript">
 
 ```typescript
-// typescript
 import { Connection, clusterApiUrl } from "@solana/web3.js";
 
 (async () => {
@@ -89,9 +99,10 @@ import { Connection, clusterApiUrl } from "@solana/web3.js";
 })();
 ```
 
+</TabItem>
+<TabItem value="rust" label="Rust">
 
 ```rust
-// rust
 use solana_client::rpc_client::RpcClient;
 use solana_sdk::commitment_config::CommitmentConfig;
 
@@ -108,6 +119,8 @@ fn main() {
 }
 ```
 
+</TabItem>
+</Tabs>
 
 ## 如何使用种子创建账户
 
@@ -115,15 +128,17 @@ fn main() {
 
 ### 生成
 
+<Tabs>
+<TabItem value="typescript" label="Typescript">
 
 ```typescript
-// typescript
 PublicKey.createWithSeed(basePubkey, seed, programId);
 ```
 
+</TabItem>
+<TabItem value="rust" label="Rust">
 
 ```rust
-// rust
 use solana_program::pubkey::Pubkey;
 use solana_sdk::signature::{Keypair, Signer};
 
@@ -138,8 +153,13 @@ fn main() {
 }
 ```
 
+</TabItem>
+</Tabs>
+
 ### 创建
 
+<Tabs>
+<TabItem value="typescript" label="Typescript">
 
 ```typescript
 // typescript
@@ -158,9 +178,10 @@ const tx = new Transaction().add(
 console.log(
   `txhash: ${await sendAndConfirmTransaction(connection, tx, [feePayer, base])}`
 );
-
 ```
 
+</TabItem>
+<TabItem value="rust" label="Rust">
 
 ```rust
 // rust
@@ -182,8 +203,10 @@ let tx = solana_sdk::transaction::Transaction::new_signed_with_payer(
   &[&fee_payer_keypair, &base_keypair],
   recent_blockhash,
 );
-
 ```
+
+</TabItem>
+</Tabs>
 
 ### 转账
 
@@ -219,8 +242,6 @@ Only an account owned by system program can transfer via system program.
 1. 不在ed25519曲线上
 2. 使用程序进行签名，而不是使用私钥
 
-
-
 :::info
 **注意**: PDA账户只能在程序上创建，地址可以在客户端创建。
 
@@ -232,6 +253,8 @@ Only an account owned by system program can transfer via system program.
 
 `findProgramAddress`会在你的种子末尾添加一个额外的字节。它从255递减到0，并返回第一个不在ed25519曲线上的公钥。如果您传入相同的程序ID和种子，您将始终获得相同的结果。
 
+<Tabs>
+<TabItem value="typescript" label="Typescript">
 
 ```typescript
 // typescript
@@ -252,8 +275,10 @@ import { PublicKey } from "@solana/web3.js";
 })();
 ```
 
+</TabItem>
+<TabItem value="rust" label="Rust">
+
 ```rust
-// rust
 use solana_program::pubkey::Pubkey;
 use std::str::FromStr;
 
@@ -265,6 +290,8 @@ fn main() {
 }
 ```
 
+</TabItem>
+</Tabs>
 
 ### 创建一个PDA
 
@@ -273,7 +300,6 @@ fn main() {
 #### 程序
 
 下面是一个示例，展示了使用`system_instruction::create_account`创建一个具有预分配数据大小为`space`、预支付`rent_lamports`数量的lamports的PDA账户的单条指令。该指令使用PDA进行签名，并使用`invoke_signed`进行调用，与前面讨论的类似。
-
 
 
 ```rust
@@ -330,15 +356,13 @@ let tx = new Transaction().add(
 );
 
 console.log(`txhash: ${await connection.sendTransaction(tx, [feePayer])}`);
-
 ```
-
 
 ## 如何使用PDA签名
 
 PDAs只能在程序内部进行签名。以下是使用PDA进行签名的程序示例，并使用客户端调用该程序的示例。
 
-### 程序
+### Program
 
 以下示例展示了一个单个指令，用于从由种子`escrow`派生的 PDA 转账 SOL 到指定的账户。使用 `invoke_signed` 函数来使用 PDA 签名。
 
@@ -361,9 +385,7 @@ invoke_signed(
 
 ```
 
-
 ### 客户端
-
 
 ```typescript
 // typescript
@@ -394,14 +416,15 @@ let tx = new Transaction().add(
 );
 
 console.log(`txhash: ${await connection.sendTransaction(tx, [feePayer])}`);
-
 ```
-
 
 ## 如何获取程序账户
 
 返回所有由程序拥有的账户。请参考 [指南部分](../guides/get-program-accounts.md) ，获取有关`getProgramAccounts`及其配置的更多信息。
 
+
+<Tabs>
+<TabItem value="typescript" label="Typescript">
 
 ```typescript
 // typescript
@@ -452,6 +475,8 @@ import { clusterApiUrl, Connection, PublicKey } from "@solana/web3.js";
 })();
 ```
 
+</TabItem>
+<TabItem value="rust" label="Rust">
 
 ```rust
 use solana_client::rpc_client::RpcClient;
@@ -470,6 +495,9 @@ fn main() {
 }
 ```
 
+</TabItem>
+<TabItem value="bash" label="bash">
+
 ```bash
 curl https://api.devnet.solana.com -X POST -H "Content-Type: application/json" -d '
  {"jsonrpc":"2.0", "id":1, "method":"getProgramAccounts", "params":["6a2GdmttJdanBkoHt7f4Kon4hfadx4UTUgJeRkCaiL3U"]}
@@ -479,12 +507,14 @@ curl https://api.devnet.solana.com -X POST -H "Content-Type: application/json" -
 # {"jsonrpc":"2.0","result":[{"account":{"data":"fe2kiXpgfrjWQjCPX3n5MB339Ayqav75ej","executable":false,"lamports":1064880,"owner":"6a2GdmttJdanBkoHt7f4Kon4hfadx4UTUgJeRkCaiL3U","rentEpoch":228},"pubkey":"9pKBrUtJU9GNmct6T2BQtiKqvubtjS9D2if2bm1P8TQd"},{"account":{"data":"fe2kiXpgfrjVs7hiZJNVFsbJUuhXhFx3pQ","executable":false,"lamports":1064880,"owner":"6a2GdmttJdanBkoHt7f4Kon4hfadx4UTUgJeRkCaiL3U","rentEpoch":229},"pubkey":"5L1rztbopmgGMWPKb2efoGyhGnrBJm6K53Hf9S4nxdHr"}],"id":1}
 ```
 
+</TabItem>
+</Tabs>
+
 ## 如何关闭账户
 
 你可以通过移除账户中的所有 SOL（以擦除所有存储数据的方式）来关闭一个账户。（你可以参考[rent](https://docs.solana.com/developing/programming-model/accounts#rent)来了解更多信息。）
 
-#### 程序
-
+### Program
 
 ```rust
 // rust
@@ -499,8 +529,7 @@ source_data.fill(0);
 
 ```
 
-#### 客户端
-
+### 客户端
 
 ```typescript
 // typescript
@@ -539,12 +568,24 @@ let closeAccountTx = new Transaction().add(
 
 ## 如何获取账户余额
 
+<Tabs>
+<TabItem value="typescript" label="Typescript">
 
 ```typescript
 console.log(`${(await connection.getBalance(wallet)) / LAMPORTS_PER_SOL} SOL`);
 ```
 
-```python
+</TabItem>
+<TabItem value="rust" label="Rust">
+
+```rust
+connection.get_balance(&wallet).unwrap();
+```
+
+</TabItem>
+<TabItem value="python" label="Python">
+
+```py
 client = Client("https://api.devnet.solana.com")
 
 key_pair = Keypair()
@@ -552,6 +593,9 @@ public_key = key_pair.pubkey()
 
 client.get_balance(public_key)
 ```
+
+</TabItem>
+<TabItem value="cpp" label="Cpp">
 
 ```cpp
 Connection connection("https://api.devnet.solana.com");
@@ -562,9 +606,8 @@ auto public_key = key_pair.public_key;
 uint64_t balance = connection.get_balance(public_key).unwrap();
 ```
 
-```rust
-connection.get_balance(&wallet).unwrap();
-```
+</TabItem>
+</Tabs>
 
 :::info
 如果你想获取代币余额，你需要知道代币账户的地址。如果像了解更多信息，请参考Token References。
