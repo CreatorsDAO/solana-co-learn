@@ -7,6 +7,7 @@
   --ifm-color-primary-lighter: #4C78C0; /* Even lighter Solana blue */
   --ifm-color-primary-lightest: #6E97EB; /* Lightest Solana blue */
   --ifm-code-font-size: 95%;
+  --ifm-link-color:#0aac69; /* Darkest Solana green */
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
 }
 
