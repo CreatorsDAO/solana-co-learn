@@ -33,11 +33,15 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-solana-program = "~1.8.14"
+solana-program = "1.16.10"
 
 [lib]
 crate-type = ["cdylib", "lib"]
 ```
+
+:::caution
+需要注意这里的`solana-program`的版本，不要直接`copy`这个`Cargo.toml`的配置，因为`solana-program`的版本也是在更新的，可能以后直接使用这里的会出问题。建议使用`cargo add solana-program`添加。
+:::
 
 ## 2. 编写你的程序
 
