@@ -93,7 +93,7 @@ solana-test-validator
 cargo build-sbf
 ```
 
-现在让我们部署我们的程序。部署从`cargo build-sbf`命令输出的在`target/deploy/*.so`。
+现在让我们部署我们的程序。部署从`cargo build-sbf`命令的输出`target/deploy/*.so`文件。
 
 ```bash
 ls --tree target/ --depth 2
@@ -121,6 +121,8 @@ ls --tree target/ --depth 2
     ├──  CACHEDIR.TAG
     └──  release
 ```
+
+这里的`Path` 是上面的`target/deploy/*.so`文件的路径。运行`solana program deploy`命令来部署你的程序。
 
 ```bash
 solana program deploy <PATH>
