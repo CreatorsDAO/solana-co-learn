@@ -12,7 +12,7 @@ tags:
 
 让我们通过构建和部署 `Hello World!` 程序来进行练习。
 
-我们将在本地完成所有操作，包括部署到本地测试验证器。在开始之前，请确保你已经安装了`Rust和`Solana CLI`。如果你还没有安装，请参考概述中的说明进行设置。
+我们将在本地完成所有操作，包括部署到本地测试验证器。在开始之前，请确保你已经安装了`Rust`和`Solana CLI`。如果你还没有安装，请参考概述中的说明进行设置。
 
 ## 1. 创建一个新的Rust项目
 
@@ -84,6 +84,10 @@ solana config get
 ```bash
 solana-test-validator
 ```
+
+:::caution
+这里一定要注意⚠️，`solana-test-validator` 这个命令启动的是solana的本地测试验证器。
+:::
 
 ## 4. 构建和部署
 

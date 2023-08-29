@@ -198,6 +198,10 @@ solana config get
 solana-test-validator
 ```
 
+:::caution
+这里一定要注意⚠️，`solana-test-validator` 这个命令启动的是solana的本地测试验证器。
+:::
+
 ## 4. 构建和部署
 
 我们现在准备好构建和部署我们的程序了。通过运行 `anchor build` 命令来构建程序。
