@@ -3,7 +3,7 @@ sidebar_position: 36
 sidebar_label: 🍭 糖果机和Sugar CLI
 sidebar_class_name: green
 tags:
-  - displayings-nfts
+  - nfts-and-minting-with-metaplex
   - solana
   - nft
   - metaplex

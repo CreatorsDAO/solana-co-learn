@@ -2,6 +2,12 @@
 sidebar_position: 57
 sidebar_label: 🤠 状态管理
 sidebar_class_name: green
+tags:
+  - native-solana-development
+  - solana
+  - native-solana-program
+  - program
+  - state-management
 ---
 
 # 🤠 状态管理
