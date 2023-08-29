@@ -260,13 +260,24 @@ const handleTransactionSubmit = async (movie: Movie) => {
 
 给自己一个掌声，这可不是件容易的事情！到了这个阶段，可能有人已经放弃了这个项目。给他们一些鼓励，展示你所建立的成果！如果你已经坚持到了这一步，我相信你会一直坚持到最后 :)
 
+## 本地部署 Movie Review 程序
+
+这里`Moview Review Program`的程序: https://github.com/CreatorsDAO/movie-review-program
+
+你需要在本地部署这个程序，然后才能在本地运行这个项目。
+
+然后你还需要修改下前端代码的 `MOVIE_REVIEW_PROGRAM_ID` 常量，改成你本地部署的程序的地址。
+
+这个`commit` : https://github.com/CreatorsDAO/solana-movie-frontend/commit/6451fcfb60ea5feba485a7d1d1cb882833329654#diff-70f76b2487583dcb8b512614274040921abaa29ab8b993b19a45140fdbe7b8c8R10 包含了你需要修改的两个地方，一个就是 `program id` ,还有一个是你需要将链接的 `devnet` 换成`localhost`网络。
+
+
 ## 🚢 挑战：`Solana`构建者的自我介绍
 
 现在，是时候挑战你的思维能力了，让我们的大脑多折几道皱纹 🧠。
 我们的目标是继续创建一个应用程序，允许`Solana Core`中的构建者进行自我介绍。我们将会使用地址`HdE95RSVsdb315jfJtaykXhXY478h53X6okDupVfY9yf`上的`Solana`程序来实现这个目的。
 
 :::caution
-HdE95RSVsdb315jfJtaykXhXY478h53X6okDupVfY9yf 合约是devnent 上的一个测试合约。所以，运行你的 dapp 之前，保证你的 钱包和应用的网络设置均为 devnent。  
+HdE95RSVsdb315jfJtaykXhXY478h53X6okDupVfY9yf 合约是devnent 上的一个测试合约。所以，运行你的 dapp 之前，保证你的 钱包和应用的网络设置均为 devnent。
 :::
 
 最终，你的应用程序应该看起来与电影评论应用程序相似：
