@@ -22,7 +22,7 @@ function defineSection(section, version = {}, options = {}) {
       include: ['**/*.md', '**/*.mdx'],
       breadcrumbs: false,
       sidebarPath: require.resolve('./sidebars.cjs'),
-      editUrl: 'https://github.com/CreatorsDAO/all-in-one-solana',
+      editUrl: 'https://github.com/CreatorsDAO/all-in-one-solana/edit/main',
       versions: version && {
         current: {
           label: version.label,
