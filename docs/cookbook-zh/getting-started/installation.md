@@ -5,6 +5,8 @@ tags:
   - solana-cook-book
   - web3.js
 ---
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 # 安装
 
@@ -19,24 +21,22 @@ tags:
 
 可以用以下命令安装：
 
-<CodeGroup>
-  <CodeGroupItem title="YARN" active>
+<Tabs>
+<TabItem value="Yarn" label="Yarn">
 
 ```bash
 yarn add @solana/web3.js
 ```
 
-  </CodeGroupItem>
-
-  <CodeGroupItem title="NPM">
+</TabItem>
+<TabItem value="NPM" label="Npm">
 
 ```bash
 npm install --save @solana/web3.js
 ```
 
-  </CodeGroupItem>
-
-  <CodeGroupItem title="BROWSER">
+</TabItem>
+<TabItem value="browser" label="browser">
 
 ```html
 <!-- Development (un-minified) -->
@@ -46,8 +46,8 @@ npm install --save @solana/web3.js
 <script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.min.js"></script>
 ```
 
-  </CodeGroupItem>
-</CodeGroup>
+</TabItem>
+</Tabs>
 
 ---
 
@@ -58,35 +58,33 @@ npm install --save @solana/web3.js
 
 可以用以下命令安装：
 
-<CodeGroup>
-  <CodeGroupItem title="YARN" active>
+<Tabs>
+  <TabItem value="YARN" label="YARN">
 
-```bash
-yarn add @solana/spl-token
-```
+  ```bash
+  yarn add @solana/spl-token
+  ```
 
-  </CodeGroupItem>
+  </TabItem>
+  <TabItem value="NPM" label="NPM">
 
-  <CodeGroupItem title="NPM">
+  ```bash
+  npm install --save @solana/spl-token
+  ```
 
-```bash
-npm install --save @solana/spl-token
-```
+  </TabItem>
+  <TabItem value="BROWSER" label="BROWSER">
 
-  </CodeGroupItem>
+  ```html
+  <!-- Development (un-minified) -->
+  <script src="https://unpkg.com/@solana/spl-token@latest/lib/index.iife.js"></script>
 
-  <CodeGroupItem title="BROWSER">
+  <!-- Production (minified) -->
+  <script src="https://unpkg.com/@solana/spl-token@latest/lib/index.iife.min.js"></script>
+  ```
 
-```html
-<!-- Development (un-minified) -->
-<script src="https://unpkg.com/@solana/spl-token@latest/lib/index.iife.js"></script>
-
-<!-- Production (minified) -->
-<script src="https://unpkg.com/@solana/spl-token@latest/lib/index.iife.min.js"></script>
-```
-
-  </CodeGroupItem>
-</CodeGroup>
+  </TabItem>
+</Tabs>
 
 ---
 
@@ -98,44 +96,44 @@ npm install --save @solana/spl-token
 
 可以用以下命令安装：
 
-<CodeGroup>
-  <CodeGroupItem title="YARN" active>
+<Tabs>
+  <TabItem value="YARN" label="YARN">
 
-```bash
-yarn add @solana/wallet-adapter-wallets \
-    @solana/wallet-adapter-base
-```
+  ```bash
+  yarn add @solana/wallet-adapter-wallets \
+      @solana/wallet-adapter-base
+  ```
 
-  </CodeGroupItem>
+  </TabItem>
+  <TabItem value="NPM" label="NPM">
 
-  <CodeGroupItem title="NPM">
+  ```bash
+  npm install --save @solana/wallet-adapter-wallets \
+      @solana/wallet-adapter-base
+  ```
 
-```bash
-npm install --save @solana/wallet-adapter-wallets \
-    @solana/wallet-adapter-base
-```
+  </TabItem>
+</Tabs>
 
-  </CodeGroupItem>
-</CodeGroup>
 
 ## 安装Rust
 
-<CodeGroup>
-  <CodeGroupItem title="MACOS" active>
+<Tabs>
+  <TabItem value="MACOS" label="MACOS">
 
-```bash
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-```
+  ```bash
+  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+  ```
 
-  </CodeGroupItem>
-  <CodeGroupItem title="LINUX">
+  </TabItem>
+  <TabItem value="LINUX" label="LINUX">
 
-```bash
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-```
+  ```bash
+  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+  ```
 
-  </CodeGroupItem>
-</CodeGroup>
+  </TabItem>
+</Tabs>
 
 Windows用户请参阅[Rust安装指引](https://www.rust-lang.org/tools/install).
 
