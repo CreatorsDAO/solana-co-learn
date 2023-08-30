@@ -604,12 +604,14 @@ git checkout solution-add-comments
 
 你会看到在 `localhost:3000` 上，通过运行 `npm run dev`，评论的魔法就开始了！
 
-> 热门提示 - 本地程序日志
-> 遇到错误吗？有什么异常吗？你可以在本地主机上查看程序日志：
->
-> ```bash
-> solana logs PROGRAM_ID
-> ```
+:::info
+热门提示 - 本地程序日志
+遇到错误吗？有什么异常吗？你可以在本地主机上查看程序日志：
+
+```bash
+solana logs PROGRAM_ID
+```
+:::
 
 ## 🚢 挑战
 
