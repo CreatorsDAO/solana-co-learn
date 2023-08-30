@@ -162,7 +162,6 @@ fn main() {
 <TabItem value="typescript" label="Typescript">
 
 ```typescript
-// typescript
 const tx = new Transaction().add(
   SystemProgram.createAccountWithSeed({
     fromPubkey: feePayer.publicKey, // funder
@@ -184,7 +183,6 @@ console.log(
 <TabItem value="rust" label="Rust">
 
 ```rust
-// rust
 let derived_pubkey = Pubkey::create_with_seed(&base_pubkey, seed, &program_id).unwrap();
 
 let ix = system_instruction::create_account_with_seed(
@@ -211,7 +209,6 @@ let tx = solana_sdk::transaction::Transaction::new_signed_with_payer(
 ### 转账
 
 ```typescript
-// typescript
 const tx = new Transaction().add(
   SystemProgram.transfer({
     fromPubkey: derived,
@@ -257,7 +254,6 @@ Only an account owned by system program can transfer via system program.
 <TabItem value="typescript" label="Typescript">
 
 ```typescript
-// typescript
 import { PublicKey } from "@solana/web3.js";
 
 (async () => {
@@ -297,13 +293,12 @@ fn main() {
 
 以下是一个创建由程序拥有的PDA账户的示例程序，以及一个使用客户端调用该程序的示例。
 
-#### 程序
-
 下面是一个示例，展示了使用`system_instruction::create_account`创建一个具有预分配数据大小为`space`、预支付`rent_lamports`数量的lamports的PDA账户的单条指令。该指令使用PDA进行签名，并使用`invoke_signed`进行调用，与前面讨论的类似。
 
+<Tabs>
+<TabItem value="Program" label="Program">
 
 ```rust
-// rust
 invoke_signed(
     &system_instruction::create_account(
         &payer_account_info.key,
@@ -318,14 +313,12 @@ invoke_signed(
     ],
     &[&[&payer_account_info.key.as_ref(), &[bump]]]
 )?;
-
 ```
 
-
-#### 客户端
+</TabItem>
+<TabItem value="客户端" label="客户端">
 
 ```typescript
-// typescript
 let tx = new Transaction().add(
   new TransactionInstruction({
     keys: [
@@ -358,17 +351,19 @@ let tx = new Transaction().add(
 console.log(`txhash: ${await connection.sendTransaction(tx, [feePayer])}`);
 ```
 
+</TabItem>
+</Tabs>
+
 ## 如何使用PDA签名
 
 PDAs只能在程序内部进行签名。以下是使用PDA进行签名的程序示例，并使用客户端调用该程序的示例。
 
-### Program
-
 以下示例展示了一个单个指令，用于从由种子`escrow`派生的 PDA 转账 SOL 到指定的账户。使用 `invoke_signed` 函数来使用 PDA 签名。
 
+<Tabs>
+<TabItem value="Program" label="Program">
 
 ```rust
-// rust
 invoke_signed(
     &system_instruction::transfer(
         &pda_account_info.key,
@@ -382,13 +377,12 @@ invoke_signed(
     ],
     &[&[b"escrow", &[bump_seed]]],
 )?;
-
 ```
 
-### 客户端
+</TabItem>
+<TabItem value="客户端" label="客户端">
 
 ```typescript
-// typescript
 let tx = new Transaction().add(
   new TransactionInstruction({
     keys: [
@@ -418,6 +412,9 @@ let tx = new Transaction().add(
 console.log(`txhash: ${await connection.sendTransaction(tx, [feePayer])}`);
 ```
 
+</TabItem>
+</Tabs>
+
 ## 如何获取程序账户
 
 返回所有由程序拥有的账户。请参考 [指南部分](../guides/get-program-accounts.md) ，获取有关`getProgramAccounts`及其配置的更多信息。
@@ -427,7 +424,6 @@ console.log(`txhash: ${await connection.sendTransaction(tx, [feePayer])}`);
 <TabItem value="typescript" label="Typescript">
 
 ```typescript
-// typescript
 import { clusterApiUrl, Connection, PublicKey } from "@solana/web3.js";
 
 (async () => {
@@ -514,10 +510,10 @@ curl https://api.devnet.solana.com -X POST -H "Content-Type: application/json" -
 
 你可以通过移除账户中的所有 SOL（以擦除所有存储数据的方式）来关闭一个账户。（你可以参考[rent](https://docs.solana.com/developing/programming-model/accounts#rent)来了解更多信息。）
 
-### Program
+<Tabs>
+<TabItem value="Program" label="Program">
 
 ```rust
-// rust
 let dest_starting_lamports = dest_account_info.lamports();
 **dest_account_info.lamports.borrow_mut() = dest_starting_lamports
     .checked_add(source_account_info.lamports())
@@ -529,10 +525,10 @@ source_data.fill(0);
 
 ```
 
-### 客户端
+</TabItem>
+<TabItem value="客户端" label="客户端">
 
 ```typescript
-// typescript
 // 1. create an account to your program
 let createNewAccountTx = new Transaction().add(
   SystemProgram.createAccount({
@@ -565,6 +561,8 @@ let closeAccountTx = new Transaction().add(
 
 ```
 
+</TabItem>
+</Tabs>
 
 ## 如何获取账户余额
 

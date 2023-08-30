@@ -128,10 +128,10 @@ let tokenAmount = await connection.getTokenAccountBalance(tokenAccount);
 
 ```
 
-
-> **贴士**
->
-> 一个代币账户只能持有一种铸币。当您指定一个代币账户时，您也需要指定一个铸币。
+:::info
+**贴士**
+一个代币账户只能持有一种铸币。当您指定一个代币账户时，您也需要指定一个铸币。
+:::
 
 ## 如何铸造(mint)代币
 

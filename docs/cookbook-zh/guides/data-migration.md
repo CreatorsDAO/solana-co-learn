@@ -5,6 +5,8 @@ tags:
   - solana-cook-book
   - data-migration
 ---
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 # 迁移程序的数据账户
 
@@ -26,7 +28,9 @@ tags:
 
 假设有以下账户状态和程序：
 
-*Account*
+<Tabs>
+<TabItem value="Account" label="Account">
+
 ```rust
 #[derive(BorshDeserialize, BorshSerialize, Debug, Default, PartialEq)]
 pub struct AccountContentCurrent {
@@ -41,7 +45,8 @@ pub struct ProgramAccountState {
 }
 ```
 
-*instruction*
+</TabItem>
+<TabItem value="instruction" label="instruction">
 
 ```rust
 impl ProgramInstruction {
@@ -58,7 +63,8 @@ impl ProgramInstruction {
 }
 ```
 
-*processor*
+</TabItem>
+<TabItem value="processor" label="processor">
 
 ```rust
 fn check_account_ownership(program_id: &Pubkey, accounts: &[AccountInfo]) -> ProgramResult {
@@ -133,6 +139,9 @@ pub fn process(
 }
 ```
 
+</TabItem>
+</Tabs>
+
 在我们账户的第一个版本中，我们执行以下操作：
 
 | ID | Action |
@@ -189,7 +198,8 @@ pub struct ProgramAccountState {
 
 然后，我们更新指令，添加一个新的指令来更新`somestring`，并更新处理器来处理新的指令。请注意，"升级"数据结构是通过`pack/unpack`封装起来的。
 
-*instruction*
+<Tabs>
+<TabItem value="instruction" label="instruction">
 
 ```rust
 //! instruction Contains the main VersionProgramInstruction enum
@@ -225,7 +235,8 @@ impl VersionProgramInstruction {
 }
 ```
 
-*process*
+</TabItem>
+<TabItem value="process" label="process">
 
 ```rust
 //! Resolve instruction and execute
@@ -331,6 +342,9 @@ pub fn process(
     }
 }
 ```
+
+</TabItem>
+</Tabs>
 
 ## 资料
 

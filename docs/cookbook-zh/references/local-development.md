@@ -5,6 +5,8 @@ tags:
   - solana-cook-book
   - local-development
 ---
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 # 本地开发
 
@@ -15,7 +17,7 @@ tags:
 你可以通过安装 [solana工具套件](/getting-started/installation.md#install-cli)
 并运行以下命令来设置本地测试验证器：
 
-```console
+```bash
 solana-test-validator
 ```
 
@@ -36,48 +38,79 @@ solana-test-validator
 - devnet https://api.devnet.solana.com
 - testnet https://api.testnet.solana.com
 
+<Tabs>
+<TabItem value="typescript" label="typescript">
+
+
 ```ts
-// typescript
 const connection = new Connection(clusterApiUrl("mainnet-beta"), "confirmed");
 ```
 
+</TabItem>
+<TabItem value="py" label="Python">
+
 ```python
-// python
 client = Client("https://api.mainnet-beta.solana.com")
 ```
 
+</TabItem>
+<TabItem value="cpp" label="cpp">
+
+
 ```cpp
-// cpp
 Connection connection("https://api.mainnet-beta.solana.com");
 ```
 
+</TabItem>
+<TabItem value="rust" label="rust">
+
 ```rust
-// rust
 let rpc_url = String::from("https://api.mainnet-beta.solana.com");
 let client = RpcClient::new_with_commitment(rpc_url, CommitmentConfig::confirmed());
 ```
+
+</TabItem>
+<TabItem value="bash" label="bash">
 
 ```bash
 # bash
 solana config set --url https://api.mainnet-beta.solana.com
 ```
 
+</TabItem>
+</Tabs>
+
+
 最后，你还可以连接到私有集群，无论是本地的还是远程运行的，使用以下方式：
+
+<Tabs>
+<TabItem value="typescript" label="typescript">
+
 
 ```ts
 // typescript
 const connection = new Connection("http://127.0.0.1:8899", "confirmed");
 ```
 
+</TabItem>
+<TabItem value="py" label="Python">
+
 ```python
 // python
 client = Client("http://127.0.0.1:8899")
 ```
 
+</TabItem>
+<TabItem value="cpp" label="cpp">
+
+
 ```cpp
 // cpp
 Connection connection("http://127.0.0.1:8899");
 ```
+
+</TabItem>
+<TabItem value="rust" label="rust">
 
 ```rust
 // rust
@@ -85,10 +118,15 @@ let rpc_url = String::from("http://127.0.0.1:8899");
 let client = RpcClient::new_with_commitment(rpc_url, CommitmentConfig::confirmed());
 ```
 
+</TabItem>
+<TabItem value="bash" label="bash">
+
 ```bash
-# bash
 solana config set --url http://privaterpc.com
 ```
+
+</TabItem>
+</Tabs>
 
 ## 订阅事件
 
@@ -98,6 +136,9 @@ Solana的web3[`连接`](https://solana-labs.github.io/solana-web3.js/classes/Con
 
 `Connection`类提供了发布/订阅方法，它们都以`on`开头，类似于事件发射器。当您调用这些监听器方法时，它会在该`Connection`实例的websocket客户端中注册一个新的订阅。下面我们使用的示例发布/订阅方法是[`onAccountChange`](https://solana-labs.github.io/solana-web3.js/classes/Connection.html#onAccountChange)。 回调函数将通过参数提供更新的状态数据（例如，查看A[`AccountChangeCallback`](https://solana-labs.github.io/solana-web3.js/modules.html#AccountChangeCallback) 作为示例）。
 
+
+<Tabs>
+<TabItem value="typescript" label="typescript">
 
 ```ts
 // typescript
@@ -116,6 +157,9 @@ connection.onAccountChange(
 );
 ```
 
+</TabItem>
+<TabItem value="py" label="Python">
+
 ```python
 // python
 async with connect("wss://api.devnet.solana.com") as websocket:
@@ -129,6 +173,9 @@ async with connect("wss://api.devnet.solana.com") as websocket:
     updated_account_info = await websocket.recv()
     print(updated_account_info)
 ```
+
+</TabItem>
+<TabItem value="cpp" label="cpp">
 
 ```cpp
 // cpp
@@ -150,6 +197,9 @@ for (int i = 0; i < 10; i++) {
 connection.remove_account_listener(subscriptionId);
 ```
 
+</TabItem>
+<TabItem value="rust" label="rust">
+
 ```rust
 // rust
 let ws_url = String::from("wss://api.devnet.solana.com/");
@@ -166,10 +216,16 @@ let message = match receiver.recv().unwrap();
 println!("{:?}", message)
 ```
 
+</TabItem>
+</Tabs>
+
+
 ## 获取测试用的SOL
 
 你在本地工作时，为了发送交易，你需要一些 SOL。在非主网环境中，你可以向你的地址空投 SOL，获取SOL。
 
+<Tabs>
+<TabItem value="typescript" label="typescript">
 
 ```ts
 // typescript
@@ -180,6 +236,8 @@ const airdropSignature = await connection.requestAirdrop(
 
 await connection.confirmTransaction(airdropSignature);
 ```
+</TabItem>
+<TabItem value="py" label="Python">
 
 ```python
 // python
@@ -189,10 +247,16 @@ client.request_airdrop(wallet.pubkey(), 1000000000)
 #Airdrops 1 SOL
 ```
 
+</TabItem>
+<TabItem value="cpp" label="cpp">
+
 ```cpp
 // cpp
 connection.request_airdrop(key_pair.public_key).unwrap();
 ```
+
+</TabItem>
+<TabItem value="rust" label="rust">
 
 ```rust
 // rust
@@ -209,10 +273,16 @@ match client.request_airdrop(&pubkey, LAMPORTS_PER_SOL) {
 };
 ```
 
+</TabItem>
+<TabItem value="bash" label="bash">
+
 ```bash
 # cli
 solana airdrop 1
 ```
+
+</TabItem>
+</Tabs>
 
 ## 使用主网 （Mainnet) 账户和程序
 

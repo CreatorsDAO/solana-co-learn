@@ -6,6 +6,8 @@ tags:
   - wallet
   - keypair
 ---
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 # 密钥对和钱包
 
@@ -14,30 +16,43 @@ tags:
 对于使用Solana库执行各种操作，许多操作都需要一个密钥对或钱包。如果你正在连接到一个钱包，那么你不必担心。然而，如果你需要一个密钥对，你会需要生成一个。
 
 
+<Tabs>
+<TabItem value="typescript" label="typescript">
+
 ```ts
-// typescript
 let keypair = Keypair.generate();
 ```
 
+</TabItem>
+<TabItem value="py" label="Python">
+
 ```python
-// python
 keypair = Keypair()
 ```
 
+</TabItem>
+<TabItem value="cpp" label="cpp">
+
 ```cpp
-// cpp
 auto key_pair = Keypair::generate();
 ```
 
+</TabItem>
+<TabItem value="rust" label="rust">
+
 ```rust
-// rust
 let wallet = Keypair::new();
 ```
 
+</TabItem>
+<TabItem value="bash" label="bash">
+
 ```bash
-// cli
 solana-keygen new
 ```
+
+</TabItem>
+</Tabs>
 
 ## 如何从密钥恢复密钥对
 
@@ -45,9 +60,10 @@ solana-keygen new
 
 1. 从字节中：
 
+<Tabs>
+<TabItem value="typescript" label="typescript">
 
 ```typescript
-// typescript
 const keypair = Keypair.fromSecretKey(
   Uint8Array.from([
     174, 47, 154, 16, 202, 193, 206, 113, 199, 190, 53, 133, 169, 175, 31, 56,
@@ -56,11 +72,12 @@ const keypair = Keypair.fromSecretKey(
     121, 35, 172, 247, 68, 251, 226, 218, 48, 63, 176, 109, 168, 89, 238, 135,
   ])
 );
-
 ```
 
+</TabItem>
+<TabItem value="py" label="Python">
+
 ```python
-// python
 secret_key= [
         174, 47, 154, 16, 202, 193, 206, 113, 199, 190, 53, 133, 169, 175, 31, 56, 222, 53, 138,
         189, 224, 216, 117, 173, 10, 149, 53, 45, 73, 251, 237, 246, 15, 185, 186, 82, 177, 240,
@@ -69,11 +86,12 @@ secret_key= [
     ]
 
 keypair = Keypair.from_bytes(secret_key)
-
 ```
 
+</TabItem>
+<TabItem value="cpp" label="cpp">
+
 ```cpp
-// cpp
 const uint8_t secret_key[] = {
 174, 47, 154, 16, 202, 193, 206, 113, 199, 190, 53, 133, 169, 175, 31, 56, 222, 53, 138,
 189, 224, 216, 117, 173, 10, 149, 53, 45, 73, 251, 237, 246, 15, 185, 186, 82, 177, 240,
@@ -81,11 +99,12 @@ const uint8_t secret_key[] = {
 63, 176, 109, 168, 89, 238, 135,
 };
 Keypair key_pair = Keypair::from_seed(secret_key);
-
 ```
 
+</TabItem>
+<TabItem value="rust" label="rust">
+
 ```rust
-// rust
 let secret_key: [u8; 64] = [
     174, 47, 154, 16, 202, 193, 206, 113, 199, 190, 53, 133, 169, 175, 31, 56, 222, 53, 138,
     189, 224, 216, 117, 173, 10, 149, 53, 45, 73, 251, 237, 246, 15, 185, 186, 82, 177, 240,
@@ -94,52 +113,59 @@ let secret_key: [u8; 64] = [
 ];
 
 let wallet = Keypair::from_bytes(&secret_key)?;
-
 ```
+
+</TabItem>
+<TabItem value="bash" label="bash">
 
 ```bash
-// cli
 # input your secret into the Keypath listed under solana config get
-
 ```
+
+</TabItem>
+</Tabs>
 
 2. 从Base58字符串：
 
+<Tabs>
+<TabItem value="typescript" label="typescript">
 
 ```typescript
-// typescript
 const keypair = Keypair.fromSecretKey(
   bs58.decode(
     "5MaiiCavjCmn9Hs1o3eznqDEhRwxo7pXiAYez7keQUviUkauRiTMD8DrESdrNjN8zd9mTmVhRvBJeg5vhyvgrAhG"
   )
 );
-
 ```
+
+</TabItem>
+<TabItem value="py" label="Python">
 
 ```python
-// python
 b58_string = "5MaiiCavjCmn9Hs1o3eznqDEhRwxo7pXiAYez7keQUviUkauRiTMD8DrESdrNjN8zd9mTmVhRvBJeg5vhyvgrAhG"
 keypair = Keypair.from_string(b58_string)
-
 ```
 
+</TabItem>
+<TabItem value="rust" label="rust">
 
 ```rust
-// rust
 let wallet = Keypair::from_base58_string(
     "5MaiiCavjCmn9Hs1o3eznqDEhRwxo7pXiAYez7keQUviUkauRiTMD8DrESdrNjN8zd9mTmVhRvBJeg5vhyvgrAhG",
 );
-
 ```
 
+</TabItem>
+</Tabs>
 
 ## 如何验证密钥对
 
 如果你有了个密钥对，你可以验证密钥对的私钥是否与给定的公钥匹配。
 
+<Tabs>
+<TabItem value="typescript" label="typescript">
 
 ```typescript
-// typescript
 const publicKey = new PublicKey("24PNhTaNtomHhoy3fTRaMhAFCRj4uHqhZEEoWrKDbR5p");
 const keypair = Keypair.fromSecretKey(
   Uint8Array.from([
@@ -151,11 +177,12 @@ const keypair = Keypair.fromSecretKey(
 );
 console.log(keypair.publicKey.toBase58() === publicKey.toBase58());
 // true
-
 ```
 
+</TabItem>
+<TabItem value="py" label="Python">
+
 ```python
-// python
 public_key = Pubkey.from_string("24PNhTaNtomHhoy3fTRaMhAFCRj4uHqhZEEoWrKDbR5p")
 
 keys = [
@@ -168,11 +195,12 @@ keypair = Keypair.from_bytes(keys)
 
 print(keypair.pubkey() == public_key)
 # True
-
 ```
 
+</TabItem>
+<TabItem value="cpp" label="cpp">
+
 ```cpp
-// cpp
 PublicKey public_key = PublicKey("24PNhTaNtomHhoy3fTRaMhAFCRj4uHqhZEEoWrKDbR5p");
 
 const uint8_t bytes[] = {
@@ -188,70 +216,101 @@ std::cout << (public_key.to_base58() == key_pair.public_key.to_base58()) << std:
 
 ```
 
+</TabItem>
+<TabItem value="bash" label="bash">
+
 
 ```bash
-// cli
 solana-keygen verify <PUBKEY> prompt://
-
 ```
+
+</TabItem>
+</Tabs>
 
 ## 如何检查一个公钥是否有关联的私钥
 
 在某些特殊情况下（例如，派生自程序的地址(PDA)），公钥可能没有关联的私钥。你可以通过查看公钥是否位于ed25519曲线上来检查这一点。只有位于曲线上的公钥才可以由具有钱包的用户控制。
 
+<Tabs>
+<TabItem value="typescript" label="typescript">
+
+
 ```typescript
-// typescript
 const key = new PublicKey("5oNDL3swdJJF1g9DzJiZ4ynHXgszjAEpUkxVYejchzrY");
 console.log(PublicKey.isOnCurve(key.toBytes()));
-
 ```
+
+</TabItem>
+<TabItem value="py" label="Python">
 
 ```python
-// python
 key = Pubkey.from_string('5oNDL3swdJJF1g9DzJiZ4ynHXgszjAEpUkxVYejchzrY')
 print(key.is_on_curve())
-
 ```
+
+</TabItem>
+<TabItem value="cpp" label="cpp">
 
 ```cpp
-// cpp
 auto public_key = PublicKey("5oNDL3swdJJF1g9DzJiZ4ynHXgszjAEpUkxVYejchzrY");
 std::cout << public_key.is_on_curve() << std::endl;
-
 ```
+
+</TabItem>
+<TabItem value="rust" label="rust">
+
 
 ```rust
-// rust
 let pubkey = Pubkey::from_str("5oNDL3swdJJF1g9DzJiZ4ynHXgszjAEpUkxVYejchzrY").unwrap();
 println!("{:?}", pubkey.is_on_curve())
-
 ```
 
+</TabItem>
+</Tabs>
 
 ## 如何生成助记词
 
 如果你正在创建一个钱包，你需要生成一个助记词，以便用户可以将其保存为备份。
 
 
-```typescript
-// typescript
-const mnemonic = bip39.generateMnemonic();
+<Tabs>
+<TabItem value="typescript" label="typescript">
 
+```typescript
+const mnemonic = bip39.generateMnemonic();
 ```
+
+</TabItem>
+<TabItem value="py" label="Python">
 
 ```python
-// python
 mnemo = Mnemonic("english")
 words = mnemo.generate(strength=256)
-
 ```
 
+</TabItem>
+<TabItem value="cpp" label="cpp">
+
+```cpp
+auto key_pair = Keypair::generate();
+```
+
+</TabItem>
+<TabItem value="rust" label="rust">
+
+```rust
+let wallet = Keypair::new();
+```
+
+</TabItem>
+<TabItem value="bash" label="bash">
 
 ```bash
-// cli
 solana-keygen new
-
 ```
+
+</TabItem>
+</Tabs>
 
 ## 如何通过助记词恢复密钥对
 
@@ -259,37 +318,43 @@ solana-keygen new
 
 1. BIP39 - 创建单个钱包的步骤如下：
 
+<Tabs>
+<TabItem value="typescript" label="typescript">
 
 ```typescript
-// typescript
 const mnemonic =
   "pill tomorrow foster begin walnut borrow virtual kick shift mutual shoe scatter";
 const seed = bip39.mnemonicToSeedSync(mnemonic, ""); // (mnemonic, password)
 const keypair = Keypair.fromSeed(seed.slice(0, 32));
-
 ```
 
+</TabItem>
+<TabItem value="py" label="Python">
+
 ```python
-// python
 mnemo = Mnemonic("english")
 seed = mnemo.to_seed("pill tomorrow foster begin walnut borrow virtual kick shift mutual shoe scatter")
 keypair = Keypair.from_bytes(seed)
-
 ```
 
+</TabItem>
+<TabItem value="bash" label="bash">
 
 ```bash
-// cli
 solana-keygen recover
-
 ```
+
+</TabItem>
+</Tabs>
 
 2. BIP44 （多个钱包，也叫HD钱包）
 
 你可以从一个单一种子生成多个钱包，也被称为“分层确定性钱包”或HD钱包。
 
+<Tabs>
+<TabItem value="typescript" label="typescript">
+
 ```typescript
-// typescript
 const mnemonic =
   "neither lonely flavor argue grass remind eye tag avocado spot unusual intact";
 const seed = bip39.mnemonicToSeedSync(mnemonic, ""); // (mnemonic, password)
@@ -298,14 +363,17 @@ for (let i = 0; i < 10; i++) {
   const keypair = Keypair.fromSeed(derivePath(path, seed.toString("hex")).key);
   console.log(`${path} => ${keypair.publicKey.toBase58()}`);
 }
-
 ```
+
+</TabItem>
+<TabItem value="bash" label="bash">
 
 ```bash
-// cli
 solana-keygen recover 'prompt:?key=0/0'
-
 ```
+
+</TabItem>
+</Tabs>
 
 ## 如何生成自定义地址(vanity address)
 
@@ -313,29 +381,36 @@ solana-keygen recover 'prompt:?key=0/0'
 
 注意: 自定义地址中字符的数量越多，生成时间将会更长。
 
-> **警告**
-> 在此任务中，您应该使用命令行界面（CLI）。Python和TypeScript的示例仅用于说明，速度比CLI慢得多。
+:::caution
+**警告**
+在此任务中，您应该使用命令行界面（CLI）。Python和TypeScript的示例仅用于说明，速度比CLI慢得多。
+:::
 
+
+<Tabs>
+<TabItem value="typescript" label="typescript">
 
 ```typescript
-// typescript
 let keypair = Keypair.generate();
 while (!keypair.publicKey.toBase58().startsWith("elv1s")) {
   keypair = Keypair.generate();
 }
-
 ```
 
+</TabItem>
+<TabItem value="py" label="Python">
+
 ```python
-// python
 keypair = Keypair()
 while(str(keypair.pubkey())[:5]!="elv1s") :
     keypair = Keypair()
 
 ```
 
+</TabItem>
+<TabItem value="cpp" label="cpp">
+
 ```cpp
-// cpp
 auto key_pair = Keypair::generate();
 while (key_pair.public_key.to_base58().substr(0, 5) != "elv1s") {
     key_pair = Keypair::generate();
@@ -343,11 +418,15 @@ while (key_pair.public_key.to_base58().substr(0, 5) != "elv1s") {
 
 ```
 
-```bash
-// cli
-solana-keygen grind --starts-with e1v1s:1
+</TabItem>
+<TabItem value="bash" label="bash">
 
+```bash
+solana-keygen grind --starts-with e1v1s:1
 ```
+
+</TabItem>
+</Tabs>
 
 ## 如何使用钱包来签名和验证消息
 
@@ -355,9 +434,11 @@ solana-keygen grind --starts-with e1v1s:1
 
 为此，我们将导入[TweetNaCl][1] 密码库，并按照以下步骤进行操作：
 
+<Tabs>
+<TabItem value="typescript" label="typescript">
+
 
 ```typescript
-// typescript
 const message = "The quick brown fox jumps over the lazy dog";
 const messageBytes = decodeUTF8(message);
 
@@ -369,19 +450,21 @@ const result = nacl.sign.detached.verify(
 );
 
 console.log(result);
-
 ```
 
+</TabItem>
+<TabItem value="py" label="Python">
+
 ```python
-// python
 message = b"The quick brown fox jumps over the lazy dog"
 signature = keypair.sign_message(message)
 verify_sign = signature.verify(keypair.pubkey(), message)
 
 print(verify_sign) # bool
-
 ```
 
+</TabItem>
+</Tabs>
 
 [1]: https://www.npmjs.com/package/tweetnacl
 
@@ -402,7 +485,6 @@ React的钱包适配器库允许我们通过钩子和上下文提供程序来持
 此外，我们可以使用`useWalletModal`来提示用户进行连接，通过切换连接模态框的可见性，并将应用程序包装在`@solana/wallet-adapter-react-ui`中的`WalletModalProvider`中。连接模态框将处理连接流程，因此我们只需监听钱包连接的状态。当`useWallet`的响应具有非空的`wallet`属性时，我们知道钱包已连接。反之，如果该属性为空，我们知道钱包已断开连接。
 
 ```typescript
-// typescript
 const { wallet } = useWallet();
 const { setVisible } = useWalletModal();
 
@@ -438,7 +520,6 @@ npm install solana-wallets-vue @solana/wallet-adapter-wallets
 
 
 ```typescript
-// typescript
 <script setup>
 import { WalletMultiButton } from "solana-wallets-vue";
 </script>
@@ -446,7 +527,6 @@ import { WalletMultiButton } from "solana-wallets-vue";
 <template>
   <wallet-multi-button></wallet-multi-button>
 </template>
-
 ```
 
 ### Svelte
@@ -461,7 +541,6 @@ npm install @svelte-on-solana/wallet-adapter-core @svelte-on-solana/wallet-adapt
 
 
 ```typescript
-// typescript
 <script>
   import { walletStore } from "@svelte-on-solana/wallet-adapter-core";
   import { WalletMultiButton } from "@svelte-on-solana/wallet-adapter-ui";
@@ -471,5 +550,4 @@ npm install @svelte-on-solana/wallet-adapter-core @svelte-on-solana/wallet-adapt
 successfully connected! {:else}
 <WalletMultiButton />
 {/if}
-
 ```

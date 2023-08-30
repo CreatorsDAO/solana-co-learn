@@ -6,6 +6,8 @@ tags:
   - nft
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 # 非同质化代币 (NFTs)
 
@@ -19,9 +21,11 @@ tags:
 
 ### 上传到 Arweave
 
+<Tabs>
+<TabItem value="typescript" label="typescript">
+
 
 ```typescript
-// typescript
 // 1. Upload image to Arweave
 const data = fs.readFileSync("./code/nfts/arweave-upload/lowres-dog.png");
 
@@ -56,8 +60,11 @@ await arweave.transactions.post(metadataTransaction);
 
 ```
 
-```python
-// python
+</TabItem>
+<TabItem value="py" label="Python">
+
+
+```py
 #  1. Load your arweave wallet
 your_ar_wallet = Wallet('wallet.json')
 
@@ -82,6 +89,11 @@ metadata_url = API_URL+"/"+meta_transaction.id
 
 ```
 
+</TabItem>
+</Tabs>
+
+
+
 ### 铸造（Mint）该 NFT
 
 如果你已经上传了图像和元数据，您可以使用以下代码铸造（Mint）该 NFT。
@@ -95,9 +107,11 @@ const mintNFTResponse = await metaplex.nfts().create({
 });
 
 ```
-> **tip 注意**
->
-> 你不能使用与你钱包不同的创作者信息来铸造（Mint） NFT。如果遇到创作者的问题，请确保你的元数据中将你列为创作者。
+
+:::info
+**tip 注意**
+你不能使用与你钱包不同的创作者信息来铸造（Mint） NFT。如果遇到创作者的问题，请确保你的元数据中将你列为创作者。
+:::
 
 
 ## 如何获取 NFT 元数据

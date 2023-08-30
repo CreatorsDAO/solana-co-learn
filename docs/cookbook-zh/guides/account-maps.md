@@ -6,6 +6,9 @@ tags:
   - account-map
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 # 账户映射
 
 在编程中，我们经常使用映射（Map）这种数据结构，将一个键与某种值关联起来。键和值可以是任意类型的数据，键用作标识要保存的特定值的标识符。通过键，我们可以高效地插入、检索和更新这些值。
@@ -37,6 +40,9 @@ PDAs的独特之处在于，这些地址不与任何私钥相关联。这是因�
 对于`1:N`的映射，我们希望每个帖子的地址不仅从它所关联的博客派生，还从另一个标识符派生，以区分博客中的多个帖子。在下面的示例中，每个帖子的地址是从博客的密钥、一个用于标识每个帖子的slug和一个前缀帖子派生出来的，作为类型标识符。
 
 代码如下所示：
+
+<Tabs>
+<TabItem value="anchor" label="anchor">
 
 ```rust
 // anchor
@@ -86,6 +92,10 @@ pub struct CreatePost<'info> {
     pub system_program: Program<'info, System>
 }
 ```
+
+</TabItem>
+<TabItem value="rust" label="rust">
+
 
 ```rust
 fn process_create_post(
@@ -231,8 +241,10 @@ fn process_init_blog(
 
     Ok(())
 }
-
 ```
+
+</TabItem>
+</Tabs>
 
 在客户端，你可以使用`PublicKey.findProgramAddress()`来获取所需的`Blog` 和`Post`账户地址，然后将其传递给`connection.getAccountInfo()`来获取账户数据。下面是一个示例：
 

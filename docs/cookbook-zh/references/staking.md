@@ -5,6 +5,9 @@ tags:
   - solana-cook-book
   - staking
 ---
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 
 # 质押
 
@@ -12,9 +15,10 @@ tags:
 
 我们可以质押 SOL 并通过帮助保护网络来获得奖励。要进行质押，我们将 SOL 委托给验证器，而验证器则处理交易。
 
+<Tabs>
+<TabItem value="typescript" label="typescript">
 
 ```typescript
-// typescript
 import { clusterApiUrl, Connection } from "@solana/web3.js";
 
 (async () => {
@@ -27,11 +31,15 @@ import { clusterApiUrl, Connection } from "@solana/web3.js";
 })();
 ```
 
+</TabItem>
+<TabItem value="bash" label="bash">
 
 ```bash
-// cli
 solana validators
 ```
+
+</TabItem>
+</Tabs>
 
 ## 创建质押账户
 

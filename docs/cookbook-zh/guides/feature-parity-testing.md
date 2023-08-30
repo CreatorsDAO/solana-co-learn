@@ -6,6 +6,9 @@ tags:
   - test
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 # 功能相等测试
 
 当测试程序时，确保它在各个集群中以相同的方式运行对于确保质量和产生预期结果非常重要。
@@ -202,7 +205,8 @@ fn submit_transaction(
 
 现在我们可以在`mod test {...}`的主体中添加测试函数，来展示默认验证器的设置（所有功能都启用），然后禁用事务广域计算限制，就像之前在命令行中运行`solana-test-validator`的示例一样。
 
-*All feature test*
+<Tabs>
+<TabItem value="All feature test" label="All feature test">
 
 ```rust
 #[test]
@@ -235,7 +239,9 @@ fn test_base_pass() {
 }
 ```
 
-*Disable tx CU test*
+</TabItem>
+<TabItem value="Disable tx CU test" label="Disable tx CU test">
+
 
 ```rust
 #[test]
@@ -270,6 +276,9 @@ fn test_deactivate_tx_cu_pass() {
     assert!(txn.is_ok());
 }
 ```
+
+</TabItem>
+</Tabs>
 
 另外，[scfs engine gadget](#resources)可以生成一个包含某个集群的所有已停用功能的完整向量。以下示例演示了如何使用该 engine 来获取 devnet 的所有已停用功能列表。
 
