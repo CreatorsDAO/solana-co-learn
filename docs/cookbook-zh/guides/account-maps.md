@@ -45,7 +45,6 @@ PDAs的独特之处在于，这些地址不与任何私钥相关联。这是因�
 <TabItem value="anchor" label="anchor">
 
 ```rust
-// anchor
 #[derive(Accounts)]
 #[instruction(blog_account_bump: u8)]
 pub struct InitializeBlog<'info> {
@@ -275,7 +274,6 @@ async () => {
   );
   console.log("Post account state: ", postAccountState);
 };
-
 ```
 
 ## 单个映射账户
@@ -380,7 +378,6 @@ fn process_insert_entry(accounts: &[AccountInfo], program_id: &Pubkey) -> Progra
 
     Ok(())
 }
-
 ```
 
 上述程序的客户端测试代码可能如下所示：
@@ -459,8 +456,6 @@ tx.add(insertABIx);
 tx.add(insertBCIx);
 tx.add(insertCAIx);
 ```
-
-
 
 [AccountCookbook]: https://solanacookbook.com/core-concepts/accounts.html
 [PDA]: https://solanacookbook.com/references/accounts.html#program-derived-address

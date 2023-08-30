@@ -115,7 +115,6 @@ while (blockheight < lastValidBlockHeight) {
   await sleep(500);
   blockheight = await connection.getBlockHeight();
 }
-
 ```
 
 

@@ -184,9 +184,7 @@ pub struct ProgramAccountState {
     data_version: u8,
     account_data: AccountContentCurrent,
 }
-
 ```
-
 
 | Line(s) | Note |
 | ------- | - |

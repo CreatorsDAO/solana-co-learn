@@ -13,10 +13,8 @@ tags:
 每当你在Solana上与代币进行交互时，实际上你正在与Solana程序库代币（SPL-Token）或SPL代币标准交互。SPL代币标准需要使用特定的库，你可以根据你使用的编程语言在下面找到相应的库。
 
 ```typescript
-// typescript
 "@solana/spl-token": "^0.2.0"
 ```
-
 
 ## 如何创建一个新的代币
 
@@ -24,7 +22,6 @@ tags:
 
 
 ```typescript
-// typescript
 // 1) use build-in function
 let mintPubkey = await createMint(
   connection, // conneciton
@@ -62,9 +59,7 @@ let tx = new Transaction().add(
 为了获得代币的当前供应量、授权信息或小数位数，你需要获取代币铸币账户的账户信息。
 
 ```typescript
-// typescript
 let mintAccount = await getMint(connection, mintAccountPublicKey);
-
 ```
 
 ## 如何创建一个代币账户
@@ -77,7 +72,6 @@ let mintAccount = await getMint(connection, mintAccountPublicKey);
 
 
 ```typescript
-// typescript
 // 1) use build-in function
 {
   let ata = await createAssociatedTokenAccount(
@@ -111,11 +105,8 @@ let mintAccount = await getMint(connection, mintAccountPublicKey);
 
 
 ```typescript
-// typescript
 let tokenAccount = await getAccount(connection, tokenAccountPubkey);
-
 ```
-
 
 ## 如何获得一个代币账户的余额
 
@@ -123,9 +114,7 @@ let tokenAccount = await getAccount(connection, tokenAccountPubkey);
 
 
 ```typescript
-// typescript
 let tokenAmount = await connection.getTokenAccountBalance(tokenAccount);
-
 ```
 
 :::info
@@ -139,7 +128,6 @@ let tokenAmount = await connection.getTokenAccountBalance(tokenAccount);
 
 
 ```typescript
-// typescript
 // 1) use build-in function
 {
   let txhash = await mintToChecked(
@@ -177,7 +165,6 @@ let tokenAmount = await connection.getTokenAccountBalance(tokenAccount);
 
 
 ```typescript
-// typescript
 // 1) use build-in function
 {
   let txhash = await transferChecked(
@@ -207,7 +194,6 @@ let tokenAmount = await connection.getTokenAccountBalance(tokenAccount);
     )
   );
 }
-
 ```
 
 ## 如何销代币
@@ -215,7 +201,6 @@ let tokenAmount = await connection.getTokenAccountBalance(tokenAccount);
 如果你是代币的所有者，你可以销毁代币。
 
 ```typescript
-// typescript
 // 1) use build-in function
 {
   let txhash = await burnChecked(
@@ -255,7 +240,6 @@ let tokenAmount = await connection.getTokenAccountBalance(tokenAccount);
 2. 其他代币（Other Tokens）- 只有当代币账户的余额为0时，你才能关闭它。
 
 ```typescript
-// typescript
 // 1) use build-in function
 {
   let txhash = await closeAccount(
@@ -279,7 +263,6 @@ let tokenAmount = await connection.getTokenAccountBalance(tokenAccount);
     )
   );
 }
-
 ```
 
 ## 如何在代币账户或铸币账户上设置权限
@@ -293,7 +276,6 @@ let tokenAmount = await connection.getTokenAccountBalance(tokenAccount);
 
 
 ```typescript
-// typescript
 // 1) use build-in function
 {
   let txhash = await setAuthority(
@@ -319,7 +301,6 @@ let tokenAmount = await connection.getTokenAccountBalance(tokenAccount);
     )
   );
 }
-
 ```
 
 
@@ -329,7 +310,6 @@ let tokenAmount = await connection.getTokenAccountBalance(tokenAccount);
 
 
 ```typescript
-// typescript
 // 1) use build-in function
 {
   let txhash = await approveChecked(
@@ -358,15 +338,14 @@ let tokenAmount = await connection.getTokenAccountBalance(tokenAccount);
     )
   );
 }
-
 ```
+
 ## 如何撤销代币委托
 
 撤销操作将把代币委托设置为空，并将委托的代币数量设置为0。
 
 
 ```typescript
-// typescript
 // 1) use build-in function
 {
   let txhash = await revoke(
@@ -388,9 +367,7 @@ let tokenAmount = await connection.getTokenAccountBalance(tokenAccount);
     )
   );
 }
-
 ```
-
 
 ## 如何管理包装的SOL
 
@@ -411,7 +388,6 @@ import { NATIVE_MINT } from "@solana/spl-token";
 #### 1. 通过 SOL 转账方式
 
 ```typescript
-// typescript
 let tx = new Transaction().add(
   // trasnfer SOL
   SystemProgram.transfer({
@@ -422,7 +398,6 @@ let tx = new Transaction().add(
   // sync wrapped SOL balance
   createSyncNativeInstruction(ata)
 );
-
 ```
 
 
@@ -430,7 +405,6 @@ let tx = new Transaction().add(
 
 
 ```typescript
-// typescript
 let tx = new Transaction().add(
   // create token account
   SystemProgram.createAccount({
@@ -456,7 +430,6 @@ let tx = new Transaction().add(
     alice.publicKey
   )
 );
-
 ```
 
 ## 如何通过所有者获取所有代币账户
@@ -466,18 +439,14 @@ let tx = new Transaction().add(
 1. 获取所有代币账户
 
 ```typescript
-// typescript
 let response = await connection.getParsedTokenAccountsByOwner(owner, {
   programId: TOKEN_PROGRAM_ID,
 });
-
 ```
-
 
 2. 按照铸币进行过滤
 
 ```typescript
-// typescript
 let response = await connection.getParsedTokenAccountsByOwner(owner, {
   mint: mint,
 });

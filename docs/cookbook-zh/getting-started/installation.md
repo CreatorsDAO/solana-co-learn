@@ -154,7 +154,7 @@ sh -c "$(curl -sSfL https://release.solana.com/LATEST_RELEASE/install)"
 
 如果看到以下输出，说明更新成功：
 
-```text
+```bash
 downloading LATEST_RELEASE installer
 Configuration: /home/solana/.config/solana/install/config.yml
 Active release directory: /home/solana/.local/share/solana/install/active_release

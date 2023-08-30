@@ -72,6 +72,7 @@ test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 这将加载验证节点，然后允许您构建一个交易（按照 Rust 的方式），并使用`RpcClient`提交给节点。
 
 程序的输出也将打印在编辑器的终端中。例如（简化）：
+
 ```bash
 running 1 test
 Waiting for fees to stabilize 1...
@@ -84,11 +85,13 @@ Program 4uQeVj5tqViQh7yWWGStvkEG1Zmhx6uasJtWCJziofM success
 test test_validator_transaction ... ok
 test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 6.40s
 ```
+
 在这里进行调试将允许你调试测试主体中使用的函数和方法，但不会在你的程序中设置断点。
 
 非常出色，不是吗？
 
 ## 从客户端应用程序进行本地验证节点测试
+
 最后，你可以从命令行启动一个本地验证节点，并使用`solana-test-validator`加载你的程序和任何账户。
 
 在这种方法中，你需要一个客户端应用程序，可以使用Rust的 [RcpClient](#resources)，也可以使用

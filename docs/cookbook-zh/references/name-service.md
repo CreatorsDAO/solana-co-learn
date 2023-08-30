@@ -19,7 +19,6 @@ tags:
 
 
 ```typescript
-// typescript
 export class NameRegistryState {
   parentName: PublicKey;
   owner: PublicKey;
@@ -60,7 +59,6 @@ export class NameRegistryState {
 
 
 ```typescript
-// typescript
 const domain = "levi.sol";
 const hashedName = await getHashedName(domain.replace(".sol", ""));
 const nameAccountKey = await getNameAccountKey(
@@ -74,7 +72,6 @@ const owner = await NameRegistryState.retrieve(
 );
 console.log(owner.registry.owner.toBase58());
 // JUskoxS2PTiaBpxfGaAPgf3cUNhdeYFGMKdL6mZKKfR
-
 ```
 
 
@@ -84,12 +81,10 @@ console.log(owner.registry.owner.toBase58());
 
 
 ```typescript
-// typescript
 // Public key of bonfida.sol
 const domainKey = new PublicKey("Crf8hzfthWGbGbLTVCiqRqV5MVnbpHB1L9KQMd6gsinb");
 
 const domainName = await performReverseLookup(connection, domainKey); // bonfida
-
 ```
 
 
@@ -102,7 +97,6 @@ const domainName = await performReverseLookup(connection, domainKey); // bonfida
 3. 检索账户信息
 
 ```typescript
-// typescript
 const parentDomain = "bonfida";
 const subDomain = "demo";
 
@@ -127,7 +121,6 @@ const registry = await NameRegistryState.retrieve(connection, subDomainKey);
 你可以通过使用带有`memcmp`过滤器的`getProgramAccounts`请求来检索钱包的所有域名。
 
 ```typescript
-// typescript
 export async function findOwnedNameAccountsForUser(
   connection: Connection,
   userAccount: PublicKey
@@ -154,7 +147,6 @@ export async function findOwnedNameAccountsForUser(
 Twitter用户名可以在 [Solana名称服务上注册](https://naming.bonfida.org/#/twitter-registration 并可以像.SOL域名一样使用。
 
 ```typescript
-// typescript
 // Pubkey of the wallet you want to retrieve the Twitter handle
 const pubkey = new PublicKey("FidaeBkZkvDqi1GXNEwB8uWmj9Ngx2HXSS5nyGRuVFcZ");
 
@@ -167,9 +159,7 @@ const [handle, registryKey] = await getHandleAndRegistryKey(connection, pubkey);
 为了找到与Twitter用户名相关联的SOL地址，你可以进行反向查找。
 
 ```typescript
-// typescript
 const handle = "bonfida";
 
 const registry = await getTwitterRegistry(connection, handle);
-
 ```

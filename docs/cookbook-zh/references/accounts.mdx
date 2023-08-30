@@ -35,7 +35,6 @@ await sendAndConfirmTransaction(connection, createAccountTransaction, [
   fromPubkey,
   newAccountPubkey,
 ]);
-
 ```
 
 </TabItem>
@@ -222,7 +221,6 @@ const tx = new Transaction().add(
 console.log(
   `txhash: ${await sendAndConfirmTransaction(connection, tx, [feePayer, base])}`
 );
-
 ```
 
 :::info
@@ -558,7 +556,6 @@ let closeAccountTx = new Transaction().add(
     programId: programId,
   })
 );
-
 ```
 
 </TabItem>

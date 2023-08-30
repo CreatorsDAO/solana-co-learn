@@ -15,7 +15,6 @@ tags:
 接收方账户不一定要是你的程序所拥有的账户。
 
 ```rust
-// rust
 /// Transfers lamports from one account (must be program owned)
 /// to another account. The recipient can by any account
 fn transfer_service_fee_lamports(
@@ -51,7 +50,6 @@ fn instruction_handler(accounts: &[AccountInfo]) -> ProgramResult {
 }
 ```
 
-
 ## 如何在程序中获取时钟
 
 获取时钟的方法有两种：
@@ -65,19 +63,14 @@ fn instruction_handler(accounts: &[AccountInfo]) -> ProgramResult {
 
 让我们创建一个指令，该指令接收一个账户用于初始化，并接收 SYSVAR 的公钥。
 
-
 ```rust
-// rust
 let clock = Clock::from_account_info(&sysvar_clock_pubkey)?;
 let current_timestamp = clock.unix_timestamp;
-
 ```
-
 
 现在，我们通过客户端传递时钟的 SYSVAR 公共地址:
 
 ```typescript
-// typescript
 (async () => {
   const programId = new PublicKey(
     "77ezihTV6mTh2Uf3ggwbYF2NyGJJ5HHah1GrdowWJVD3"
@@ -110,9 +103,7 @@ let current_timestamp = clock.unix_timestamp;
 
   console.log(`Transaction succeeded. TxHash: ${txHash}`);
 })();
-
 ```
-
 
 ### 在指令内部直接访问时钟
 
@@ -120,17 +111,14 @@ let current_timestamp = clock.unix_timestamp;
 
 
 ```rust
-// rust
 let clock = Clock::get()?;
 let current_timestamp = clock.unix_timestamp;
-
 ```
 
 现在，客户端只需要传递状态和支付账户的指令:
 
 
 ```typescript
-// typescript
 (async () => {
   const programId = new PublicKey(
     "4ZEdbCtb5UyCSiAMHV5eSHfyjq3QwbG3yXb6oHD7RYjk"
@@ -168,7 +156,6 @@ let current_timestamp = clock.unix_timestamp;
 
 
 ```rust
-// rust
 // adding a publickey to the account
 let new_size = pda_account.data.borrow().len() + 32;
 
@@ -186,9 +173,7 @@ invoke(
 )?;
 
 pda_account.realloc(new_size, false)?;
-
 ```
-
 
 ## 跨程序调用的方法
 
@@ -203,7 +188,6 @@ pda_account.realloc(new_size, false)?;
 
 
 ```rust
-// rust
 let token_transfer_amount = instruction_data
     .get(..8)
     .and_then(|slice| slice.try_into().ok())
@@ -229,14 +213,11 @@ invoke(
     &transfer_tokens_instruction,
     &required_accounts_for_transfer,
 )?;
-
-
 ```
 
 相应的客户端指令如下所示。有关了解铸币和代币创建指令，请参考附近的完整代码。
 
 ```typescript
-// typescript
 (async () => {
   const connection = new Connection(clusterApiUrl("devnet"), "confirmed");
   const programId = new PublicKey(
@@ -289,7 +270,6 @@ invoke(
 现在让我们来看另一个例子，即`System Program`的`create_account`指令。这里与上面提到的指令有一点不同。在上述例子中，我们不需要在`invoke`函数中将`token_program`作为账户之一传递。然而，在某些情况下，您需要传递调用指令的`program_id`。在我们的例子中，它将是`System Program`的`program_id`（"11111111111111111111111111111111"）。所以现在所需的账户包括：
 
 ```rust
-// rust
 let account_span = instruction_data
     .get(..8)
     .and_then(|slice| slice.try_into().ok())
@@ -321,7 +301,6 @@ invoke(&create_account_instruction, &required_accounts_for_create)?;
 
 
 ```typescript
-// typescript
 (async () => {
   const connection = new Connection(clusterApiUrl("devnet"), "confirmed");
   const programId = new PublicKey(
@@ -367,7 +346,6 @@ invoke(&create_account_instruction, &required_accounts_for_create)?;
 
   console.log(`Create Account CPI Success: ${txHash}`);
 })();
-
 ```
 
 
@@ -377,7 +355,6 @@ invoke(&create_account_instruction, &required_accounts_for_create)?;
 
 
 ```rust
-// rust
 let create_pda_account_ix = system_instruction::create_account(
     &funding_account.key,
     &pda_account.key,
@@ -391,7 +368,6 @@ invoke_signed(
     &[funding_account.clone(), pda_account.clone()],
     &[signers_seeds],
 )?;
-
 ```
 
 
@@ -399,7 +375,6 @@ invoke_signed(
 
 
 ```typescript
-// typescript
 const PAYER_KEYPAIR = Keypair.generate();
 
 (async () => {
@@ -440,16 +415,13 @@ const PAYER_KEYPAIR = Keypair.generate();
 
   const txHash = await connection.sendTransaction(transaction, [PAYER_KEYPAIR]);
 })();
-
 ```
+
 ## 如何读取账户
 
 在Solana中，几乎所有的指令都至少需要2-3个账户，并且在指令处理程序中会说明它期望的账户顺序。如果我们利用Rust中的`iter()`方法，而不是手动索引账户，那么这将非常简单。`next_account_info`方法基本上是对可迭代对象的第一个索引进行切片，并返回账户数组中存在的账户。让我们看一个简单的指令，它期望一堆账户并需要解析每个账户。
 
-
-
 ```rust
-// rust
 pub fn process_instruction(
     _program_id: &Pubkey,
     accounts: &[AccountInfo],
@@ -468,9 +440,7 @@ pub fn process_instruction(
 
     Ok(())
 }
-
 ```
-
 
 ## 如何验证账户
 
@@ -484,9 +454,7 @@ pub fn process_instruction(
 
 下面是一个基本的指令，它使用上述检查初始化英雄状态账户的示例：
 
-
 ```rust
-// rust
 pub fn process_instruction(
     program_id: &Pubkey,
     accounts: &[AccountInfo],
@@ -537,7 +505,6 @@ pub fn process_instruction(
 
     Ok(())
 }
-
 ```
 
 ## 如何从一个交易中读取多个指令
@@ -546,7 +513,6 @@ Solana允许我们查看当前交易中的所有指令。我们可以将它们�
 
 
 ```rust
-// rust
 let mut idx = 0;
 let num_instructions = read_u16(&mut idx, &instruction_sysvar)
 .map_err(|_| MyError::NoInstructionFound)?;
@@ -562,5 +528,4 @@ for index in 0..num_instructions {
     current += (num_accounts as usize) * (1 + 32);
 
 }
-
 ```

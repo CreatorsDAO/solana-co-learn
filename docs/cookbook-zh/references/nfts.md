@@ -100,12 +100,10 @@ metadata_url = API_URL+"/"+meta_transaction.id
 
 
 ```typescript
-// typescript
 const mintNFTResponse = await metaplex.nfts().create({
   uri: "https://ffaaqinzhkt4ukhbohixfliubnvpjgyedi3f2iccrq4efh3s.arweave.net/KUAIIbk6p8oo4XHRcq0U__C2r0mwQaNl0gQow4Qp9yk",
   maxSupply: 1,
 });
-
 ```
 
 :::info
@@ -119,7 +117,6 @@ const mintNFTResponse = await metaplex.nfts().create({
 Metaplex 的 NFT 元数据存储在 Arweave 上。为了获取 Arweave 的元数据，您需要获取 Metaplex PDA（程序派生账户）并对账户数据进行解码。
 
 ```typescript
-// typescript
 const connection = new Connection(clusterApiUrl("mainnet-beta"));
 const keypair = Keypair.generate();
 
@@ -133,7 +130,6 @@ const mintAddress = new PublicKey(
 const nft = await metaplex.nfts().findByMint({ mintAddress });
 
 console.log(nft.json);
-
 ```
 
 ## 如何获取NFT的所有者
@@ -145,7 +141,6 @@ console.log(nft.json);
 一旦确定了最大代币账户，我们可以获取它的所有者。
 
 ```typescript
-// typescript
 const connection = new Connection("https://api.mainnet-beta.solana.com");
 const tokenMint = "9ARngHhVaCtH5JFieRdSS5Y8cdZk2TMF4tfGSWFB9iSK";
 const largestAccounts = await connection.getTokenLargestAccounts(
@@ -155,7 +150,6 @@ const largestAccountInfo = await connection.getParsedAccountInfo(
   largestAccounts.value[0].address
 );
 console.log(largestAccountInfo.value.data.parsed.info.owner);
-
 ```
 
 ## 如何获取 NFT 的铸币地址
@@ -166,7 +160,6 @@ console.log(largestAccountInfo.value.data.parsed.info.owner);
 
 
 ```typescript
-// typescript
 const getMintAddresses = async (firstCreatorAddress: PublicKey) => {
   const metadataAccounts = await connection.getProgramAccounts(
     TOKEN_METADATA_PROGRAM,
@@ -195,7 +188,6 @@ const getMintAddresses = async (firstCreatorAddress: PublicKey) => {
 };
 
 getMintAddresses(candyMachineId);
-
 ```
 
 ### Candy Machine V2
@@ -204,7 +196,6 @@ getMintAddresses(candyMachineId);
 
 
 ```typescript
-// typescript
 const getCandyMachineCreator = async (
   candyMachine: PublicKey
 ): Promise<[PublicKey, number]> =>
@@ -215,7 +206,6 @@ const getCandyMachineCreator = async (
 
 const candyMachineCreator = await getCandyMachineCreator(candyMachineId);
 getMintAddresses(candyMachineCreator[0]);
-
 ```
 
 ## 如何从钱包获取所有 NFT？
@@ -224,7 +214,6 @@ getMintAddresses(candyMachineCreator[0]);
 
 
 ```typescript
-// typescript
 const connection = new Connection(clusterApiUrl("mainnet-beta"), "confirmed");
 const keypair = Keypair.generate();
 
@@ -235,9 +224,7 @@ const owner = new PublicKey("2R4bHmSBHkHAskerTHE6GE1Fxbn31kaD5gHqpsPySVd7");
 const allNFTs = await metaplex.nfts().findAllByOwner({ owner });
 
 console.log(allNFTs);
-
 ```
-
 
 ## Candy Machine v2
 
@@ -245,9 +232,7 @@ Metaplex JS SDK 现在支持通过代码创建和更新Candy Machine v2。它使
 
 ### 如何创建Candy Machine
 
-
 ```typescript
-// typescript
 const { candyMachine } = await metaplex.candyMachinesV2().create({
   sellerFeeBasisPoints: 5, // 0.05% royalties
   price: sol(0.0001), // 0.0001 SOL
@@ -257,15 +242,11 @@ const { candyMachine } = await metaplex.candyMachinesV2().create({
 /**
  * #1 Candy Machine ID - HSZxtWx6vgGWGsWu9SouXkHA2bAKCMtMZyMKzF2dvhrR
  */
-
 ```
-
 
 ### 如何删除Candy Machine
 
-
 ```typescript
-// typescript
 // creating a candy machine
 const { candyMachine } = await metaplex.candyMachinesV2().create({
   sellerFeeBasisPoints: 5, // 0.05% royalties
@@ -279,9 +260,7 @@ console.log(`Candy Machine ID - ${candyMachine.address.toString()}`);
 const { response } = await metaplex.candyMachinesV2().delete({
   candyMachine,
 });
-
 ```
-
 
 ### 如何通过权限查找Candy Machine
 
@@ -289,7 +268,6 @@ const { response } = await metaplex.candyMachinesV2().delete({
 
 
 ```typescript
-// typescript
 const candyMachines = await metaplex.candyMachinesV2().findAllBy({
   type: "authority",
   publicKey: authority,
@@ -302,7 +280,6 @@ candyMachines.map((candyMachine, index) => {
 /**
  * #1 Candy Machine ID - HSZxtWx6vgGWGsWu9SouXkHA2bAKCMtMZyMKzF2dvhrR
  */
-
 ```
 
 ### 如何通过钱包地址查找Candy Machine
@@ -311,7 +288,6 @@ candyMachines.map((candyMachine, index) => {
 
 
 ```typescript
-// typescript
 const candyMachines = await metaplex.candyMachinesV2().findAllBy({
   type: "wallet",
   publicKey: wallet,
@@ -320,7 +296,6 @@ const candyMachines = await metaplex.candyMachinesV2().findAllBy({
 candyMachines.map((candyMachine, index) => {
   console.log(`#${index + 1} Candy Machine ID - ${candyMachine.address}`);
 });
-
 ```
 
 ### 如何通过Candy Machine的地址查找它
@@ -329,7 +304,6 @@ candyMachines.map((candyMachine, index) => {
 
 
 ```typescript
-// typescript
 const candyMachine = await metaplex.candyMachinesV2().findByAddress({
   address: candyMachineId,
 });
@@ -340,17 +314,14 @@ const candyMachine = await metaplex.candyMachinesV2().findByAddress({
 
 
 ```typescript
-// typescript
 const candyMachine = await metaplex.candyMachinesV2().findMintedNfts({
   candyMachine: candyMachineId,
 });
-
 ```
 
 ### 如何将物品插入到Candy Machine
 
 ```typescript
-// typescript
 await metaplex.candyMachines().insertItems({
   candyMachineId,
   items: [
@@ -367,7 +338,6 @@ await metaplex.candyMachines().insertItems({
 
 
 ```typescript
-// typescript
 // by default, the owner of the minted nft would be `metaplex.identity().publicKey`. if you want to mint the nft to some other wallet, pass that public key along with the `newOwner` parameter
 const candyMachine = await metaplex.candyMachinesV2().mint({
   candyMachine: candyMachineId,

@@ -213,7 +213,6 @@ Keypair key_pair = Keypair::from_seed(bytes);
 
 std::cout << (public_key.to_base58() == key_pair.public_key.to_base58()) << std::endl;
 // 1
-
 ```
 
 </TabItem>
@@ -404,7 +403,6 @@ while (!keypair.publicKey.toBase58().startsWith("elv1s")) {
 keypair = Keypair()
 while(str(keypair.pubkey())[:5]!="elv1s") :
     keypair = Keypair()
-
 ```
 
 </TabItem>
@@ -415,7 +413,6 @@ auto key_pair = Keypair::generate();
 while (key_pair.public_key.to_base58().substr(0, 5) != "elv1s") {
     key_pair = Keypair::generate();
 }
-
 ```
 
 </TabItem>
@@ -503,8 +500,7 @@ return (
     <p>Wallet successfully connected!</p>
     <p>{wallet.publicKey.toBase58()}</p>
   </main>
-);
-
+);w
 ```
 
 

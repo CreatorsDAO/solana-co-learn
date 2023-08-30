@@ -73,7 +73,6 @@ let client = RpcClient::new_with_commitment(rpc_url, CommitmentConfig::confirmed
 <TabItem value="bash" label="bash">
 
 ```bash
-# bash
 solana config set --url https://api.mainnet-beta.solana.com
 ```
 
@@ -88,7 +87,6 @@ solana config set --url https://api.mainnet-beta.solana.com
 
 
 ```ts
-// typescript
 const connection = new Connection("http://127.0.0.1:8899", "confirmed");
 ```
 
@@ -96,7 +94,6 @@ const connection = new Connection("http://127.0.0.1:8899", "confirmed");
 <TabItem value="py" label="Python">
 
 ```python
-// python
 client = Client("http://127.0.0.1:8899")
 ```
 
@@ -105,7 +102,6 @@ client = Client("http://127.0.0.1:8899")
 
 
 ```cpp
-// cpp
 Connection connection("http://127.0.0.1:8899");
 ```
 
@@ -113,7 +109,6 @@ Connection connection("http://127.0.0.1:8899");
 <TabItem value="rust" label="rust">
 
 ```rust
-// rust
 let rpc_url = String::from("http://127.0.0.1:8899");
 let client = RpcClient::new_with_commitment(rpc_url, CommitmentConfig::confirmed());
 ```
@@ -141,7 +136,6 @@ Solana的web3[`连接`](https://solana-labs.github.io/solana-web3.js/classes/Con
 <TabItem value="typescript" label="typescript">
 
 ```ts
-// typescript
 // Establish new connect to devnet - websocket client connected to devnet will also be registered here
 const connection = new Connection(clusterApiUrl("devnet"), "confirmed");
 
@@ -161,7 +155,6 @@ connection.onAccountChange(
 <TabItem value="py" label="Python">
 
 ```python
-// python
 async with connect("wss://api.devnet.solana.com") as websocket:
     # Create a Test Wallet
     wallet = Keypair()
@@ -178,7 +171,6 @@ async with connect("wss://api.devnet.solana.com") as websocket:
 <TabItem value="cpp" label="cpp">
 
 ```cpp
-// cpp
 auto key_pair = Keypair::generate();
 
 int subscriptionId = connection.on_account_change(key_pair.public_key, [&](Result<Account> result) {
@@ -201,7 +193,6 @@ connection.remove_account_listener(subscriptionId);
 <TabItem value="rust" label="rust">
 
 ```rust
-// rust
 let ws_url = String::from("wss://api.devnet.solana.com/");
 let (mut client, receiver) = PubsubClient::account_subscribe(
     &ws_url,
@@ -228,7 +219,6 @@ println!("{:?}", message)
 <TabItem value="typescript" label="typescript">
 
 ```ts
-// typescript
 const airdropSignature = await connection.requestAirdrop(
   keypair.publicKey,
   LAMPORTS_PER_SOL
@@ -240,7 +230,6 @@ await connection.confirmTransaction(airdropSignature);
 <TabItem value="py" label="Python">
 
 ```python
-// python
 #Input Airdrop amount in LAMPORTS
 client.request_airdrop(wallet.pubkey(), 1000000000)
 
@@ -251,7 +240,6 @@ client.request_airdrop(wallet.pubkey(), 1000000000)
 <TabItem value="cpp" label="cpp">
 
 ```cpp
-// cpp
 connection.request_airdrop(key_pair.public_key).unwrap();
 ```
 
@@ -259,7 +247,6 @@ connection.request_airdrop(key_pair.public_key).unwrap();
 <TabItem value="rust" label="rust">
 
 ```rust
-// rust
 match client.request_airdrop(&pubkey, LAMPORTS_PER_SOL) {
     Ok(sig) => loop {
         if let Ok(confirmed) = client.confirm_transaction(&sig) {

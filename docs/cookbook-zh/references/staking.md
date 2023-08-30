@@ -47,7 +47,6 @@ solana validators
 
 
 ```typescript
-// typescript
 // Setup a transaction to create our stake account
 // Note: `StakeProgram.createAccount` returns a `Transaction` preconfigured with the necessary `TransactionInstruction`s
 const createStakeAccountTx = StakeProgram.createAccount({
@@ -75,7 +74,6 @@ console.log(`Stake account balance: ${stakeBalance / LAMPORTS_PER_SOL} SOL`);
 // Verify the status of our stake account. This will start as inactive and will take some time to activate.
 let stakeStatus = await connection.getStakeActivation(stakeAccount.publicKey);
 console.log(`Stake account status: ${stakeStatus.state}`);
-
 ```
 
 
@@ -83,9 +81,7 @@ console.log(`Stake account status: ${stakeStatus.state}`);
 
 一旦质押账户得到资金支持，`Stake Authority`可以将其委托给一个验证者。每个质押账户一次只能委托给一个验证者。此外，账户中的所有代币必须要么被委托，要么取消委托。一旦委托成功，质押账户需要经过几个时期才能变为活跃状态。
 
-
 ```typescript
-// typescript
 // With a validator selected, we can now setup a transaction that delegates our stake to their vote account.
 const delegateTx = StakeProgram.delegate({
   stakePubkey: stakeAccount.publicKey,
@@ -103,7 +99,6 @@ console.log(
 // Check in on our stake account. It should now be activating.
 stakeStatus = await connection.getStakeActivation(stakeAccount.publicKey);
 console.log(`Stake account status: ${stakeStatus.state}`);
-
 ```
 
 ## 通过验证器获取委托人
@@ -112,7 +107,6 @@ console.log(`Stake account status: ${stakeStatus.state}`);
 
 
 ```typescript
-// typescript
 const STAKE_PROGRAM_ID = new PublicKey(
   "Stake11111111111111111111111111111111111111"
 );
@@ -192,7 +186,6 @@ if (accounts.length)
   }
 
 */
-
 ```
 
 ## 停用质押
@@ -201,7 +194,6 @@ if (accounts.length)
 
 
 ```typescript
-// typescript
 // At anytime we can choose to deactivate our stake. Our stake account must be inactive before we can withdraw funds.
 const deactivateTx = StakeProgram.deactivate({
   stakePubkey: stakeAccount.publicKey,
@@ -217,18 +209,13 @@ console.log(`Stake account deactivated. Tx Id: ${deactivateTxId}`);
 // Check in on our stake account. It should now be inactive.
 stakeStatus = await connection.getStakeActivation(stakeAccount.publicKey);
 console.log(`Stake account status: ${stakeStatus.state}`);
-
 ```
-
-
 
 ## 提取质押
 
 一旦停用了，`Withdrawal Authority`可以将 SOL 提取回系统账户。一旦质押账户不再委托并且余额为 0 SOL，它将被销毁了。
 
-
 ```typescript
-// typescript
 // Once deactivated, we can withdraw our SOL back to our main wallet
 const withdrawTx = StakeProgram.withdraw({
   stakePubkey: stakeAccount.publicKey,
@@ -245,5 +232,4 @@ console.log(`Stake account withdrawn. Tx Id: ${withdrawTxId}`);
 // Confirm that our stake account balance is now 0
 stakeBalance = await connection.getBalance(stakeAccount.publicKey);
 console.log(`Stake account balance: ${stakeBalance / LAMPORTS_PER_SOL} SOL`);
-
 ```

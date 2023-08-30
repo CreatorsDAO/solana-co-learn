@@ -14,7 +14,6 @@ tags:
 
 
 ```typescript
-// typescript
 // there are two ways you can recover the tx
 // 3.a Recover Tranasction (use populate then addSignauture)
 {
@@ -59,7 +58,6 @@ tags:
 
 
 ```typescript
-// typescript
 // 1. Add an instruction to send the token from Bob to Alice
 transaction.add(
   createTransferCheckedInstruction(
@@ -99,7 +97,6 @@ const recoveredTransaction = Transaction.from(
 
 
 ```typescript
-// typescript
 let tx = new Transaction().add(
   // create nonce account
   SystemProgram.createAccount({
@@ -121,7 +118,6 @@ let tx = new Transaction().add(
 console.log(
   `txhash: ${await connection.sendTransaction(tx, [feePayer, nonceAccount])}`
 );
-
 ```
 
 
@@ -129,17 +125,13 @@ console.log(
 
 
 ```typescript
-// typescript
 let accountInfo = await connection.getAccountInfo(nonceAccountPubkey);
 let nonceAccount = NonceAccount.fromAccountData(accountInfo.data);
-
 ```
-
 
 ### 使用Nonce账户
 
 ```typescript
-// typescript
 let tx = new Transaction().add(
   // nonce advance must be the first insturction
   SystemProgram.nonceAdvance({
@@ -162,5 +154,4 @@ tx.sign(
 ); /* fee payer + nonce account authority + ... */
 
 console.log(`txhash: ${await connection.sendRawTransaction(tx.serialize())}`);
-
 ```

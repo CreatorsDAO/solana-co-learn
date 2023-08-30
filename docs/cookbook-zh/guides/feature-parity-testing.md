@@ -98,6 +98,7 @@ Program log: process_instruction: PWDnx8LkjJUn9bAVzG6Fp6BuvB41x7DkBZdo9YLMGcc: 0
 Program PWDnx8LkjJUn9bAVzG6Fp6BuvB41x7DkBZdo9YLMGcc consumed 12843 of 187157 compute units
 Program PWDnx8LkjJUn9bAVzG6Fp6BuvB41x7DkBZdo9YLMGcc success[
 ```
+
 因为我们的功能“事务整体计算容量”默认情况下是自动激活的，我们观察到每个指令从起始事务预算的 200,000 CU 中消耗 CU。
 
 ### 选择性功能已停用
@@ -122,6 +123,7 @@ Program PWDnx8LkjJUn9bAVzG6Fp6BuvB41x7DkBZdo9YLMGcc success
 ```
 
 ## 全面相等性测试
+
 你可以通过识别尚未激活的每个功能，并在调用`solana-test-validator`时添加`--deactivate-feature <FEATURE_PUBKEY>`来与特定集群完全保持一致。
 
 ```bash
@@ -200,7 +202,6 @@ fn submit_transaction(
         .map_err(|err| format!("error: send transaction: {}", err))?;
     Ok(signature)
 }
-
 ```
 
 现在我们可以在`mod test {...}`的主体中添加测试函数，来展示默认验证器的设置（所有功能都启用），然后禁用事务广域计算限制，就像之前在命令行中运行`solana-test-validator`的示例一样。
