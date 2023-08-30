@@ -599,8 +599,8 @@ git checkout solution-add-comments
 
 - 在 `utils/constants.ts` 文件中更新程序地址。
 - 将端点设置在 `WalletContextProvider.tsx` 为 `http://127.0.0.1:8899`。
-- 将Phantom网络更改为localhost。
-- 使用 `solana airdrop 2 PHANTOM_WALLET_ADDRESS` 获取本地主机SOL。
+- 将`Phantom`网络更改为`localhost`。
+- 使用 `solana airdrop 2 PHANTOM_WALLET_ADDRESS` 获取本地主机`SOL`。
 
 你会看到在 `localhost:3000` 上，通过运行 `npm run dev`，评论的魔法就开始了！
 
@@ -621,10 +621,10 @@ solana logs PROGRAM_ID
 
 要进行测试，你需要获取此前端的 `solution-paging-account-data` 分支，并添加一个用于显示和提交评论的组件，或者你可以编写一个向程序发送交易的脚本。
 
-**起始代码：**
+### 起始代码:
 
-如果你没有保存之前的`starter`代码，可以随意使用[此存储库](https://github.com/buildspace/solana-student-intro-program?utm_source=buildspace.so&utm_medium=buildspace_project)的 starter 分支。
+如果你没有保存之前的`starter`代码，可以随意使用[此存储库](https://github.com/buildspace/solana-student-intro-program)的 `starter` 分支。
 
-**解决方案代码：**
+### 解决方案代码
 
 尽量自己完成这个任务！但如果遇到困难，可以参考 `solution-add-replies` 分支。
