@@ -6,6 +6,10 @@ tags:
   - serialization
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+
 # 序列数据
 
 当我们谈论序列化时，我们指的是数据的序列化和反序列化。
@@ -25,7 +29,8 @@ tags:
 
 为了使用Borsh进行序列化，需要在Rust程序、Rust客户端、节点和/或Python客户端中设置Borsh库。
 
-*program*
+<Tabs>
+<TabItem value="program" label="program">
 
 ```toml
 [package]
@@ -58,7 +63,8 @@ solana-sdk = "1.8.2"
 crate-type = ["cdylib", "lib"]
 ```
 
-*Rust client*
+</TabItem>
+<TabItem value="Rust client" label="Rust client">
 
 ```toml
 [package]
@@ -94,7 +100,8 @@ solana-validator = "1.8.2"
 solana-streamer = "1.8.2"
 ```
 
-*node client*
+</TabItem>
+<TabItem value="node client" label="node client">
 
 ```json
 {
@@ -154,13 +161,16 @@ solana-streamer = "1.8.2"
 }
 ```
 
-*python client*
+</TabItem>
+<TabItem value="python client" label="python client">
 
-```txt
+```py
 borsh-construct==0.1.0
 solana==0.20.0
 ```
 
+</TabItem>
+</Tabs>
 
 
 ## 如何序列化客户端上的指令数据
@@ -180,7 +190,8 @@ solana==0.20.0
 
 在下面的示例中，我们假设程序拥有的账户已经初始化完成。
 
-**ts client**
+<Tabs>
+<TabItem value="ts client" label="ts client">
 
 ```ts
 // Include borsh functionality
@@ -293,7 +304,8 @@ export async function mintKV(
 }
 ```
 
-**rust client**
+</TabItem>
+<TabItem value="rust client" label="rust client">
 
 ```rust
 /// Instruction payload gets serialized
@@ -348,9 +360,10 @@ pub fn submit_transaction(
 }
 ```
 
-**python client**
+</TabItem>
+<TabItem value="python client" label="python client">
 
-```python
+```py
 from borsh_construct import String, CStruct, U8
 from enum import IntEnum
 from solana.transaction import Transaction
@@ -409,10 +422,16 @@ def mint_kv(
     # => {'jsonrpc': '2.0', 'result': '4ZdpWNdovdVaLextWSiqEBWp67k9rNTTUaX3qviHDXWY9c98bVtaRt5sasPhYzMVXHqhex78gzNKytcBnVH5CSTZ', 'id': 2}
 ```
 
+</TabItem>
+</Tabs>
+
 ## 如何在程序中反序列化指令数据
 
 
 ![Deserialize Instruction Data](./serialization/ser2.png)
+
+<Tabs>
+<TabItem value="rust" label="rust">
 
 ```rust
 //! instruction Contains the main ProgramInstruction enum
@@ -465,6 +484,9 @@ impl ProgramInstruction {
     }
 }
 ```
+
+</TabItem>
+</Tabs>
 
 
 ## 如何在程序中序列化账户数据
@@ -703,6 +725,8 @@ fn mint_keypair_to_account(accounts: &[AccountInfo], key: String, value: String)
 
 账户数据的布局在[这里](#account-data-serialization)已经被描述了。
 
+<Tabs>
+<TabItem value="rust" label="rust">
 
 ```rust
 use {
@@ -739,6 +763,40 @@ pub fn unpack_from_slice(src: &[u8]) -> Result<(bool, BTreeMap<String, String>),
     }
 }
 ```
+
+</TabItem>
+<TabItem value="py" label="Python">
+
+```python
+from borsh_construct import CStruct, U8, U32, HashMap, String
+from solana.rpc.commitment import Confirmed
+from solders.pubkey import Pubkey
+from solana.rpc.api import Client
+
+
+# Schema to deserialize program's account data
+account_schema = CStruct(
+    "initialized" / U8,
+    "map_length" / U32,
+    "map" / HashMap(String, String)
+)
+
+
+def get_account_info(client: Client, account_pk: Pubkey):
+    """Fetch account information from RPC, parse out the data and deserialize"""
+    res = client.get_account_info(account_pk, Confirmed, encoding='base64')
+    return account_schema.parse(res.value.data)
+
+# Results in or similar
+# => Container:
+# =>     initialized = 1
+# =>     map_length = 109
+# =>     map = {'Happy': 'New Year!', 'newKey': 'A new value',
+# =>            'python key': 'python value', 'ts key': 'ts first value'}
+```
+
+</TabItem>
+<TabItem value="typescript" label="typescript">
 
 ```ts
 import { serialize, deserialize, deserializeUnchecked } from "borsh";
@@ -796,33 +854,8 @@ export async function getAccountData(
 }
 ```
 
-```python
-from borsh_construct import CStruct, U8, U32, HashMap, String
-from solana.rpc.commitment import Confirmed
-from solders.pubkey import Pubkey
-from solana.rpc.api import Client
-
-
-# Schema to deserialize program's account data
-account_schema = CStruct(
-    "initialized" / U8,
-    "map_length" / U32,
-    "map" / HashMap(String, String)
-)
-
-
-def get_account_info(client: Client, account_pk: Pubkey):
-    """Fetch account information from RPC, parse out the data and deserialize"""
-    res = client.get_account_info(account_pk, Confirmed, encoding='base64')
-    return account_schema.parse(res.value.data)
-
-# Results in or similar
-# => Container:
-# =>     initialized = 1
-# =>     map_length = 109
-# =>     map = {'Happy': 'New Year!', 'newKey': 'A new value',
-# =>            'python key': 'python value', 'ts key': 'ts first value'}
-```
+</TabItem>
+</Tabs>
 
 ## Solana TS/JS 常用映射
 
@@ -831,6 +864,9 @@ def get_account_info(client: Client, account_pk: Pubkey):
 在TS/JS和Python中，关键是创建一个具有适当定义的Borsh模式，以便序列化和反序列化可以生成或遍历相应的输入。
 
 首先，我们将演示在Typescript中对基本类型（数字、字符串）和复合类型（固定大小数组、Map）进行序列化，然后在Python中进行序列化，最后在Rust中进行等效的反序列化操作：
+
+<Tabs>
+<TabItem value="rust" label="rust">
 
 ```rust
 fn main() {}
@@ -863,6 +899,9 @@ mod tests {
     }
 }
 ```
+
+</TabItem>
+<TabItem value="py" label="Python">
 
 ```python
 from borsh_construct import U8, U16, U32, String, HashMap
@@ -910,6 +949,9 @@ def common():
     # =>        5
     # =>    MAP_STRING_STRING = {'cookbook': 'recipe', 'recipe': 'ingredient'}
 ```
+
+</TabItem>
+<TabItem value="typescript" label="typescript">
 
 ```ts
 #!/usr/bin/env node
@@ -985,13 +1027,17 @@ async function entry() {
 entry();
 ```
 
-
+</TabItem>
+</Tabs>
 
 ## 高级构造
 
 我们在之前的示例中展示了如何创建简单的负载（Payloads）。有时，Solana会使用某些特殊类型。本节将演示如何正确映射TS/JS和Rust之间的类型，以处理这些情况。
 
 ### COption
+
+<Tabs>
+<TabItem value="ts" label="TypeScript">
 
 ```ts
 #!/usr/bin/env node
@@ -1134,6 +1180,9 @@ console.log("");
 entry();
 ```
 
+</TabItem>
+<TabItem value="rust" label="rust">
+
 ```rust
 fn main() {}
 
@@ -1178,6 +1227,9 @@ mod tests {
     }
 }
 ```
+
+</TabItem>
+</Tabs>
 
 ## 资料
 

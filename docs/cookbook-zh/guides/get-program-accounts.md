@@ -56,11 +56,11 @@ import TabItem from '@theme/TabItem';
 
 `getProgramAccounts`的一个常见示例涉及与[SPL-Token Program](https://spl.solana.com/token) 程序交互。仅使用基本调用请求由Token程序拥有的所有账户将涉及大量的数据。然而，通过提供参数，我们可以高效地请求我们要使用的数据。
 
-### `filters`
+## `filters`
 
 与`getProgramAccounts`一起使用的最常见参数是`filters`数组。该数组接受两种类型的过滤器，即`dataSize`和`memcmp`。在使用这些过滤器之前，我们应该熟悉我们请求的数据的布局和序列化方式。
 
-#### `dataSize`
+### `dataSize`
 
 在Token程序的情况下，我们可以看到[代币账户的长度为165个字节](https://github.com/solana-labs/solana-program-library/blob/08d9999f997a8bf38719679be9d572f119d0d960/token/program/src/state.rs#L86-L106)。 具体而言，一个代币账户有八个不同的字段，每个字段需要一定数量的字节。我们可以使用下面的示例图来可视化这些数据的布局。
 
@@ -68,7 +68,7 @@ import TabItem from '@theme/TabItem';
 
 如果我们想找到由我们的钱包地址拥有的所有代币账户，我们可以在`filters`数组中添加`{ dataSize: 165 }`来将查询范围缩小为仅限长度为165个字节的账户。然而，仅此还不够。我们还需要添加一个过滤器来查找由我们的地址拥有的账户。我们可以使用`memcmp`过滤器实现这一点。
 
-#### `memcmp`
+### `memcmp`
 
 `memcmp`过滤器，也叫"内存比较"过滤器，允许我们比较存储在账户上的任何字段的数据。具体而言，我们可以查询仅与特定位置上的特定一组字节匹配的账户。`memcmp`需要两个参数：
 
