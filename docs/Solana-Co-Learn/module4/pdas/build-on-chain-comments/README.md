@@ -37,6 +37,10 @@ thiserror = "1.0.31"
 crate-type = ["cdylib", "lib"]
 ```
 
+:::caution
+这里需要注意的是`solana-program`, `borsh`, `thiserror` 的版本可能会太低了，请使用`cargo add <crates-name>`安装。
+:::
+
 此外，你还需要将我们之前用过的[所有文件和代码搬过来](https://beta.solpg.io/6312eaf988a7fca897ad7d15?utm_source=buildspace.so&utm_medium=buildspace_project)。你可以找到我们上次离开时的电影评论程序，并将文件结构和内容复制到新的本地项目中。
 
 完成这些操作后，可以通过构建程序来确认一切是否准备就绪：
@@ -49,9 +53,11 @@ cargo build-sbf
 
 我们现在已经准备好开始组合构建项目了！
 
+:::info
 **开始前的提示**
 
-请注意，这是一堂较为深入的课程。我们将编写大量代码，这可能会让你觉得有些压力重重。但当你编写实际的程序时，不必进行如此繁琐的工作，速度会快得多。下周我们将深入学习如何使用锚点，这会让整个过程变得更简单。我们现在选择采用原生方式，以便深入了解这些概念并为你奠定坚实的基础。
+请注意，这是一堂较为深入的课程。我们将编写大量代码，这可能会让你觉得有些压力重重。但当你编写实际的程序时，不必进行如此繁琐的工作，速度会快得多。下周我们将深入学习如何使用`Anchor`，这会让整个过程变得更简单。我们现在选择采用原生方式，以便深入了解这些概念并为你奠定坚实的基础。
+:::
 
 
 ## 🤓 数据结构化
@@ -65,15 +71,13 @@ cargo build-sbf
 
 具体的实现方式可能因情况而异，但有些常见的模式是你会经常看到的。一旦你明白了如何组织和连接存储数据的方法，你就能找出最适合你情况的最佳解决方案。
 
-可以将其想象为做晚餐 - 学会烹饪某些食材后，你就能根据手头的材料创造出各种菜肴。这就好比学会了如何在方便面里扔一个鸡蛋，然后称之为美食拉面。我保证这个鸡蛋的比喻并没有事先计划，纯属巧合。
-
-**存储评论**
+### 存储评论
 
 我们首先需要决定评论将存储在何处。你可能还记得，在 `add_movie_review` 中，我们为每个电影评论创建了一个新的`PDA`。因此，我们是否可以简单地将一个大的评论数组添加到`PDA`中，然后就大功告成了呢？答案是否定的。由于账户的空间有限，所以我们很快就会用完空间。
 
 那么让我们按照电影评论的方式来进行。我们将为每条评论创建一个新的`PDA`，这样我们就可以存储尽可能多的评论了！为了将评论与它们所属的评论连接起来，我们将使用电影评论的`PDA`地址作为评论账户的种子。
 
-**阅读评论**
+### 阅读评论
 
 我们的结构将为每个电影评论提供理论上无限数量的评论。然而，对于每个电影评论，没有任何特性来区分评论之间的关系。我们该如何知道每个电影评论有多少条评论呢？
 
@@ -178,11 +182,12 @@ impl MovieAccountState {
 
     pub fn get_account_size(title: String, description: String) -> usize {
         // 4个字节存储后续动态数据（字符串）的大小
-        return (4 + MovieAccountState::DISCRIMINATOR.len())
+        (4 + MovieAccountState::DISCRIMINATOR.len())
             + 1 // 1个字节用于is_initialized（布尔值）
+            + 32 // 32个字节用于电影评论账户密钥
             + 1 // 1个字节用于评分
             + (4 + title.len()) // 4个字节存储后续动态数据（字符串）的大小
-            + (4 + description.len()); // 同上
+            + (4 + description.len()) // 同上
     }
 }
 
@@ -190,12 +195,12 @@ impl MovieComment {
     pub const DISCRIMINATOR: &'static str = "comment";
 
     pub fn get_account_size(comment: String) -> usize {
-        return (4 + MovieComment::DISCRIMINATOR.len())
+        (4 + MovieComment::DISCRIMINATOR.len())
         + 1  // 1个字节用于is_initialized（布尔值）
         + 32 // 32个字节用于电影评论账户密钥
         + 32 // 32个字节用于评论者密钥的大小
         + (4 + comment.len()) // 4个字节存储后续动态数据（字符串）的大小
-        + 8; // 8个字节用于计数（u64）
+        + 8 // 8个字节用于计数（u64）
     }
 }
 
@@ -266,32 +271,41 @@ struct CommentPayload {
 ```rust
 impl MovieInstruction {
     pub fn unpack(input: &[u8]) -> Result<Self, ProgramError> {
-        let (&variant, rest) = input.split_first().ok_or(ProgramError::InvalidInstructionData)?;
+        let (&variant, rest) = input
+            .split_first()
+            .ok_or(ProgramError::InvalidInstructionData)?;
+
         Ok(match variant {
             0 => {
-                // 载荷移到匹配语句中，针对每个载荷
-                let payload = MovieReviewPayload::try_from_slice(rest).unwrap();
+                let payload = MovieReviewPayload::try_from_slice(rest)
+                    .map_err(|_| ProgramError::from(Error::ParseMovieReviewPayloadFailed))?;
+
                 Self::AddMovieReview {
-                title: payload.title,
-                rating: payload.rating,
-                description: payload.description }
-            },
+                    title: payload.title,
+                    rating: payload.rating,
+                    description: payload.description,
+                }
+            }
             1 => {
-                let payload = MovieReviewPayload::try_from_slice(rest).unwrap();
+                let payload = MovieReviewPayload::try_from_slice(rest)
+                    .map_err(|_| ProgramError::from(Error::ParseMovieReviewPayloadFailed))?;
+
                 Self::UpdateMovieReview {
                     title: payload.title,
                     rating: payload.rating,
-                    description: payload.description
-                }
-            },
-            2 => {
-                // 评论载荷使用自己的反序列化器，因为数据类型不同
-                let payload = CommentPayload::try_from_slice(rest).unwrap();
-                Self::AddComment {
-                    comment: payload.comment
+                    description: payload.description,
                 }
             }
-            _ => return Err(ProgramError::InvalidInstructionData)
+            2 => {
+                // 评论载荷使用自己的反序列化器，因为数据类型不同
+                let payload = CommentPayload::try_from_slice(rest)
+                    .map_err(|_| ProgramError::from(Error::ParseMovieCommentPayloadFailed))?;
+
+                Self::AddComment {
+                    comment: payload.comment,
+                }
+            }
+            _ => return Err(ProgramError::InvalidInstructionData),
         })
     }
 }

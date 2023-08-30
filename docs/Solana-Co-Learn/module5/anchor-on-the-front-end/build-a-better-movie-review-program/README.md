@@ -19,7 +19,7 @@ git checkout starter-add-tokens
 npm i
 ```
 
-- 请注意，起始代码在锚点设置完成之前是无法运行的。
+- 请注意，起始代码在`Anchor`设置完成之前是无法运行的。
 - 在 `./context/Anchor/MockWallet.ts` 中，我们有一个临时的 `AnchorWallet`，在钱包连接之前可以使用。
 
 ```ts
