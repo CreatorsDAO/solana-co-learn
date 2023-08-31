@@ -6,7 +6,6 @@ sidebar_class_name: green
 
 # 🛳 设置 Anchor
 
-你好，朋友。欢迎来到应许之地。
 
 你已经像一位先驱者一样原生地构建了 `Solana` 程序。当然，你可以继续原生地构建，但有了框架的帮助，事情将变得更加轻松迅捷。
 
@@ -33,7 +32,7 @@ anchor --version
 anchor-cli 0.28.0
 ```
 
-好了！现在我们用 `Anchor` 来设置一个空白的 `Solana` 程序：
+现在我们用 `Anchor` 来设置一个空白的 `Solana` 程序：
 
 ```bash
 anchor init <new-workspace-name>
@@ -50,7 +49,7 @@ anchor init <new-workspace-name>
 - `migrations/deploy.js`：用于部署迁移到不同版本的程序的脚本。
 - `.anchor` 文件夹：包含最新程序日志和本地测试账本。
 
-你现在基本上可以忽略这些文件。打开 `programs/<workspace-name>/src/lib.rs`，你会发现它与我们的原生程序有所不同。`Anchor` 将定义入口点，我们将使用 `Rust` 属性告诉 `Anchor` 我们所有的需求，这样它就能自动化大部分工作。
+你现在基本上可以忽略这些文件。打开 `programs/<new-workspace-name>/src/lib.rs`，你会发现它与我们的原生程序有所不同。`Anchor` 将定义入口点，我们将使用 `Rust` 属性告诉 `Anchor` 我们所有的需求，这样它就能自动化大部分工作。
 
 当我们使用 `#[program]` 时，我们实际上是在声明一个 `Rust `宏。`Anchor` 将使用它为我们生成所有必要的本地 `Solana` 样板代码。
 
@@ -82,11 +81,9 @@ anchor build
 
 ### 声明程序ID
 
-首先，在先前的 `lib.rs` 文件中，有一个宏 `declare_id!` ，其中包含一个默认值。你可能已经注意到每次启动新的 `Anchor` 程序时，这个值都是一样的。因此，通过运行 `anchor keys list` 来找到你真实的 `PROGRAM_ID`，然后把这个值粘贴到它应该去的地方——此 `PROGRAM_ID` 是在运行构建命令后生成的。它同样需要粘贴到 `Anchor.toml` 文件中。
+首先，在先前的 `lib.rs` 文件中，有一个宏 `declare_id!` ，其中包含一个默认值。现在得版本`anchor`,在你使用`anchor init`生成一个新的项目的时候`declare_id!`中的值是每次都不一样的，为你生成一个新的值。你也可以通过运行 `anchor keys list` 来查看你的`PROGRAM_ID`。
 
-这个流程可能听起来有些不同寻常——你编写一个程序，用 `anchor build` 构建它，用 `anchor keys list` 获取地址，然后把它替换到程序顶部的声明宏和 `Anchor.toml` 中，再进行部署。
-
-使用下面的命令来获取程序的真实地址：
+使用下面的命令来获取程序的地址：
 
 ```bash
 anchor keys list
