@@ -204,7 +204,9 @@ connection.getProgramAccounts(new web3.PublicKey(MOVIE_REVIEW_PROGRAM_ID))
 
 在获取电影评论之前，我们需要获取包含它们的账户。我们可以通过获取电影评论程序的所有程序账户来实现，这可以使用 `getProgramAccounts` 端点完成。
 
+:::caution
 **注意，这是一个非常消耗资源的端点。如果在大型程序上尝试，结果可能会非常庞大，甚至会引起问题。在现实世界中，你很少需要同时获取多个账户，所以现在不用担心。但你应该意识到，不应该对数据进行建模，使得 `getProgramAccounts` 成为必要条件。**
+:::
 
 ```ts
 .then(async (accounts) => {
