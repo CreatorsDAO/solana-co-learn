@@ -69,7 +69,7 @@ import { ConnectionProvider, WalletProvider } from "@solana/wallet-adapter-react
 import {
   GlowWalletAdapter,
   PhantomWalletAdapter,
-  BackPackWalletAdapter
+  BackpackWalletAdapter
 } from "@solana/wallet-adapter-wallets";
 import { clusterApiUrl } from "@solana/web3.js";
 
@@ -91,7 +91,7 @@ const App = ({ Component, pageProps }) => {
     () => [
       new PhantomWalletAdapter(),
       new GlowWalletAdapter(),
-      new BackPackWalletAdapter()
+      new BackpackWalletAdapter()
     ],
     [network]
   );
