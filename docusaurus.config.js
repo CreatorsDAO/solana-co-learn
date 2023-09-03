@@ -22,7 +22,7 @@ function defineSection(section, version = {}, options = {}) {
       include: ['**/*.md', '**/*.mdx'],
       breadcrumbs: false,
       sidebarPath: require.resolve('./sidebars.cjs'),
-      editUrl: 'https://github.com/CreatorsDAO/all-in-one-solana/tree/dev',
+      editUrl: 'https://github.com/CreatorsDAO/all-in-one-solana/tree/main',
       // Equivalent to `enableUpdateBy`.
       showLastUpdateAuthor: true,
       // Equivalent to `enableUpdateTime`.
