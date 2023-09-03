@@ -23,6 +23,10 @@ function defineSection(section, version = {}, options = {}) {
       breadcrumbs: false,
       sidebarPath: require.resolve('./sidebars.cjs'),
       editUrl: 'https://github.com/CreatorsDAO/all-in-one-solana/tree/dev',
+      // Equivalent to `enableUpdateBy`.
+      showLastUpdateAuthor: true,
+      // Equivalent to `enableUpdateTime`.
+      showLastUpdateTime: true,
       versions: version && {
         current: {
           label: version.label,
