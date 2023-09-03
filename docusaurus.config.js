@@ -48,7 +48,7 @@ const config = {
   title: 'All in One Solana',
   tagline: 'Power by 706 & Rustycab',
   url: 'https://www.all-in-one-blockchain.xyz/',
-  baseUrl: '/all-in-one-solana/',
+  baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
