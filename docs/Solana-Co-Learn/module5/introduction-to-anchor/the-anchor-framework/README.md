@@ -22,7 +22,39 @@ sidebar_class_name: green
 
 让我们一起深入了解 `Anchor program` 的结构。
 
-![](./img/anchor-program.png)
+```rust
+// use this import to gain access to common anchor features
+use anchor_lang::prelude::*;
+
+// Program on-chain address
+declare_id!("6bujjNgtKQtgWEu4XMAtoJgkCn5RoqxLobuA7ptZrL6y");
+
+#[program]
+pub mod program_module_name {
+    use super::*;
+
+    pub fn initialize_one(ctx: Context<InitializeAccounts>, instruction_data: u64) -> Result<()> {
+        ctx.accounts.account_name.data = instruction_data;
+        Ok(())
+    }
+}
+
+// validate incoming account for instructions
+#[derive(Accounts)]
+pub struct InitializeAccounts<'info> {
+    #[account(init, payer = user, space = 8 + 8]
+    pub account_name: Account<'info, AccountStruct>,
+    #[account(mut)]
+    pub user: Signer<'info>,
+    pub system_program: Program<'info, System>,
+}
+
+// Define custom program account type
+#[account]
+pub struct AccountStruct {
+    data: u64,
+}
+```
 
 这是一个相当简洁的程序 — 它初始化一个新账户，并使用从指令中传入的数据更新账户的数据字段。
 
@@ -39,13 +71,26 @@ sidebar_class_name: green
 
 让我们先来了解 `declare_id!` 宏，因为它非常简单：
 
-![](./img/declare-id.png)
+```rust
+// Program on-chain address
+declare_id!("6bujjNgtKQtgWEu4XMAtoJgkCn5RoqxLobuA7ptZrL6y");
+```
 
 这用于指定程序的链上地址（即 `PROGRAM_ID`）。当你第一次构建 `Anchor` 程序时，会生成一个新的密钥对（可以使用 `anchor keys list` 获取）。这个密钥对会作为部署程序的默认密钥对（除非你另外指定）。该密钥对的公钥被用作 `PROGRAM_ID` 并在 `declare_id!` 宏中定义。
 
 ### 👑 `#[program]`
 
-![](./img/program.png)
+```rust
+#[program]
+pub mod program_module_name {
+    use super::*;
+
+    pub fn initialize_one(ctx: Context<InitializeAccounts>, instruction_data: u64) -> Result<()> {
+        ctx.accounts.account_name.data = instruction_data;
+        Ok(())
+    }
+}
+```
 
 `#[program]` 属性定义了包含所有程序指令的模块（因此是 `mod`）。这就是你将实现程序中每个指令逻辑的地方。你将为程序支持的每个指令创建一个公共函数。账户验证和安全检查与程序逻辑分离，因此不会出现在此处！
 
@@ -154,7 +199,17 @@ pub accounts: &'b mut T,
 
 ### 💻 `Program` 输入类型
 
-![](./img/program.png)
+```rust
+#[program]
+pub mod program_module_name {
+    use super::*;
+
+    pub fn initialize_one(ctx: Context<InitializeAccounts>, instruction_data: u64) -> Result<()> {
+        ctx.accounts.account_name.data = instruction_data;
+        Ok(())
+    }
+}
+```
 
 最后，`Program`类型确保传入的账户符合我们的预期，并且确实是一个程序（可执行文件）。
 
@@ -166,7 +221,17 @@ pub accounts: &'b mut T,
 
 让我们先看看`#[account]`结构体内部：
 
-![](./img/instruction-account.png)
+```rust
+// validate incoming account for instructions
+#[derive(Accounts)]
+pub struct InitializeAccounts<'info> {
+    #[account(init, payer = user, space = 8 + 8]
+    pub account_name: Account<'info, AccountStruct>,
+    #[account(mut)]
+    pub user: Signer<'info>,
+    pub system_program: Program<'info, System>,
+}
+```
 
 这就是我们为账户指定额外限制条件的地方。`Anchor`在基本验证方面做得很好，但它还能帮我们检查一些其他特定的东西！
 

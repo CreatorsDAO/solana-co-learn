@@ -98,7 +98,14 @@ if !initializer.is_signer {
 
 你还应该在适当的情况下验证客户提供的指令数据。
 
-![](./img/data-validation.png)
+```rust
+let (pda, bump_seed) = PubKey::find_program_address(&[initializer.key.as_ref(), title.as_bytes().as_ref(),], program_id);
+
+if pda != *note_pda.key() {
+    msg!("Invalid seeds for PDA");
+    return Err(ProgramError::InvalidArgument);
+}
+```
 
 例如，如果你的程序是一个游戏，用户可能会分配角色属性点。你可能需要验证分配的积分加上现有分配是否超出了最大限制。
 
