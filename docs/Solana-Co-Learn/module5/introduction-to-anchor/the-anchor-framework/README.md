@@ -225,7 +225,7 @@ pub mod program_module_name {
 // validate incoming account for instructions
 #[derive(Accounts)]
 pub struct InitializeAccounts<'info> {
-    #[account(init, payer = user, space = 8 + 8]
+    #[account(init, payer = user, space = 8 + 8)]
     pub account_name: Account<'info, AccountStruct>,
     #[account(mut)]
     pub user: Signer<'info>,
