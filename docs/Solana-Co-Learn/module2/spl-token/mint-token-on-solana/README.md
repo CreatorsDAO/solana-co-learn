@@ -41,6 +41,7 @@ npm i
 ```ts
 // 在文件顶部添加spl-token导入
 import * as token from "@solana/spl-token"
+import * as web3 from "@solana/web3.js"
 
 async function createNewMint(
     connection: web3.Connection,
