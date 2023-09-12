@@ -73,12 +73,20 @@ Token账户必须与用户或钱包关联。一种简便的方式是创建一个
 下面是一个`createMint`的示例：
 
 ```ts
+
+import { createMint, TOKEN_PROGRAM_ID } from "@solana/spl-token";
+
+// 生成token 的 account地址，此项为可选项
+const newToken = web3.Keypair.generate();
 const tokenMint = await createMint(
   connection,
   payer,
   mintAuthority,
   freezeAuthority,
   decimals,
+  newToken,
+  null,
+  TOKEN_PROGRAM_ID
 )
 ```
 
@@ -88,6 +96,11 @@ const tokenMint = await createMint(
 - `mintAuthority` - 被授权铸造新代币的账户
 - `freezeAuthority` - 被授权冻结代币的账户。如果你不想冻结代币，请将其设置为`null`！
 - `decimals` - 指定代币所需的小数精度
+
+可选参数:
+- newToken 生成token 的 account地址，为空，将默认生成一个
+- null 为 confirmOptions ，按照默认即可
+- TOKEN_PROGRAM_ID token 程序的ID
 
 完成这个步骤后，你可以继续以下步骤：
 
