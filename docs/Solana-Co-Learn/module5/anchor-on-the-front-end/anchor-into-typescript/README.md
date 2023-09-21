@@ -211,7 +211,7 @@ const program = new Program(idl as Idl, programId);
 - **`signers`**：任何需要输入的额外签署人信息。
 - **`rpc`**：创建并发送带有指定指令的已签名交易，并返回一个 `TransactionSignature`。
 
-如果指示中没有除使用 `Wallet` 指定的 `Provider` 之外的其他签署人，你可以省略 `.signer([])` 行。
+如果指示中没有除使用 `Wallet` 指定的 `Provider` 之外的其他签署人，你可以省略 `.signers([])` 行。
 
 ```ts
 // 发送交易
