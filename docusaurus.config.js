@@ -41,6 +41,7 @@ const SECTIONS = [
   defineSection("awesome-solana-zh"),
   defineSection("Solana-Co-Learn"),
   defineSection("cookbook-zh"),
+  defineSection("solana-development-course"),
 ];
 
 /** @type {import('@docusaurus/types').Config} */
@@ -108,6 +109,11 @@ const config = {
             href: "/Solana-Co-Learn",
             position: "left",
             label: "Solana Co Learn",
+          },
+          {
+            href: "/solana-development-course",
+            position: "left",
+            label: "Solana Development Course",
           },
           {
             href: "/cookbook-zh",
