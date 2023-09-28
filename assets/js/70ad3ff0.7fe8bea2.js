@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkall_in_one_solana=self.webpackChunkall_in_one_solana||[]).push([[147],{13478:l=>{l.exports=JSON.parse('{"permalink":"/blog/tags/blockchain","page":1,"postsPerPage":10,"totalPages":1,"totalCount":6,"blogDescription":"Blog","blogTitle":"Blog"}')}}]);

@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkall_in_one_solana=self.webpackChunkall_in_one_solana||[]).push([[1338],{7746:a=>{a.exports=JSON.parse('{"label":"runtime","permalink":"/blog/tags/runtime","allTagsPath":"/blog/tags","count":1}')}}]);
