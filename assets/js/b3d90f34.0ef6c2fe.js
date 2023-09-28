@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkall_in_one_solana=self.webpackChunkall_in_one_solana||[]).push([[1358],{28807:e=>{e.exports=JSON.parse('{"name":"docusaurus-plugin-content-docs","id":"solana-development-course"}')}}]);
