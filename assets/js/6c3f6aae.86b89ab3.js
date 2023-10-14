@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkall_in_one_solana=self.webpackChunkall_in_one_solana||[]).push([[4203],{4402:a=>{a.exports=JSON.parse('{"permalink":"/solana-co-learn/blog/tags/blockchain","page":1,"postsPerPage":10,"totalPages":2,"totalCount":13,"nextPage":"/solana-co-learn/blog/tags/blockchain/page/2","blogDescription":"Blog","blogTitle":"Blog"}')}}]);

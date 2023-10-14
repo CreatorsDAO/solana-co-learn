@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkall_in_one_solana=self.webpackChunkall_in_one_solana||[]).push([[7787],{16816:a=>{a.exports=JSON.parse('{"permalink":"/solana-co-learn/blog/tags/state-compression","page":1,"postsPerPage":10,"totalPages":1,"totalCount":1,"blogDescription":"Blog","blogTitle":"Blog"}')}}]);

@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkall_in_one_solana=self.webpackChunkall_in_one_solana||[]).push([[4294],{69975:a=>{a.exports=JSON.parse('{"label":"co-learn","permalink":"/solana-co-learn/blog/tags/co-learn","allTagsPath":"/solana-co-learn/blog/tags","count":2}')}}]);

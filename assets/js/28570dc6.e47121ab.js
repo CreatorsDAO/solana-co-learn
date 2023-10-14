@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkall_in_one_solana=self.webpackChunkall_in_one_solana||[]).push([[9179],{60290:a=>{a.exports=JSON.parse('{"label":"gulf","permalink":"/solana-co-learn/blog/tags/gulf","allTagsPath":"/solana-co-learn/blog/tags","count":1}')}}]);

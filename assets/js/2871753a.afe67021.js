@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkall_in_one_solana=self.webpackChunkall_in_one_solana||[]).push([[1619],{22796:a=>{a.exports=JSON.parse('{"label":"sealevel","permalink":"/solana-co-learn/blog/tags/sealevel","allTagsPath":"/solana-co-learn/blog/tags","count":1}')}}]);
