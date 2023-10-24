@@ -332,7 +332,7 @@ account_data.serialize(&mut &mut pda_account.data.borrow_mut()[..])?;
 构建 -> 升级 -> 复制地址 -> 粘贴到前端
 
 ```bash
-git clone https://github.com/CreatorsDAO/solana-movie-frontend
+git clone https://github.com/all-in-one-solana/solana-movie-frontend
 cd solana-movie-frontend
 git checkout solution-update-reviews
 npm install

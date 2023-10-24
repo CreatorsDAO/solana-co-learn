@@ -61,7 +61,7 @@ npm run start
 
 选择一个任务或者自己创建一个，按照以下步骤进行：
 
-1. 为[任务添加一个问题](https://github.com/CreatorsDAO/all-in-one-solana/issues/new)，并将其分配给自己或在问题上进行评论
+1. 为[任务添加一个问题](https://github.com/CreatorsDAO/solana-co-learn/issues/new)，并将其分配给自己或在问题上进行评论
 2. 制作一份涉及该问题的初稿公关文件。
 
 做出贡献的一般流程：

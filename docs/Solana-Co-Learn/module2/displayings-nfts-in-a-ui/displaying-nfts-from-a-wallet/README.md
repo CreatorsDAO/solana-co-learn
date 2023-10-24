@@ -15,7 +15,7 @@ tags:
 现在我们已经铸造了一个`NFT`，接下来我们要探索如何铸造一系列的`NFT`。我们将使用`Candy Machine`来完成这项任务，这是一款`Solana`程序，能让创作者方便地将他们的资产上链。虽然这不是创建系列的唯一方式，但在`Solana`上它已经成为标准，因为它具有诸如防机器人保护和安全随机化等有用的功能。你懂的，模板时间到了。然而，随着我们构建的项目越来越复杂，我们的模板也会变得更先进。这次我们将基于[Solana dApp脚手架](https://github.com/solana-labs/dapp-scaffold)构建一个模板。与之前的模板一样，它是一个由`create-next-app`创建的`Next.js`应用程序。不过这次，它具有更多功能。不用担心！我们依然会使用相同的工具。
 
 ```bash
-git clone https://github.com/CreatorsDAO/solana-display-nfts-frontend
+git clone https://github.com/all-in-one-solana/solana-display-nfts-frontend
 cd solana-display-nfts-frontend
 git checkout starter
 npm install @metaplex-foundation/js@latest

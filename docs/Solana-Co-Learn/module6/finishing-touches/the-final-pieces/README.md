@@ -27,7 +27,7 @@ sidebar_class_name: green
 
 ## 解决方案代码
 
-我们的解决方案位于[Buildoors代码库](https://github.com/CreatorsDAO/buildspace-buildoors/tree/solution-lootboxes)的`solution-lootboxes`分支上。与你上次查看的代码可能有些许差异，因此如果你想查看所有更改，请确保从上周的[分支查看差异](https://github.com/CreatorsDAO/buildspace-buildoors/compare/solution-core-5...solution-lootboxes)。
+我们的解决方案位于[Buildoors代码库](https://github.com/all-in-one-solana/buildspace-buildoors/tree/solution-lootboxes)的`solution-lootboxes`分支上。与你上次查看的代码可能有些许差异，因此如果你想查看所有更改，请确保从上周的[分支查看差异](https://github.com/all-in-one-solana/buildspace-buildoors/compare/solution-core-5...solution-lootboxes)。
 
 有一些引导，但你可以自由开始。祝你好运！
 
