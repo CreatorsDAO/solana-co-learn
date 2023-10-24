@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
     <channel>
-        <title>All in One Solana Blog</title>
+        <title>Solana Co Learn Blog</title>
         <link>https://www.all-in-one-blockchain.xyz/solana-co-learn/blog</link>
-        <description>All in One Solana Blog</description>
+        <description>Solana Co Learn Blog</description>
         <lastBuildDate>Thu, 28 Sep 2023 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
