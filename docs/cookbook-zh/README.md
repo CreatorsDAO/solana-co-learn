@@ -23,7 +23,7 @@ tags:
 Solana秘籍的设计力图让新的Solana开发者也能容易的贡献代码。
 即使你还不太了解如何做项目，贡献代码也是一个很好的学习过程！
 
-[这里](https://github.com/CreatorsDAO/all-in-one-solana/issues)
+[这里](https://github.com/CreatorsDAO/solana-co-learn/issues)
 可以查看所有待解决的issue。
 
 :::info

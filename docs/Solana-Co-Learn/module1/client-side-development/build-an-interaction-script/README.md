@@ -274,4 +274,4 @@ async function pingProgram(connection: Web3.Connection, payer: Web3.Keypair) {
 
 附注：如果你确定自己已经了解了这些内容，但转账仍然失败，那么问题可能是转账金额太少——尝试至少转账`0.1 SOL`。
 
-就像以往一样，在查看解决方案代码之前，尽量自己完成这个任务。当你真正需要参考解决方案时，[请点击这里查看](https://github.com/CreatorsDAO/solana-co-learn-code/blob/main/src/transferSol.ts)。👀
+就像以往一样，在查看解决方案代码之前，尽量自己完成这个任务。当你真正需要参考解决方案时，[请点击这里查看](https://github.com/all-in-one-solana/solana-co-learn-code/blob/main/src/transferSol.ts)。👀

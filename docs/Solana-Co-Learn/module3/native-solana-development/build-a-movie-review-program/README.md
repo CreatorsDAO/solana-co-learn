@@ -229,8 +229,8 @@ pub fn process_instruction(
 
 下面是如何设置完整脚本的步骤，包括你所需的一切：
 
-```rust
-git clone https://github.com/CreatorsDAO/solana-movie-client
+```bash
+git clone https://github.com/all-in-one-solana/solana-movie-client
 cd solana-movie-client
 npm install
 ```
@@ -252,7 +252,7 @@ npm install
 利用你在本课程中学到的知识，构建一个学生介绍程序，使得当程序被调用时，能够将用户提供的姓名和信息打印到程序日志中。
 
 解决方案代码
-你可以通过构建[这个前端](https://github.com/CreatorsDAO/solana-student-intros-frontend.git)并在`Solana Explorer`上检查程序日志来测试你的程序。记得用你部署的程序`ID`替换前端代码中的`ID`。
+你可以通过构建[这个前端](https://github.com/all-in-one-solana/solana-student-intros-frontend.git)并在`Solana Explorer`上检查程序日志来测试你的程序。记得用你部署的程序`ID`替换前端代码中的`ID`。
 
 如果可以的话，尽量自己独立完成这个任务！但如果遇到困难，可以[参考解决方案代码](https://beta.solpg.io/62b0ce53f6273245aca4f5b0)。
 

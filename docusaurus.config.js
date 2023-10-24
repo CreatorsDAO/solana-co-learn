@@ -22,7 +22,7 @@ function defineSection(section, version = {}, options = {}) {
       include: ["**/*.md", "**/*.mdx"],
       breadcrumbs: false,
       sidebarPath: require.resolve("./sidebars.cjs"),
-      editUrl: "https://github.com/CreatorsDAO/all-in-one-solana/tree/main",
+      editUrl: "https://github.com/CreatorsDAO/solana-co-learn/tree/main",
       // Equivalent to `enableUpdateBy`.
       showLastUpdateAuthor: true,
       // Equivalent to `enableUpdateTime`.
@@ -46,7 +46,7 @@ const SECTIONS = [
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: "All in One Solana",
+  title: "Solana Co Learn",
   tagline: "Power by 706 & Rustycab",
   url: "https://www.all-in-one-blockchain.xyz/",
   baseUrl: "/solana-co-learn",
@@ -57,7 +57,7 @@ const config = {
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: "CreatorsDAO", // Usually your GitHub org/user name.
-  projectName: "all-in-one-solana", // Usually your repo name.
+  projectName: "solana-co-learn", // Usually your repo name.
 
   // Even if you don't use internalization, you can use this field to set useful
   // metadata like html lang. For example, if your site is Chinese, you may want
@@ -75,7 +75,7 @@ const config = {
         docs: false,
         blog: {
           showReadingTime: true,
-          editUrl: "https://creatorsdao.github.io/all-in-one-solana/blog",
+          editUrl: "https://creatorsdao.github.io/solana-co-learn/blog",
         },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
@@ -122,7 +122,7 @@ const config = {
           },
           { to: "/blog", label: "Blog", position: "left" },
           {
-            href: "https://github.com/CreatorsDAO/all-in-one-solana.git",
+            href: "https://github.com/CreatorsDAO/solana-co-learn.git",
             label: "GitHub",
             position: "right",
           },
@@ -136,7 +136,7 @@ const config = {
             items: [
               {
                 label: "Forum",
-                href: "https://github.com/CreatorsDAO/all-in-one-solana/discussions",
+                href: "https://github.com/CreatorsDAO/solana-co-learn/discussions",
               },
             ],
           },

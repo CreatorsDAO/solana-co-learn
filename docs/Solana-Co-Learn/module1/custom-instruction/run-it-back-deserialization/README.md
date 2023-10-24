@@ -108,7 +108,7 @@ const { playerId, name } = borshAccountSchema.decode(buffer);
 曾经考虑过要如何构建一个反序列化器吗？我们将继续前面的电影评论应用开发。你可以在上一节的项目基础上继续（推荐），或者使用已完成的版本开始设置：
 
 ```bash
-git clone https://github.com/CreatorsDAO/solana-movie-frontend.git
+git clone https://github.com/all-in-one-solana/solana-movie-frontend.git
 cd solana-movie-frontend
 git checkout solution-serialize-instruction-data
 npm i
@@ -238,7 +238,7 @@ connection.getProgramAccounts(new web3.PublicKey(MOVIE_REVIEW_PROGRAM_ID))
 
 **目标**：更新应用程序，以便能够获取并反序列化程序的帐户数据。支撑此功能的 Solana 程序地址是：`HdE95RSVsdb315jfJtaykXhXY478h53X6okDupVfY9yf`。
 
-你可以从上次挑战的地方继续，或者从[此代码库](https://github.com/CreatorsDAO/solana-student-intros-frontend/tree/solution-serialize-instruction-data)开始。确保从 `solution-serialize-instruction-data` 分支开始。
+你可以从上次挑战的地方继续，或者从[此代码库](https://github.com/all-in-one-solana/solana-student-intros-frontend/tree/solution-serialize-instruction-data)开始。确保从 `solution-serialize-instruction-data` 分支开始。
 
 ### 提示：
 
@@ -255,6 +255,6 @@ connection.getProgramAccounts(new web3.PublicKey(MOVIE_REVIEW_PROGRAM_ID))
 
 ### 解决方案代码：
 
-像往常一样，首先尝试自己完成此挑战。但如果你陷入困境，或者只是想把你的解决方案与我们的解决方案进行对比，你可以在此代码库中查看 `solution-deserialize-account-data` [分支](https://github.com/CreatorsDAO/solana-student-intros-frontend/tree/solution-deserialize-account-data)。
+像往常一样，首先尝试自己完成此挑战。但如果你陷入困境，或者只是想把你的解决方案与我们的解决方案进行对比，你可以在此代码库中查看 `solution-deserialize-account-data` [分支](https://github.com/all-in-one-solana/solana-student-intros-frontend/tree/solution-deserialize-account-data)。
 
 祝你好运，开发者朋友！🚀

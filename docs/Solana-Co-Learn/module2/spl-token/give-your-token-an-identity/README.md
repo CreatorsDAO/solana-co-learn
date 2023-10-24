@@ -9,7 +9,7 @@ tags:
 
 # 🧬 为你的代币赋予身份
 
-现在是时候让代币与它们的创造者（也就是你）相遇了。我们将在之前构建的基础上继续前进。如果需要，你可以从[这个链接获取起始代码](https://github.com/CreatorsDAO/solana-token-client/tree/solution-without-burn)（确保你处于 `solution-without-burn` 分支）。
+现在是时候让代币与它们的创造者（也就是你）相遇了。我们将在之前构建的基础上继续前进。如果需要，你可以从[这个链接获取起始代码](https://github.com/all-in-one-solana/solana-token-client/tree/solution-without-burn)（确保你处于 `solution-without-burn` 分支）。
 
 首先，我们要添加新的依赖项：
 

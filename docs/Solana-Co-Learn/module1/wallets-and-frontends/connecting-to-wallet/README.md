@@ -44,7 +44,7 @@ npm install @solana/wallet-adapter-base \
 首先，你需要从指定的仓库克隆项目模板并进行必要的初始化操作：
 
 ```bash
-git clone https://github.com/CreatorsDAO/solana-ping-frontend
+git clone https://github.com/all-in-one-solana/solana-ping-frontend
 cd solana-ping-frontend
 git checkout starter
 npm i

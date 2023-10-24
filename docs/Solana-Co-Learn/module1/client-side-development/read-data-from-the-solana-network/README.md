@@ -110,10 +110,10 @@ async function getBalanceUsingWeb3(address: PublicKey): Promise<number> {
 
 现在是时候构建一个通用的余额查询器了（假设整个宇宙都在`Solana`上运行）。这将是一个简洁而强大的应用程序，能查询`Solana`上任何账户的余额。
 
-首先，在你的工作空间中创建一个文件夹，比如放在桌面上。[克隆起始库](https://github.com/CreatorsDAO/solana-intro-frontend)并按照以下步骤设置：
+首先，在你的工作空间中创建一个文件夹，比如放在桌面上。[克隆起始库](https://github.com/all-in-one-solana/solana-intro-frontend)并按照以下步骤设置：
 
 ```bash
-git clone https://github.com/CreatorsDAO/solana-intro-frontend
+git clone https://github.com/all-in-one-solana/solana-intro-frontend
 cd solana-intro-frontend
 git checkout starter
 npm i
@@ -214,7 +214,7 @@ const addressSubmittedHandler = (address: string) => {
 
 请尽量自己尝试解决，不要提前查看答案！相信你会发现挑战其实并不复杂。
 
-完成后，你可以在[这里](https://github.com/CreatorsDAO/solana-intro-frontend/tree/challenge-solution)查看挑战解决方案的参考代码。
+完成后，你可以在[这里](https://github.com/all-in-one-solana/solana-intro-frontend/tree/challenge-solution)查看挑战解决方案的参考代码。
 
 ## 📚 更多关于账户相关的资源
 

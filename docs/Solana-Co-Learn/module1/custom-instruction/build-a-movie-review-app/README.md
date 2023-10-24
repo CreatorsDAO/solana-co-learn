@@ -14,10 +14,10 @@ tags:
 
 ## 在`Solana`工作空间中设置初始代码
 
-首先，你可以从[GitHub克隆起始代码](https://github.com/CreatorsDAO/solana-movie-frontend.git)，并安装所需的依赖项：
+首先，你可以从[GitHub克隆起始代码](https://github.com/all-in-one-solana/solana-movie-frontend.git)，并安装所需的依赖项：
 
 ```bash
-git clone https://github.com/CreatorsDAO/solana-movie-frontend.git
+git clone https://github.com/all-in-one-solana/solana-movie-frontend.git
 cd solana-movie-frontend
 git checkout starter
 npm i
@@ -266,13 +266,13 @@ const handleTransactionSubmit = async (movie: Movie) => {
 
 ## 本地部署 Movie Review 程序
 
-这里`Moview Review Program`的程序: https://github.com/CreatorsDAO/movie-review-program
+这里`Moview Review Program`的程序: https://github.com/all-in-one-solana/movie-review-program
 
 你需要在本地部署这个程序，然后才能在本地运行这个项目。
 
 然后你还需要修改下前端代码的 `MOVIE_REVIEW_PROGRAM_ID` 常量，改成你本地部署的程序的地址。
 
-这个`commit` : https://github.com/CreatorsDAO/solana-movie-frontend/commit/6451fcfb60ea5feba485a7d1d1cb882833329654#diff-70f76b2487583dcb8b512614274040921abaa29ab8b993b19a45140fdbe7b8c8R10 包含了你需要修改的两个地方，一个就是 `program id` ,还有一个是你需要将链接的 `devnet` 换成`localhost`网络。
+这个`commit` : https://github.com/all-in-one-solana/solana-movie-frontend/commit/6451fcfb60ea5feba485a7d1d1cb882833329654#diff-70f76b2487583dcb8b512614274040921abaa29ab8b993b19a45140fdbe7b8c8R10 包含了你需要修改的两个地方，一个就是 `program id` ,还有一个是你需要将链接的 `devnet` 换成`localhost`网络。
 
 
 ## 🚢 挑战：`Solana`构建者的自我介绍
@@ -294,7 +294,7 @@ HdE95RSVsdb315jfJtaykXhXY478h53X6okDupVfY9yf 合约是devnent 上的一个测试
 你可以通过以下命令设置项目：
 
 ```bash
-git clone https://github.com/CreatorsDAO/solana-student-intros-frontend.git
+git clone https://github.com/all-in-one-solana/solana-student-intros-frontend.git
 cd solana-student-intros-frontend
 git checkout starter
 npm i
@@ -312,6 +312,6 @@ npm i
 
 ### 自我挑战
 
-与往常一样，首先请尝试独立完成此操作。如果你遇到困难，或者只是想将你的解决方案与我们的解决方案进行比较，请查看[此存储库](https://github.com/RustyCab/solana-student-intros-frontend/tree/solution-serialize-instruction-data)中的`solution-serialize-instruction-data`分支。
+与往常一样，首先请尝试独立完成此操作。如果你遇到困难，或者只是想将你的解决方案与我们的解决方案进行比较，请查看[此存储库](https://github.com/all-in-one-solana/solana-student-intros-frontend/tree/solution-serialize-instruction-data)中的`solution-serialize-instruction-data`分支。
 
 祝你好运，期待看到你的成果！

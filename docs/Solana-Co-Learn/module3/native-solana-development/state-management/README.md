@@ -313,7 +313,7 @@ msg!("状态账户序列化");
 如果你需要一个新的设置，可以执行以下操作：
 
 ```bash
-git clone https://github.com/CreatorsDAO/solana-movie-client
+git clone https://github.com/all-in-one-solana/solana-movie-client
 cd solana-movie-client
 npm install
 ```
