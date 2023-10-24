@@ -266,7 +266,7 @@ const handleTransactionSubmit = async (movie: Movie) => {
 
 ## 本地部署 Movie Review 程序
 
-这里`Moview Review Program`的程序: https://github.com/CreatorsDAO/movie-review-program
+这里`Moview Review Program`的程序: https://github.com/all-in-one-solana/movie-review-program
 
 你需要在本地部署这个程序，然后才能在本地运行这个项目。
 
