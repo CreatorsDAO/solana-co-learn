@@ -1,4 +1,4 @@
-# Solana Co Learn
+# Solana Co-Learning
 
 ## Solana 入门
 
