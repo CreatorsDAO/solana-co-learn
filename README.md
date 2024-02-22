@@ -1,6 +1,6 @@
 # Solana Co-Learning
 
-## Solana 入门
+## Module 1 Solana 入门
 
 Rust 速览、Solana Local Node、Solana CLI Tools、Network Wallet 交互
 
@@ -37,7 +37,7 @@ Rust 速览、Solana Local Node、Solana CLI Tools、Network Wallet 交互
   - 初始化账户，导入导出秘钥
   - 网络浏览器查看账户、交易
 
-## Solana Native
+## Module 2 Solana Native 开发
 
 使用Solana Native开发、读写 Account Data、Account 数据传输序列化，数据检查（TypeScript SDK基本使用）
 
@@ -70,7 +70,7 @@ Rust 速览、Solana Local Node、Solana CLI Tools、Network Wallet 交互
 - 读取account 数据
 - 通过指令调用合约
 
-## Anchor Framework
+## Module 3 使用 Anchor 框架开发
 
 [https://www.anchor-lang.com/](https://www.anchor-lang.com/)
 
@@ -91,7 +91,7 @@ Rust 速览、Solana Local Node、Solana CLI Tools、Network Wallet 交互
 - 发送交易
 - 构建一个完整的Anchor的Solana应用
 
-## Solana 进阶
+## Module 4 Solana 进阶
 
 ### 1. PDA 生命周期
 
@@ -115,7 +115,7 @@ Rust 速览、Solana Local Node、Solana CLI Tools、Network Wallet 交互
 
 - 创建 Token
 - mint Token
-- 添加 Metadata 
+- 添加 Metadata
 
 ### 4. NFT
 
