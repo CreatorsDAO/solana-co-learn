@@ -125,3 +125,7 @@ Rust 速览、Solana Local Node、Solana CLI Tools、Network Wallet 交互
 
 - Metaplex SDK 发布 NFT
 - 获取不同的NFT
+
+# Links
+
+* [往期黑客松项目参考](https://hyperdrive.solana.com/projects/explore)
