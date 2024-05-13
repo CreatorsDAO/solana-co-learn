@@ -126,12 +126,14 @@ Rust 速览、Solana Local Node、Solana CLI Tools、Network Wallet 交互
 
 ### 4. NFT
 
-[https://creatorsdao.github.io/solana-co-learn/Solana-Co-Learn/module2/nfts-and-minting-with-metaplex/](https://creatorsdao.github.io/solana-co-learn/Solana-Co-Learn/module2/nfts-and-minting-with-metaplex/)
-
-[https://creatorsdao.github.io/solana-co-learn/Solana-Co-Learn/module2/displayings-nfts-in-a-ui/displaying-nfts/](https://creatorsdao.github.io/solana-co-learn/Solana-Co-Learn/module2/displayings-nfts-in-a-ui/displaying-nfts/)
-
 - Metaplex SDK 发布 NFT
+
+[NFTs & Minting with Metaplex](https://creatorsdao.github.io/solana-co-learn/Solana-Co-Learn/module2/nfts-and-minting-with-metaplex/)
+
 - 获取不同的NFT
+
+[displaying-nfts](https://creatorsdao.github.io/solana-co-learn/Solana-Co-Learn/module2/displayings-nfts-in-a-ui/displaying-nfts/)
+
 
 # Links
 
