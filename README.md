@@ -113,3 +113,7 @@ PDA , CPI , SPL Token
 Actions and Blinks
 
 🔗 [Actions and Blinks](https://solana.com/docs/advanced/actions)
+
+---
+
+[上一期黑客松获奖项目](https://blog.colosseum.org/announcing-the-winners-of-the-solana-renaissance-hackathon/)
