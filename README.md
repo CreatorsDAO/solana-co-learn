@@ -35,7 +35,9 @@ Solana Local Node、Solana CLI Tools、Network Wallet 交互
 使用 Solana Native 开发、读写 Account Data、
 
 🔗 [ Solana Hello world](https://solana.com/zh/developers/guides/getstarted/local-rust-hello-world)
+
 🔗 [solana-developers/program-examples](https://github.com/solana-developers/program-examples/tree/main/basics)
+
 🔗 [solana playground](https://beta.solpg.io/)
 
 #### 学习目标
@@ -52,8 +54,11 @@ Solana Local Node、Solana CLI Tools、Network Wallet 交互
 Account 数据传输序列化，数据检查（TypeScript SDK 基本使用）
 
 🔗 [solana account read and write](https://creatorsdao.github.io/solana-co-learn/Solana-Co-Learn/module3/native-solana-development/build-a-movie-review-program/)
+
 🔗 [状态管理和序列化](https://creatorsdao.github.io/solana-co-learn/Solana-Co-Learn/module3/native-solana-development/state-management/)
+
 🔗 [https://solana.com/docs/clients/javascript](https://solana.com/docs/clients/javascript)
+
 🔗 [Connet solana from react](https://solana.com/developers/cookbook/wallets/connect-wallet-react)
 
 #### 学习目标:
@@ -70,6 +75,7 @@ Account 数据传输序列化，数据检查（TypeScript SDK 基本使用）
 使用 Anchor framework 开发
 
 🔗 [Anchor hello world](https://www.anchor-lang.com/docs/hello-world)
+
 🔗 [Anchor the accounts struct](https://www.anchor-lang.com/docs/the-accounts-struct)
 
 #### 学习目标
@@ -86,7 +92,9 @@ Account 数据传输序列化，数据检查（TypeScript SDK 基本使用）
 PDA , CPI , SPL Token
 
 🔗 [PDA 生命周期](https://solanacookbook.com/zh/core-concepts/pdas.html#%E7%BB%BC%E8%BF%B0)
+
 🔗 [CPI 调用](https://solana.com/docs/core/cpi)
+
 🔗 [https://spl.solana.com/token](https://spl.solana.com/token)
 
 #### 学习目标
