@@ -76,14 +76,16 @@ Account 数据传输序列化，数据检查（TypeScript SDK 基本使用）
 
 🔗 [Anchor hello world](https://www.anchor-lang.com/docs/hello-world)
 
-🔗 [Anchor the accounts struct](https://www.anchor-lang.com/docs/the-accounts-struct)
+🔗 [Intro to Anchor](https://solana.com/developers/guides/getstarted/intro-to-anchor)
+
+🔗 [More about Anchor](https://www.anchor-lang.com/docs)
 
 #### 学习目标
 
 - Anchor 框架开发合约
 - Anchor 框架开发 dapp
 - Anchor 快速修改 account 数据和约束
-- Anchor 中 pda 初始化和 cpi 调用
+- Anchor 中 pda 初始化
 
 ## Module 3
 
