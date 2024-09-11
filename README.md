@@ -38,7 +38,8 @@ Solana Local Node、Solana CLI Tools、Network Wallet 交互
 
 #### 学习目标
 
-- 编译合约、部署合约、调用合约
+- 熟悉 rust 编写合约
+- 熟悉 solana 合约编译、部署、调用
 - 区块浏览器查看合约
 
 ## Module 2
@@ -51,6 +52,8 @@ Account 数据传输序列化，数据检查（TypeScript SDK 基本使用）
 
 使用 Anchor framework 开发
 
+🔗 [Anchor 官方文档](https://www.anchor-lang.com/)
+
 ## Module 3
 
 ### 3.1 solana 进阶
@@ -60,3 +63,5 @@ PDA , CPI , SPL Token
 ### 3.2 solana 前沿
 
 Actions and Blinks
+
+🔗 [Actions and Blinks](https://solana.com/docs/advanced/actions)
