@@ -1,25 +1,23 @@
 <div align="center">
-  <h1> Solana Co-Learning#3 </h1>  
-  
- <p>
-    <a href="https://github.com/CreatorsDAO"><img src="https://badgen.net/badge/icon/github?icon=github&label" alt="GitHub" /></a>
+  <h1 style="color: #007bff;">Solana Co-Learning#3</h1>  
+  <p style="font-size: 1.5em;">
+    <a href="https://github.com/CreatorsDAO"><img src="https://badgen.net/badge/icon/github?icon=github&label" alt="GitHub" style="margin-right: 10px;" /></a>
     <a href="https://twitter.com/Labs706"><img src="https://badgen.net/badge/icon/twitter?icon=twitter&label" alt="Twitter" /></a>
-</p>
-<img src="./imagex.png" alt="GitHub" />
-
+  </p>
+  <img src="./imagex.png" alt="GitHub" style="width: 50%;" />
 </div>
 
-## Module1
+## Module 1
 
-### 1.1 初识 solana
+### 1.1 初识 Solana
 
 Solana Local Node、Solana CLI Tools、Network Wallet 交互
 
 🔗 [CLI 安装指南](https://solana.com/zh/developers/guides/getstarted/setup-local-development)
 
-🔗 [solana 浏览器](https://solscan.io/?cluster=devnet)
+🔗 [Solana 浏览器](https://solscan.io/?cluster=devnet)
 
-🔗 [solana devnet airdrop](https://github.com/solanafuns/solana-ts-tpl/blob/main/.github/workflows/airdrop.yml)
+🔗 [Solana Devnet Airdrop](https://github.com/solanafuns/solana-ts-tpl/blob/main/.github/workflows/airdrop.yml)
 
 #### 学习目标
 
@@ -30,22 +28,22 @@ Solana Local Node、Solana CLI Tools、Network Wallet 交互
 - 初始化账户，助记词、秘钥 导入、导出
 - 网络浏览器查看交易内容、切换网络、连接到本地网络
 
-### 1.2 solana 基本读写
+### 1.2 Solana 基本读写
 
 使用 Solana Native 开发、读写 Account Data、
 
-🔗 [ Solana Hello world](https://solana.com/zh/developers/guides/getstarted/local-rust-hello-world)
+🔗 [Solana Hello World](https://solana.com/zh/developers/guides/getstarted/local-rust-hello-world)
 
-🔗 [solana-developers/program-examples](https://github.com/solana-developers/program-examples/tree/main/basics)
+🔗 [Solana-Developers/Program-Examples](https://github.com/solana-developers/program-examples/tree/main/basics)
 
-🔗 [solana playground](https://beta.solpg.io/)
+🔗 [Solana Playground](https://beta.solpg.io/)
 
 #### 学习目标
 
-- 熟悉 rust 编写合约过程
-- 熟悉 solana 合约编译、部署、调用
+- 熟悉 Rust 编写合约过程
+- 熟悉 Solana 合约编译、部署、调用
 - 区块浏览器查看合约
-- 使用 solana playground 编写合约
+- 使用 Solana Playground 编写合约
 
 ## Module 2
 
@@ -53,13 +51,13 @@ Solana Local Node、Solana CLI Tools、Network Wallet 交互
 
 Account 数据传输序列化，数据检查（TypeScript SDK 基本使用）
 
-🔗 [solana account read and write](https://creatorsdao.github.io/solana-co-learn/Solana-Co-Learn/module3/native-solana-development/build-a-movie-review-program/)
+🔗 [Solana Account Read and Write](https://creatorsdao.github.io/solana-co-learn/Solana-Co-Learn/module3/native-solana-development/build-a-movie-review-program/)
 
 🔗 [状态管理和序列化](https://creatorsdao.github.io/solana-co-learn/Solana-Co-Learn/module3/native-solana-development/state-management/)
 
 🔗 [https://solana.com/docs/clients/javascript](https://solana.com/docs/clients/javascript)
 
-🔗 [Connet solana from react](https://solana.com/developers/cookbook/wallets/connect-wallet-react)
+🔗 [Connect Solana from React](https://solana.com/developers/cookbook/wallets/connect-wallet-react)
 
 #### 学习目标:
 
@@ -67,14 +65,14 @@ Account 数据传输序列化，数据检查（TypeScript SDK 基本使用）
 - 合约使用 PDA 账户
 - 迭代用户
 - 序列化反序列化数据
-- 使用 javascript 操作合约
-- 使用 javascript 构建 dapp
+- 使用 JavaScript 操作合约
+- 使用 JavaScript 构建 DApp
 
-### 2.2 solana 快速开发
+### 2.2 Solana 快速开发
 
-使用 Anchor framework 开发
+使用 Anchor Framework 开发
 
-🔗 [Anchor hello world](https://www.anchor-lang.com/docs/hello-world)
+🔗 [Anchor Hello World](https://www.anchor-lang.com/docs/hello-world)
 
 🔗 [Intro to Anchor](https://solana.com/developers/guides/getstarted/intro-to-anchor)
 
@@ -83,13 +81,13 @@ Account 数据传输序列化，数据检查（TypeScript SDK 基本使用）
 #### 学习目标
 
 - Anchor 框架开发合约
-- Anchor 框架开发 dapp
-- Anchor 快速修改 account 数据和约束
-- Anchor 中 pda 初始化
+- Anchor 框架开发 DApp
+- Anchor 快速修改 Account 数据和约束
+- Anchor 中 PDA 初始化
 
 ## Module 3
 
-### 3.1 solana 进阶
+### 3.1 Solana 进阶
 
 PDA , CPI , SPL Token
 
@@ -108,7 +106,7 @@ PDA , CPI , SPL Token
 - 创建 Token
 - mint Token
 
-### 3.2 solana 前沿
+### 3.2 Solana 前沿
 
 Actions and Blinks
 
