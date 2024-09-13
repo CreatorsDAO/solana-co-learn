@@ -4,7 +4,7 @@
     <a href="https://github.com/CreatorsDAO"><img src="https://badgen.net/badge/icon/github?icon=github&label" alt="GitHub" style="margin-right: 10px;" /></a>
     <a href="https://twitter.com/Labs706"><img src="https://badgen.net/badge/icon/twitter?icon=twitter&label" alt="Twitter" /></a>
   </p>
-  <img src="./imagex.png" alt="GitHub" style="width: 90%;" />
+  <img src="./image.png" alt="GitHub" style="width: 90%;" />
 </div>
 
 ## Module 1
