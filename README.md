@@ -34,6 +34,8 @@ Solana Local Node、Solana CLI Tools、Network Wallet 交互
 
 🔗 [Solana Hello World](https://solana.com/zh/developers/guides/getstarted/local-rust-hello-world)
 
+🔗 [Solana Counter ](https://github.com/solana-developers/program-examples/blob/main/basics/counter/native/program/src/lib.rs)
+
 🔗 [Solana-Developers/Program-Examples](https://github.com/solana-developers/program-examples/tree/main/basics)
 
 🔗 [Solana Playground](https://beta.solpg.io/)
