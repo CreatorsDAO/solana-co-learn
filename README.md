@@ -113,6 +113,8 @@ PDA , CPI , SPL Token
 Actions and Blinks
 
 🔗 [Actions and Blinks](https://solana.com/docs/advanced/actions)
+🔗 [soldev Blinks](https://soldev.cn/wiki/blinks)
+
 
 ---
 
