@@ -59,7 +59,7 @@ Account 数据传输序列化，数据检查（TypeScript SDK 基本使用）
 
 🔗 [https://solana.com/docs/clients/javascript](https://solana.com/docs/clients/javascript)
 
-🔗 [Connect Solana from React](https://solana.com/developers/cookbook/wallets/connect-wallet-react)
+🔗 [Connect Solana from React](https://github.com/anza-xyz/wallet-adapter/blob/master/APP.md)
 
 #### 学习目标:
 
