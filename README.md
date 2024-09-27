@@ -78,7 +78,7 @@ Account 数据传输序列化，数据检查（TypeScript SDK 基本使用）
 
 🔗 [Anchor playground ](https://www.anchor-lang.com/docs/solana-playground)
 
-🔗 [More about Anchor](https://www.anchor-lang.com/docs)
+🔗 [More about Anchor](https://www.anchor-lang.com/docs/account-constraints)
 
 #### 学习目标
 
