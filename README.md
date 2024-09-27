@@ -74,9 +74,9 @@ Account 数据传输序列化，数据检查（TypeScript SDK 基本使用）
 
 使用 Anchor Framework 开发
 
-🔗 [Anchor Hello World](https://www.anchor-lang.com/docs/hello-world)
-
 🔗 [Intro to Anchor](https://solana.com/developers/guides/getstarted/intro-to-anchor)
+
+🔗 [Anchor playground ](https://www.anchor-lang.com/docs/solana-playground)
 
 🔗 [More about Anchor](https://www.anchor-lang.com/docs)
 
