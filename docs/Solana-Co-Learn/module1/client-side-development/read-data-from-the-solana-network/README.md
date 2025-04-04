@@ -128,7 +128,7 @@ npm i
 首先，你需要安装`Solana/web3.js`库：
 
 ```bash
-npm install @solana/web3.js
+npm install @solana/web3.js@1
 ```
 
 这将为我们提供一个非常简洁的函数来查询余额。转到 `index.tsx` 并将其导入到顶部：

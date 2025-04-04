@@ -36,7 +36,7 @@ cd <you-project-name>
 
 npm i @chakra-ui/react @emotion/react@^11 @emotion/styled@^11 framer-motion@^10 @chakra-ui/icons
 
-npm i @solana/wallet-adapter-base @solana/wallet-adapter-react @solana/wallet-adapter-react-ui @solana/wallet-adapter-wallets @solana/web3.js
+npm i @solana/wallet-adapter-base @solana/wallet-adapter-react @solana/wallet-adapter-react-ui @solana/wallet-adapter-wallets @solana/web3.js@1
 ```
 
 注意：在整个项目中，我们将使用`Typescript`！当然，如果你更喜欢，完全可以使用普通的`Javascript` :)。

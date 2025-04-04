@@ -43,7 +43,7 @@ SOL 是 Solana 的原生代币 - SOL 用于支付交易费用、支付账户租�
 我们使用名为 `@solana/web3.js` 的 npm 包来完成 Solana 的大部分工作。我们还将安装 TypeScript 和 esrun，以便我们可以运行命令行：
 
 ```bash
-npm install typescript @solana/web3.js @digitak/esrun
+npm install typescript @solana/web3.js@1 @digitak/esrun
 ```
 
 #### 连接到网络
@@ -122,7 +122,7 @@ The balance of the account at CenYq6bDRB7p73EjsPEpiYN7uveyPUTdXkDkgUduboaN is 0.
 
 ### 2.安装依赖
 
-使用 `npm install @solana/web3.js` 安装对 Solana web3 库的依赖项。
+使用 `npm install @solana/web3.js@1` 安装对 Solana web3 库的依赖项。
 
 ### 3.设置地址余额
 

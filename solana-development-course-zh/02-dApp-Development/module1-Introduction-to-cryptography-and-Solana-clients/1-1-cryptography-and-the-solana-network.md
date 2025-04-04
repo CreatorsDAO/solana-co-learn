@@ -60,7 +60,7 @@
 您可以通过npm模块 `@solana/web3.js` 在浏览器或node.js中使用Solana区块链。按照您通常的方式设置项目，然后使用npm安装 `@solana/web3.js`：
 
 ```
-npm i @solana/web3.js
+npm i @solana/web3.js@1
 ```
 
 我们将在本课程中逐步介绍 `web3.js` 的很多内容，但您也可以查看官方的[web3.js文档](https://docs.solana.com/developing/clients/javascript-reference)。
@@ -111,7 +111,7 @@ const keypair = getKeypairFromEnvironment("SECRET_KEY");
 mkdir generate-keypair
 cd generate-keypair
 npm init -y
-npm install typescript @solana/web3.js esrun @solana-developers/node-helpers
+npm install typescript @solana/web3.js@1 esrun @solana-developers/node-helpers
 ```
 
 创建一个名为 `generate-keypair.ts` 的新文件：

@@ -37,7 +37,7 @@ Solana 上的大多数地址也是公钥。如前一章所述，谁控制了地�
 我们使用一个名为 `@solana/web3.js` 的 npm 包来处理大部分与 Solana 的交互。我们还会安装 `TypeScript` 和 `esrun`，以便在命令行上运行 `.ts` 文件：
 
 ```
-npm install typescript @solana/web3.js esrun
+npm install typescript @solana/web3.js@1 esrun
 ```
 
 #### 连接到网络

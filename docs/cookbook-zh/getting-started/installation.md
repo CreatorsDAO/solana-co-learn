@@ -25,14 +25,14 @@ import TabItem from '@theme/TabItem';
 <TabItem value="Yarn" label="Yarn">
 
 ```bash
-yarn add @solana/web3.js
+yarn add @solana/web3.js@1
 ```
 
 </TabItem>
 <TabItem value="NPM" label="Npm">
 
 ```bash
-npm install --save @solana/web3.js
+npm install --save @solana/web3.js@1
 ```
 
 </TabItem>

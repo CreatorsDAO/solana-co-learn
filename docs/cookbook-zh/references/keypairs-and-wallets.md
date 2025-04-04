@@ -530,7 +530,7 @@ import { WalletMultiButton } from "solana-wallets-vue";
 运行以下命令来安装所需的依赖项：
 
 ```/bin/bash
-npm install @svelte-on-solana/wallet-adapter-core @svelte-on-solana/wallet-adapter-ui @solana/wallet-adapter-base @solana/wallet-adapter-wallets @solana/web3.js
+npm install @svelte-on-solana/wallet-adapter-core @svelte-on-solana/wallet-adapter-ui @solana/wallet-adapter-base @solana/wallet-adapter-wallets @solana/web3.js@1
 ```
 
 [Svelte Wallet Adapter](https://github.com/svelte-on-solana/wallet-adapter) 包允许我们在使用Svelte模板或SvelteKit创建的项目中，在所有JS、TS或/和Svelte文件之间添加一个可访问的Svelte Store（`$walletStore`）。使用 [此处](https://github.com/svelte-on-solana/wallet-adapter/blob/master/packages/core/README.md/) 的存储库引用，您可以在SSR或SPA中使用适配器。UI包含一个`<WalletMultiButton />`组件，允许用户选择一个钱包并连接到它。
