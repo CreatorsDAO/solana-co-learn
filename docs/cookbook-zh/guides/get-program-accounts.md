@@ -18,7 +18,7 @@ import TabItem from '@theme/TabItem';
 - `programId`: `string` - 要查询的程序的公钥，以base58编码的字符串形式提供。
 - (可选) `configOrCommitment`: `object` - 包含以下可选字段的配置参数：
     - (可选) `commitment`: `string` - [状态承诺/State commitment](https://docs.solana.com/developing/clients/jsonrpc-api#configuring-state-commitment)
-     - (可选) `encoding`: `string` - 账户数据的编码方式，可以是： `base58`, `base64`, 或 `jsonParsed`. 请注意 web3js 用户应改用 [getParsedProgramAccounts](https://solana-labs.github.io/solana-web3.js/classes/Connection.html#getParsedProgramAccounts)
+     - (可选) `encoding`: `string` - 账户数据的编码方式，可以是： `base58`, `base64`, 或 `jsonParsed`. 请注意 web3js 用户应改用 [getParsedProgramAccounts](https://solana-labs.github.io/solana-web3.js/v1.x/classes/Connection.html#getParsedProgramAccounts)
     - (可选) `dataSlice`: `object` - 根据以下内容限制返回的账户数据：
         - `offset`: `number` - 开始返回账户数据的字节数
          - `length`: `number` - 要返回的账户数据的字节数
@@ -557,5 +557,5 @@ curl http://api.mainnet-beta.solana.com -X POST -H "Content-Type: application/js
 ## 其他资料
 
 - [RPC API Documentation](https://docs.solana.com/developing/clients/jsonrpc-api#getprogramaccounts)
-- [Web3js Documentation](https://solana-labs.github.io/solana-web3.js/classes/Connection.html#getProgramAccounts)
-- [JSON-parsed Web3js Documentation](https://solana-labs.github.io/solana-web3.js/classes/Connection.html#getParsedProgramAccounts)
+- [Web3js Documentation](https://solana-labs.github.io/solana-web3.js/v1.x/classes/Connection.html#getProgramAccounts)
+- [JSON-parsed Web3js Documentation](https://solana-labs.github.io/solana-web3.js/v1.x/classes/Connection.html#getParsedProgramAccounts)
